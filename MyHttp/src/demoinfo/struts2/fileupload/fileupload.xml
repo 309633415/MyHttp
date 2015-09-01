@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+  <package name="fileupload" extends="struts-default" namespace="/fileupload">
+    <action name ="fileupload" class ="demoinfo.struts2.fileupload.FileUploadAction"> 
+        <interceptor-ref name ="fileUploadStack"/> 
+        <interceptor-ref name ="fileUpload"> 
+<!--        设置允许上传的文件类型-->
+            <param name ="allowedTypes"> 
+                image/bmp,image/png,image/gif,image/jpeg,image/jpg
+             </param > 
+         </interceptor-ref > 
+         <interceptor-ref name ="defaultStack" />            
+         <result name ="input" >/strut/fileupload/upload.jsp</result >              
+         <result name ="success" >/strut/fileupload/ShowFile.jsp</result > 
+     </action> 
+  </package>
+</struts>

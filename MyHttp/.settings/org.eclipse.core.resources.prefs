@@ -1,0 +1,10 @@
+#Mon Dec 08 18:23:59 CST 2014
+eclipse.preferences.version=1
+encoding//WebRoot/frame.jsp=GBK
+encoding//src/demoinfo/struts2/interceptor/InterceptorTest.java=UTF-8
+encoding//src/demoinfo/struts2/interceptor/LoginAction.java=UTF-8
+encoding//src/demoinfo/struts2/login/LoginAction.java=UTF-8
+encoding//src/demoinfo/struts2/validation/ValidationAction.java=UTF-8
+encoding//src/factory/HibernateSessionFactory.java=UTF-8
+encoding//src/maintain/hbm/DemoInfo.java=UTF-8
+encoding/src=UTF-8

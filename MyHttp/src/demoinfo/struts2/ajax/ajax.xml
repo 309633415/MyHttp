@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+<package name="ajax" extends="json-default" namespace="/ajax">
+
+<!--自动补全的Action-->
+  <action name="autoCompleter" class="demoinfo.struts2.ajax.AjaxAction" method="autoCompleter">
+      <result type="json">
+        <param name="root">names</param>
+      </result>
+   </action>   
+<!--   异步校验的Action-->
+   <action name="checkAjax" class="demoinfo.struts2.ajax.AjaxAction" method="checkAjax">
+        <result>/strut/ajax/waring.jsp</result>
+   </action>
+</package>
+</struts>
