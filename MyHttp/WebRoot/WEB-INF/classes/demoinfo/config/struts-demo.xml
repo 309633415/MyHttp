@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="login"  extends="struts-default" namespace="/strut">
+    
+<!--    拦截器必须定义在一个package中所有Action的最前面-->
+     <interceptors> 
+        <interceptor name ="interceptorfirst" class ="demoinfo.struts2.interceptor.InterceptorTest" /> 
+     </interceptors > 
+<!--    拦截器定义结束-->
+    
+<!--       action  name与页面中Form的Action相同  Class 指定对应的Java文件 如果用到了Spring 应该对应Bean-ID method对应Java类中的方法-->
+        <action name="checkLogin" class="demoinfo.struts2.login.LoginAction" method="checkLogin">
+              <result name="fail">/common/fail.jsp</result>
+              <result name="success">/common/success.jsp</result>   
+        </action>
+<!--使用校验框架的action-->
+        <action name="validationAction" class="demoinfo.struts2.validation.ValidationAction" method="checkLogin">
+<!--        校验框架校验不成功会返回input-->
+              <result name="input">/strut/validation/login.jsp</result>
+              <result name="success">/common/success.jsp</result>   
+        </action>
+        
+<!--    拦截器的简单示例     同样调用LoginAction类不过加上了拦截器  指定不同的方法-->
+   <action name="InterceptLogin" class="demoinfo.struts2.interceptor.LoginAction" method="interceptLogin">
+       <interceptor-ref name ="defaultStack" />  <!--加上默认的拦截器   在使用自定拦截器时，会讲默认的拦截器覆盖掉，所以一定要加上默认的拦截器否则会导致各种已成如NULL等-->
+       <interceptor-ref name ="interceptorfirst" />  <!--   在此加上拦截器-->
+       <result name="login">/strut/interceptor/login.jsp</result>
+<!--        请编写相应的返回页面-->
+       <result name="fail">/common/fail.jsp</result>
+       <result name="success">/common/success.jsp</result>   
+   </action>
+<!--        拦截器结束-->
+
+   </package>
+<!-- Add packages here   用include包含子xml文件  指定文件的相对路径就可以了-->
+<!--文件上传Action的xml文件-->
+<include file="/demoinfo/struts2/fileupload/fileupload.xml"></include>
+<!--Struts2标签Action的xml文件-->
+<include file="/demoinfo/struts2/tag/tag.xml"></include>
+<!--crud的XML文件-->
+<include file="/demoinfo/struts2/crud/crud.xml"></include>
+<!--ajax的XML文件-->
+<include file="/demoinfo/struts2/ajax/ajax.xml"></include>
+<!--json的XML文件-->
+<include file="/demoinfo/struts2/json/json.xml"></include>
+</struts>

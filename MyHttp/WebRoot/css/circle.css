@@ -1,0 +1,50 @@
+#circle{ 
+	margin:10px auto; 
+	width:100%; 
+	overflow:hidden; 
+} 
+.include{ 
+	background:transparent; 
+} 
+.s1,.s2,.s3,.s4,.s5{ 
+	font-size:1px; 
+	display:block; 
+	overflow:hidden; 
+	background:lightblue; 
+} 
+.s1,.s2,.s3,.s4{ 
+	height:1px; 
+} 
+.s2,.s3,.s4,.s5{ 
+	border-right:1px solid #fff; 
+	border-left:1px solid #fff; 
+} 
+.s1{ 
+	margin:0 7px; 
+	background:#fff; 
+} 
+.s2{ 
+	margin:0 5px; 
+	border-width:2px; 
+} 
+.s3{ 
+	margin:0 3px; 
+	border-width:2px; 
+} 
+.s4{ 
+	margin:0 2px; 
+
+} 
+.s5{ 
+	margin:0 1px; 
+	height:2px; 
+} 
+.bg{ 
+	background:lightblue; 
+	border-right:1px solid #fff; 
+	border-left:1px solid #fff; 
+	display:block; 
+	
+	overflow:hidden; 
+	line-height:2;
+} 

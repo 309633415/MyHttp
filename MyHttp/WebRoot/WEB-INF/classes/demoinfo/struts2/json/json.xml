@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+<!--注意包的继承，继承的包是 json-default-->
+<package name="json" extends="json-default" namespace="/json">
+<!--  想前台写出JSON数据-->
+  <action name="writeJson" class="demoinfo.struts2.json.JsonAction" method="writeJson">
+<!--  注意返回的结果类型是json-->
+      <result type="json" />
+  </action>   
+</package>
+</struts>

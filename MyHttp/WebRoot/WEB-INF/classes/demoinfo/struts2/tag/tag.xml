@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+  <package name="tag" extends="struts-default" namespace="/tag">
+<!--       注意Class的值加上包路径 如果 集成了Spring就不用了-->
+    <action name ="tag" class ="demoinfo.struts2.tag.TagAction"> 
+        <result>/strut/tag/tag.jsp</result>
+        <result name="input">/strut/tag/tag.jsp</result>
+     </action> 
+  </package>
+</struts>
