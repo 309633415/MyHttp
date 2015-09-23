@@ -1,0 +1,250 @@
+@charset "gb2312";
+
+* {
+	padding: 0;
+	margin: 0
+}
+
+html {
+	min-height: 101%
+}
+
+body {
+	font-family: verdana, arial, tahoma;
+	font-size: 12px;
+	color: #333
+}
+
+div {
+	margin: 0 auto
+}
+
+ul,ol,li {
+	list-style: none
+}
+
+a {
+	text-decoration: none;
+	word-wrap: break-word
+}
+
+a:hover {
+	text-decoration: underline
+}
+
+img {
+	border: 0
+}
+
+p {
+	line-height: 26px
+}
+
+/* 框架 */
+#b {
+	width: 1160px;
+	padding: 0 12px;
+	background-color: #FFF;
+	position: relative
+}
+
+/* 顶部导航 */
+.topbg {
+	height: 33px;
+	background: url(../images/a.png) repeat -20px 0
+}
+
+.topnav {
+	width: 1160px;
+	height: 33px;
+	line-height: 33px;
+	padding: 0 12px
+}
+
+.topnav .l {
+	float: left;
+	color: #999
+}
+
+.topnav .r {
+	float: right;
+	color: #DDD
+}
+
+.topnav .r a {
+	color: #666;
+	cursor: pointer
+}
+
+.topnav .r a:hover {
+	color: #390
+}
+
+/* logo */
+#header {
+	width: 1160px;
+	height: 80px
+}
+
+#header .logo img {
+	width: 446px;
+	height: 42px;
+	position: absolute;
+	top: 20px;
+	left: 12px
+}
+
+#header .weibo {
+	position: absolute;
+	top: 34px;
+	right: 12px
+}
+
+/*导航*/
+.menu {
+	height: 33px;
+	font-family: "Microsoft Yahei", Tahoma, Geneva, sans-serif;
+	padding-left: 0px;
+	_overflow: hidden
+}
+
+.menu a {
+	color: #fff;
+	height: 16px;
+	line-height: 16px;
+	float: left;
+	position: relative
+}
+
+.top {
+	background: #333;
+	position: relative;
+	z-index: 2
+}
+
+.menu li {
+	font-size: 14px;
+	float: left;
+	position: relative;
+	padding: 8px 12px;
+}
+
+.menu li:hover {
+	background-color: #fff;
+	border: 1px solid #629d2a;
+	border-bottom: none;
+	padding: 8px 11px
+}
+
+.menu li:hover a {
+	color: #357d13
+}
+
+.menu li.no_sub:hover {
+	border: 1px solid #629d2a;
+	padding: 7px 11px
+}
+
+.menu ul {
+	width: 330px;
+	background-color: #fff;
+	border: 1px solid #629d2a;
+	border-top: none;
+	position: absolute;
+	left: -1px;
+	top: -999em;
+	z-index: 99999;
+	padding: 8px;
+	display: none
+}
+
+.menu li:hover ul {
+	top: 31px;
+	display: block
+}
+
+.menu li:hover ul li {
+	font-size: 12px;
+	border: none;
+	width: 70px;
+	float: left;
+	padding: 4px 0 4px 10px
+}
+
+.menu li:hover ul li a {
+	color: #333;
+	text-decoration: none;
+	padding: 0
+	
+}
+
+.menu li:hover ul li a:hover {
+	text-decoration: underline
+	
+}
+
+/*IE6*/
+.menu li.hover {
+	background-color: #fff;
+	border: 1px solid #629d2a;
+	border-bottom: none;
+	padding: 8px 11px
+}
+
+.menu li.hover a {
+	color: #357d13
+}
+
+.menu li.hover ul {
+	top: 31px;
+	display: block
+}
+
+.menu li.hover ul li {
+	border: none;
+	width: 100px;
+	float: left;
+	padding: 4px 0 4px 10px
+}
+
+.menu li.hover ul li a {
+	height: 16px;
+	line-height: 16px;
+	font-size: 12px;
+	color: #333;
+	text-decoration: none;
+	padding: 0
+	
+	
+}
+
+.menu li.hover ul li a:hover {
+	text-decoration: underline
+	
+}
+
+.menu li.no_sub.hover1 {
+	border: 1px solid #629d2a;
+	padding: 7px 11px
+}
+
+/* 其他 */
+.hot {
+	width: 22px;
+	height: 12px;
+	background: url(../images/a.png) no-repeat -111px -40px;
+	position: absolute;
+	right: 22px;
+	top: -9px;
+	z-index: 999
+}
+
+.new {
+	width: 22px;
+	height: 12px;
+	background: url(../images/a.png) no-repeat -85px -40px;
+	position: absolute;
+	right: 22px;
+	top: -9px;
+	z-index: 999
+}

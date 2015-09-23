@@ -1,6 +1,9 @@
-<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@taglib prefix="s" uri="/struts-tags"%>
+<%@ include file="/common/taglibs.jsp" %>
 <%@ taglib prefix="sx" uri="/struts-dojo-tags"%>
-<%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
+<%@ page language="java"  import="java.util.*" pageEncoding="GBK"%>
+
+
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";

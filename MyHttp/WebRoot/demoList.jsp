@@ -26,14 +26,25 @@ request.setCharacterEncoding("GBK");
 		margin-left:4%;
 		width:45%;
 		border:#66ccff 1px solid;
-		height:200px;
+		height:250px;
 		float:left;
+		text-align: center;
+		margin:10px 10px;
 	}
+	
+	.mulu a{
+		height: 16px;
+		line-height: 18px;
+		font-size: 15px;
+		color: #333;
+		text-decoration: underline;
+	}
+	
 	</style>
   </head>
   
   <body>
-    <h1>目录</h1>
+    
     <div style="float:left;">
 	    <div id="struts" class="mulu">
 		    <h2>Struts2实例</h2><br/>
@@ -49,12 +60,12 @@ request.setCharacterEncoding("GBK");
 	    <div id="hibernate" class="mulu">
 		    <h2>Hibernate实例</h2>
 		    <a href="./common/common.action?target=ormCrudDemo">增加</a><br/>
-		    <a href="./strut/json/json.jsp">删除</a><br/>
-		    <a href="./strut/json/json.jsp">修改</a><br/>
-		    <a href="./strut/json/json.jsp">简单查询</a><br/>
-		    <a href="./strut/json/json.jsp">连接查询</a><br/>
-		    <a href="./strut/json/json.jsp">自定义查询（HQL或者SQL均可）</a><br/>
-		    <a href="./strut/json/json.jsp">关系（一对一，一对多，多对多）</a><br/>
+		    <a href="./common/common.action?target=ormCrudDeleteDemo">删除</a><br/>
+		    <a href="./common/common.action?target=ormCrudUpdateDemo">修改</a><br/>
+		    <a href="./common/common.action?target=ormCrudQueryDemo">简单查询</a><br/>
+		    <a href="./common/common.action?target=ormCrudQueryLinkDemo">连接查询</a><br/>
+		    <a href="./common/common.action?target=ormCrudQueryHqlDemo">自定义查询（HQL或者SQL均可）</a><br/>
+		    <a href="./common/common.action?target=relationshipDemo">关系（一对一，一对多，多对多）</a><br/>
 	    </div>
 	    <div id="spring" class="mulu">
 		    <h2>Spring实例</h2>
@@ -69,8 +80,8 @@ request.setCharacterEncoding("GBK");
 	    </div>
 	    <div id="webService" class="mulu">
 		    <h2>webService实例</h2>
-		    <a href="./strut/json/json.jsp">环境配置</a><br/>
-		    <a href="./strut/json/json.jsp">调取网站服务</a><br/>
+		    <a href="./common/common.action?target=webServiceConf">环境配置</a><br/>
+		    <a href="./common/common.action?target=webServiceTake">调取网站服务</a><br/>
 	    </div>
 	    <div id="jbpm" class="mulu">
 		    <h2>JBPM工作流实例</h2>

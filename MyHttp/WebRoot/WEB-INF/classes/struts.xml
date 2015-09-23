@@ -15,7 +15,7 @@
               <result name="fail">/common/fail.jsp</result>
               <result name="success">/jee/struts/struts.jsp</result>
               <result name="backDemoList">/demoList.jsp</result>
-<!--              struts2 实例 Start -->
+			  <!--struts2 实例 Start -->
               <result name="strutsLoginDemo">/strut/login/login.jsp</result>    
               <result name="strutsValidDemo">/strut/validation/login.jsp</result>    
               <result name="strutsInterceptorDemo">/strut/interceptor/login.jsp</result>    
@@ -24,8 +24,20 @@
               <result name="strutsCrudDemo" type="redirect">/crud/List.action</result>    
               <result name="strutsAjaxDemo">/strut/ajax/ajax.jsp</result>    
               <result name="strutsJsonDemo">/strut/json/json.jsp</result>    
-              <result name="ormCrudDemo">/hibernate/hibernateSave.jsp</result>    
-<!--              struts2 实例 end-->
+              <!--struts2 实例 end-->
+              <!-- hibernate 实例　start -->
+              <result name="ormCrudDemo">/hibernate/hibernateSave.jsp</result>
+              <result name="ormCrudDeleteDemo">/hibernate/hibernateDelete.jsp</result>
+              <result name="ormCrudQueryDemo">/hibernate/hibernateQuery.jsp</result>
+              <result name="ormCrudUpdateDemo">/hibernate/hibernateUpdate.jsp</result>
+              <result name="ormCrudQueryHqlDemo">/hibernate/hibernateQueryHql.jsp</result>
+              <result name="ormCrudQueryLinkDemo">/hibernate/hibernateQueryLink.jsp</result>
+              <result name="relationshipDemo">/hibernate/hibernateRelationship.jsp</result>     
+              <!-- hibernate 实例　end -->
+              <!-- webService 实例  start-->
+              <result name="webServiceConf">/webservice/webServiceConf.jsp</result>
+              <result name="webServiceTake">/webservice/webServiceTake.jsp</result>
+   			  <!-- webService 实例  end-->
       </action>
   
    </package>

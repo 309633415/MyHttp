@@ -1,5 +1,6 @@
+<%@taglib prefix="s" uri="/struts-tags"%>
 <%@ include file="/common/taglibs.jsp" %>
-<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
+<%@ page language="java"  import="java.util.*" pageEncoding="GBK"%>
 <html>
 <head>
     <title>struts登录实例</title>
@@ -9,10 +10,10 @@
 用户名:tom<br/>
 密码：123
 </div>
-    <form action="<%=basePath %>/strut/checkLogin.action" method="post">
+    <s:form action="/strut/checkLogin.action" method="post">
        <s:textfield name="username" label="用户名" /><br/>
        <s:password name="password"  label="密 		码"/><br/>
        <s:submit value="提交"/><br/>
-    </form>           
+    </s:form>           
 </body>
 </html>

@@ -47,4 +47,8 @@
 <include file="/demoinfo/struts2/ajax/ajax.xml"></include>
 <!--json的XML文件-->
 <include file="/demoinfo/struts2/json/json.xml"></include>
+<!--hibernate中的关系映射xml文件 -->
+<include file="/demoinfo/hibernate/relationship/relationship.xml"></include>
+<!--webService的ｘｍｌ文件-->
+<include file="/demoinfo/webservice/take/webservice.xml"></include>
 </struts>

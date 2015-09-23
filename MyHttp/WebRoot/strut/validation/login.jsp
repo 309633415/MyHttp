@@ -1,5 +1,6 @@
+<%@taglib prefix="s" uri="/struts-tags"%>
 <%@ include file="/common/taglibs.jsp" %>
-<%@ page  contentType="text/html; charset=GBK"%>
+<%@ page language="java"  import="java.util.*" pageEncoding="GBK"%>
 <html>
 <head>
     <title>框架校验</title>
@@ -10,7 +11,7 @@
 <!--显示提示的信息-->
     <s:fielderror /> 
 </div>
-    <s:form action="/strut/validationAction" method="post">   
+    <s:form action="/strut/validationAction.action" method="post">   
        <s:textfield name="username" label="用户名" />
        <s:password name="password" label="密码"/>
        <s:submit value="提交"/>

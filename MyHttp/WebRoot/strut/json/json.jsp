@@ -52,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
     <input type="button" value="Retrieve Book" onclick="retrieveBook()" />
     <div id="bookHolder"></div>
-    <a   href="<%=basePath%>json/writeJson.action" >json显示JSON数据格式</a>
+    <a   href="<%=basePath%>/json/writeJson.action" >json显示JSON数据格式</a>
 </body>
 </html>
 

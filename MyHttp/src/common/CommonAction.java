@@ -33,7 +33,7 @@ public class CommonAction {
 	}
 	@SuppressWarnings("unchecked")
 	public String execute(){	//execute Struts2的跳转
-		System.out.println(target);
+		System.out.println();
 	 if(!"".equals(target.trim()) && target!=null){
 		 Session xx=HibernateSessionFactory.getSession();
 		 List<DemoInfo> demoInfoList=factory.HibernateSessionFactory.getSession().createQuery("from DemoInfo where title='"+target+"'").list();
