@@ -1,5 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 	<head>
@@ -135,7 +136,7 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 						<ul class="menu">
 							
 							<li class="no_sub">
-								<a  href="http://localhost:8080/MyHttp/frame.jsp"
+								<a  href="http://localhost:8081/MyHttp/frame.jsp"
 									class="tablink nosub">สื าณ</a>
 							</li>
 							<li>

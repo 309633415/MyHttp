@@ -3,8 +3,9 @@ package demoinfo.webservice;
 import java.net.URL;
 
 import org.codehaus.xfire.client.Client;
+
 /**
- * webService²âÊÔ
+ * webServiceï¿½ï¿½ï¿½ï¿½
  * 
  * @author zcl
  *
