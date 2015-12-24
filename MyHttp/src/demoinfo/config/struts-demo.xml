@@ -26,14 +26,14 @@
         
 <!--    拦截器的简单示例     同样调用LoginAction类不过加上了拦截器  指定不同的方法-->
    <action name="InterceptLogin" class="demoinfo.struts2.interceptor.LoginAction" method="interceptLogin">
-       <interceptor-ref name ="defaultStack" />  <!--加上默认的拦截器   在使用自定拦截器时，会讲默认的拦截器覆盖掉，所以一定要加上默认的拦截器否则会导致各种已成如NULL等-->
+       <interceptor-ref name ="defaultStack" />  <!--加上默认的拦截器   在使用自定义拦截器时，会将默认的拦截器覆盖掉，所以一定要加上默认的拦截器否则会导致各种异常，如NULL等-->
        <interceptor-ref name ="interceptorfirst" />  <!--   在此加上拦截器-->
        <result name="login">/strut/interceptor/login.jsp</result>
-<!--        请编写相应的返回页面-->
+<!--		请编写相应的返回页面-->
        <result name="fail">/common/fail.jsp</result>
        <result name="success">/common/success.jsp</result>   
    </action>
-<!--        拦截器结束-->
+<!--   拦截器结束-->
 
    </package>
 <!-- Add packages here   用include包含子xml文件  指定文件的相对路径就可以了-->

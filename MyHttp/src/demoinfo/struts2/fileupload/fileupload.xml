@@ -8,12 +8,14 @@
     <action name ="fileupload" class ="demoinfo.struts2.fileupload.FileUploadAction"> 
         <interceptor-ref name ="fileUploadStack"/> 
         <interceptor-ref name ="fileUpload"> 
-<!--        设置允许上传的文件类型-->
+		<!--  设置允许上传的文件类型，过滤文件-->
             <param name ="allowedTypes"> 
                 image/bmp,image/png,image/gif,image/jpeg,image/jpg
              </param > 
          </interceptor-ref > 
+         <!--  默认拦截器必须放在fileUpload之后，否则无效 -->
          <interceptor-ref name ="defaultStack" />            
+         <!--  相应的返回页面 -->
          <result name ="input" >/strut/fileupload/upload.jsp</result >              
          <result name ="success" >/strut/fileupload/ShowFile.jsp</result > 
      </action> 

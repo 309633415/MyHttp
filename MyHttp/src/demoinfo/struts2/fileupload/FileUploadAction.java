@@ -16,11 +16,11 @@ public class FileUploadAction extends ActionSupport {
     private static final long serialVersionUID = 572146812454l ;
     private static final int BUFFER_SIZE = 16 * 1024 ; //设置大小
    
-    private File myFile;
-	private String contentType; //
+    private File myFile;//注意，myFile并不是指前端jsp上传过来的文件本身，而是文件上传过来存放在临时文件夹下面的文件
+	private String contentType; //文件类型
     private String fileName; //文件名称
-    private String imageFileName;
-    private String caption;
+    private String imageFileName;//新的文件名称
+    private String caption;//文件描述
    
     public void setMyFileContentType(String contentType) {
         this.contentType=contentType;
@@ -45,6 +45,7 @@ public class FileUploadAction extends ActionSupport {
     public void setCaption(String caption) {
         this .caption = caption;
    } 
+    
     public void setContentType(String contentType) {
 		this.contentType = contentType;
 	}
@@ -56,6 +57,7 @@ public class FileUploadAction extends ActionSupport {
         try {
            InputStream in = null ;
            OutputStream out = null ;
+           System.out.println("************" + src.getPath());
             try {                
             	//输入输出流
                in = new BufferedInputStream( new FileInputStream(src), BUFFER_SIZE);
@@ -83,6 +85,7 @@ public class FileUploadAction extends ActionSupport {
    } 
 
     public String execute()     {        
+    	 //根据服务器的文件保存地址和原文件名创建目录文件的路径，我们这里图片的保存在tomcat中对应项目的image文件夹下
        imageFileName = new Date().getTime() + getExtention(fileName);  //组成新的文件名 时间+文件类型
        File imageFile = new File(ServletActionContext.getServletContext().getRealPath( "/image") + "/" + imageFileName); //在系统目录下生成新的文件   
        copy(myFile, imageFile); //文件流复制

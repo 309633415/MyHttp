@@ -11,5 +11,6 @@
         <br/> 
         <s:property value ="caption" /> 
     </div> 
+    <a href="#" onclick="javascript:history.go(-1);return false;">·µ»Ø</a>
 </body> 
 </html> 
