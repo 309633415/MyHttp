@@ -136,7 +136,7 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 						<ul class="menu">
 							
 							<li class="no_sub">
-								<a  href="http://localhost:8081/MyHttp/frame.jsp"
+								<a  href="#" onclick="demoIndex()"
 									class="tablink nosub">สื าณ</a>
 							</li>
 							<li>
@@ -314,6 +314,11 @@ function refreshMainfrm(){
 	document.getElementById("mainfrm").reload(); 
 	document.frames('mainfrm').location.reload(); 
 }
+
+function demoIndex(){
+    document.getElementById("mainfrm1").src="./common/common.action?target=backDemoList";
+    document.getElementById("mainfrm1").onload;
+  }
 
 function strutsLoginDemo(){
     document.getElementById("mainfrm1").src="./common/common.action?target=strutsLoginDemo";
