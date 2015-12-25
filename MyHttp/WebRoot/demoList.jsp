@@ -54,7 +54,6 @@ request.setCharacterEncoding("GBK");
 		    <a href="./common/common.action?target=strutsFileUploadDemo" >文件上传实例</a><br/>
 		    <a href="./common/common.action?target=strutsTagDemo" >struts2标签实例</a><br/>
 		    <a href="./common/common.action?target=strutsCrudDemo" >crud实例</a><br/>
-		    <a href="./common/common.action?target=strutsAjaxDemo">简单Ajax特效</a><br/>
 		    <a href="./common/common.action?target=strutsJsonDemo">json</a>
 	    </div>
 	    <div id="hibernate" class="mulu">
@@ -76,6 +75,7 @@ request.setCharacterEncoding("GBK");
 		    <h2>AJAX和javaScript</h2>
 		    <a href="./strut/json/json.jsp">AJAX简单的校验</a><br/>
 		    <a href="./strut/json/json.jsp">AJAX查询</a><br/>
+		    <a href="./common/common.action?target=strutsAjaxDemo">简单Ajax特效</a><br/>
 		    <a href="./strut/json/json.jsp">JavaScript取值大全</a><br/>
 	    </div>
 	    <div id="webService" class="mulu">

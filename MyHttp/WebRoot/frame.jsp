@@ -161,9 +161,6 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 										<a href="#"  id="strutsCrudDemo" onclick="strutsCrudDemo()">crud实例</a>
 									</li>
 									<li>
-										<a href="#"  id="strutsAjaxDemo" onclick="strutsAjaxDemo()">简单Ajax特效</a>
-									</li>
-									<li>
 										<a href="#"  id="strutsJsonDemo" onclick="strutsJsonDemo()">json</a>
 									</li>
 								</ul>
@@ -214,6 +211,9 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 									</li>
 									<li>
 										<a href="#"  id=""  onclick="">AJAX查询</a>
+									</li>
+									<li>
+										<a href="#"  id="strutsAjaxDemo" onclick="strutsAjaxDemo()">简单Ajax特效</a>
 									</li>
 									<li>
 										<a href="#"  id=""  onclick="">JS取值大全</a>
