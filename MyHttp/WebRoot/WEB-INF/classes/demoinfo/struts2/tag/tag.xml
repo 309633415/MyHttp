@@ -7,7 +7,7 @@
   <package name="tag" extends="struts-default" namespace="/tag">
 <!--       注意Class的值加上包路径 如果 集成了Spring就不用了-->
     <action name ="tag" class ="demoinfo.struts2.tag.TagAction"> 
-        <result>/strut/tag/tag.jsp</result>
+        <result name="'success">/strut/tag/tag.jsp</result>
         <result name="input">/strut/tag/tag.jsp</result>
      </action> 
   </package>
