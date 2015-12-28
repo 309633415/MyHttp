@@ -20,19 +20,20 @@ import java.io.File;
 public class TagAction extends ActionSupport implements Validateable  {
 	
     private static final long serialVersionUID = -94044809860988047L;        
-    String name;
-    Date birthday;
-    String bio;
-	List friends;
-    boolean legalAge;
-    String state;
-    String region;
-    File picture;
-    String pictureContentType;
-    String pictureFileName;
-    String favouriteLanguage;
-    String favouriteVehicalType = "MotorcycleKey";
-    String favouriteVehicalSpecific = "YamahaKey";
+    String name;		//姓名
+    Date birthday;	//生日
+    String bio;			//传记
+    String film;			//电影
+	List<String> friends;		//朋友
+    boolean legalAge;	//是否成年
+    String region;	//地区
+    String state;			//地区下的某个小地区
+    File picture;		//照片
+    String pictureContentType;	//照片类型
+    String pictureFileName;		//照片名字
+    String favouriteLanguage;		//喜欢的语言
+    String favouriteVehicalType = "MotorcycleKey";		//喜欢的汽车种类
+    String favouriteVehicalSpecific = "YamahaKey";		//喜欢汽车种类中的某个品牌的汽车
     
   
 	List leftSideCartoonCharacters;
@@ -44,6 +45,9 @@ public class TagAction extends ActionSupport implements Validateable  {
     
     String thoughts;
     
+    /**
+     * 构造函数添加下拉框选项 语言、地区、汽车
+     */
     public TagAction()  {
         favouriteLanguages.add(new Language("EnglishKey", "English Language"));
         favouriteLanguages.add(new Language("FrenchKey", "French Language"));
@@ -116,11 +120,9 @@ public class TagAction extends ActionSupport implements Validateable  {
     }
 
     public String execute() throws Exception  {
-        return SUCCESS;
+        return "input";
     }
 
-    /**//*  Getters and Setters  */
-           
     public String doSubmit()  {
         return SUCCESS;
     }       
@@ -193,4 +195,127 @@ public class TagAction extends ActionSupport implements Validateable  {
             return key.hashCode();
         }
     }
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Date getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+
+	public String getBio() {
+		return bio;
+	}
+
+	public void setBio(String bio) {
+		this.bio = bio;
+
+
+	}
+
+	public List<String> getFriends() {
+		return friends;
+	}
+
+	public void setFriends(List<String> friends) {
+		this.friends = friends;
+	}
+
+	public boolean isLegalAge() {
+		return legalAge;
+	}
+
+	public void setLegalAge(boolean legalAge) {
+		this.legalAge = legalAge;
+	}
+
+	public String getRegion() {
+		return region;
+	}
+
+	public void setRegion(String region) {
+		this.region = region;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public File getPicture() {
+		return picture;
+	}
+
+	public void setPicture(File picture) {
+		this.picture = picture;
+	}
+
+	public String getPictureContentType() {
+		return pictureContentType;
+	}
+
+	public void setPictureContentType(String pictureContentType) {
+		this.pictureContentType = pictureContentType;
+	}
+
+	public String getPictureFileName() {
+		return pictureFileName;
+	}
+
+	public void setPictureFileName(String pictureFileName) {
+		this.pictureFileName = pictureFileName;
+	}
+
+	public String getFavouriteLanguage() {
+		return favouriteLanguage;
+	}
+
+	public void setFavouriteLanguage(String favouriteLanguage) {
+		this.favouriteLanguage = favouriteLanguage;
+	}
+
+	public Map getVehicalSpecificMap() {
+		return vehicalSpecificMap;
+	}
+
+	public void setVehicalSpecificMap(Map vehicalSpecificMap) {
+		this.vehicalSpecificMap = vehicalSpecificMap;
+	}
+
+	public String getThoughts() {
+		return thoughts;
+	}
+
+	public void setThoughts(String thoughts) {
+		this.thoughts = thoughts;
+	}
+
+	public void setFavouriteLanguages(List favouriteLanguages) {
+		this.favouriteLanguages = favouriteLanguages;
+	}
+
+	public void setVehicalTypeList(List vehicalTypeList) {
+		this.vehicalTypeList = vehicalTypeList;
+	}
+
+	public String getFilm() {
+		return film;
+	}
+
+	public void setFilm(String film) {
+		this.film = film;
+	}
+    
 }
