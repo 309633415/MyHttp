@@ -12,189 +12,149 @@ import java.util.List;
 import java.util.Map;
 import java.io.File;
 
-/** 
- * 
- * @author Administrator
- *
+/**
+ * struts2标签实例
  */
 public class TagAction extends ActionSupport implements Validateable  {
-	
-    private static final long serialVersionUID = -94044809860988047L;        
-    String name;		//姓名
-    Date birthday;	//生日
-    String bio;			//传记
-    String film;			//电影
+
+	private static final long serialVersionUID = -94044809860988047L;        
+	String name;		//姓名
+	Date birthday;	//生日
+	String bio;			//传记
+	String film;			//电影
 	List<String> friends;		//朋友
-    boolean legalAge;	//是否成年
-    String region;	//地区
-    String state;			//地区下的某个小地区
-    File picture;		//照片
-    String pictureContentType;	//照片类型
-    String pictureFileName;		//照片名字
-    String favouriteLanguage;		//喜欢的语言
-    String favouriteVehicalType = "MotorcycleKey";		//喜欢的汽车种类
-    String favouriteVehicalSpecific = "YamahaKey";		//喜欢汽车种类中的某个品牌的汽车
-    
-  
+	boolean legalAge;	//是否成年
+	String region;	//地区
+	String state;			//地区下的某个小地区
+	File picture;		//照片
+	String pictureContentType;	//照片类型
+	String pictureFileName;		//照片名字
+	String favouriteLanguage;		//喜欢的语言
+	String favouriteVehicalType = "MotorcycleKey";		//喜欢的汽车种类
+	String favouriteVehicalSpecific = "YamahaKey";		//喜欢汽车种类中的某个品牌的汽车
+
 	List leftSideCartoonCharacters;
-    List rightSideCartoonCharacters;
-    
-    List favouriteLanguages = new ArrayList();
-    List vehicalTypeList = new ArrayList();
-    Map vehicalSpecificMap = new HashMap();
-    
-    String thoughts;
-    
-    /**
-     * 构造函数添加下拉框选项 语言、地区、汽车
-     */
-    public TagAction()  {
-        favouriteLanguages.add(new Language("EnglishKey", "English Language"));
-        favouriteLanguages.add(new Language("FrenchKey", "French Language"));
-        favouriteLanguages.add(new Language("SpanishKey", "Spanish Language"));
-        
-        VehicalType car = new VehicalType("CarKey", "Car");
-        VehicalType motorcycle = new VehicalType("MotorcycleKey", "Motorcycle");
-        vehicalTypeList.add(car);
-        vehicalTypeList.add(motorcycle);
-        
-        List cars = new ArrayList();
-        cars.add(new VehicalSpecific("MercedesKey", "Mercedes"));
-        cars.add(new VehicalSpecific("HondaKey", "Honda"));
-        cars.add(new VehicalSpecific("FordKey", "Ford"));
-        
-        List motorcycles = new ArrayList();
-        motorcycles.add(new VehicalSpecific("SuzukiKey", "Suzuki"));
-        motorcycles.add(new VehicalSpecific("YamahaKey", "Yamaha"));
-        
-        vehicalSpecificMap.put(car, cars);
-        vehicalSpecificMap.put(motorcycle, motorcycles);
-    }   
-        
-    public List getLeftSideCartoonCharacters()  {
-        return leftSideCartoonCharacters;
-    }
-    public void setLeftSideCartoonCharacters(List leftSideCartoonCharacters)  {
-        this.leftSideCartoonCharacters = leftSideCartoonCharacters;
-    }
-        
-    public List getRightSideCartoonCharacters()  {
-        return rightSideCartoonCharacters;
-    }
-    public void setRightSideCartoonCharacters(List rightSideCartoonCharacters)  {
-        this.rightSideCartoonCharacters = rightSideCartoonCharacters;
-    }
-        
-    public String getFavouriteVehicalType()  {
-        return favouriteVehicalType;
-    }
-    
-    public void setFavouriteVehicalType(String favouriteVehicalType)  {
-        this.favouriteVehicalType = favouriteVehicalType;
-    }
-    
-    public String getFavouriteVehicalSpecific()  {
-        return favouriteVehicalSpecific;
-    }
-    
-    public void setFavouriteVehicalSpecific(String favouriteVehicalSpecific)  {
-        this.favouriteVehicalSpecific = favouriteVehicalSpecific;
-    }
-    
-    public List getVehicalTypeList()  {
-        return vehicalTypeList;
-    }
-    
-    public List getVehicalSpecificList()  {
-        OgnlValueStack stack = (OgnlValueStack) ServletActionContext.getValueStack(ServletActionContext.getRequest());
-        Object vehicalType = stack.findValue("top");
-        if (vehicalType != null && vehicalType instanceof VehicalType)  {
-            List l = (List) vehicalSpecificMap.get(vehicalType);
-            return l;
-        }
-        return Collections.EMPTY_LIST;
-    }
-    
-    public List getFavouriteLanguages()  {
-        return favouriteLanguages;
-    }
+	List rightSideCartoonCharacters;
 
-    public String execute() throws Exception  {
-        return "input";
-    }
+	List favouriteLanguages = new ArrayList();
+	List vehicalTypeList = new ArrayList();
+	Map vehicalSpecificMap = new HashMap();
 
-    public String doSubmit()  {
-        return SUCCESS;
-    }       
-    
-    // === inner class 
-    public static class Language  {
-        String description;
-        String key;
-        
-        public Language(String key, String description)  {
-            this.key = key;
-            this.description = description;
-        }
-        
-        public String getKey()  { 
-            return key; 
-        }
-        public String getDescription()  { 
-            return description; 
-        }
-        
-    }    
-    
-    public static class VehicalType  {
-        String key;
-        String description;
-        public VehicalType(String key, String description)  {
-            this.key = key;
-            this.description = description;
-        }
-        
-        public String getKey()  { return this.key; }
-        public String getDescription()  { return this.description; }
-        
-        public boolean equals(Object obj)  {
-            if (! (obj instanceof VehicalType))  { 
-                return false;
-            }
-            else  {
-                return key.equals(((VehicalType)obj).getKey());
-            }
-        }
-        
-        public int hashCode()  {
-            return key.hashCode();
-        }
-    }    
-    
-    public static class VehicalSpecific  {
-        String key; 
-        String description;
-        public VehicalSpecific(String key, String description)  {
-            this.key = key;
-            this.description = description;
-        }
-        
-        public String getKey()  { return this.key; }
-        public String getDescription()  { return this.description; }
-        
-        public boolean equals(Object obj)  {
-            if (! (obj instanceof VehicalSpecific))  {
-                return false;
-            }
-            else  {
-                return key.equals(((VehicalSpecific)obj).getKey());
-            }
-        }
-        
-        public int hashCode()  {
-            return key.hashCode();
-        }
-    }
+	/**
+	 * 构造函数添加下拉框选项 语言、地区、汽车
+	 */
+	public TagAction()  {
+		favouriteLanguages.add(new Language("EnglishKey", "English Language"));
+		favouriteLanguages.add(new Language("FrenchKey", "French Language"));
+		favouriteLanguages.add(new Language("SpanishKey", "Spanish Language"));
+
+		VehicalType car = new VehicalType("CarKey", "Car");
+		VehicalType motorcycle = new VehicalType("MotorcycleKey", "Motorcycle");
+		vehicalTypeList.add(car);
+		vehicalTypeList.add(motorcycle);
+
+		List cars = new ArrayList();
+		cars.add(new VehicalSpecific("MercedesKey", "Mercedes"));
+		cars.add(new VehicalSpecific("HondaKey", "Honda"));
+		cars.add(new VehicalSpecific("FordKey", "Ford"));
+
+		List motorcycles = new ArrayList();
+		motorcycles.add(new VehicalSpecific("SuzukiKey", "Suzuki"));
+		motorcycles.add(new VehicalSpecific("YamahaKey", "Yamaha"));
+
+		vehicalSpecificMap.put(car, cars);
+		vehicalSpecificMap.put(motorcycle, motorcycles);
+	}   
+
+
+
+	public List getVehicalSpecificList()  {
+		OgnlValueStack stack = (OgnlValueStack) ServletActionContext.getValueStack(ServletActionContext.getRequest());
+		Object vehicalType = stack.findValue("top");
+		if (vehicalType != null && vehicalType instanceof VehicalType)  {
+			List l = (List) vehicalSpecificMap.get(vehicalType);
+			return l;
+		}
+		return Collections.EMPTY_LIST;
+	}
+
+	//初始化时
+	public String execute() throws Exception  {
+		return "input";
+	}
+
+	//提交表单后
+	public String doSubmit()  {
+		return SUCCESS;
+	}       
+
+	// === inner class 
+	public static class Language  {
+		String description;
+		String key;
+
+		public Language(String key, String description)  {
+			this.key = key;
+			this.description = description;
+		}
+
+		public String getKey()  { 
+			return key; 
+		}
+		public String getDescription()  { 
+			return description; 
+		}
+	}    
+
+	public static class VehicalType  {
+		String key;
+		String description;
+		public VehicalType(String key, String description)  {
+			this.key = key;
+			this.description = description;
+		}
+
+		public String getKey()  { return this.key; }
+		public String getDescription()  { return this.description; }
+
+		public boolean equals(Object obj)  {
+			if (! (obj instanceof VehicalType))  { 
+				return false;
+			}
+			else  {
+				return key.equals(((VehicalType)obj).getKey());
+			}
+		}
+
+		public int hashCode()  {
+			return key.hashCode();
+		}
+	}    
+
+	public static class VehicalSpecific  {
+		String key; 
+		String description;
+		public VehicalSpecific(String key, String description)  {
+			this.key = key;
+			this.description = description;
+		}
+
+		public String getKey()  { return this.key; }
+		public String getDescription()  { return this.description; }
+
+		public boolean equals(Object obj)  {
+			if (! (obj instanceof VehicalSpecific))  {
+				return false;
+			}
+			else  {
+				return key.equals(((VehicalSpecific)obj).getKey());
+			}
+		}
+
+		public int hashCode()  {
+			return key.hashCode();
+		}
+	}
 
 	public String getName() {
 		return name;
@@ -218,8 +178,14 @@ public class TagAction extends ActionSupport implements Validateable  {
 
 	public void setBio(String bio) {
 		this.bio = bio;
+	}
 
+	public String getFilm() {
+		return film;
+	}
 
+	public void setFilm(String film) {
+		this.film = film;
 	}
 
 	public List<String> getFriends() {
@@ -286,6 +252,54 @@ public class TagAction extends ActionSupport implements Validateable  {
 		this.favouriteLanguage = favouriteLanguage;
 	}
 
+	public String getFavouriteVehicalType() {
+		return favouriteVehicalType;
+	}
+
+	public void setFavouriteVehicalType(String favouriteVehicalType) {
+		this.favouriteVehicalType = favouriteVehicalType;
+	}
+
+	public String getFavouriteVehicalSpecific() {
+		return favouriteVehicalSpecific;
+	}
+
+	public void setFavouriteVehicalSpecific(String favouriteVehicalSpecific) {
+		this.favouriteVehicalSpecific = favouriteVehicalSpecific;
+	}
+
+	public List getLeftSideCartoonCharacters() {
+		return leftSideCartoonCharacters;
+	}
+
+	public void setLeftSideCartoonCharacters(List leftSideCartoonCharacters) {
+		this.leftSideCartoonCharacters = leftSideCartoonCharacters;
+	}
+
+	public List getRightSideCartoonCharacters() {
+		return rightSideCartoonCharacters;
+	}
+
+	public void setRightSideCartoonCharacters(List rightSideCartoonCharacters) {
+		this.rightSideCartoonCharacters = rightSideCartoonCharacters;
+	}
+
+	public List getFavouriteLanguages() {
+		return favouriteLanguages;
+	}
+
+	public void setFavouriteLanguages(List favouriteLanguages) {
+		this.favouriteLanguages = favouriteLanguages;
+	}
+
+	public List getVehicalTypeList() {
+		return vehicalTypeList;
+	}
+
+	public void setVehicalTypeList(List vehicalTypeList) {
+		this.vehicalTypeList = vehicalTypeList;
+	}
+
 	public Map getVehicalSpecificMap() {
 		return vehicalSpecificMap;
 	}
@@ -293,29 +307,5 @@ public class TagAction extends ActionSupport implements Validateable  {
 	public void setVehicalSpecificMap(Map vehicalSpecificMap) {
 		this.vehicalSpecificMap = vehicalSpecificMap;
 	}
-
-	public String getThoughts() {
-		return thoughts;
-	}
-
-	public void setThoughts(String thoughts) {
-		this.thoughts = thoughts;
-	}
-
-	public void setFavouriteLanguages(List favouriteLanguages) {
-		this.favouriteLanguages = favouriteLanguages;
-	}
-
-	public void setVehicalTypeList(List vehicalTypeList) {
-		this.vehicalTypeList = vehicalTypeList;
-	}
-
-	public String getFilm() {
-		return film;
-	}
-
-	public void setFilm(String film) {
-		this.film = film;
-	}
-    
+	
 }
