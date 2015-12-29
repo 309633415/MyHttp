@@ -19,8 +19,6 @@ public class JsonAction extends ActionSupport {
 			jsonObject.put("key","first put is key");
 			HttpServletResponse response = ServletActionContext.getResponse();
 			response.setContentType("text/html;charset=UTF-8"); //设置编码类型UTF-8
-		    //response.getWriter().write("var flag ="+"{aa:1}"); //拼凑JSON字符串
-			//response.getWriter().write("var flag =888"); //输出普通字符串
 			jsonString="var flag = "+jsonObject.toString();
 			response.getWriter().write(jsonString); //向前台写JSON
 			response.getWriter().flush();

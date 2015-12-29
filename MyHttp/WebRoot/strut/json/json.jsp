@@ -10,11 +10,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <title>JSON Plugin</title>
 <script type="text/javascript">    
-	//自定义一个方法，代替document.getElementById(id); 
-    function $(id){
-    	return document.getElementById(id); 
-    }
-    
     var bXmlHttpSupport = (typeof XMLHttpRequest != "undefined" || window.ActiveXObject);
     if (typeof XMLHttpRequest == "undefined" && window.ActiveXObject) {
         createXMLHttpRequest();
