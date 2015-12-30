@@ -7,6 +7,19 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 	 -->
+
+	<!-- Spring配置和监听start -->
+	<context-param>
+		<!-- 配置多个文件时需要的参数 -->
+		<param-name>contextConfigLocation</param-name>
+		<!-- 需要加载的配置文件，可以有多个，用逗号或者空格或者分号隔开 -->
+		<param-value>/WEB-INF/classes/application*.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!--end -->  
+	 
   <!--	struts2的配置  Start -->
   <filter>
     <filter-name>struts2</filter-name>
@@ -16,7 +29,7 @@
     <filter-name>struts2</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-  <servlet>
+<!--   <servlet>
     <servlet-name>XFireServlet</servlet-name>
     <servlet-class>org.codehaus.xfire.transport.http.XFireConfigurableServlet</servlet-class>
     <load-on-startup>2</load-on-startup>
@@ -24,7 +37,7 @@
   <servlet-mapping>
     <servlet-name>XFireServlet</servlet-name>
     <url-pattern>/services/*</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping> -->
   <!--	struts2的配置 end -->
   <!--	spring的配置 start -->
   <!--	spring的配置 end -->

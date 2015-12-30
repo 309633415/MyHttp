@@ -1,12 +1,15 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding='GBK'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
-<!-- 鏄犲皠瀵瑰簲鐨� package -->
-<hibernate-mapping package="demoinfo.hibernate.relationship.pojo.User">
-    <!-- 瀹炰綋绫诲拰鏁版嵁搴撲腑鐨勮〃瀵瑰簲锛堝鏋滄病鏈夎繖涓〃鍒欐柊寤猴級 -->
+<!-- 映射对应的 package -->
+<hibernate-mapping package="demoinfo.hibernate.relationship.pojo">
+    <!-- 实体类和数据库中的表对应（如果没有这个表则新建） -->
     <class name="User" table="hibernate_user_info">
-        <!-- id涓婚敭 鍜屽叾浠栧睘鎬у搴旇〃涓浉搴旂殑瀛楁锛堣繖浜涢兘鏄湪 User.java 瀹炰綋绫讳腑瀹氫箟鐨勶級 -->
-        <id name="id" column="user_id">
+        <!-- id主键 和其他属性对应表中相应的字段（这些都是在 User.java 实体类中定义的） -->
+        <id name="id" column="user_id" ></id>
         <property name="username" column="user_username"></property>
         <property name="password" column="user_password"></property>
-    </id></class>
+   </class>
 </hibernate-mapping>

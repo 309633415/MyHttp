@@ -16,24 +16,24 @@ public class test {
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        // ÀûÓÃ StringBuilder À´Á¬½Ó²éÑ¯Óï¾ä
-        StringBuilder hq = new StringBuilder();
-        // ´Ó User ÀïÃæ²éÕÒ£¨×¢Òâ from ºóÓĞ¿Õ¸ñ£©
-        // Ïàµ±ÓÚ "select * from user_info;"
-        hq.append("from ").append( User.class.getName() );
-        // ÀûÓÃ session ½¨Á¢ query
-        Query query = session.createQuery( hq.toString() );
-        // ĞòÁĞ»¯ query µÄ½á¹ûÎªÒ»¸ö list ¼¯ºÏ
-        List<User> users = query.list();
-        // ´òÓ¡Ã¿Ò»¸ö User ĞÅÏ¢£¨ÕâÀïÖ»´òÓ¡ÁËÃû×Ö£¬ÄãÒ²¿ÉÒÔ´òÓ¡ÆäËûĞÅÏ¢£©
-        for (User user : users) {
-            System.out.println( user.getUsername() );
-        }
-/*      User user = new User();
-        user.setId(3);
-        user.setUsername("user2");
-        user.setPassword("helloworld");
-        session.save(user);*/
+        // åˆ©ç”¨ StringBuilder æ¥è¿æ¥æŸ¥è¯¢è¯­å¥  
+        StringBuilder hq = new StringBuilder();  
+        // ä» User é‡Œé¢æŸ¥æ‰¾ï¼ˆæ³¨æ„ from åæœ‰ç©ºæ ¼ï¼‰  
+        // ç›¸å½“äº "select * from user_info;"  
+        hq.append("from ").append( User.class.getName() );  
+        // åˆ©ç”¨ session å»ºç«‹ query  
+        Query query = session.createQuery( hq.toString() );  
+        // åºåˆ—åŒ– query çš„ç»“æœä¸ºä¸€ä¸ª list é›†åˆ  
+        List<User> users = query.list();  
+        // æ‰“å°æ¯ä¸€ä¸ª User ä¿¡æ¯ï¼ˆè¿™é‡Œåªæ‰“å°äº†åå­—ï¼Œä½ ä¹Ÿå¯ä»¥æ‰“å°å…¶ä»–ä¿¡æ¯ï¼‰  
+        for (User user : users) {  
+            System.out.println( user.getUsername() );  
+        }  
+/*      User user = new User(); 
+        user.setId(3); 
+        user.setUsername("user2"); 
+        user.setPassword("helloworld"); 
+        session.save(user);*/  
         session.getTransaction().commit();
         session.close();
         sessionFactory.close();

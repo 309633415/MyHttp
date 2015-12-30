@@ -1,5 +1,9 @@
 package demoinfo.hibernate.crud;
 
-public class CrudService {
+import java.util.List;
 
+import demoinfo.hibernate.relationship.pojo.User;
+
+public interface CrudService {
+	public List<User> findAll();
 }

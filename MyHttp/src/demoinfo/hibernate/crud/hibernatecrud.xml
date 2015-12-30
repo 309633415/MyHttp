@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+  <package name="hibernatecrud" extends="struts-default" namespace="/hibernatecrud" >
+	   	<global-results>
+			<result name="error">/hibernate/hibernateError.jsp</result>
+			<result name="success">/hibernate/hibernateSave.jsp</result>
+		</global-results>
+     <action name="list" class="demoinfo.hibernate.crud.CrudAction" method="doList" />
+     <action name="add" class="demoinfo.hibernate.crud.CrudAction" method="doAdd">
+		<result name="addUser">/hibernate/hibernateEditUser.jsp</result>
+	</action>
+	<!-- <action name="queryname" class="demoinfo.hibernate.crud.CrudAction" method="doQueryName" />
+	<action name="delete" class="demoinfo.hibernate.crud.CrudAction" method="doDelete" />
+	
+	<action name="update" class="demoinfo.hibernate.crud.CrudAction" method="doUpdate">
+		<result name="updateUser">/jsp/editUser.jsp</result>
+	</action> -->
+  </package>
+</struts>

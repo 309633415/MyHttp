@@ -15,9 +15,13 @@
         <property name="connection.username">myhttp</property>
         <property name="connection.password">myhttp</property> -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-    
-    
-    <mapping class="maintain.hbm.DemoInfo" />
+        
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+   		<property name="hbm2ddl.auto">update</property>
+   		
+    	<mapping resource="demoinfo/hibernate/relationship/pojo/User.hbm.xml" />  
+    	
+    	<mapping class="maintain.hbm.DemoInfo" /> 
     </session-factory>
 
 </hibernate-configuration>
