@@ -158,9 +158,6 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 										<a href="#"  id="strutsTagDemo" onclick="strutsTagDemo()">struts2标签实例</a>
 									</li>
 									<li>
-										<a href="#"  id="strutsCrudDemo" onclick="strutsCrudDemo()">crud实例</a>
-									</li>
-									<li>
 										<a href="#"  id="strutsJsonDemo" onclick="strutsJsonDemo()">json</a>
 									</li>
 								</ul>
@@ -188,6 +185,9 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 									</li>
 									<li>
 										<a href="#"  id="relationshipDemo" onclick="relationshipDemo(this.value)">关系</a>
+									</li>
+									<li>
+										<a href="#"  id="strutsCrudDemo" onclick="strutsCrudDemo()">crud实例</a>
 									</li>
 								</ul>
 							</li>
