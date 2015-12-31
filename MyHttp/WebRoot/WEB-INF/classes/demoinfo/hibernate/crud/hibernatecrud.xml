@@ -10,14 +10,15 @@
 			<result name="success">/hibernate/hibernateSave.jsp</result>
 		</global-results>
      <action name="list" class="demoinfo.hibernate.crud.CrudAction" method="doList" />
-     <action name="add" class="demoinfo.hibernate.crud.CrudAction" method="doAdd">
-		<result name="addUser">/hibernate/hibernateEditUser.jsp</result>
+     <action name="add" class="demoinfo.hibernate.crud.CrudAction" method="doAdd" />
+     <action name="prepareAdd" class="demoinfo.hibernate.crud.CrudAction" method="doPrepareAdd">
+		<result name="addUser">/hibernate/hibernateAddUser.jsp</result>
 	</action>
-	<!-- <action name="queryname" class="demoinfo.hibernate.crud.CrudAction" method="doQueryName" />
+	<action name="query" class="demoinfo.hibernate.crud.CrudAction" method="doQuery" />
 	<action name="delete" class="demoinfo.hibernate.crud.CrudAction" method="doDelete" />
-	
-	<action name="update" class="demoinfo.hibernate.crud.CrudAction" method="doUpdate">
-		<result name="updateUser">/jsp/editUser.jsp</result>
-	</action> -->
+	<action name="prepareUpdate" class="demoinfo.hibernate.crud.CrudAction" method="doPrepareUpdate">
+		<result name="updateUser">/hibernate/hibernateEditUser.jsp</result>
+	</action>
+	 <action name="update" class="demoinfo.hibernate.crud.CrudAction" method="doUpdate" />
   </package>
 </struts>

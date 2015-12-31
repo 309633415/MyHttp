@@ -24,7 +24,7 @@ public class AddTest {
 		session.beginTransaction();  
 		// 新建对象，并赋值  
 		User user = new User();  
-		user.setId(1);  
+		user.setId(8);  
 		user.setUsername("admin");  
 		user.setPassword("admin");  
 		// 保存对象  

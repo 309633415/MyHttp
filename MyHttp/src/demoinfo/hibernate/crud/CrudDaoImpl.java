@@ -8,10 +8,8 @@ import demoinfo.hibernate.relationship.pojo.User;
 
 public class CrudDaoImpl extends HibernateDaoSupport implements CrudDao{
 
+	@SuppressWarnings("unchecked")
 	public List<User> findAll() {
-		System.out.println("************** CrudDaoImpl");
-//		String queryString = "SELECT u FROM HibernateUserInfo u";
-//		return (List<User>)this.getHibernateTemplate().find(queryString);
 		return this.getHibernateTemplate().loadAll(User.class);
 	}
 
@@ -30,6 +28,10 @@ public class CrudDaoImpl extends HibernateDaoSupport implements CrudDao{
 
 	public void deleteUser(User user) {
 		this.getHibernateTemplate().delete(user);
+	}
+
+	public User getUserById(Integer id) {
+			return (User) this.getHibernateTemplate().get(User.class, id);
 	}
 
 }

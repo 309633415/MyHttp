@@ -2,33 +2,77 @@ package demoinfo.hibernate.crud;
 
 import java.util.List;
 
+import org.apache.struts2.ServletActionContext;
+
+import com.opensymphony.xwork2.ActionSupport;
+
 import demoinfo.hibernate.relationship.pojo.User;
 
-public class CrudAction {
-	
-	private CrudService crudService = new CrudServiceImpl();
+@SuppressWarnings("serial")
+public class CrudAction extends ActionSupport {
+
+	private CrudService crudService;
 	private User user;
 	private List<User> users;
 	private String searchText;
-	
+
 	public String doList(){
-		System.out.println("************** CrudAction");
-		System.out.println("************** crudService = "+crudService);
 		users = crudService.findAll();
 		return "success";
 	}
+
+	public String doPrepareAdd(){
+		return "addUser";
+	}
 	
-	public String doAdd(){
-		return "";
+	public String doPrepareUpdate(){
+		Integer id = Integer.parseInt(getParam("id"));
+		user = crudService.getUserById(id);
+		return "updateUser";
 	}
 
-/*	public CrudService getCrudService() {
+	public String doAdd(){
+		String result = "";
+		crudService.addUser(user);
+		result = doList();
+		return result;
+	}
+	
+	public String doQuery(){
+		users = crudService.queryUsers(searchText);
+		return "success";
+	}
+	
+	public String doDelete(){
+		try {
+			Integer param = Integer.parseInt(getParam("id"));
+			crudService.deleteUser(param);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return doList();
+	}
+	
+	public String doUpdate(){
+		try {
+			crudService.updateUser(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return doList();
+	}
+
+	protected String getParam(String key){
+		return ServletActionContext.getRequest().getParameter(key);
+	}
+
+	public CrudService getCrudService() {
 		return crudService;
 	}
 
 	public void setCrudService(CrudService crudService) {
 		this.crudService = crudService;
-	}*/
+	}
 
 	public User getUser() {
 		return user;
@@ -54,6 +98,6 @@ public class CrudAction {
 		this.searchText = searchText;
 	}
 
-	
-	
+
+
 }

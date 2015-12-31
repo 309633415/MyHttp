@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://xfire.codehaus.org/config/1.0">
-	<service>
+<beans>
+	<service xmlns="http://xfire.codehaus.org/config/1.0" >
 		<name>HelloWebService</name>
 		<serviceClass>com.webservices.IHelloWebService</serviceClass>
 		<implementationClass>
@@ -9,4 +9,5 @@
 		<style>wrapped</style>
 		<use>literal</use>
 		<scope>application</scope>
-	</service></beans>
+	</service>
+</beans>

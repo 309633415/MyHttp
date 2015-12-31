@@ -1,5 +1,6 @@
 package demoinfo.hibernate.crud;
 
+import java.io.Serializable;
 import java.util.List;
 
 import demoinfo.hibernate.relationship.pojo.User;
@@ -15,5 +16,7 @@ public interface CrudDao {
 	public void updateUser(User user);
 	/**删除指定的*/
 	public void deleteUser(User user);
+	/**通过id获取*/
+	public User getUserById(Integer id);
 	
 }
