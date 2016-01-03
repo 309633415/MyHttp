@@ -33,6 +33,7 @@ public class CrudAction extends ActionSupport {
 
 	public String doAdd(){
 		String result = "";
+		user.setId(0);
 		crudService.addUser(user);
 		result = doList();
 		return result;
