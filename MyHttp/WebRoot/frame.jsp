@@ -261,7 +261,7 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 								</ul>
 							</li>
 							<li class="no_sub">
-								<a  href="http://localhost:8080/MyHttp/"
+								<a  href="" onclick="demoIndex()"
 									class="tablink nosub">·µ»ØÖ÷Ò³</a>
 							</li>
 						</ul>

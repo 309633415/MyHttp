@@ -2,10 +2,14 @@ package demoinfo.hibernate.crud;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
 
 import demoinfo.hibernate.pojo.UserVoGoods;
 import demoinfo.hibernate.relationship.pojo.User;
@@ -18,18 +22,32 @@ public class test {
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        // 利用 StringBuilder 来连接查询语句  
-        StringBuilder hq = new StringBuilder();  
-        // hibernate 实现多表连接查询 查询结果映射到自定义类中
-        String hql="select new demoinfo.hibernate.pojo.UserVoGoods(u.username, g.goodsname) from User u,Goods g where u.id=g.userId";  
-        // 利用 session 建立 query  
-        Query query = session.createQuery(hql);  
-        // 序列化 query 的结果为一个 list 集合  
-        List<UserVoGoods> list = query.list();  
-        // 打印每一个 User 信息（这里只打印了名字，你也可以打印其他信息）  
-        for (UserVoGoods li : list) {  
-            System.out.println( "用户名："+li.getUsername() +"  商品名："+li.getGoodsname() );  
-        }  
+        // 1. 普通查询  
+        Query q = session.createQuery(" from User as u");  
+        
+        // 2. 条件查询  
+        //Query q = session.createQuery(" from User as u where u.username = ?");  
+        
+        // 3. 原生 SQL 查询  
+        //SQLQuery q = session.createSQLQuery("select * from hibernate_user_info").addEntity(User.class); 
+        
+        /* 
+        // 4.criteria 查询  
+       	//创造criteria
+        Criteria q = session.createCriteria(User.class);
+        //添加查询条件
+        Criterion cc = Restrictions.between("id", 1, 3); 
+        Criterion cc1 = Restrictions.idEq(2);     
+        q.add(cc); 
+        q.add(cc1);
+        //如果想分页,下面我是把它写死的,写活也比较容易的,自己试.  
+        // q.setFirstResult(0);  
+        //q.setMaxResults(10);          
+         */      
+        List<User> list = q.list();  
+        for (User e : list) {  
+            System.out.println("username: " + e.getUsername() + "  , password: " + e.getPassword());  
+        }   
         session.getTransaction().commit();
         session.close();
         sessionFactory.close();
