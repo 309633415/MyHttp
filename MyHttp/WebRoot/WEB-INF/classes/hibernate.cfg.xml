@@ -28,6 +28,7 @@
         
         
     	<mapping resource="demoinfo/hibernate/relationship/pojo/User.hbm.xml" />  
+    	<mapping resource="demoinfo/hibernate/relationship/pojo/Goods.hbm.xml" />  
     	
     	<mapping class="maintain.hbm.DemoInfo" /> 
     </session-factory>

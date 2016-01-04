@@ -1,4 +1,4 @@
-package demoinfo.hibernate.crud;
+package demoinfo.hibernate.pojo;
 
 import java.util.List;
 
@@ -8,20 +8,16 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
 import demoinfo.hibernate.pojo.UserVoGoods;
-import demoinfo.hibernate.relationship.pojo.User;
-import demoinfo.hibernate.relationship.pojo.Goods;
 
-public class test {
+public class QueryLink {
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {
     	AnnotationConfiguration configuration = new AnnotationConfiguration().configure();
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        // 利用 StringBuilder 来连接查询语句  
-        StringBuilder hq = new StringBuilder();  
         // hibernate 实现多表连接查询 查询结果映射到自定义类中
-        String hql="select new demoinfo.hibernate.pojo.UserVoGoods(u.username, g.goodsname) from User u,Goods g where u.id=g.userId";  
+        String hql="select new demoinfo.hibernate.pojo.UserVoGoods(u.id,g.id,u.username, g.goodsname) from User u,Goods g where u.id=g.userId";  
         // 利用 session 建立 query  
         Query query = session.createQuery(hql);  
         // 序列化 query 的结果为一个 list 集合  

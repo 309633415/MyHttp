@@ -36,13 +36,42 @@ background: cadetblue;
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
 	<span class="bg"> 
-1.Ê²Ã´ÊÇJSON £¿<br/>
-¼ÙÈçĞèÒª´Ó·şÎñÆ÷¶ËµÃµ½´óÁ¿µÄ±í¸ñÊı¾İÏÔÊ¾ÔÚÍøÒ³ÉÏ£¬Èç¹û»¹ÓÃµ¥Ò»µÄ×Ö·û´®´¦Àí»áÊÇÒ»¸öÍ´¿àµÄ¹ı³Ì¡£ÒÔÇ°µÄ×ö·¨ÊÇÊ¹ÓÃresponseXMLÊôĞÔ·µ»ØÒ»¸öXMLÎÄ¼ş£¬µ«ä¯ÀÀÆ÷Ê¹ÓÃJS½âÎöXMLÎÄ¼şÒ²ĞèÒª±àĞ´´óÁ¿µÄ´úÂë£¬ËùÒÔÄ¿Ç°±È½ÏÁ÷ĞĞµÄ×ö·¨ÊÇÊ¹ÓÃJSON¶ÔÏó¡£<br/>
-JSON¾ÍÊÇJavaScript Object Notation¼¸¸öµ¥´ÊµÄÊ××ÖÄ¸£¬·­ÒëÎªJavaScript¶ÔÏóÉùÃ÷¡£µ±´Ó·şÎñÆ÷¶Ë·µ»Ø´óÁ¿µÄ×Ö·û´®Êı¾İ£¬¶øÇÒÊÇPOJOÀàµÄÊı¾İ·â×°Ê±£¬JSONÊı¾İ¿ÉÒÔÈÃÎÒÃÇ´¦ÀíµÄ¸üÇáËÉ¡£<br/>
-2.Ê²Ã´ÊÇXMLHttpRequest¶ÔÏó£¿<br/>
-XMLHttpRequest ¶ÔÏóÓÃÓÚÔÚºóÌ¨Óë·şÎñÆ÷½»»»Êı¾İ¡£<br/>
-XMLHttpRequest ¶ÔÏóÊÇ¿ª·¢ÕßµÄÃÎÏë£¬ÒòÎªÄúÄÜ¹»£ºÔÚ²»ÖØĞÂ¼ÓÔØÒ³ÃæµÄÇé¿öÏÂ¸üĞÂÍøÒ³£¬ÔÚÒ³ÃæÒÑ¼ÓÔØºó´Ó·şÎñÆ÷ÇëÇóÊı¾İ£¬ÔÚÒ³ÃæÒÑ¼ÓÔØºó´Ó·şÎñÆ÷½ÓÊÕÊı¾İ£¬ÔÚºóÌ¨Ïò·şÎñÆ÷·¢ËÍÊı¾İ<br/>
-ËùÓĞÏÖ´úµÄä¯ÀÀÆ÷¶¼Ö§³Ö XMLHttpRequest ¶ÔÏó<br/>
+&nbsp;&nbsp;Hibernate Ìá¹©ÁËÇ¿´óµÄ²éÑ¯ÏµÍ³£¬Ê¹ÓÃ Hibernate ÓĞ¶àÖÖ²éÑ¯·½·¨¿ÉÒÔÑ¡Ôñ£º¿ÉÒÔÊ¹ÓÃ Hibernate µÄ HQL ²éÑ¯£¬Ò²¿ÉÒÔÊ¹ÓÃÌõ¼ş²éÑ¯£¬ÉõÖÁ¿ÉÒÔÊ¹ÓÃÔ­ÉúµÄ SQL ²éÑ¯Óï¾ä¡£
+HQL ÓïÑÔ¿´ÉÏÈ¥ºÜÏñ SQL¡£µ«ÊÇ HQL ÊÇÒ»ÖÖÃæÏò¶ÔÏóµÄ²éÑ¯Óï¾ä£¬ËüµÄ²Ù×÷¶ÔÏóÊÇÀà¡¢ÊµÀı¡¢ÊôĞÔµÈ£¬¶ø SQL µÄ²Ù×÷¶ÔÏóÊÇÊı¾İ±í¡¢ÁĞµÈÊı¾İ¿â¶ÔÏó¡£ÓÉÓÚ HQL ÊÇÍêÈ«ÃæÏò¶ÔÏóµÄ²éÑ¯Óï¾ä£¬Òò´Ë¿ÉÒÔÖ§³Ö¼Ì³Ğ¡¢¶àÌ¬µÈÌØĞÔ¡£
+Ö´ĞĞHQL²éÑ¯µÄ²½Öè£º</br>
+1¡¢»ñµÃ Hibernate Session ¶ÔÏó</br>
+2¡¢±àĞ´ HQL Óï¾ä</br>
+£¨1£©from ×Ó¾ä</br>
+&nbsp;&nbsp;Hibernate ÖĞ×î¼òµ¥µÄ²éÑ¯Óï¾äµÄĞÎÊ½Èç from table_name£¬ÒòÎªÊÇÃæÏò¶ÔÏóµÄÓïÑÔ£¬ËùÒÔÕâÀïÒ»°ãĞ´³Éfrom Name(NameÊÇtable_name)µÄÊµÌåÀà,ÀıÈç£º</br>
+<pre name="code" class="java">
+from  User 
+</pre>
+&nbsp;&nbsp;ÓĞÊ±ºòĞèÒªÊ¹ÓÃµ½±ğÃû£º</br>
+<pre name="code" class="java">
+ from User as u
+</pre>
+£¨2£©where ×Ó¾ä</br>
+&nbsp;&nbsp;where ×Ó¾äÔÊĞíÄã½«·µ»ØµÄÊµÀıÁĞ±íµÄ·¶Î§ËõĞ¡¡£Èç¹ûÃ»ÓĞÖ¸¶¨±ğÃû£¬Äã¿ÉÒÔÊ¹ÓÃÊôĞÔÃûÀ´Ö±½ÓÒıÓÃÊôĞÔ£º</br>
+<pre name="code" class="java">
+from User where name= 'admin' 
+</pre>
+&nbsp;&nbsp;Èç¹ûÖ¸ÅÉÁË±ğÃû£¬ĞèÒªÊ¹ÓÃÍêÕûµÄÊôĞÔÃû£º</br>
+<pre name="code" class="java">
+from User as u where u.name= 'admin' 
+</pre>
+£¨3£©select ×Ó¾ä</br>
+&nbsp;&nbsp;select×Ó¾ä»áÑ¡Ôñ½«ÄÄĞ©¶ÔÏóÓëÊôĞÔ·µ»Øµ½²éÑ¯½á¹û¼¯ÖĞ¡£</br>
+<pre name="code" class="java">
+select u.username from User as u
+</pre>
+£¨£´£©SQL ²éÑ¯</br>
+&nbsp;&nbsp;¿ÉÒÔÖ±½ÓÊ¹ÓÃÔ­Éú SQL Óï¾ä¸ñÊ½½øĞĞ²éÑ¯¡£</br>
+<pre name="code" class="java">
+SQLQuery q = session.createSQLQuery("select * from user_info").addEntity(User.class);
+</pre>
+3¡¢µ÷ÓÃ Session µÄ createQuery() ·½·¨´´½¨²éÑ¯¶ÔÏó</br>
+4¡¢Èç¹û HQL Óï¾ä°üº¬²ÎÊı£¬Ôòµ÷ÓÃ Query µÄ setXxx ·½·¨Îª²ÎÊı¸³Öµ</br>
+5¡¢µ÷ÓÃ Query ¶ÔÏóµÄ list µÈ·½·¨·µ»Ø²éÑ¯½á¹û¡£</br>
 	</span> 
 		<span class="include"> 
 		<strong class="s5">&nbsp;</strong> 
@@ -81,136 +110,153 @@ XMLHttpRequest ¶ÔÏóÊÇ¿ª·¢ÕßµÄÃÎÏë£¬ÒòÎªÄúÄÜ¹»£ºÔÚ²»ÖØĞÂ¼ÓÔØÒ³ÃæµÄÇé¿öÏÂ¸üĞÂÍøÒ³£
 	</span> 
    <span class="bg">
    
-   <p>1:±àĞ´ActionµÄCode</p>
-   <pre  name="code" class="java">
-package demoinfo.struts2.json;
+  1:µ¼Èë±ØÒªµÄjar°ü£¬ĞÂ½¨Ò»¸ö Java ¹¤³Ì£¬È»ºóÒıÈë±ØÒªµÄ jar °ü£¬ÓÒ»÷ÏîÄ¿¹¤³Ì£¬ÒÀ´ÎÑ¡Ôñ Properties->Java Build Path->Libraries->Add External JARs¡£Ò»°ãĞèÒªHibernate.jar°üºÍmysql-connector.jar°ü»¹ÓĞÒ»Ğ©»ù±¾jar°ü¡£<br/>
+2:±àĞ´Code<br/>
+¡¡&nbsp;&nbsp;1>´´½¨Êı¾İ¿âhibernate_user_info<br/>
+	&nbsp;&nbsp;&nbsp;2>ĞÂ½¨ÊµÌåÀà User.javaºÍGoods.java<br/>
+	&nbsp;&nbsp;&nbsp;Õâ¸öÃ»Ê²Ã´Ì«¶àËµµÄ£¬Ò»¸öÓÃ»§¾ßÓĞ£ºid¡¢username¡¢password Èı¸öÊôĞÔ¡£Ã¿¸öÓÃ»§¿ÉÒÔÓĞ¶à¸öÉÌÆ·£¬¶øÒ»¸öÉÌÆ·Ö»ÄÜ¶ÔÓ¦Ò»¸öÓÃ»§¡£<br/>
+<pre name="code" class="java">
+public class User {
+    private int id;
+    private String username;
+    private String password;
 
-import java.io.IOException;
-import javax.servlet.http.HttpServletResponse;
-import net.sf.json.JSONObject;
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.log4j.Logger;
-import org.apache.struts2.ServletActionContext;   
-/**
- * JSON Action
- */
-public class JsonAction extends ActionSupport {
-	private static final long serialVersionUID = 4530102843836746666L;
-	private final Logger logger = Logger.getLogger(this.getClass());
-	String jsonString;
-	public String writeJson(){
-		try {
-			JSONObject jsonObject = new JSONObject();
-			jsonObject.put("key","first put is key");
-			HttpServletResponse response = ServletActionContext.getResponse();
-			response.setContentType("text/html;charset=UTF-8"); //ÉèÖÃ±àÂëÀàĞÍUTF-8
-			jsonString="var flag = "+jsonObject.toString();
-			response.getWriter().write(jsonString); //ÏòÇ°Ì¨Ğ´JSON
-			response.getWriter().flush();
-		} catch (IOException e) {
-			logger.error(e.getMessage(), e);
-			throw new IllegalStateException(e);
-		}
-		return null;
-	}
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
-   </pre>
-   <p>2:±àĞ´Õ¹Ê¾Ò³Ãæjson.jsp</p>
-<pre name="code" class="php">
-&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
-&lt;%@ page language="java" import="java.util.*" pageEncoding="GBK"%&gt;
-&lt;%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%&gt;
-&lt;%@taglib prefix="sx" uri="/struts-dojo-tags"%&gt;
-&lt;%@taglib prefix="s" uri="/struts-tags"%&gt;
-&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
-&lt;head&gt;
-&lt;title&gt;JSON Plugin&lt;/title&gt;
-&lt;script type="text/javascript"&gt;    
-    var bXmlHttpSupport = (typeof XMLHttpRequest != "undefined" || window.ActiveXObject);
-    if (typeof XMLHttpRequest == "undefined" && window.ActiveXObject) {
-        createXMLHttpRequest();
-    }    
-   
-   //´´½¨XMLHttpRequest ¶ÔÏó
-	function createXMLHttpRequest() {
-		if (window.ActiveXObject) {
-		// code for IE6, IE5
-			var arrSignatures = [ "MSXML2.XMLHTTP.5.0", "MSXML2.XMLHTTP.4.0",
-					"MSXML2.XMLHTTP.3.0", "MSXML2.XMLHTTP", "Microsoft.XMLHTTP" ];
-			for ( var i = 0; i &lt; arrSignatures.length; i++) {
-				try {
-					var oRequest = new ActiveXObject(arrSignatures[i]);
-					return oRequest;
-				} catch (oError) {
-				}
-			}
-		} else if (window.XMLHttpRequest) {
-		// code for IE7, Firefox, Opera, etc.
-			var oRequest = new XMLHttpRequest();
-			return oRequest;
-		} else
-			throw new Error("XMLHttp object could not be created.");
-	}
-
-	function retrieveBook() {
-		if (bXmlHttpSupport) {
-			var sUrl = '&lt;%=basePath%&gt;json/writeJson.action';
-            var oRequest = new createXMLHttpRequest();
-            oRequest.onreadystatechange = function() {
-                if(oRequest.readyState == 4) {   
-	               	    // 4 = "loaded"
-	                	alert("·şÎñÆ÷¶Ë·µ»ØµÄ×Ö·û´®ÊÇ " +oRequest.responseText);
-	                	//·şÎñÆ÷¶Ë·µ»ØµÄ×Ö·û´®ÀàĞÍ£¬×ª³ÉJSON¶ÔÏó
-	                    eval(oRequest.responseText);
-	                    var bookHolder = document.getElementById('bookHolder');
-	                    var sBook = '&lt;p&gt;&lt;b&gt;ISBN: &lt;/b&gt;' + flag.key+ '&lt;/p&gt;';
-	                    //flag¶ÔÏó´ÓºóÌ¨´«¹ıÀ´
-		                var  bookHolder = document.getElementById('bookHolder');
-		                bookHolder.innerHTML = sBook;
-                   }
-                }
-            };
-            oRequest.open('POST', sUrl,true);
-            oRequest.send(null);
-            /* ÔÚ open() µÄµÚÈı¸ö²ÎÊıÖĞÊ¹ÓÃÁË "true"¡£¸Ã²ÎÊı¹æ¶¨ÇëÇóÊÇ·ñÒì²½´¦Àítrue ±íÊ¾½Å±¾»áÔÚ send() ·½·¨Ö®ºó¼ÌĞøÖ´ĞĞ£¬¶ø²»µÈ´ıÀ´×Ô·şÎñÆ÷µÄÏìÓ¦¡£
-            onreadystatechange ÊÂ¼şÊ¹´úÂë¸´ÔÓ»¯ÁË¡£µ«ÊÇÕâÊÇÔÚÃ»ÓĞµÃµ½·şÎñÆ÷ÏìÓ¦µÄÇé¿öÏÂ£¬·ÀÖ¹´úÂëÍ£Ö¹µÄ×î°²È«µÄ·½·¨¡£
-			Í¨¹ı°Ñ¸Ã²ÎÊıÉèÖÃÎª "false"£¬¿ÉÒÔÊ¡È¥¶îÍâµÄ onreadystatechange ´úÂë¡£Èç¹ûÔÚÇëÇóÊ§°ÜÊ±ÊÇ·ñÖ´ĞĞÆäÓàµÄ´úÂëÎŞ¹Ø½ôÒª£¬ÄÇÃ´¿ÉÒÔÊ¹ÓÃÕâ¸ö²ÎÊı¡£ */
-        }
-    &lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-	&lt;input type="button" value="¼ìË÷Êé" onclick="retrieveBook()" /&gt;
-	&lt;div id="bookHolder"&gt;&lt;/div&gt;
-	&lt;a href="&lt;%=basePath%&gt;/json/writeJson.action"&gt;jsonÏÔÊ¾JSONÊı¾İ¸ñÊ½&lt;/a&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-   </pre>
-   <p>3:strutsÅäÖÃÎÄ¼şÓÃinclude°üº¬jsonµÄÅäÖÃÎÄ¼ş</p>
-     <pre  name="code" class="xml">
-&lt;!--jsonµÄXMLÎÄ¼ş--&gt;
-&lt;include file="/demoinfo/struts2/json/json.xml"&gt;&lt;/include&gt;
-   </pre>
-   <p>4:ÅäÖÃÎÄ¼şjson.xmlÖĞ¼ÓÉÏ¶ÔÓ¦Action</p>
-   <pre name="code" class="xml">
-&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;!DOCTYPE struts PUBLIC
-    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
-    "http://struts.apache.org/dtds/struts-2.0.dtd"&gt;
-
-&lt;struts&gt;
-&lt;!--×¢Òâ°üµÄ¼Ì³Ğ£¬¼Ì³ĞµÄ°üÊÇ json-default--&gt;
-&lt;package name="json" extends="json-default" namespace="/json"&gt;
-&lt;!--  ÏëÇ°Ì¨Ğ´³öJSONÊı¾İ--&gt;
-  &lt;action name="writeJson" class="demoinfo.struts2.json.JsonAction" method="writeJson"&gt;
-&lt;!--  ×¢Òâ·µ»ØµÄ½á¹ûÀàĞÍÊÇjson--&gt;
-      &lt;result type="json" /&gt;
-  &lt;/action&gt;   
-&lt;/package&gt;
-&lt;/struts&gt;
-   </pre>
+</pre>
+<pre name="code" class="java">
+public class Goods {  
+    private int id;  
+    private String goodsname;  
+    private String userId;  
+  
+    public int getId() {  
+        return id;  
+    }  
+    public void setId(int id) {  
+        this.id = id;  
+    }  
+    public String getGoodsname() {  
+        return goodsname;  
+    }  
+    public void setGoodsname(String goodsname) {  
+        this.goodsname = goodsname;  
+    }  
+    public String getUserId() {  
+        return userId;  
+    }  
+    public void setUserId(String userId) {  
+        this.userId = userId;  
+    }  
+}  
+</pre>
+&nbsp;&nbsp;ÏÖÔÚÒªÊµÏÖÁ½±íÁ¬½Ó²éÑ¯£¬²é³öÃ¿¸öÓÃ»§ËùÓµÓĞµÄÉÌÆ·£¬²¢°Ñ¸ÃÓÃ»§µÄĞÅÏ¢ºÍÆäÉÌÆ·ĞÅÏ¢ÏÔÊ¾³öÀ´¡£<br/>
+&nbsp;&nbsp;Ê¹ÓÃHibernate·´ÏòÉú³ÉµÄÊµÌåÀà·Ö±ğÊÇUsersºÍGoods¡£<br/>
+&nbsp;&nbsp;3>ÅäÖÃ hibernate.cfg.xml£¨½ö¹©²Î¿¼£¬¾ßÌåÅäÖÃ×ÔĞĞ±ä»»£©<br/>
+&nbsp;&nbsp;ÔÚ src Ä¿Â¼ÏÂ£¬ĞÂ½¨ hibernate.cfg.xml ÎÄ¼ş£¨ÅäÖÃÎÄ¼ş´æ·ÅµÄÎ»ÖÃÒªÇóÍ³Ò»»¯£¬ÃüÃû¹æ·¶»¯£©£¬ÆäÅäÖÃÈçÏÂ£º
+<pre name="code" class="xml">
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection settings -->
+        <!-- ±íÊ¾Ê¹ÓÃ mysql Êı¾İ¿âÇı¶¯Àà -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <!-- jdbc µÄÁ¬½Ó url ºÍÊı¾İ¿â£¨Ê¹ÓÃÎÒÃÇÖ®Ç°ĞÂ½¨µÄ hibernate£©-->
+        <property name="connection.url">jdbc:mysql://localhost:3306/mynet</property>
+        <!-- Êı¾İ¿âÓÃ»§Ãû -->
+        <property name="connection.username">root</property>
+        <!-- ÃÜÂë£¨ÕâÀïÎª¿Õ£© -->
+        <property name="connection.password"></property>
+        <!-- JDBC connection pool (use the built-in) -->
+        <!-- <property name="connection.pool_size">1</property>-->
+        <!-- Êı¾İ¿âÊ¹ÓÃµÄ·½ÑÔ -->
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <!-- Echo all executed SQL to stdout -->
+        <!-- ÉèÖÃ ´òÓ¡Êä³ö sql Óï¾ä ÎªÕæ -->
+        <property name="show_sql">true</property>
+        <!-- ÉèÖÃ¸ñÊ½Îª sql -->
+        <property name="format_sql">true</property>
+        <!-- µÚÒ»´Î¼ÓÔØ hibernate Ê±¸ù¾İÊµÌåÀà×Ô¶¯½¨Á¢±í½á¹¹£¬ÒÔºó×Ô¶¯¸üĞÂ±í½á¹¹ -->
+        <property name="hbm2ddl.auto">update</property>         
+        <!-- Ó³ÉäÎÄ¼ş -->
+        <mapping resource="demoinfo/hibernate/relationship/pojo/User.hbm.xml" /> 
+        <mapping resource="demoinfo/hibernate/relationship/pojo/Goods.hbm.xml" />  
+    </session-factory>
+</hibernate-configuration>
+</pre>
+×¢£º<1>¶ÔÓÚMySql²éÑ¯url¶Ë¿ÚºÅ£¬¿ÉÒÔÍ¨¹ıÏÂÃæµÄÃüÁîÀ´²é¿´:show variables like 'port';<br/>
+&nbsp;&nbsp;²éÑ¯ÓÃ»§ÃûºÍÃÜÂë¿ÉÒÔÍ¨¹ıÏÂÃæµÄÃüÁîÀ´²é¿´£ºselect host,user,password from mysql.user;<br/>
+&nbsp;&nbsp;<2>ÔÚ´´½¨SessionFactoryÊ±,Èç¹û²»ÊÇ·ÅÔÚ£ó£ò£ãÏÂµÚÒ»²ã£¬ÔòÓ¦¸Ã¶Ô¼ÓÔØÓï¾ä½øĞĞĞŞ¸Ä£¬ÒÔ·ÀÕÒ²»µ½ÅäÖÃÎÄ¼ş£¬Àı×ÓÈçÏÂ
+<pre name="code" class="java">
+Configuration cfg=newConfiguration().configure("hibernate/hibernate.cfg.xml");  //ÊµÀı»¯Configuration²¢¼ÓÔØhibernate.cfg.xmlÎÄ¼ş  
+</pre>&nbsp;&nbsp;4>ÅäÖÃ User.hbm.xmlºÍGoods.hbm.xml<br/>
+&nbsp;&nbsp;Ò»¸öÊµÌåÀà¶ÔÓ¦Ò»¸öÓ³ÉäÎÄ¼ş£¬ÇÒÎ»ÓÚÍ¬Ò»¸ö°ü£¨package£©ÏÂ¡£<br/>
+<pre name="code" class="xml">
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Ó³Éä¶ÔÓ¦µÄpackage -->
+<hibernate-mapping package="demoinfo.hibernate.relationship.pojo">
+    <!-- ÊµÌåÀàºÍÊı¾İ¿âÖĞµÄ±í¶ÔÓ¦£¨Èç¹ûÃ»ÓĞÕâ¸ö±íÔòĞÂ½¨£© -->
+    <class name="User" table="hibernate_user_info">
+        <!-- idÖ÷¼ü ºÍÆäËûÊôĞÔ¶ÔÓ¦±íÖĞÏàÓ¦µÄ×Ö¶Î£¨ÕâĞ©¶¼ÊÇÔÚ User.java ÊµÌåÀàÖĞ¶¨ÒåµÄ£© -->
+        <id name="id" column="user_id" ></id>
+        <property name="username" column="user_username"></property>
+        <property name="password" column="user_password"></property>
+   </class>
+</hibernate-mapping>
+</pre>
+<pre name="code" class="xml">
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Ó³Éä¶ÔÓ¦µÄpackage -->
+<hibernate-mapping package="demoinfo.hibernate.relationship.pojo">
+     <!-- ÊµÌåÀàºÍÊı¾İ¿âÖĞµÄ±í¶ÔÓ¦£¨Èç¹ûÃ»ÓĞÕâ¸ö±íÔòĞÂ½¨£© -->
+    <class name="Goods" table="hibernate_goods_info">
+         <!-- idÖ÷¼ü ºÍÆäËûÊôĞÔ¶ÔÓ¦±íÖĞÏàÓ¦µÄ×Ö¶Î£¨ÕâĞ©¶¼ÊÇÔÚ Goods.java ÊµÌåÀàÖĞ¶¨ÒåµÄ£© -->
+        <id name="id" column="goods_id" ></id>
+        <property name="goodsname" column="goods_goodsname"></property>
+        <property name="userId" column="goods_userId"></property>
+   </class>
+</hibernate-mapping>
+</pre>
+&nbsp;&nbsp;5>ÊµÏÖÓï¾ä<br/>
+&nbsp;&nbsp;ÓĞÁ½ÖÖ·½Ê½£º<br/>
+&nbsp;&nbsp;£¨1£©Ê¹ÓÃ´«Í³·½Ê½£º<br/>
+<pre name="code" class="java">
+String hql="select u.userame,g.goodsname from User u, Goods g where u.id=g.userId";
+</pre>
+&nbsp;&nbsp;¸ù¾İÕâ¸ö²éÑ¯Óï¾ä£¬µ÷ÓÃquery.list()·½·¨µÃµ½Ò»¸öListÖµ£¬Õâ¸öListÖĞµÄÃ¿Ò»¸öÖµ¶¼ÊÇObject[]ÀàĞÍµÄ£¬ÀïÃæ°üº¬ÁË²éÑ¯³öÀ´µÄËùÓĞÖµ£¬Ê£ÏÂµÄ×Ô¸ö¶ùÈ¥´¦Àí¾ÍĞĞÁË<br/>
+&nbsp;&nbsp;£¨2£©Ôö¼ÓÒ»¸öÓ³ÉäÀà<br/>
+&nbsp;&nbsp;Ôö¼ÓÒ»¸öÓ³ÉäÀàUserVoGoods.java£¬Ìí¼ÓĞèÒª²éÑ¯µÄĞÅÏ¢Ïà¹ØµÄËùÓĞÊôĞÔ£¬±¾ÀıÖĞÌí¼Óusername, goodsame¡£²¢ÎªÕâ¼¸¸öÊôĞÔÌí¼ÓsetterºÍgetter·½·¨£¬Ôö¼Ó¹¹Ôìº¯Êı£¬²ÎÊıÓëÕâÁ½¸öÊôĞÔ¶ÔÓ¦£¬ÄÇÃ´¿ÉÒÔÓÃhql²éÑ¯·½Ê½£º<br/>
+<pre name="code" class="java">
+ String hql="select new demoinfo.hibernate.pojo.UsersVoGoods(u.username, g.goodsname) from User u,Goods g where u.id=g.userId"; 
+</pre>
+&nbsp;&nbsp;query.list()µÄ·µ»ØÖµListÖĞµÄÖµ¶¼ÊÇUserVoGoodsĞÍµÄ£¬Ö±½ÓÊ¹ÓÃget()¾ÍÄÜ»ñÈ¡¡£<br/>
+&nbsp;&nbsp;ÆäÊµ²»Ôö¼ÓÓ³ÉäÀàÒ²ÊÇ¿ÉÒÔµÄ£¬Ö»ĞèÒªÔÚUser.javaÊµÌåÀàÀïÔö¼ÓÒ»¸ö¹¹Ôìº¯Êı£¬º¯Êı²ÎÊı»¹ÊÇĞèÒªµÄËùÓĞ×Ö¶Î£¬²¢ÎªÕâĞ©²ÎÊıÖĞUserÊµÌåÔ­À´Ã»ÓĞµÄ×Ö¶ÎÌí¼ÓÊôĞÔºÍgetter() setter()¼´¿É¡£<br/>
    </span>
    <span class="include"> 
 		<strong class="s5">&nbsp;</strong> 

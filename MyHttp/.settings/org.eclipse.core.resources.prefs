@@ -1,6 +1,7 @@
-#Mon Dec 08 18:23:59 CST 2014
+#Mon Jan 04 12:03:59 CST 2016
 eclipse.preferences.version=1
 encoding//WebRoot/frame.jsp=GBK
+encoding//src/demoinfo/hibernate/relationship/pojo/Goods.hbm.xml=UTF-8
 encoding//src/demoinfo/struts2/interceptor/InterceptorTest.java=UTF-8
 encoding//src/demoinfo/struts2/interceptor/LoginAction.java=UTF-8
 encoding//src/demoinfo/struts2/login/LoginAction.java=UTF-8

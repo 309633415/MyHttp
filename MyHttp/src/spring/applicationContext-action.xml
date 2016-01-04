@@ -8,12 +8,16 @@
 	http://www.springframework.org/schema/context   
      http://www.springframework.org/schema/context/spring-context-3.0.xsd   
      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd 
-     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd"
+     default-autowire="byName">
 
 	<!-- 简单的增删改查的操作 -->
 	<bean id="crudAction" class="demoinfo.hibernate.crud.CrudAction"
 		scope="prototype">
-		<property name="crudService" ref="crudService"></property>
+	</bean>
+	<!-- 关系的操作 -->
+	<bean id="relationShipAction" class="demoinfo.hibernate.relationship.RelationShipAction"
+		scope="prototype">
 	</bean>
 
 </beans>

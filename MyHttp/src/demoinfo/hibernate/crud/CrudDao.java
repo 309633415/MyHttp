@@ -1,6 +1,5 @@
 package demoinfo.hibernate.crud;
 
-import java.io.Serializable;
 import java.util.List;
 
 import demoinfo.hibernate.relationship.pojo.User;

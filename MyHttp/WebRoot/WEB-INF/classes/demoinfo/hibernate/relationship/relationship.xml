@@ -4,10 +4,14 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-  <package name="relationship" extends="struts-default" namespace="/hibernate" >
+  <package name="relationship" extends="struts-default" namespace="/relationship" >
     <action name ="relationShipAction" class ="demoinfo.hibernate.relationship.RelationShipAction" method="relationshipDetail">    
         <result name="fail">/common/fail.jsp</result>
          <result name="success">/common/success.jsp</result>   
      </action> 
+    <action name ="queryLinkList" class ="demoinfo.hibernate.relationship.RelationShipAction" method="doQueryLinkList">    
+         <result name="success">/hibernate/hibernateQueryLink.jsp</result>   
+     </action> 
+     
   </package>
 </struts>

@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -23,6 +24,65 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    This is my JSP page. <br>
+    本例中User.java实体类对应的数据表hibernate_user_info的内容是：<br/>
+    <table width="100%" border="1px" align="center" cellpadding="0" cellspacing="0">
+		<thead>
+			<tr bgcolor="#ADD8E6">
+				<th width="33%">user_id</th>
+				<th width="33%">user_username</th>
+				<th width="33%">user_password</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="user" items="${users}">
+				<tr>
+					<td>${user.id}</td>
+					<td>${user.username}</td>
+					<td>${user.password}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table><br/>
+    Goods.java实体类对应的数据表hibernate_goods_info的内容是：<br/>
+    <table width="100%" border="1px" align="center" cellpadding="0" cellspacing="0">
+		<thead>
+			<tr bgcolor="#ADD8E6">
+				<th width="33%">goods_id</th>
+				<th width="33%">goods_goodsname</th>
+				<th width="33%">goods_userId</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="goods" items="${goodses}">
+				<tr>
+					<td>${goods.id}</td>
+					<td>${goods.goodsname}</td>
+					<td>${goods.userId}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+	<br/>
+    连接查询效果是：<br/>
+    <table width="100%" border="1px" align="center" cellpadding="0" cellspacing="0">
+		<thead>
+			<tr bgcolor="#ADD8E6">
+				<th width="25%">userId</th>
+				<th width="25%">userName</th>
+				<th width="25%">goodsName</th>
+				<th width="25%">goodsId</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="list" items="${userVoGoodsList}">
+				<tr>
+					<td>${list.userId}</td>
+					<td>${list.username}</td>
+					<td>${list.goodsname}</td>
+					<td>${list.goodsId}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
   </body>
 </html>
