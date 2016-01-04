@@ -34,7 +34,7 @@
 		<!-- 配置多个文件时需要的参数 -->
 		<param-name>contextConfigLocation</param-name>
 		<!-- 需要加载的配置文件，可以有多个，用逗号或者空格或者分号隔开 -->
-		<param-value>/WEB-INF/classes/application*.xml</param-value>
+		<param-value>/WEB-INF/classes/spring/application*.xml</param-value>
 	</context-param>
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

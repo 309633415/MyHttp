@@ -26,11 +26,10 @@
               <result name="strutsJsonDemo">/strut/json/json.jsp</result>    
               <!--struts2 实例 end-->
               <!-- hibernate 实例　start -->
-       <!--        <result name="ormCrudDemo">/hibernate/hibernateSave.jsp</result> -->
               <result name="ormCrudDemo" type="redirect">/hibernatecrud/list.action</result>
-              <result name="ormCrudDeleteDemo">/hibernate/hibernateDelete.jsp</result>
-              <result name="ormCrudQueryDemo">/hibernate/hibernateQuery.jsp</result>
-              <result name="ormCrudUpdateDemo">/hibernate/hibernateUpdate.jsp</result>
+              <result name="ormCrudDeleteDemo" type="redirect">/hibernatecrud/list.action</result>
+              <result name="ormCrudQueryDemo" type="redirect">/hibernatecrud/list.action</result>
+              <result name="ormCrudUpdateDemo" type="redirect">/hibernatecrud/list.action</result>
               <result name="ormCrudQueryHqlDemo">/hibernate/hibernateQueryHql.jsp</result>
               <result name="ormCrudQueryLinkDemo">/hibernate/hibernateQueryLink.jsp</result>
               <result name="relationshipDemo">/hibernate/hibernateRelationship.jsp</result>     
