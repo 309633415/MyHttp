@@ -54,6 +54,7 @@ td {
 			</c:forEach>
 		</tbody>
 	</table>
+	<br/>
 	<table align="center">
 		<tr>
 			<td style="vertical-align: middle;">
