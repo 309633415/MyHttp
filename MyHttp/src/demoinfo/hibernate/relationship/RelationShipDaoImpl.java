@@ -16,5 +16,10 @@ public class RelationShipDaoImpl extends HibernateDaoSupport implements Relation
 	public List<Goods> findGoodsAll() {
 		return this.getHibernateTemplate().loadAll(Goods.class);
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<User> getUsers(String queryString) {
+		return (List<User>)this.getHibernateTemplate().find(queryString);
+	}
 
 }

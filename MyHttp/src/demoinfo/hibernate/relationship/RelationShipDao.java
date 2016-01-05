@@ -10,5 +10,7 @@ public interface RelationShipDao {
 	public List<User> findUserAll();
 	/**查询所有Goods*/
 	public List<Goods> findGoodsAll();
+	/**查询*/
+	public List<User> getUsers(String queryString);
 
 }

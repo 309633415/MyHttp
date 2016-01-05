@@ -63,6 +63,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</tbody>
 	</table>
 	<br/>
+	关键连接查询语句是：
+	 <p style="color:blue">String hql="<strong>select new demoinfo.hibernate.pojo.UserVoGoods(u.id,g.id,u.username, g.goodsname) from User u,Goods g where u.id=g.userId</strong>";<br/>    
+        Query query = session.createQuery(hql); </p>
     连接查询效果是：<br/>
     <table width="100%" border="1px" align="center" cellpadding="0" cellspacing="0">
 		<thead>

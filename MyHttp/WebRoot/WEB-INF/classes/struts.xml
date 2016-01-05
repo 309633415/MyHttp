@@ -31,7 +31,6 @@
               <result name="ormCrudQueryDemo" type="redirect">/hibernatecrud/list.action</result>
               <result name="ormCrudUpdateDemo" type="redirect">/hibernatecrud/list.action</result>
               <result name="ormCrudQueryHqlDemo">/hibernate/hibernateQueryHql.jsp</result>
-<!--               <result name="ormCrudQueryLinkDemo">/hibernate/hibernateQueryLink.jsp</result> -->
               <result name="ormCrudQueryLinkDemo" type="redirect">/relationship/queryLinkList.action</result>
               <result name="relationshipDemo">/hibernate/hibernateRelationship.jsp</result>     
               <!-- hibernate 实例　end -->

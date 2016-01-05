@@ -8,7 +8,6 @@ import demoinfo.hibernate.relationship.pojo.User;
 
 public class CrudDaoImpl extends HibernateDaoSupport implements CrudDao{
 
-	@SuppressWarnings("unchecked")
 	public List<User> findAll() {
 		return this.getHibernateTemplate().loadAll(User.class);
 	}
