@@ -14,6 +14,8 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import demoinfo.hibernate.pojo.UserVoGoods;
 import demoinfo.hibernate.relationship.pojo.Goods;
+import demoinfo.hibernate.relationship.pojo.Person;
+import demoinfo.hibernate.relationship.pojo.PersonInform;
 import demoinfo.hibernate.relationship.pojo.User;
 
 @SuppressWarnings("serial")
@@ -22,21 +24,69 @@ public class RelationShipAction extends ActionSupport implements ServletRequestA
 	private RelationShipService relationShipService;
 	private User user;
 	private Goods goods;
+	private Person person;
 	private UserVoGoods userVoGoods;
 	private List<User> users;
 	private List<Goods> goodses;
+	private List<Person> personList;
+	private List<PersonInform> personInformList;
 	private List<UserVoGoods> userVoGoodsList;
 	private String result;		//ajax返回的result节点，返回success
+	private String personCode;		
 	private HttpServletRequest request;
+	/** 操作类型 */
+	private String opreateType;
 	
 	public String relationshipDetail(){
 		return "success";
+	}
+	
+	public String doDeletePerson(){
+		relationShipService.deletePerson(personCode);
+		return SUCCESS;
+	}
+	
+	public String doPrepareUpdatePerson(){
+		opreateType = "edit";
+		person = relationShipService.getPerson(personCode);
+		return SUCCESS;
+	}
+	
+	public String doViewPerson(){
+		opreateType = "view";
+		person = relationShipService.getPerson(personCode);
+		return SUCCESS;
+	}
+	
+	public String doPrepareAddPerson(){
+		opreateType = "add";
+		return SUCCESS;
+	}
+	
+	public String doUpdatePerson() {
+		//下面这句配合从jsp传来的prpDperson.prpDpersonInform.id值，保证一对一关联时第二张表的值不为空，并且不是新增的
+		person.getPersonInform().setPerson(person);
+		relationShipService.updatePerson(person);
+		return SUCCESS;
+	}
+	
+	public String doAddPerson() {
+		//下面这句配合从jsp传来的prpDperson.prpDpersonInform.id值，保证一对一关联时第二张表的值不为空，并且不是新增的
+		person.getPersonInform().setPerson(person);
+		relationShipService.addPerson(person);
+		return SUCCESS;
 	}
 	
 	public String doQueryLinkList(){
 		users = relationShipService.findUserAll();
 		goodses = relationShipService.findGoodsAll();
 		userVoGoodsList = relationShipService.findUserVoGoodsList();
+		return "success";
+	}
+	
+	public String doOneToOneList(){
+		personList = relationShipService.findPersonAll();
+		personInformList = relationShipService.findPersonInformAll();
 		return "success";
 	}
 	
@@ -172,7 +222,42 @@ public class RelationShipAction extends ActionSupport implements ServletRequestA
 	public void setServletRequest(HttpServletRequest arg0) {
 		this.request = arg0;
 	}
-	
+
+	public String getOpreateType() {
+		return opreateType;
+	}
+
+	public void setOpreateType(String opreateType) {
+		this.opreateType = opreateType;
+	}
+
+	public List<Person> getPersonList() {
+		return personList;
+	}
+
+	public void setPersonList(List<Person> personList) {
+		this.personList = personList;
+	}
+	public Person getPerson() {
+		return person;
+	}
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+	public String getPersonCode() {
+		return personCode;
+	}
+	public void setPersonCode(String personCode) {
+		this.personCode = personCode;
+	}
+
+	public List<PersonInform> getPersonInformList() {
+		return personInformList;
+	}
+
+	public void setPersonInformList(List<PersonInform> personInformList) {
+		this.personInformList = personInformList;
+	}
 	
 	
 }

@@ -13,6 +13,8 @@
 
 	<!-- 用注解方式注入bean -->
 	<context:annotation-config />
+	<!-- 支持 @Transactional 标记 -->
+	<tx:annotation-driven />
 	<context:component-scan base-package="demoinfo" />
 
 	<bean id="sessionFactory"
@@ -33,7 +35,7 @@
 	<!-- 那些类那些方法使用事务 -->
 	<aop:config>
 		<aop:pointcut id="allManagerMethod"
-			expression="execution(* demoinfo.hibernate.crud.CrudServiceImpl.*(..))" />
+			expression="execution(* demoinfo.hibernate.crud.CrudServiceImpl.*(..)) or execution(* demoinfo.hibernate.relationship.RelationShipServiceImpl.*(..))" />
 		<aop:advisor pointcut-ref="allManagerMethod" advice-ref="txAdvice" />
 	</aop:config>
 

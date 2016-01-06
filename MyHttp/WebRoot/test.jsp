@@ -113,8 +113,8 @@ SQLQuery q = session.createSQLQuery("select * from user_info").addEntity(User.cl
 &nbsp;&nbsp;新建一个 Java 工程，然后引入必要的 jar 包，右击项目工程，依次选择 Properties->Java Build Path->Libraries->Add External JARs。一般需要Hibernate.jar包和mysql-connector.jar包还有一些基本jar包</br>
 2:编写Code</br>
 　&nbsp;&nbsp;1>创建数据库hibernate_user_info</br>
-	&nbsp;&nbsp;&nbsp;&nbsp;2>新建实体类 User.java</br>
-	&nbsp;&nbsp;&nbsp;&nbsp;这个没什么太多说的，一个用户具有：id、username、password 三个属性。</br>
+	&nbsp;&nbsp;&nbsp;2>新建实体类 User.java</br>
+	&nbsp;&nbsp;&nbsp;这个没什么太多说的，一个用户具有：id、username、password 三个属性。</br>
 <pre name="code" class="java">
 public class User {
 
@@ -172,7 +172,7 @@ public class User {
         <!-- 第一次加载 hibernate 时根据实体类自动建立表结构，以后自动更新表结构 -->
         <property name="hbm2ddl.auto">update</property>         
         <!-- 映射文件 -->
-        <mapping resource="MyHttp/test/hibernate/relationship/pojo/User.hbm.xml"/>
+        <mapping resource="demoinfo/hibernate/relationship/pojo/User.hbm.xml" />  
     </session-factory>
 </hibernate-configuration>
 </pre>
@@ -202,36 +202,46 @@ Configuration cfg=newConfiguration().configure("hibernate/hibernate.cfg.xml");  
 </pre>
 &nbsp;&nbsp;5>创建Test测试运行</br>
 <pre name="code" class="java">
-public class UserTest {
+public class CustomTest {
+	@SuppressWarnings("unchecked")
     public static void main(String[] args) {
-        Configuration cfg = new Configuration().configure();
-        SessionFactory sf = cfg.buildSessionFactory();
-        Session session = sf.openSession();
+    	AnnotationConfiguration configuration = new AnnotationConfiguration().configure();
+        SessionFactory sessionFactory = configuration.buildSessionFactory();
+        Session session = sessionFactory.openSession();
         session.beginTransaction();
-        // 1. 普通查询
-        Query q = session.createQuery(" from User as u");
-        // 2. 条件查询
-        //Query q = session.createQuery(" from User as u where u.username = ?");
-        //q.setParameter(0, "Jack");
-        // 3. 原生 SQL 查询
-        //SQLQuery q = session.createSQLQuery("select * from user_info").addEntity(User.class);
-        // 4.criteria 查询
-/*      Criteria q = session.createCriteria(User.class);
-        Criterion cc = Restrictions.between("id", 1, 3);
-        Criterion cc1 = Restrictions.idEq(2);    
-        q.add(cc);
-        q.add(cc1);*/
-        List<User> list = q.list();
-        for (User e : list) {
-            System.out.println(e.getUsername() + ", password: " + e.getPassword());
-            //System.out.println( e.getPassword() );
-        }
+        // 1. 普通查询  
+        Query q = session.createQuery(" from User as u");  
+        
+        // 2. 条件查询  
+        //Query q = session.createQuery(" from User as u where u.username = ?");  
+        
+        // 3. 原生 SQL 查询  
+        //SQLQuery q = session.createSQLQuery("select * from hibernate_user_info").addEntity(User.class); 
+        
+        /* 
+        // 4.criteria 查询  
+       	//创造criteria
+        Criteria q = session.createCriteria(User.class);
+        //添加查询条件
+        Criterion cc = Restrictions.between("id", 1, 3); 
+        Criterion cc1 = Restrictions.idEq(2);     
+        q.add(cc); 
+        q.add(cc1);
+        //如果想分页,下面我是把它写死的,写活也比较容易的,自己试.  
+        // q.setFirstResult(0);  
+        //q.setMaxResults(10);          
+         */      
+        List&lt;User&gt; list = q.list();  
+        for (User e : list) {  
+            System.out.println("username: " + e.getUsername() + "  , password: " + e.getPassword());  
+        }   
         session.getTransaction().commit();
         session.close();
-        sf.close();
+        sessionFactory.close();
     }
 }
 </pre>
+ 
  
    </span>
    <span class="include"> 

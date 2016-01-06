@@ -13,6 +13,8 @@ import org.hibernate.criterion.Restrictions;
 
 import demoinfo.hibernate.pojo.UserVoGoods;
 import demoinfo.hibernate.relationship.pojo.Goods;
+import demoinfo.hibernate.relationship.pojo.Person;
+import demoinfo.hibernate.relationship.pojo.PersonInform;
 import demoinfo.hibernate.relationship.pojo.User;
 
 public class RelationShipServiceImpl implements RelationShipService  {
@@ -26,12 +28,15 @@ public class RelationShipServiceImpl implements RelationShipService  {
 	public List<Goods> findGoodsAll() {
 		return relationShipDao.findGoodsAll();
 	}
+	public List<Person> findPersonAll() {
+		return relationShipDao.findPersonAll();
+	}
 	
 	public List<User> queryUsers(String username) {
 		if(username == null || "".equals(username))
 		return relationShipDao.findUserAll();
 //		String queryString = "SELECT u FROM User u WHERE u.username like '"+"%"+username+"%'";
-		String queryString = "SELECT u FROM User u WHERE u.username = "+username;
+		String queryString = "SELECT u FROM User u WHERE u.username = '"+username+"'";
 		return relationShipDao.getUsers(queryString);
 	}
 
@@ -95,6 +100,26 @@ public class RelationShipServiceImpl implements RelationShipService  {
         session.close();
         sessionFactory.close();
 		return list;
+	}
+
+	public Person getPerson(String personCode) {
+		return relationShipDao.getPerson(personCode);
+	}
+
+	public void deletePerson(String personCode) {
+		relationShipDao.deletePerson(personCode);
+	}
+
+	public void updatePerson(Person person) {
+		relationShipDao.updatePerson(person);
+	}
+	
+	public void addPerson(Person person) {
+		relationShipDao.addPerson(person);
+	}
+
+	public List<PersonInform> findPersonInformAll() {
+		return relationShipDao.findPersonInformAll();
 	}
 
 }

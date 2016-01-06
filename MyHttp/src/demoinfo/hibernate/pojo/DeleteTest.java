@@ -15,6 +15,7 @@ import demoinfo.hibernate.relationship.pojo.User;
  */
 public class DeleteTest {
 
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		// 获取 Hibernate 配置信息  
 		/*Hibernate配置文件中，若带有<mapping class="*.*.*"/>，则说明映射类时，采用了Annotation方式。在初始化Configuation时，应使用AnnotationConfiguration*/

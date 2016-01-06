@@ -7,7 +7,7 @@
 <hibernate-mapping package="demoinfo.hibernate.relationship.pojo">
     <!-- 实体类和数据库中的表对应（如果没有这个表则新建） -->
     <class name="User" table="hibernate_user_info">
-        <!-- id主键 和其他属性对应表中相应的字段（这些都是在 User.java 实体类中定义的） -->
+        <!-- id主键 和其他属性对应表中相应的字段 -->
         <id name="id" column="user_id" ></id>
         <property name="username" column="user_username"></property>
         <property name="password" column="user_password"></property>

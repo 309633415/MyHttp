@@ -13,6 +13,34 @@
          <result name="success">/hibernate/hibernateQueryLink.jsp</result>   
      </action> 
      
+    <action name ="oneToOneList" class ="demoinfo.hibernate.relationship.RelationShipAction" method="doOneToOneList">    
+         <result name="success">/hibernate/hibernateRelationship.jsp</result>   
+     </action> 
+     
+    <action name ="prepareUpdatePerson" class ="demoinfo.hibernate.relationship.RelationShipAction" method="doPrepareUpdatePerson">    
+         <result name="success">/hibernate/hibernatePersonEdit.jsp</result>   
+     </action> 
+     
+    <action name ="prepareAddPerson" class ="demoinfo.hibernate.relationship.RelationShipAction" method="doPrepareAddPerson">    
+         <result name="success">/hibernate/hibernatePersonEdit.jsp</result>   
+     </action> 
+     
+    <action name ="viewPerson" class ="demoinfo.hibernate.relationship.RelationShipAction" method="doViewPerson">    
+         <result name="success">/hibernate/hibernatePersonEdit.jsp</result>   
+     </action> 
+     
+    <action name ="updatePerson" class ="demoinfo.hibernate.relationship.RelationShipAction" method="doUpdatePerson">    
+         <result name="success" type="redirect">/relationship/oneToOneList.action</result>
+     </action> 
+     
+    <action name ="addPerson" class ="demoinfo.hibernate.relationship.RelationShipAction" method="doAddPerson">    
+         <result name="success" type="redirect">/relationship/oneToOneList.action</result>
+     </action> 
+     
+    <action name ="deletePerson" class ="demoinfo.hibernate.relationship.RelationShipAction" method="doDeletePerson" >
+    	<result name="success" type="redirect">/relationship/oneToOneList.action</result>
+    </action>    
+    
      	<action name="commonQuery"
 			class="demoinfo.hibernate.relationship.RelationShipAction" method="doCommonQuery">
 			<result name="fail"></result>
