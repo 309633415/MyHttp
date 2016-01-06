@@ -186,9 +186,9 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 									<li>
 										<a href="#"  id="relationshipDemo" onclick="relationshipDemo(this.value)">¹ØÏµ</a>
 									</li>
-									<li>
+									<!-- <li>
 										<a href="#"  id="strutsCrudDemo" onclick="strutsCrudDemo()">crudÊµÀý</a>
-									</li>
+									</li> -->
 								</ul>
 							</li>
 							<li>

@@ -36,21 +36,20 @@
 <!--   拦截器结束-->
 
    </package>
-<!-- Add packages here   用include包含子xml文件  指定文件的相对路径就可以了-->
 <!--文件上传Action的xml文件-->
-<include file="/demoinfo/struts2/fileupload/fileupload.xml"></include>
+<include file="/struts/fileupload.xml"></include>
 <!--Struts2标签Action的xml文件-->
-<include file="/demoinfo/struts2/tag/tag.xml"></include>
+<include file="/struts/tag.xml"></include>
 <!--crud的XML文件-->
-<include file="/demoinfo/struts2/crud/crud.xml"></include>
+<include file="/struts/crud.xml"></include>
 <!--hibernate的crud的XML文件-->
-<include file="/demoinfo/hibernate/crud/hibernatecrud.xml"></include>
+<include file="/struts/hibernatecrud.xml"></include>
 <!--ajax的XML文件-->
-<include file="/demoinfo/struts2/ajax/ajax.xml"></include>
+<include file="/struts/ajax.xml"></include>
 <!--json的XML文件-->
-<include file="/demoinfo/struts2/json/json.xml"></include>
+<include file="/struts/json.xml"></include>
 <!--hibernate中的关系映射xml文件 -->
-<include file="/demoinfo/hibernate/relationship/relationship.xml"></include>
+<include file="/struts/relationship.xml"></include>
 <!--webService的xml文件-->
-<include file="/demoinfo/webservice/take/webservice.xml"></include>
+<include file="/struts/webservice.xml"></include>
 </struts>

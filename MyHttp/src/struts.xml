@@ -42,6 +42,6 @@
   
    </package>
     <!-- Add packages here -->
-<include file="/maintain/action/demoInfo.xml"></include>
-<include file="/demoinfo/config/struts-demo.xml"></include>
+	<include file="/struts/demoInfo.xml"></include>
+	<include file="/struts/struts-demo.xml"></include>
 </struts>
