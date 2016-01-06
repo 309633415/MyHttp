@@ -81,13 +81,13 @@ public class RelationShipAction extends ActionSupport implements ServletRequestA
 		users = relationShipService.findUserAll();
 		goodses = relationShipService.findGoodsAll();
 		userVoGoodsList = relationShipService.findUserVoGoodsList();
-		return "success";
+		return SUCCESS;
 	}
 	
 	public String doOneToOneList(){
 		personList = relationShipService.findPersonAll();
 		personInformList = relationShipService.findPersonInformAll();
-		return "success";
+		return SUCCESS;
 	}
 	
 	// 自定义查询页面，普通查询
