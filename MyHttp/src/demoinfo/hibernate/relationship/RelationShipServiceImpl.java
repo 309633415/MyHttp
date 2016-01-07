@@ -12,9 +12,11 @@ import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 
 import demoinfo.hibernate.pojo.UserVoGoods;
+import demoinfo.hibernate.relationship.pojo.ClassRoom;
 import demoinfo.hibernate.relationship.pojo.Goods;
 import demoinfo.hibernate.relationship.pojo.Person;
 import demoinfo.hibernate.relationship.pojo.PersonInform;
+import demoinfo.hibernate.relationship.pojo.Student;
 import demoinfo.hibernate.relationship.pojo.User;
 
 public class RelationShipServiceImpl implements RelationShipService  {
@@ -120,6 +122,18 @@ public class RelationShipServiceImpl implements RelationShipService  {
 
 	public List<PersonInform> findPersonInformAll() {
 		return relationShipDao.findPersonInformAll();
+	}
+
+	public List<Student> findStudentAll() {
+		return relationShipDao.findStudentAll();
+	}
+
+	public List<ClassRoom> findClassRoomAll() {
+		return relationShipDao.findClassRoomAll();
+	}
+
+	public ClassRoom getClassRoom(int roomId) {
+		return relationShipDao.getClassRoom(roomId);
 	}
 
 }

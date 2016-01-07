@@ -17,6 +17,10 @@
          <result name="success">/hibernate/hibernateRelationship.jsp</result>   
      </action> 
      
+    <action name ="oneToManyList" class ="demoinfo.hibernate.relationship.RelationShipAction" method="doOneToManyList">    
+         <result name="success">/hibernate/hibernateOneToMany.jsp</result>   
+     </action> 
+     
     <action name ="prepareUpdatePerson" class ="demoinfo.hibernate.relationship.RelationShipAction" method="doPrepareUpdatePerson">    
          <result name="success">/hibernate/hibernatePersonEdit.jsp</result>   
      </action> 
@@ -41,6 +45,13 @@
     	<result name="success" type="redirect">/relationship/oneToOneList.action</result>
     </action>    
     
+     	<action name="oneToManyQuery"
+			class="demoinfo.hibernate.relationship.RelationShipAction" method="doOneToManyQuery">
+			<result name="fail"></result>
+				<result type="json"><param name="root">result</param>
+			</result>
+		</action>
+		
      	<action name="checkPersonCode"
 			class="demoinfo.hibernate.relationship.RelationShipAction" method="doCheckPersonCode">
 			<result name="fail"></result>

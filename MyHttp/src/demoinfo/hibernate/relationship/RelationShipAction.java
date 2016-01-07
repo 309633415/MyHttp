@@ -13,9 +13,11 @@ import net.sf.json.JSONObject;
 import com.opensymphony.xwork2.ActionSupport;
 
 import demoinfo.hibernate.pojo.UserVoGoods;
+import demoinfo.hibernate.relationship.pojo.ClassRoom;
 import demoinfo.hibernate.relationship.pojo.Goods;
 import demoinfo.hibernate.relationship.pojo.Person;
 import demoinfo.hibernate.relationship.pojo.PersonInform;
+import demoinfo.hibernate.relationship.pojo.Student;
 import demoinfo.hibernate.relationship.pojo.User;
 
 @SuppressWarnings("serial")
@@ -31,6 +33,8 @@ public class RelationShipAction extends ActionSupport implements ServletRequestA
 	private List<Person> personList;
 	private List<PersonInform> personInformList;
 	private List<UserVoGoods> userVoGoodsList;
+	private List<Student> studentList;
+	private List<ClassRoom> classRoomList;
 	private String result;		//ajax返回的result节点，返回success
 	private String personCode;		
 	private HttpServletRequest request;
@@ -90,7 +94,12 @@ public class RelationShipAction extends ActionSupport implements ServletRequestA
 		return SUCCESS;
 	}
 	
-	// 自定义查询页面，普通查询
+	public String doOneToManyList(){
+		studentList =  relationShipService.findStudentAll();
+		classRoomList =  relationShipService.findClassRoomAll();
+		return SUCCESS;
+	}
+	
 	public String doCheckPersonCode(){
 		String name = request.getParameter("name");
 		Person person = relationShipService.getPerson(name);
@@ -105,6 +114,21 @@ public class RelationShipAction extends ActionSupport implements ServletRequestA
 		map.put("flag", flag);
 		JSONObject json = JSONObject.fromObject(map);//将map对象转换成json类型数据
 		this.result = json.toString();//给result赋值，传递给页面
+		return SUCCESS;
+	}
+	
+	public String doOneToManyQuery(){
+		int roomId = Integer.parseInt(request.getParameter("roomId"));
+		ClassRoom classRoom = relationShipService.getClassRoom(roomId);
+		int stuNum = classRoom.getStudents().size();
+		String roomName = classRoom.getRoomName();
+//		List<Student> oneToManyQueryList = classRoom.getStudents()
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("stuNum", stuNum);
+		map.put("roomName", roomName);
+//		map.put("oneToManyQueryList", oneToManyQueryList);
+		JSONObject json = JSONObject.fromObject(map);
+		this.result = json.toString();
 		return SUCCESS;
 	}
 	
@@ -275,6 +299,22 @@ public class RelationShipAction extends ActionSupport implements ServletRequestA
 
 	public void setPersonInformList(List<PersonInform> personInformList) {
 		this.personInformList = personInformList;
+	}
+
+	public List<Student> getStudentList() {
+		return studentList;
+	}
+
+	public void setStudentList(List<Student> studentList) {
+		this.studentList = studentList;
+	}
+
+	public List<ClassRoom> getClassRoomList() {
+		return classRoomList;
+	}
+
+	public void setClassRoomList(List<ClassRoom> classRoomList) {
+		this.classRoomList = classRoomList;
 	}
 	
 	

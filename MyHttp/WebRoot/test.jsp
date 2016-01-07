@@ -36,7 +36,12 @@ background: cadetblue;
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
 	<span class="bg"> 
-&nbsp;&nbsp;Hibernate的主要目的就是是Java程序员可以随心所欲的使用对象编程思维来操纵数据库。所以,一些数据库表的关系我们应该可以通过hibernate实现,比如在数据库中我们常用到的主外键关系,还有一些跟主外键有关系的设置,比如主键的信息被删除,外键关联的信息也要删除等等,所以,Hibernate同样应该实现这种映射关系。
+&nbsp;&nbsp;1.Hibernate的主要目的就是是Java程序员可以随心所欲的使用对象编程思维来操纵数据库。所以,一些数据库表的关系我们应该可以通过hibernate实现,比如在数据库中我们常用到的主外键关系,还有一些跟主外键有关系的设置,比如主键的信息被删除,外键关联的信息也要删除等等,所以,Hibernate同样应该实现这种映射关系。<br/>
+ &nbsp;&nbsp;2.@LazyCollection 懒加载注解方式<br/>
+&nbsp;&nbsp;&nbsp;hibernate定义了@ManyToMany和@OneToMany 关联的延迟选项。LazyCollection可选值意义与区别如下：<br/>
+&nbsp;&nbsp;&nbsp;LazyCollectionOption.TRUE：集合具有延迟性，只有在访问的时候才加载。<br/>
+&nbsp;&nbsp;&nbsp;LazyCollectionOption.EXTRA：集合具有延迟性，并且所有的操作都会尽量避免加载集合， 对于一个巨大的集合特别有用，因为这样的集合中的元素没有必要全部加载。<br/>
+&nbsp;&nbsp;&nbsp;LazyCollectionOption.FALSE：非延迟加载的关联。
 	</span> 
 		<span class="include"> 
 		<strong class="s5">&nbsp;</strong> 
@@ -74,94 +79,110 @@ background: cadetblue;
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
    <span class="bg">
-&nbsp;&nbsp;一对一单向[OneToOne] </br>
-&nbsp;&nbsp;一对一关系这里定义了一个Person对象以及一个PersonInform对象</br>
-&nbsp;&nbsp;Person类：</br>
+&nbsp;&nbsp;一对多[OneToMany]和多对一[ManyToOne] </br>
+&nbsp;&nbsp;这里我们定义了两个实体类，一个是ClassRoom，一个是Student，这两者是一对多的关联关系。</br>
+&nbsp;&nbsp;ClassRoom类：</br>
    <pre  name="code" class="java">
 @Entity  
-@Table(name="hibernate_relationship_person")  
-public class Person implements java.io.Serializable{
-	private static final long serialVersionUID = 1L;
-	private String personCode;
-	private String personName;
-	private PersonInform personInform;
-
-	@Id
-	@Column(name="personCode",length=20,nullable=false)
-	public String getPersonCode() {
-		return personCode;
-	}
-	public void setPersonCode(String personCode) {
-		this.personCode = personCode;
+@Table(name="hibernate_relationship_classroom")  
+public class ClassRoom  
+{  
+    private int roomId;  
+    private String roomName;  
+    private List&lt;Student&gt; students=new ArrayList&lt;Student&gt;(0);
+      
+    @Id
+    @Column(name="roomId",length=50,nullable=false)
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    public int getRoomId() {
+		return roomId;
 	}
 
-	@Column(name="personName",length=15,nullable=false)
-	public String getPersonName() {
-		return personName;
+	public void setRoomId(int roomId) {
+		this.roomId = roomId;
 	}
-	public void setPersonName(String personName) {
-		this.personName = personName;
+  
+	@Column(name="roomName")
+    public String getRoomName() {  
+        return roomName;  
+    }  
+  
+    public void setRoomName(String roomName)  {  
+        this.roomName = roomName;  
+    }  
+  
+    /*OneToMany指定了一对多的关系，mappedBy="classRoom"指定了由多的那一方来维护关联关系，mappedBy指的是多的一方对1的这一方的依赖的属性，(注意：如果没有指定由谁来维护关联关系，则系统会给我们创建一张中间表)*/
+    @OneToMany(mappedBy="classRoom",cascade=CascadeType.ALL)	
+    @LazyCollection(LazyCollectionOption.FALSE) /*如果LazyCollection属性设置成EXTRA指定了当如果查询数据的个数时候，只会发出一条 count(*)的语句，提高性能*/
+    public List&lt;Student&gt; getStudents() {
+    	return students;
+    }  
+
+	public void setStudents(List&lt;Student&gt; students) {
+		this.students = students;
 	}
 
-	//指定了OneToOne的关联关系，mappedBy同样指定由对方来进行维护关联关系;
-	//CascadeType.ALL包含所有；fetch=FetchType.LAZY懒加载
-	@OneToOne(mappedBy="person",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	public PersonInform getPersonInform() {
-		return personInform;
-	}
-	public void setPersonInform(PersonInform personInform) {
-		this.personInform = personInform;
-	}
-
-}
+}  
 </pre>
-&nbsp;&nbsp;PersonInform类：</br>
+&nbsp;&nbsp;Student类：</br>
 <pre  name="code" class="java">
 @Entity  
-@Table(name="hibernate_relationship_personinform")
-public class PersonInform   implements java.io.Serializable
-{  
-	private static final long serialVersionUID = 1L;
-	private int id;
-	private int age;
-	private String mailBox;  
-	private Person person;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO) 
+@Table(name="hibernate_relationship_student")  
+public class Student  {  
+    private int stuId; 
+    private String stuName; 
+    private int age; 
+    private ClassRoom classRoom;
+    
+    @Id
 	@Column(name="Id",length=50,nullable=false)
-	public int getId() {
-		return id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	public int getStuId() {
+		return stuId;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setStuId(int stuId) {
+		this.stuId = stuId;
 	}
-	@Column(name="age",length=10)
+	@Column(name="studentName")
+	public String getStuName() {
+		return stuName;
+	}
+	public void setStuName(String stuName) {
+		this.stuName = stuName;
+	}
+	@Column(name="age")
 	public int getAge() {
 		return age;
 	}
 	public void setAge(int age) {
 		this.age = age;
 	}
-	@Column(name="mailBox",length=30)
-	public String getMailBox() {
-		return mailBox;
+	/* ManyToOne指定了多对一的关系，fetch=FetchType.LAZY属性表示在多的那一方通过延迟加载的方式加载对象(默认不是延迟加载)*/
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="roomId")/*通过 JoinColumn 的name属性指定了外键的名称 roomId(注意：如果我们不通过JoinColum来指定外键的名称，系统会给我们声明一个名称)*/
+	
+	public ClassRoom getClassRoom() {
+		return classRoom;
 	}
-	public void setMailBox(String mailBox) {
-		this.mailBox = mailBox;
-	}
-	// OneToOne指定了一对一的关联关系，一对一中随便指定一方来维护映射关系，这里选择PersonInform来进行维护 
-	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	@JoinColumn(name="personCode",unique=true,nullable=false)		//指定外键的名字personCode
-	public Person getPerson() {
-		return person;
-	}
-	public void setPerson(Person person) {
-		this.person = person;
+	public void setClassRoom(ClassRoom classRoom) {
+		this.classRoom = classRoom;
 	}
 	
 }  
 </pre>
+
+小技巧:通过hibernate来进行插入操作的时候，不管是一对多、一对一还是多对多，都只需要记住一点，在哪个实体类声明了外键，就由哪个类来维护关系，在保存数据时，总是先保存的是没有维护关联关系的那一方的数据，后保存维护了关联关系的那一方的数据，如：
+<pre  name="code" class="java">
+Person p = new Person();
+p.setName("xiaoluo");
+session.save(p);         
+IDCard card = new IDCard();
+card.setNo("1111111111");
+card.setPerson(p);
+session.save(card);
+</pre>
+注意fetch = FetchType.EAGER，如果选择LAZY，hibernate在事物结束后会关闭session（好像是session的问题），那么无法在事物之外取到被join出来的记录，会提示session被关闭。
+
 
 &nbsp;&nbsp;注意:在判断到底是谁维护关联关系时，可以通过查看外键，哪个实体类定义了外键，哪个类就负责维护关联关系。</br>
 

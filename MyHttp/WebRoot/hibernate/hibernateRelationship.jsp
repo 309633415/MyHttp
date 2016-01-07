@@ -6,10 +6,6 @@
     <title>hibernate关系映射实例</title>
 </head>
 <body>
-<div style="color:blue;">
-<br/>
-
-</div>
     <a href="relationship/prepareAddPerson.action">增加人员</a>
     <p><strong>Person</strong></p>
     <a href="relationship/viewPerson.action?personCode=${person.personCode}">${person.personCode}</a>

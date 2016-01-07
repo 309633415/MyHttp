@@ -186,6 +186,9 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 									<li>
 										<a href="#"  id="relationshipDemo" onclick="relationshipDemo(this.value)">关系(一对一)</a>
 									</li>
+									<li>
+										<a href="#"  id="relationshipOneToMany" onclick="relationshipOneToMany(this.value)">关系(一对多)</a>
+									</li>
 									<!-- <li>
 										<a href="#"  id="strutsCrudDemo" onclick="strutsCrudDemo()">crud实例</a>
 									</li> -->
@@ -382,6 +385,10 @@ function strutsLoginDemo(){
     }
    function relationshipDemo(){
     	document.getElementById("mainfrm1").src="./common/common.action?target=relationshipDemo";
+    	document.getElementById("mainfrm1").onload;
+    }
+   function relationshipOneToMany(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=relationshipOneToMany";
     	document.getElementById("mainfrm1").onload;
     }
     //Spring

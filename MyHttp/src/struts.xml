@@ -33,6 +33,7 @@
               <result name="ormCrudQueryHqlDemo">/hibernate/hibernateQueryHql.jsp</result>
               <result name="ormCrudQueryLinkDemo" type="redirect">/relationship/queryLinkList.action</result>
               <result name="relationshipDemo" type="redirect">/relationship/oneToOneList.action</result>
+              <result name="relationshipOneToMany" type="redirect">/relationship/oneToManyList.action</result>
               <!-- <result name="relationshipDemo">/hibernate/hibernateRelationship.jsp</result>    -->  
               <!-- hibernate 实例　end -->
               <!-- webService 实例  start-->

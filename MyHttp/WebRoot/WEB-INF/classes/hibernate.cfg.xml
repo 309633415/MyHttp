@@ -32,6 +32,8 @@
     	
     	<mapping class="demoinfo.hibernate.relationship.pojo.PersonInform" />  
     	<mapping class="demoinfo.hibernate.relationship.pojo.Person" />  
+    	<mapping class="demoinfo.hibernate.relationship.pojo.ClassRoom" />  
+    	<mapping class="demoinfo.hibernate.relationship.pojo.Student" />  
     	<mapping class="maintain.hbm.DemoInfo" /> 
     </session-factory>
 
