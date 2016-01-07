@@ -41,6 +41,13 @@
     	<result name="success" type="redirect">/relationship/oneToOneList.action</result>
     </action>    
     
+     	<action name="checkPersonCode"
+			class="demoinfo.hibernate.relationship.RelationShipAction" method="doCheckPersonCode">
+			<result name="fail"></result>
+				<result type="json"><param name="root">result</param>
+			</result>
+		</action>
+		
      	<action name="commonQuery"
 			class="demoinfo.hibernate.relationship.RelationShipAction" method="doCommonQuery">
 			<result name="fail"></result>

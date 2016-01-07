@@ -10,8 +10,7 @@
 <br/>
 
 </div>
-    <a href="relationship/prepareAddPerson.action">添加人员</a>
-    <!-- <input type="button" value="添加人员"  onclick="window.location.href='%{#request.basePath}/relationship/prepareAddPerson.action'"/> -->
+    <a href="relationship/prepareAddPerson.action">增加人员</a>
     <p><strong>Person</strong></p>
     <a href="relationship/viewPerson.action?personCode=${person.personCode}">${person.personCode}</a>
     <table width="100%" border="1px" align="center" cellpadding="0" cellspacing="0">
@@ -34,7 +33,7 @@
 			</c:forEach>
 		</tbody>
 	</table>   
-	<p><strong>PersonInform</strong></p>
+	<p><strong>PersonInform.java实体类对应的数据表的内容是：</strong></p>
 	<table width="100%" border="1px" align="center" cellpadding="0" cellspacing="0">
 		<thead>
 			<tr bgcolor="#ADD8E6">
@@ -55,7 +54,40 @@
 			</c:forEach>
 		</tbody>
 	</table>   
-	
-	
+	<p>
+	&nbsp;&nbsp;Person和PersonInform是一对一的关联，在PersonInform中定义了外键personCode，所以是由PersonInform表来负责维护关联关系。<br/>
+	&nbsp;&nbsp;一对一的关联关系一旦确立，在增删改查的操作上就有所不同了。<br/>
+	&nbsp;&nbsp;当增加人员操作的时候，在jsp页面中，input框中name要如下命名：</p>
+	<pre style="color:blue">
+&lt;input type="text" name="person.personCode" /&gt;
+&lt;input type="text" name="person.personName" /&gt;
+&lt;input type="text" name="person.personInform.age" /&gt;
+&lt;input type="text" name="person.personInform.mailBox"  /&gt;
+	</pre>
+	<p>&nbsp;&nbsp;action实现的时候，在添加数据库之前，需要维护下关联关系，保证一对一关联时另一张表的值不为空：</p>
+	<pre style="color:blue">
+public String doAddPerson() {
+	person.getPersonInform().setPerson(person);
+	relationShipService.addPerson(person);
+	return SUCCESS;
+}
+	</pre>
+	<p>&nbsp;&nbsp;更新操作和增加操作类似：</p>
+	<pre style="color:blue">
+public String doUpdatePerson() {
+	person.getPersonInform().setPerson(person);
+	relationShipService.updatePerson(person);
+	return SUCCESS;
+}</pre>
+<p>&nbsp;&nbsp;但是在删除和查看操作的时候，只需要对主表进行操作，hibernate会自动将关联的表同时删除或查看。<br/>
+删除操作：</p>
+<pre style="color:blue">
+public String doDeletePerson(){
+	relationShipService.deletePerson(personCode);
+	return SUCCESS;
+}
+</pre>
+<br/>
+<br/>
 </body>
 </html>

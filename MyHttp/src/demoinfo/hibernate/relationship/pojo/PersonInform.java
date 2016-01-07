@@ -15,9 +15,6 @@ import javax.persistence.Table;
 @Table(name="hibernate_relationship_personinform")
 public class PersonInform   implements java.io.Serializable
 {  
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private int age;
@@ -47,13 +44,14 @@ public class PersonInform   implements java.io.Serializable
 	public void setMailBox(String mailBox) {
 		this.mailBox = mailBox;
 	}
+	// OneToOne指定了一对一的关联关系，一对一中随便指定一方来维护映射关系，这里选择PersonInform来进行维护 
 	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	@JoinColumn(name="personCode",unique=true,nullable=false)
+	@JoinColumn(name="personCode",unique=true,nullable=false)		//指定外键的名字personCode
 	public Person getPerson() {
 		return person;
 	}
 	public void setPerson(Person person) {
 		this.person = person;
 	}
-	/* OneToOne指定了一对一的关联关系，一对一中随便指定一方来维护映射关系，这里选择IDCard来进行维护  */
+	
 }  

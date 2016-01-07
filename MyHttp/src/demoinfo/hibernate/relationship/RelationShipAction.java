@@ -91,6 +91,24 @@ public class RelationShipAction extends ActionSupport implements ServletRequestA
 	}
 	
 	// 自定义查询页面，普通查询
+	public String doCheckPersonCode(){
+		String name = request.getParameter("name");
+		Person person = relationShipService.getPerson(name);
+		String flag;
+		if(person !=null){
+			flag="flase";
+		}
+		else{
+			flag="true";
+		}
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("flag", flag);
+		JSONObject json = JSONObject.fromObject(map);//将map对象转换成json类型数据
+		this.result = json.toString();//给result赋值，传递给页面
+		return SUCCESS;
+	}
+	
+	// 自定义查询页面，普通查询
 	public String doCommonQuery(){
 		List<User> commonQueryList = relationShipService.findUserAll();
 		//将数据存储在map里，再转换成json类型数据，也可以自己手动构造json类型数据

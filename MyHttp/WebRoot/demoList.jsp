@@ -63,7 +63,8 @@ request.setCharacterEncoding("GBK");
 		    <a href="./common/common.action?target=ormCrudQueryDemo">简单查询</a><br/>
 		    <a href="./common/common.action?target=ormCrudQueryLinkDemo">连接查询</a><br/>
 		    <a href="./common/common.action?target=ormCrudQueryHqlDemo">自定义查询（HQL或者SQL均可）</a><br/>
-		    <a href="./common/common.action?target=relationshipDemo">关系（一对一，一对多，多对多）</a><br/>
+		    <a href="./common/common.action?target=relationshipDemo">关系(一对一)</a><br/>
+		   <!--  <a href="./common/common.action?target=relationshipDemo">关系（一对一，一对多，多对多）</a><br/> -->
 		    <!-- <a href="./common/common.action?target=strutsCrudDemo" >crud实例</a><br/> -->
 	    </div>
 	    <div id="spring" class="mulu">

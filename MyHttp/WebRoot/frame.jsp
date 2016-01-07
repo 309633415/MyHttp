@@ -184,7 +184,7 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 										<a href="#"  id="ormCrudQueryHqlDemo" onclick="ormCrudQueryHqlDemo(this.value)">自定义查询</a>
 									</li>
 									<li>
-										<a href="#"  id="relationshipDemo" onclick="relationshipDemo(this.value)">关系</a>
+										<a href="#"  id="relationshipDemo" onclick="relationshipDemo(this.value)">关系(一对一)</a>
 									</li>
 									<!-- <li>
 										<a href="#"  id="strutsCrudDemo" onclick="strutsCrudDemo()">crud实例</a>

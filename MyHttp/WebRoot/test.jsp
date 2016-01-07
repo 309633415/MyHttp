@@ -36,42 +36,7 @@ background: cadetblue;
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
 	<span class="bg"> 
-&nbsp;&nbsp;Hibernate 提供了强大的查询系统，使用 Hibernate 有多种查询方法可以选择：可以使用 Hibernate 的 HQL 查询，也可以使用条件查询，甚至可以使用原生的 SQL 查询语句。
-HQL 语言看上去很像 SQL。但是 HQL 是一种面向对象的查询语句，它的操作对象是类、实例、属性等，而 SQL 的操作对象是数据表、列等数据库对象。由于 HQL 是完全面向对象的查询语句，因此可以支持继承、多态等特性。
-执行HQL查询的步骤：</br>
-1、获得 Hibernate Session 对象</br>
-2、编写 HQL 语句</br>
-（1）from 子句</br>
-&nbsp;&nbsp;Hibernate 中最简单的查询语句的形式如 from table_name，因为是面向对象的语言，所以这里一般写成from Name(Name是table_name)的实体类,例如：</br>
-<pre name="code" class="java">
-from  User 
-</pre>
-&nbsp;&nbsp;有时候需要使用到别名：</br>
-<pre name="code" class="java">
- from User as u
-</pre>
-（2）where 子句</br>
-&nbsp;&nbsp;where 子句允许你将返回的实例列表的范围缩小。如果没有指定别名，你可以使用属性名来直接引用属性：</br>
-<pre name="code" class="java">
-from User where name= 'admin' 
-</pre>
-&nbsp;&nbsp;如果指派了别名，需要使用完整的属性名：</br>
-<pre name="code" class="java">
-from User as u where u.name= 'admin' 
-</pre>
-（3）select 子句</br>
-&nbsp;&nbsp;select子句会选择将哪些对象与属性返回到查询结果集中。</br>
-<pre name="code" class="java">
-select u.username from User as u
-</pre>
-（４）SQL 查询</br>
-&nbsp;&nbsp;可以直接使用原生 SQL 语句格式进行查询。</br>
-<pre name="code" class="java">
-SQLQuery q = session.createSQLQuery("select * from user_info").addEntity(User.class);
-</pre>
-3、调用 Session 的 createQuery() 方法创建查询对象</br>
-4、如果 HQL 语句包含参数，则调用 Query 的 setXxx 方法为参数赋值</br>
-5、调用 Query 对象的 list 等方法返回查询结果。</br>
+&nbsp;&nbsp;Hibernate的主要目的就是是Java程序员可以随心所欲的使用对象编程思维来操纵数据库。所以,一些数据库表的关系我们应该可以通过hibernate实现,比如在数据库中我们常用到的主外键关系,还有一些跟主外键有关系的设置,比如主键的信息被删除,外键关联的信息也要删除等等,所以,Hibernate同样应该实现这种映射关系。
 	</span> 
 		<span class="include"> 
 		<strong class="s5">&nbsp;</strong> 
@@ -109,141 +74,577 @@ SQLQuery q = session.createSQLQuery("select * from user_info").addEntity(User.cl
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
    <span class="bg">
- 1:导入必要的jar包
-&nbsp;&nbsp;新建一个 Java 工程，然后引入必要的 jar 包，右击项目工程，依次选择 Properties->Java Build Path->Libraries->Add External JARs。一般需要Hibernate.jar包和mysql-connector.jar包还有一些基本jar包</br>
-2:编写Code</br>
-　&nbsp;&nbsp;1>创建数据库hibernate_user_info</br>
-	&nbsp;&nbsp;&nbsp;2>新建实体类 User.java</br>
-	&nbsp;&nbsp;&nbsp;这个没什么太多说的，一个用户具有：id、username、password 三个属性。</br>
-<pre name="code" class="java">
-public class User {
+&nbsp;&nbsp;一对一单向[OneToOne] </br>
+&nbsp;&nbsp;一对一关系这里定义了一个Person对象以及一个PersonInform对象</br>
+&nbsp;&nbsp;Person类：</br>
+   <pre  name="code" class="java">
+@Entity  
+@Table(name="hibernate_relationship_person")  
+public class Person implements java.io.Serializable{
+	private static final long serialVersionUID = 1L;
+	private String personCode;
+	private String personName;
+	private PersonInform personInform;
 
-    private int id;
-    private String username;
-    private String password;
+	@Id
+	@Column(name="personCode",length=20,nullable=false)
+	public String getPersonCode() {
+		return personCode;
+	}
+	public void setPersonCode(String personCode) {
+		this.personCode = personCode;
+	}
 
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public String getUsername() {
-        return username;
-    }
-    public void setUsername(String username) {
-        this.username = username;
-    }
-    public String getPassword() {
-        return password;
-    }
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	@Column(name="personName",length=15,nullable=false)
+	public String getPersonName() {
+		return personName;
+	}
+	public void setPersonName(String personName) {
+		this.personName = personName;
+	}
+
+	//指定了OneToOne的关联关系，mappedBy同样指定由对方来进行维护关联关系;
+	//CascadeType.ALL包含所有；fetch=FetchType.LAZY懒加载
+	@OneToOne(mappedBy="person",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	public PersonInform getPersonInform() {
+		return personInform;
+	}
+	public void setPersonInform(PersonInform personInform) {
+		this.personInform = personInform;
+	}
+
 }
 </pre>
-&nbsp;&nbsp;3>配置 hibernate.cfg.xml（仅供参考，具体配置自行变换）</br>
-&nbsp;&nbsp;在 src 目录下，新建 hibernate.cfg.xml 文件（配置文件存放的位置要求统一化，命名规范化），其配置如下：
-<pre name="code" class="xml">
-<?xml version='1.0' encoding='utf-8'?>
-<!DOCTYPE hibernate-configuration PUBLIC
-        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
-<hibernate-configuration>
-    <session-factory>
-        <!-- Database connection settings -->
-        <!-- 表示使用 mysql 数据库驱动类 -->
-        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <!-- jdbc 的连接 url 和数据库（使用我们之前新建的 hibernate）-->
-        <property name="connection.url">jdbc:mysql://localhost:3306/mynet</property>
-        <!-- 数据库用户名 -->
-        <property name="connection.username">root</property>
-        <!-- 密码（这里为空） -->
-        <property name="connection.password"></property>
-        <!-- JDBC connection pool (use the built-in) -->
-        <!-- <property name="connection.pool_size">1</property>-->
-        <!-- 数据库使用的方言 -->
-        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-        <!-- Echo all executed SQL to stdout -->
-        <!-- 设置 打印输出 sql 语句 为真 -->
-        <property name="show_sql">true</property>
-        <!-- 设置格式为 sql -->
-        <property name="format_sql">true</property>
-        <!-- 第一次加载 hibernate 时根据实体类自动建立表结构，以后自动更新表结构 -->
-        <property name="hbm2ddl.auto">update</property>         
-        <!-- 映射文件 -->
-        <mapping resource="demoinfo/hibernate/relationship/pojo/User.hbm.xml" />  
-    </session-factory>
-</hibernate-configuration>
+&nbsp;&nbsp;PersonInform类：</br>
+<pre  name="code" class="java">
+@Entity  
+@Table(name="hibernate_relationship_personinform")
+public class PersonInform   implements java.io.Serializable
+{  
+	private static final long serialVersionUID = 1L;
+	private int id;
+	private int age;
+	private String mailBox;  
+	private Person person;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO) 
+	@Column(name="Id",length=50,nullable=false)
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	@Column(name="age",length=10)
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	@Column(name="mailBox",length=30)
+	public String getMailBox() {
+		return mailBox;
+	}
+	public void setMailBox(String mailBox) {
+		this.mailBox = mailBox;
+	}
+	// OneToOne指定了一对一的关联关系，一对一中随便指定一方来维护映射关系，这里选择PersonInform来进行维护 
+	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@JoinColumn(name="personCode",unique=true,nullable=false)		//指定外键的名字personCode
+	public Person getPerson() {
+		return person;
+	}
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+	
+}  
 </pre>
-注：<1>对于MySql查询url端口号，可以通过下面的命令来查看:show variables like 'port';</br>
-&nbsp;&nbsp;查询用户名和密码可以通过下面的命令来查看：select host,user,password from mysql.user;</br>
-&nbsp;&nbsp;<2>在创建SessionFactory时,如果不是放在ｓｒｃ下第一层，则应该对加载语句进行修改，以防找不到配置文件，例子如下
-<pre name="code" class="java">
-Configuration cfg=newConfiguration().configure("hibernate/hibernate.cfg.xml");  //实例化Configuration并加载hibernate.cfg.xml文件  
-</pre>
-&nbsp;&nbsp;4>配置 User.hbm.xml</br>
-&nbsp;&nbsp;一个实体类对应一个映射文件，且位于同一个包（package）下。</br>
-<pre name="code" class="xml">
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC
-        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- 映射对应的 package -->
-<hibernate-mapping package="demoinfo.hibernate.relationship.pojo.User">
-    <!-- 实体类和数据库中的表对应（如果没有这个表则新建） -->
-    <class name="User" table="hibernate_user_info">
-        <!-- id主键 和其他属性对应表中相应的字段（这些都是在 User.java 实体类中定义的） -->
-        <id name="id" column="user_id"/>
-        <property name="username" column="user_username"></property>
-        <property name="password" column="user_password"></property>
-    </class>
-</hibernate-mapping>
-</pre>
-&nbsp;&nbsp;5>创建Test测试运行</br>
-<pre name="code" class="java">
-public class CustomTest {
-	@SuppressWarnings("unchecked")
-    public static void main(String[] args) {
-    	AnnotationConfiguration configuration = new AnnotationConfiguration().configure();
-        SessionFactory sessionFactory = configuration.buildSessionFactory();
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        // 1. 普通查询  
-        Query q = session.createQuery(" from User as u");  
-        
-        // 2. 条件查询  
-        //Query q = session.createQuery(" from User as u where u.username = ?");  
-        
-        // 3. 原生 SQL 查询  
-        //SQLQuery q = session.createSQLQuery("select * from hibernate_user_info").addEntity(User.class); 
-        
-        /* 
-        // 4.criteria 查询  
-       	//创造criteria
-        Criteria q = session.createCriteria(User.class);
-        //添加查询条件
-        Criterion cc = Restrictions.between("id", 1, 3); 
-        Criterion cc1 = Restrictions.idEq(2);     
-        q.add(cc); 
-        q.add(cc1);
-        //如果想分页,下面我是把它写死的,写活也比较容易的,自己试.  
-        // q.setFirstResult(0);  
-        //q.setMaxResults(10);          
-         */      
-        List&lt;User&gt; list = q.list();  
-        for (User e : list) {  
-            System.out.println("username: " + e.getUsername() + "  , password: " + e.getPassword());  
-        }   
-        session.getTransaction().commit();
-        session.close();
-        sessionFactory.close();
-    }
-}
-</pre>
- 
+
+&nbsp;&nbsp;注意:在判断到底是谁维护关联关系时，可以通过查看外键，哪个实体类定义了外键，哪个类就负责维护关联关系。</br>
+
  
    </span>
+   一对一单向[oneToOne] </br>
+一对一关系这里定义了一个Person对象以及一个IDCard对象</br>
+Person类：</br>
+   <pre  name="code" class="java">
+@Entity
+@Table(name="t_person")
+public class Person
+{
+    private int id;
+    private String name;
+    private IDCard card;
+    
+    @OneToOne(mappedBy="person")　　--->　　指定了OneToOne的关联关系，mappedBy同样指定由对方来进行维护关联关系
+    public IDCard getCard()
+    {
+        return card;
+    }
+    public void setCard(IDCard card)
+    {
+        this.card = card;
+    }
+    @Id
+    @GeneratedValue
+    public int getId()
+    {
+        return id;
+    }
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+    public String getName()
+    {
+        return name;
+    }
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+    
+}
+
+</pre>
+IDCard类：</br>
+<pre  name="code" class="java">
+@Entity
+@Table(name="t_id_card")
+public class IDCard
+{
+    private int id;
+    private String no;
+    private Person person;
+    
+    @Id
+    @GeneratedValue
+    public int getId()
+    {
+        return id;
+    }
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+    public String getNo()
+    {
+        return no;
+    }
+    public void setNo(String no)
+    {
+        this.no = no;
+    }
+    @OneToOne　　--->　　OnetoOne指定了一对一的关联关系，一对一中随便指定一方来维护映射关系，这里选择IDCard来进行维护
+    @JoinColumn(name="pid")　　--->　　指定外键的名字 pid
+    public Person getPerson()
+    {
+        return person;
+    }
+    public void setPerson(Person person)
+    {
+        this.person = person;
+    }
+}
+
+</pre>
+
+注意:在判断到底是谁维护关联关系时，可以通过查看外键，哪个实体类定义了外键，哪个类就负责维护关联关系。</br>
+   <pre  name="code" class="java">
+public class User {
+
+	private Long groupID;
+
+	@Id
+	@Column(name = "GROUP_ID", length=1)
+	public Long getGroupID() {
+		return groupID;
+	}
+
+	public void setGroupID(Long groupID) {
+		this.groupID = groupID;
+	}
+
+}
+</pre>
+
+一对多[OneToMany]和多对一[ManyToOne] </br>
+这里我们定义了两个实体类，一个是ClassRoom，一个是Student，这两者是一对多的关联关系。</br>
+ClassRoom类：	</br>
+
+<pre  name="code" class="java">
+@Entity
+@Table(name="t_classroom")
+public class ClassRoom
+{
+    private int id;
+    private String className;
+    private Set<Student> students;
+    
+    public ClassRoom()
+    {
+        students = new HashSet<Student>();
+    }
+    
+    public void addStudent(Student student)
+    {
+        students.add(student);
+    }
+
+    @Id
+    @GeneratedValue
+    public int getId()
+    {
+        return id;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
+    public String getClassName()
+    {
+        return className;
+    }
+
+    public void setClassName(String className)
+    {
+        this.className = className;
+    }
+
+    @OneToMany(mappedBy="room")　　--->　　OneToMany指定了一对多的关系，mappedBy="room"指定了由多的那一方来维护关联关系，mappedBy指的是多的一方对1的这一方的依赖的属性，(注意：如果没有指定由谁来维护关联关系，则系统会给我们创建一张中间表)
+    @LazyCollection(LazyCollectionOption.EXTRA)　　--->　　LazyCollection属性设置成EXTRA指定了当如果查询数据的个数时候，只会发出一条 count(*)的语句，提高性能
+    public Set<Student> getStudents()
+    {
+        return students;
+    }
+
+    public void setStudents(Set<Student> students)
+    {
+        this.students = students;
+    }
+    
+}
+</pre>
+
+Student类：</br>
+<pre  name="code" class="java">
+@Entity
+@Table(name="t_student")
+public class Student
+{
+    private int id;
+    private String name;
+    private int age;
+    private ClassRoom room;
+    
+    @ManyToOne(fetch=FetchType.LAZY)　　---> ManyToOne指定了多对一的关系，fetch=FetchType.LAZY属性表示在多的那一方通过延迟加载的方式加载对象(默认不是延迟加载)
+    @JoinColumn(name="rid")　　--->　　通过 JoinColumn 的name属性指定了外键的名称 rid　(注意：如果我们不通过JoinColum来指定外键的名称，系统会给我们声明一个名称)
+    public ClassRoom getRoom()
+    {
+        return room;
+    }
+    public void setRoom(ClassRoom room)
+    {
+        this.room = room;
+    }
+    @Id
+    @GeneratedValue
+    public int getId()
+    {
+        return id;
+    }
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+    public String getName()
+    {
+        return name;
+    }
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+    public int getAge()
+    {
+        return age;
+    }
+    public void setAge(int age)
+    {
+        this.age = age;
+    }
+    
+}
+</pre>
+多对多[ManyToMany]</br>
+多对多这里通常有两种处理方式，一种是通过建立一张中间表，然后由任一一个多的一方来维护关联关系，另一种就是将多对多拆分成两个一对多的关联关系</br>
+1.通过中间表由任一一个多的一方来维护关联关系</br>
+Teacher类：</br>
+<pre  name="code" class="java">
+@Entity
+@Table(name="t_teacher")
+public class Teacher
+{
+    private int id;
+    private String name;
+    private Set<Course> courses;
+    
+    public Teacher()
+    {
+        courses = new HashSet<Course>();
+    }
+    public void addCourse(Course course)
+    {
+        courses.add(course);
+    }
+    
+    @Id
+    @GeneratedValue
+    public int getId()
+    {
+        return id;
+    }
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+    public String getName()
+    {
+        return name;
+    }
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+    @ManyToMany(mappedBy="teachers")　　--->　　表示由Course那一方来进行维护
+    public Set<Course> getCourses()
+    {
+        return courses;
+    }
+    public void setCourses(Set<Course> courses)
+    {
+        this.courses = courses;
+    }
+    
+}
+</pre>
+Course类：</br>
+<pre  name="code" class="java">
+@Entity
+@Table(name="t_course")
+public class Course
+{
+    private int id;
+    private String name;
+    private Set<Teacher> teachers;
+    
+    public Course()
+    {
+        teachers = new HashSet<Teacher>();
+    }
+    public void addTeacher(Teacher teacher)
+    {
+        teachers.add(teacher);
+    }
+    @ManyToMany　　　--->　ManyToMany指定多对多的关联关系
+    @JoinTable(name="t_teacher_course", joinColumns={ @JoinColumn(name="cid")}, 
+    inverseJoinColumns={ @JoinColumn(name = "tid") })　　--->　　因为多对多之间会通过一张中间表来维护两表直接的关系，所以通过 JoinTable 这个注解来声明，name就是指定了中间表的名字，JoinColumns是一个 @JoinColumn类型的数组，表示的是我这方在对方中的外键名称，我方是Course，所以在对方外键的名称就是 rid，inverseJoinColumns也是一个 @JoinColumn类型的数组，表示的是对方在我这放中的外键名称，对方是Teacher，所以在我方外键的名称就是 tid
+    public Set<Teacher> getTeachers()
+    {
+        return teachers;
+    }
+
+    public void setTeachers(Set<Teacher> teachers)
+    {
+        this.teachers = teachers;
+    }
+
+    @Id
+    @GeneratedValue
+    public int getId()
+    {
+        return id;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+}
+</pre>
+2.将Many-to-Many拆分成两个One-to-Many的映射(Admin、Role、AdminRole)</br>
+Admin类：</br>
+<pre  name="code" class="java">
+@Entity
+@Table(name="t_admin")
+public class Admin
+{
+    private int id;
+    private String name;
+    private Set<AdminRole> ars;
+    public Admin()
+    {
+        ars = new HashSet<AdminRole>();
+    }
+    public void add(AdminRole ar)
+    {
+        ars.add(ar);
+    }
+    @Id
+    @GeneratedValue
+    public int getId()
+    {
+        return id;
+    }
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+    public String getName()
+    {
+        return name;
+    }
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+    @OneToMany(mappedBy="admin")　　--->　　OneToMany关联到了AdminRole这个类，由AdminRole这个类来维护多对一的关系，mappedBy="admin"
+    @LazyCollection(LazyCollectionOption.EXTRA)　　
+    public Set<AdminRole> getArs()
+    {
+        return ars;
+    }
+    public void setArs(Set<AdminRole> ars)
+    {
+        this.ars = ars;
+    }
+}
+</pre>
+Role类：</br>
+<pre  name="code" class="java">
+@Entity
+@Table(name="t_role")
+public class Role
+{
+    private int id;
+    private String name;
+    private Set<AdminRole> ars;
+    public Role()
+    {
+        ars = new HashSet<AdminRole>();
+    }
+    public void add(AdminRole ar)
+    {
+        ars.add(ar);
+    }
+    @Id
+    @GeneratedValue
+    public int getId()
+    {
+        return id;
+    }
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+    public String getName()
+    {
+        return name;
+    }
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+    @OneToMany(mappedBy="role")　　--->　　OneToMany指定了由AdminRole这个类来维护多对一的关联关系，mappedBy="role"
+    @LazyCollection(LazyCollectionOption.EXTRA)
+    public Set<AdminRole> getArs()
+    {
+        return ars;
+    }
+    public void setArs(Set<AdminRole> ars)
+    {
+        this.ars = ars;
+    }
+}
+</pre>
+AdminRole类：</br>
+<pre  name="code" class="java">
+@Entity
+@Table(name="t_admin_role")
+public class AdminRole
+{
+    private int id;
+    private String name;
+    private Admin admin;
+    private Role role;
+    @Id
+    @GeneratedValue
+    public int getId()
+    {
+        return id;
+    }
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+    public String getName()
+    {
+        return name;
+    }
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+    @ManyToOne　　--->　　ManyToOne关联到Admin
+    @JoinColumn(name="aid")　　
+    public Admin getAdmin()
+    {
+        return admin;
+    }
+    public void setAdmin(Admin admin)
+    {
+        this.admin = admin;
+    }
+    @ManyToOne　　--->　　
+    @JoinColumn(name="rid")
+    public Role getRole()
+    {
+        return role;
+    }
+    public void setRole(Role role)
+    {
+        this.role = role;
+    }
+}
+</pre>
+小技巧:通过hibernate来进行插入操作的时候，不管是一对多、一对一还是多对多，都只需要记住一点，在哪个实体类声明了外键，就由哪个类来维护关系，在保存数据时，总是先保存的是没有维护关联关系的那一方的数据，后保存维护了关联关系的那一方的数据，如：
+<pre  name="code" class="java">
+　　　　　　Person p = new Person();
+            p.setName("xiaoluo");
+            session.save(p);
+            
+            IDCard card = new IDCard();
+            card.setNo("1111111111");
+            card.setPerson(p);
+            session.save(card);
+</pre>
+注意fetch = FetchType.EAGER，如果选择LAZY，hibernate在事物结束后会关闭session（好像是session的问题），那么无法在事物之外取到被join出来的记录，会提示session被关闭。 
    <span class="include"> 
 		<strong class="s5">&nbsp;</strong> 
 		<strong class="s4">&nbsp;</strong> 

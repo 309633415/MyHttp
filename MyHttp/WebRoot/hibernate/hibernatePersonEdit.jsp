@@ -1,26 +1,25 @@
-<%@ include file="/common/taglibs.jsp" %>
 <%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <html>
 <head>
+	<script src="<%=basePath%>js/jquery-1.7.1.min.js" type="text/javascript"></script>
     <title>hibernate关系映射实例</title>
 </head>
 <body>
-<div style="color:blue;">
-<br/>
-
-</div>
-    
 		<c:choose>
 			<c:when test="${opreateType == 'edit'}">
-				<c:set var="url" value="http://localhost:8080/MyHttp/relationship/updatePerson.action"></c:set>
+				<c:url var="url" value="/relationship/updatePerson.action"></c:url>
 			</c:when>
 			<c:when test="${opreateType == 'add'}">
-				<c:set var="url" value="http://localhost:8080/MyHttp/relationship/addPerson.action"></c:set>
+				<c:url var="url" value="/relationship/addPerson.action"></c:url>
 			</c:when>
 		</c:choose>
 	<div align="center">
-		<form action="${url}" method="post">
+		<form action="${url}" method="post" id="fm">
 			<br />
 			<table border="1" cellpadding="0" cellspacing="0"  width="70%" >
 					<thead>
@@ -47,17 +46,15 @@
 							<c:when test="${opreateType == 'edit'}">
 								${person.personCode}
 								<input type="hidden" name="person.personCode" value="${person.personCode}" size="20"  width="200" />
+								<input type="hidden" name="person.personInform.id"id="person.personInform.id"value="${person.personInform.id}" />
 							</c:when>
 							<c:when test="${opreateType == 'add'}">
-								<input type="text" name="person.personCode" value="${person.personCode}" size="20"  width="200" />
+								<input type="text" name="person.personCode"  id="personCode" size="20"  width="200" />
 							</c:when>
 							<c:when test="${opreateType == 'view'}">
 								${person.personCode}
 							</c:when>
 						</c:choose>
-					<input type="hidden" name="person.personInform.id"
-						id="person.personInform.id"
-						value="${person.personInform.id}" />
 						</td>
 				</tr>
 				<tr>
@@ -65,7 +62,7 @@
 					<td>
 						<c:choose>
 							<c:when test="${opreateType != 'view'}">
-								<input type="text" size="20" width="200"name="person.personName" value="${person.personName }" />
+								<input type="text" size="20" width="200"name="person.personName" value="${person.personName }"  />
 							</c:when>
 							<c:otherwise>
 								${person.personName }
@@ -92,7 +89,7 @@
 					<td>
 						<c:choose>
 							<c:when test="${opreateType != 'view'}">
-								<input type="text" size="20" width="200" name="person.personInform.mailBox" value="${person.personInform.mailBox }" />
+								<input type="text" size="20" width="200" name="person.personInform.mailBox" value="${person.personInform.mailBox }"  />
 							</c:when>
 							<c:otherwise>
 								${person.personInform.mailBox }
@@ -103,14 +100,14 @@
 				<tr>
 					<td align="center" colspan="2" height="30">
 						<c:choose>
-							<c:when test="${opreateType != 'view'}">
-								<input type="submit" value="提交"  />
+							<c:when test="${opreateType == 'edit'}">
+								<input type="submit" value="提交"/>
 								<input type="reset" value="重设" />
 							</c:when>
-							<%-- <c:when test="${opreateType == 'add'}">
-								<input type="submit" value="提交"  />
+							<c:when test="${opreateType == 'add'}">
+								<input type="button" value="提交"  onclick="checkPersonAdd()"/>
 								<input type="reset" value="重设" />
-							</c:when> --%>
+							</c:when>
 						</c:choose>
 						<input type="button" value="返回" onclick="window.history.back(-1)" /></td>
 				</tr>
@@ -118,5 +115,28 @@
 		</table>
 	</form>
 	</div>
+<script type="text/javascript">
+function checkPersonAdd(){
+	var name = $("#personCode").val(); 
+	 $.ajax({
+		url : "<%=basePath%>relationship/checkPersonCode",
+		type : "POST",
+		data : {"name":name},
+		dataType : "json",
+		success : function(data) {
+		 var d = eval("("+data+")");
+		if(d.flag=="true"){
+		 	$("#fm").submit(); 
+		 }
+		 else{
+		 	alert("该编号已经使用过了，请换其他的编号");
+		 	}
+		},
+		error : function(data){
+			alert("内部错误");
+		}
+	}); 
+}
+</script>
 </body>
 </html>
