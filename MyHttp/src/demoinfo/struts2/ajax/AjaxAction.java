@@ -20,8 +20,8 @@ public class AjaxAction extends ActionSupport implements ServletRequestAware{
 
 	private static final long serialVersionUID = -8201401726773589361L;
 
-	private List<String[]> names; // autocompleterʹ��
-	private String start; // autocompleterʹ��
+	private List<String[]> names; // autocompleter返回客户端数组
+	private String start; // autocompleter客户端输入的起始文字
 
 	private String username; //用户名
 	private String pwd;//密码
@@ -54,25 +54,17 @@ public class AjaxAction extends ActionSupport implements ServletRequestAware{
 		this.pwd = pwd;
 	}
 
-	public void setStart(String start) {
-		this.start = start;
-	}
-
-	public List<String[]> getNames() {
-		return names;
-	}
-
 	// 下拉框
 	public String autoCompleter() {
 		names = new ArrayList<String[]>();
 		if (start == null || "".equals(start.trim())) {
-			start = "a";
-		}
-		for (String s : Datas.NAMES) {
-			if (s.toLowerCase().startsWith(start.toLowerCase())) {
-				names.add(new String[] { s, s });
+				start = "a";
 			}
-		}
+		for (String s : Datas.NAMES) {
+				if (s.toLowerCase().startsWith(start.toLowerCase())) {
+					names.add(new String[] { s, s });
+				}
+			}
 		return SUCCESS;
 	}
 
@@ -121,5 +113,22 @@ public class AjaxAction extends ActionSupport implements ServletRequestAware{
 	public void setServletRequest(HttpServletRequest arg0) {
 		this.request = arg0;
 	}
+
+	public List<String[]> getNames() {
+		return names;
+	}
+
+	public void setNames(List<String[]> names) {
+		this.names = names;
+	}
+
+	public String getStart() {
+		return start;
+	}
+
+	public void setStart(String start) {
+		this.start = start;
+	}
+	
 	
 }

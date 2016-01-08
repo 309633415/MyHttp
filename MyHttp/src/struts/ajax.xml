@@ -8,6 +8,7 @@
 <package name="ajax" extends="json-default" namespace="/ajax">
 <!--自动补全的Action-->
   <action name="autoCompleter" class="demoinfo.struts2.ajax.AjaxAction" method="autoCompleter">
+  	<result name="fail"></result>
       <result type="json">
         <param name="root">names</param>
       </result>

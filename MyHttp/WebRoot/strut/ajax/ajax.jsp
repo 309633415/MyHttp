@@ -34,27 +34,5 @@ request.setAttribute("basePath",basePath);
 			</tr>
 		</table>
 	</form>
-
-	<%-- <!--    上面的代码是异步校验的 下面的代码是自动补全的-->
-	<form action="<%=basePath %>/ajax/auatoCompleter.action">
-		<h3>自动补全</h3>
-		<br />
-		<table>
-			<tr>
-				<td class="tdLabel"><label class="label">非AJAX自动补全</label></td>
-				<td><sx:autocompleter name="user" list="@ajax.Datas@NAMES" />
-				</td>
-			</tr>
-			<tr>
-				<td class="tdLabel"><label class="label">AJAX 自动补全:</label></td>
-				<td><s:url id="dataUrl"
-						action="%{#request.basePath}/ajax/autoCompleter.action" /> 
-						<sx:autocompleter name="start" href="%{#request.basePath}/ajax/autoCompleter.action"
-						loadOnTextChange="true" loadMinimumCount="1" autoComplete="true"
-						showDownArrow="false" notifyTopics="/Changed" /> 
-						<img id="indicator" src="/image/12.png" alt="Loading" style="display:none" /></td>
-			</tr>
-		</table>
-	</form> --%>
 </body>
 </html>

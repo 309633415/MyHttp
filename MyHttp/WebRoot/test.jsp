@@ -36,10 +36,22 @@ background: cadetblue;
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
 	<span class="bg"> 
-&nbsp;&nbsp;ajax异步提交数据的传递方式：<br/>
-&nbsp;&nbsp;&nbsp;1.首先按照url和请求方式将序列化好的数据发送至对应的action，被序列化的params是name=123&password=123这样的。<br/>
-&nbsp;&nbsp;&nbsp;2.action在处理完成之后将msg以json的形式发送至客户端，由客户端的js验证。<br/>
-&nbsp;&nbsp;基于struts2+jQuery实现的ajax，与基于struts2实现的ajax相比，不同之处在jQuery对客户端页面的操作更加方便灵活。<br/>
+autocompleter标签有如下几个属性:<br/>
+&nbsp;&nbsp;autoComplete:设置是否在单行文本输入框中显示提示输入<br/>
+&nbsp;&nbsp;forceValidOption:设置单行文本框内是否只接受下拉列表中列表项<br/>
+&nbsp;&nbsp;delay:指定显示下拉列表框之前的延迟时间<br/>
+&nbsp;&nbsp;href:指定异步生成下拉列表项的URL<br/>
+&nbsp;&nbsp;searchType:设置下拉列表项与单行文本框的字符串的匹配模式,可以接受3个值:startstring(显示以文本框中字符串开头的选项,这是默认值);startword(显示以文本框中单词开头的选项);substring(显示包含文本框中字符串的选项).<br/>
+&nbsp;&nbsp;dropdownHeight:设置下拉列表框的高度,默认是120<br/>
+&nbsp;&nbsp;dropdownWidth:设置下拉列表框的宽度,默认与单行文本框的宽度相同.<br/>
+&nbsp;&nbsp;formId:指定发送哪个表单里的表单域的请求参数<br/>
+&nbsp;&nbsp;value:当theme使用simple时,指定该标签的默认值<br/>
+&nbsp;&nbsp;list:指定用于迭代生成下拉选项的集合<br/>
+&nbsp;&nbsp;loadOnTextChange:设置当用户在单行文本框内输入时,是否重新加载列表项.<br/>
+&nbsp;&nbsp;loadMinimumCount:当loadOnTextChange属性设置为true时,该属性设置输入多少字符后,才会触发重新加载列表项.<br/>
+&nbsp;&nbsp;showDownArrow:是否显示下拉箭头,默认是显示.<br/>
+&nbsp;&nbsp;如果我们设置autocompleter标签的autoComplete=true(默认是false),该标签将会在单行文本框中生成输入提示.如果希望强制用户只能输入下拉列表中的列表项,则可以设置forceValidOption=true(默认是false).
+
 	</span> 
 		<span class="include"> 
 		<strong class="s5">&nbsp;</strong> 

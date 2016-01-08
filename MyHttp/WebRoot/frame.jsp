@@ -204,16 +204,16 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 										<a href="#"  id="" onclick="">AOP</a>
 									</li>
 									<li>
-										<a href="#"  id=""  onclick="">Spring事务管理</a>
+										<a href="#"  id=""  onclick="">事务管理</a>
 									</li>
 									<li>
-										<a href="#"  id="" onclick="">SpringJDBC数据库访问</a>
+										<a href="#"  id="" onclick="">JDBC数据库访问</a>
 									</li>
 									<li>
-										<a href="#"  id=""  onclick="">SpringORM整合</a>
+										<a href="#"  id=""  onclick="">ORM整合</a>
 									</li>
 									<li>
-										<a href="#"  id="" onclick="">Spring定时服务QuartZ</a>
+										<a href="#"  id="" onclick="">定时服务QuartZ</a>
 									</li>
 									<li>
 										<a href="#"  id=""  onclick="">SpringMVC</a>
@@ -231,7 +231,7 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 										<a href="#"  id="strutsAjaxJqueryDemo"  onclick="strutsAjaxJqueryDemo()">Ajax简单校验</a>
 									</li>
 									<li>
-										<a href="#"  id=""  onclick="">Ajax查询</a>
+										<a href="#"  id="strutsAutoCompleterDemo"  onclick="strutsAutoCompleterDemo()">Ajax查询</a>
 									</li>
 									<li>
 										<a href="#"  id=""  onclick="">JS取值大全</a>
@@ -371,6 +371,10 @@ function strutsLoginDemo(){
     }
     function strutsAjaxJqueryDemo(){
     	document.getElementById("mainfrm1").src="./common/common.action?target=strutsAjaxJqueryDemo";
+    	document.getElementById("mainfrm1").onload;
+    }
+    function strutsAutoCompleterDemo(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=strutsAutoCompleterDemo";
     	document.getElementById("mainfrm1").onload;
     }
     function strutsJsonDemo(){
