@@ -35,7 +35,7 @@ request.setAttribute("basePath",basePath);
 		</table>
 	</form>
 
-	<!--    上面的代码是异步校验的 下面的代码是自动补全的-->
+	<%-- <!--    上面的代码是异步校验的 下面的代码是自动补全的-->
 	<form action="<%=basePath %>/ajax/auatoCompleter.action">
 		<h3>自动补全</h3>
 		<br />
@@ -55,6 +55,6 @@ request.setAttribute("basePath",basePath);
 						<img id="indicator" src="/image/12.png" alt="Loading" style="display:none" /></td>
 			</tr>
 		</table>
-	</form>
+	</form> --%>
 </body>
 </html>

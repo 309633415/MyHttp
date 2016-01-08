@@ -69,8 +69,13 @@ request.setCharacterEncoding("GBK");
 	    </div>
 	    <div id="spring" class="mulu">
 		    <h2>Spring实例</h2>
-		    <a href="./strut/json/json.jsp">注入</a><br/>
-		    <a href="./strut/json/json.jsp">事务的配置管理</a><br/>
+		    <a href="./strut/json/json.jsp">IOC</a><br/>
+		    <a href="./strut/json/json.jsp">AOP</a><br/>
+		    <a href="./strut/json/json.jsp">Spring事务管理</a><br/>
+		    <a href="./strut/json/json.jsp">SpringJDBC数据库访问</a><br/>
+		    <a href="./strut/json/json.jsp">SpringORM整合</a><br/>
+		    <a href="./strut/json/json.jsp">Spring定时服务QuartZ</a><br/>
+		    <a href="./strut/json/json.jsp">SpringMVC</a><br/>
 	    </div>
 	    <div id="ajax" class="mulu">
 		    <h2>AJAX和javaScript</h2>
