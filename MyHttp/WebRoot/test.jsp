@@ -36,12 +36,10 @@ background: cadetblue;
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
 	<span class="bg"> 
-&nbsp;&nbsp;1.Hibernate的主要目的就是是Java程序员可以随心所欲的使用对象编程思维来操纵数据库。所以,一些数据库表的关系我们应该可以通过hibernate实现,比如在数据库中我们常用到的主外键关系,还有一些跟主外键有关系的设置,比如主键的信息被删除,外键关联的信息也要删除等等,所以,Hibernate同样应该实现这种映射关系。<br/>
- &nbsp;&nbsp;2.@LazyCollection 懒加载注解方式<br/>
-&nbsp;&nbsp;&nbsp;hibernate定义了@ManyToMany和@OneToMany 关联的延迟选项。LazyCollection可选值意义与区别如下：<br/>
-&nbsp;&nbsp;&nbsp;LazyCollectionOption.TRUE：集合具有延迟性，只有在访问的时候才加载。<br/>
-&nbsp;&nbsp;&nbsp;LazyCollectionOption.EXTRA：集合具有延迟性，并且所有的操作都会尽量避免加载集合， 对于一个巨大的集合特别有用，因为这样的集合中的元素没有必要全部加载。<br/>
-&nbsp;&nbsp;&nbsp;LazyCollectionOption.FALSE：非延迟加载的关联。
+&nbsp;&nbsp;ajax异步提交数据的传递方式：<br/>
+&nbsp;&nbsp;&nbsp;1.首先按照url和请求方式将序列化好的数据发送至对应的action，被序列化的params是name=123&password=123这样的。<br/>
+&nbsp;&nbsp;&nbsp;2.action在处理完成之后将msg以json的形式发送至客户端，由客户端的js验证。<br/>
+&nbsp;&nbsp;基于struts2+jQuery实现的ajax，与基于struts2实现的ajax相比，不同之处在jQuery对客户端页面的操作更加方便灵活。<br/>
 	</span> 
 		<span class="include"> 
 		<strong class="s5">&nbsp;</strong> 
@@ -61,7 +59,8 @@ background: cadetblue;
 	</span> 
    <span class="bg"> 
  1:jar包下载地址：<a href="http://struts.apache.org/download.cgi" target="_blank">struts2 jar包</a>
- <a href="http://download.csdn.net/detail/jiashubing/9381656" target="_blank">JSON包合集</a>（包括commons-beanutils.jar,commons-collections.jar,commons-lang-2.1.jar,commons-logging-1.0.4.jar,ezmorph-1.0.2.jar,json-lib-2.1.jar）
+ <a href="http://download.csdn.net/detail/jiashubing/9381656" target="_blank">JSON包合集</a>（包括commons-beanutils.jar,commons-collections.jar,commons-lang-2.1.jar,commons-logging-1.0.4.jar,ezmorph-1.0.2.jar,json-lib-2.1.jar）<br/>
+ 2:jQuery下载地址：<a href="http://download.csdn.net/detail/jiashubing/9395423" target="_blank">jquery-1.7.1.min.js  </a>
    </span>
    <span class="include"> 
 		<strong class="s5">&nbsp;</strong> 
@@ -79,593 +78,146 @@ background: cadetblue;
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
    <span class="bg">
-&nbsp;&nbsp;一对多[OneToMany]和多对一[ManyToOne] </br>
-&nbsp;&nbsp;这里我们定义了两个实体类，一个是ClassRoom，一个是Student，这两者是一对多的关联关系。</br>
-&nbsp;&nbsp;ClassRoom类：</br>
+&nbsp;&nbsp;首先导入需要的jar包，基于struts2的ajax在前端页面传值的时候，可以采用sx标签绑定事件的方法来提交。</br>
+&nbsp;&nbsp;ajax.jsp页面的代码如下：</br>
+   <pre  name="code" class="php">
+&lt;%@ page language="java" import="java.util.*" pageEncoding="GBK"%&gt;
+&lt;%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+request.setAttribute("basePath",basePath);
+%&gt;
+&lt;%@ taglib prefix="sx" uri="/struts-dojo-tags"%&gt;
+&lt;%@taglib prefix="s" uri="/struts-tags"%&gt;
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;sx:head /&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+	&lt;h3&gt;异步校验（基于struts2实现ajax）&lt;/h3&gt;
+	&lt;br&gt;
+	&lt;div style="color:red"&gt;
+		&lt;h3&gt;当输入用户为tom时表示该用户已经注册过，用户名输入框失去焦点后触发异步提交事件&lt;/h3&gt;
+	&lt;/div&gt;
+	&lt;div id="checkinfo"&gt;&lt;/div&gt;
+	&lt;s:url id="url" action="/ajax/checkAjax.action"&gt;&lt;/s:url&gt;
+	&lt;form id="first" action="&lt;%=basePath %&gt;/ajax/checkAjax"&gt;
+		&lt;table&gt;
+			&lt;tr&gt;
+				&lt;td&gt;
+					&lt;s:textfield name="username" label="用户名"&gt;&lt;/s:textfield&gt;&lt;br /&gt;
+					&lt;s:password name="pwd" label="密     码"&gt;&lt;/s:password&gt;&lt;br /&gt; 
+					&lt;s:submit value="提交"&gt;&lt;/s:submit&gt;&lt;br /&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+				&lt;td&gt;&lt;sx:bind formId="first" sources="username" events="onblur"
+						targets="checkinfo"&gt;&lt;/sx:bind&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+		&lt;/table&gt;
+	&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</pre>
+
+&nbsp;&nbsp;接收Action的返回值，显示结果的页面warning.jsp页面的代码如下：
+<pre  name="code" class="php">
+&lt;%@taglib  prefix="s" uri="/struts-tags" %&gt;
+&lt;%@ taglib prefix="sx" uri="/struts-dojo-tags" %&gt;
+&lt;%@page contentType="text/html" pageEncoding="GBK"%&gt;
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd"&gt;
+
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
+        &lt;sx:head/&gt;
+        &lt;title&gt;Test&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;&lt;br&gt;
+        &lt;s:if test="flag==1"&gt;
+            &lt;font color="red"&gt;对不起，该帐号已经被注册过了&lt;/font&gt;
+        &lt;/s:if&gt;
+        &lt;s:else&gt;
+                              该帐号还未被注册
+        &lt;/s:else&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+&nbsp;&nbsp;在struts.xm配置文件中包含ajax.xml，其中的内容是：</br>
+<pre  name="code" class="xml">
+&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd"&gt;
+
+&lt;struts&gt;
+&lt;package name="ajax" extends="json-default" namespace="/ajax"&gt;
+
+&lt;!--   异步校验的Action--&gt;
+   &lt;action name="checkAjax" class="demoinfo.struts2.ajax.AjaxAction" method="checkAjax"&gt;
+        &lt;result&gt;/strut/ajax/waring.jsp&lt;/result&gt;
+   &lt;/action&gt;
+&lt;/package&gt;
+&lt;/struts&gt;
+</pre>
+
+&nbsp;&nbsp;AjaxAction对应的代码为：</br>
    <pre  name="code" class="java">
-@Entity  
-@Table(name="hibernate_relationship_classroom")  
-public class ClassRoom  
-{  
-    private int roomId;  
-    private String roomName;  
-    private List&lt;Student&gt; students=new ArrayList&lt;Student&gt;(0);
-      
-    @Id
-    @Column(name="roomId",length=50,nullable=false)
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    public int getRoomId() {
-		return roomId;
-	}
+package demoinfo.struts2.ajax;
 
-	public void setRoomId(int roomId) {
-		this.roomId = roomId;
-	}
-  
-	@Column(name="roomName")
-    public String getRoomName() {  
-        return roomName;  
-    }  
-  
-    public void setRoomName(String roomName)  {  
-        this.roomName = roomName;  
-    }  
-  
-    /*OneToMany指定了一对多的关系，mappedBy="classRoom"指定了由多的那一方来维护关联关系，mappedBy指的是多的一方对1的这一方的依赖的属性，(注意：如果没有指定由谁来维护关联关系，则系统会给我们创建一张中间表)*/
-    @OneToMany(mappedBy="classRoom",cascade=CascadeType.ALL)	
-    @LazyCollection(LazyCollectionOption.FALSE) /*如果LazyCollection属性设置成EXTRA指定了当如果查询数据的个数时候，只会发出一条 count(*)的语句，提高性能*/
-    public List&lt;Student&gt; getStudents() {
-    	return students;
-    }  
+import com.opensymphony.xwork2.ActionSupport;
+/**
+ * Ajax的Action
+ * **/
+public class AjaxAction extends ActionSupport {
 
-	public void setStudents(List&lt;Student&gt; students) {
-		this.students = students;
-	}
+	private static final long serialVersionUID = -8201401726773589361L;
 
-}  
-</pre>
-&nbsp;&nbsp;Student类：</br>
-<pre  name="code" class="java">
-@Entity  
-@Table(name="hibernate_relationship_student")  
-public class Student  {  
-    private int stuId; 
-    private String stuName; 
-    private int age; 
-    private ClassRoom classRoom;
-    
-    @Id
-	@Column(name="Id",length=50,nullable=false)
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	public int getStuId() {
-		return stuId;
-	}
-	public void setStuId(int stuId) {
-		this.stuId = stuId;
-	}
-	@Column(name="studentName")
-	public String getStuName() {
-		return stuName;
-	}
-	public void setStuName(String stuName) {
-		this.stuName = stuName;
-	}
-	@Column(name="age")
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
-	}
-	/* ManyToOne指定了多对一的关系，fetch=FetchType.LAZY属性表示在多的那一方通过延迟加载的方式加载对象(默认不是延迟加载)*/
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="roomId")/*通过 JoinColumn 的name属性指定了外键的名称 roomId(注意：如果我们不通过JoinColum来指定外键的名称，系统会给我们声明一个名称)*/
+	private String username; //用户名
+	private String pwd;//密码
+	private int flag;//返回客户端的值
 	
-	public ClassRoom getClassRoom() {
-		return classRoom;
+	//Ajax校验
+	public String checkAjax() {
+		if (this.getUsername().equals("tom")) {
+			this.setFlag(1);
+		} else {
+			this.setFlag(2);
+		}
+		return SUCCESS;
 	}
-	public void setClassRoom(ClassRoom classRoom) {
-		this.classRoom = classRoom;
+
+	public int getFlag() {
+		return flag;
+	}
+
+	public void setFlag(int flag) {
+		this.flag = flag;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 	
-}  
-</pre>
-
-小技巧:通过hibernate来进行插入操作的时候，不管是一对多、一对一还是多对多，都只需要记住一点，在哪个实体类声明了外键，就由哪个类来维护关系，在保存数据时，总是先保存的是没有维护关联关系的那一方的数据，后保存维护了关联关系的那一方的数据，如：
-<pre  name="code" class="java">
-Person p = new Person();
-p.setName("xiaoluo");
-session.save(p);         
-IDCard card = new IDCard();
-card.setNo("1111111111");
-card.setPerson(p);
-session.save(card);
-</pre>
-注意fetch = FetchType.EAGER，如果选择LAZY，hibernate在事物结束后会关闭session（好像是session的问题），那么无法在事物之外取到被join出来的记录，会提示session被关闭。
-
-
-&nbsp;&nbsp;注意:在判断到底是谁维护关联关系时，可以通过查看外键，哪个实体类定义了外键，哪个类就负责维护关联关系。</br>
-
- 
+}
+   </pre>
    </span>
-   一对一单向[oneToOne] </br>
-一对一关系这里定义了一个Person对象以及一个IDCard对象</br>
-Person类：</br>
-   <pre  name="code" class="java">
-@Entity
-@Table(name="t_person")
-public class Person
-{
-    private int id;
-    private String name;
-    private IDCard card;
-    
-    @OneToOne(mappedBy="person")　　--->　　指定了OneToOne的关联关系，mappedBy同样指定由对方来进行维护关联关系
-    public IDCard getCard()
-    {
-        return card;
-    }
-    public void setCard(IDCard card)
-    {
-        this.card = card;
-    }
-    @Id
-    @GeneratedValue
-    public int getId()
-    {
-        return id;
-    }
-    public void setId(int id)
-    {
-        this.id = id;
-    }
-    public String getName()
-    {
-        return name;
-    }
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-    
-}
-
-</pre>
-IDCard类：</br>
-<pre  name="code" class="java">
-@Entity
-@Table(name="t_id_card")
-public class IDCard
-{
-    private int id;
-    private String no;
-    private Person person;
-    
-    @Id
-    @GeneratedValue
-    public int getId()
-    {
-        return id;
-    }
-    public void setId(int id)
-    {
-        this.id = id;
-    }
-    public String getNo()
-    {
-        return no;
-    }
-    public void setNo(String no)
-    {
-        this.no = no;
-    }
-    @OneToOne　　--->　　OnetoOne指定了一对一的关联关系，一对一中随便指定一方来维护映射关系，这里选择IDCard来进行维护
-    @JoinColumn(name="pid")　　--->　　指定外键的名字 pid
-    public Person getPerson()
-    {
-        return person;
-    }
-    public void setPerson(Person person)
-    {
-        this.person = person;
-    }
-}
-
-</pre>
-
-注意:在判断到底是谁维护关联关系时，可以通过查看外键，哪个实体类定义了外键，哪个类就负责维护关联关系。</br>
-   <pre  name="code" class="java">
-public class User {
-
-	private Long groupID;
-
-	@Id
-	@Column(name = "GROUP_ID", length=1)
-	public Long getGroupID() {
-		return groupID;
-	}
-
-	public void setGroupID(Long groupID) {
-		this.groupID = groupID;
-	}
-
-}
-</pre>
-
-一对多[OneToMany]和多对一[ManyToOne] </br>
-这里我们定义了两个实体类，一个是ClassRoom，一个是Student，这两者是一对多的关联关系。</br>
-ClassRoom类：	</br>
-
-<pre  name="code" class="java">
-@Entity
-@Table(name="t_classroom")
-public class ClassRoom
-{
-    private int id;
-    private String className;
-    private Set<Student> students;
-    
-    public ClassRoom()
-    {
-        students = new HashSet<Student>();
-    }
-    
-    public void addStudent(Student student)
-    {
-        students.add(student);
-    }
-
-    @Id
-    @GeneratedValue
-    public int getId()
-    {
-        return id;
-    }
-
-    public void setId(int id)
-    {
-        this.id = id;
-    }
-
-    public String getClassName()
-    {
-        return className;
-    }
-
-    public void setClassName(String className)
-    {
-        this.className = className;
-    }
-
-    @OneToMany(mappedBy="room")　　--->　　OneToMany指定了一对多的关系，mappedBy="room"指定了由多的那一方来维护关联关系，mappedBy指的是多的一方对1的这一方的依赖的属性，(注意：如果没有指定由谁来维护关联关系，则系统会给我们创建一张中间表)
-    @LazyCollection(LazyCollectionOption.EXTRA)　　--->　　LazyCollection属性设置成EXTRA指定了当如果查询数据的个数时候，只会发出一条 count(*)的语句，提高性能
-    public Set<Student> getStudents()
-    {
-        return students;
-    }
-
-    public void setStudents(Set<Student> students)
-    {
-        this.students = students;
-    }
-    
-}
-</pre>
-
-Student类：</br>
-<pre  name="code" class="java">
-@Entity
-@Table(name="t_student")
-public class Student
-{
-    private int id;
-    private String name;
-    private int age;
-    private ClassRoom room;
-    
-    @ManyToOne(fetch=FetchType.LAZY)　　---> ManyToOne指定了多对一的关系，fetch=FetchType.LAZY属性表示在多的那一方通过延迟加载的方式加载对象(默认不是延迟加载)
-    @JoinColumn(name="rid")　　--->　　通过 JoinColumn 的name属性指定了外键的名称 rid　(注意：如果我们不通过JoinColum来指定外键的名称，系统会给我们声明一个名称)
-    public ClassRoom getRoom()
-    {
-        return room;
-    }
-    public void setRoom(ClassRoom room)
-    {
-        this.room = room;
-    }
-    @Id
-    @GeneratedValue
-    public int getId()
-    {
-        return id;
-    }
-    public void setId(int id)
-    {
-        this.id = id;
-    }
-    public String getName()
-    {
-        return name;
-    }
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-    public int getAge()
-    {
-        return age;
-    }
-    public void setAge(int age)
-    {
-        this.age = age;
-    }
-    
-}
-</pre>
-多对多[ManyToMany]</br>
-多对多这里通常有两种处理方式，一种是通过建立一张中间表，然后由任一一个多的一方来维护关联关系，另一种就是将多对多拆分成两个一对多的关联关系</br>
-1.通过中间表由任一一个多的一方来维护关联关系</br>
-Teacher类：</br>
-<pre  name="code" class="java">
-@Entity
-@Table(name="t_teacher")
-public class Teacher
-{
-    private int id;
-    private String name;
-    private Set<Course> courses;
-    
-    public Teacher()
-    {
-        courses = new HashSet<Course>();
-    }
-    public void addCourse(Course course)
-    {
-        courses.add(course);
-    }
-    
-    @Id
-    @GeneratedValue
-    public int getId()
-    {
-        return id;
-    }
-    public void setId(int id)
-    {
-        this.id = id;
-    }
-    public String getName()
-    {
-        return name;
-    }
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-    @ManyToMany(mappedBy="teachers")　　--->　　表示由Course那一方来进行维护
-    public Set<Course> getCourses()
-    {
-        return courses;
-    }
-    public void setCourses(Set<Course> courses)
-    {
-        this.courses = courses;
-    }
-    
-}
-</pre>
-Course类：</br>
-<pre  name="code" class="java">
-@Entity
-@Table(name="t_course")
-public class Course
-{
-    private int id;
-    private String name;
-    private Set<Teacher> teachers;
-    
-    public Course()
-    {
-        teachers = new HashSet<Teacher>();
-    }
-    public void addTeacher(Teacher teacher)
-    {
-        teachers.add(teacher);
-    }
-    @ManyToMany　　　--->　ManyToMany指定多对多的关联关系
-    @JoinTable(name="t_teacher_course", joinColumns={ @JoinColumn(name="cid")}, 
-    inverseJoinColumns={ @JoinColumn(name = "tid") })　　--->　　因为多对多之间会通过一张中间表来维护两表直接的关系，所以通过 JoinTable 这个注解来声明，name就是指定了中间表的名字，JoinColumns是一个 @JoinColumn类型的数组，表示的是我这方在对方中的外键名称，我方是Course，所以在对方外键的名称就是 rid，inverseJoinColumns也是一个 @JoinColumn类型的数组，表示的是对方在我这放中的外键名称，对方是Teacher，所以在我方外键的名称就是 tid
-    public Set<Teacher> getTeachers()
-    {
-        return teachers;
-    }
-
-    public void setTeachers(Set<Teacher> teachers)
-    {
-        this.teachers = teachers;
-    }
-
-    @Id
-    @GeneratedValue
-    public int getId()
-    {
-        return id;
-    }
-
-    public void setId(int id)
-    {
-        this.id = id;
-    }
-
-    public String getName()
-    {
-        return name;
-    }
-
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-
-}
-</pre>
-2.将Many-to-Many拆分成两个One-to-Many的映射(Admin、Role、AdminRole)</br>
-Admin类：</br>
-<pre  name="code" class="java">
-@Entity
-@Table(name="t_admin")
-public class Admin
-{
-    private int id;
-    private String name;
-    private Set<AdminRole> ars;
-    public Admin()
-    {
-        ars = new HashSet<AdminRole>();
-    }
-    public void add(AdminRole ar)
-    {
-        ars.add(ar);
-    }
-    @Id
-    @GeneratedValue
-    public int getId()
-    {
-        return id;
-    }
-    public void setId(int id)
-    {
-        this.id = id;
-    }
-    public String getName()
-    {
-        return name;
-    }
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-    @OneToMany(mappedBy="admin")　　--->　　OneToMany关联到了AdminRole这个类，由AdminRole这个类来维护多对一的关系，mappedBy="admin"
-    @LazyCollection(LazyCollectionOption.EXTRA)　　
-    public Set<AdminRole> getArs()
-    {
-        return ars;
-    }
-    public void setArs(Set<AdminRole> ars)
-    {
-        this.ars = ars;
-    }
-}
-</pre>
-Role类：</br>
-<pre  name="code" class="java">
-@Entity
-@Table(name="t_role")
-public class Role
-{
-    private int id;
-    private String name;
-    private Set<AdminRole> ars;
-    public Role()
-    {
-        ars = new HashSet<AdminRole>();
-    }
-    public void add(AdminRole ar)
-    {
-        ars.add(ar);
-    }
-    @Id
-    @GeneratedValue
-    public int getId()
-    {
-        return id;
-    }
-    public void setId(int id)
-    {
-        this.id = id;
-    }
-    public String getName()
-    {
-        return name;
-    }
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-    @OneToMany(mappedBy="role")　　--->　　OneToMany指定了由AdminRole这个类来维护多对一的关联关系，mappedBy="role"
-    @LazyCollection(LazyCollectionOption.EXTRA)
-    public Set<AdminRole> getArs()
-    {
-        return ars;
-    }
-    public void setArs(Set<AdminRole> ars)
-    {
-        this.ars = ars;
-    }
-}
-</pre>
-AdminRole类：</br>
-<pre  name="code" class="java">
-@Entity
-@Table(name="t_admin_role")
-public class AdminRole
-{
-    private int id;
-    private String name;
-    private Admin admin;
-    private Role role;
-    @Id
-    @GeneratedValue
-    public int getId()
-    {
-        return id;
-    }
-    public void setId(int id)
-    {
-        this.id = id;
-    }
-    public String getName()
-    {
-        return name;
-    }
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-    @ManyToOne　　--->　　ManyToOne关联到Admin
-    @JoinColumn(name="aid")　　
-    public Admin getAdmin()
-    {
-        return admin;
-    }
-    public void setAdmin(Admin admin)
-    {
-        this.admin = admin;
-    }
-    @ManyToOne　　--->　　
-    @JoinColumn(name="rid")
-    public Role getRole()
-    {
-        return role;
-    }
-    public void setRole(Role role)
-    {
-        this.role = role;
-    }
-}
-</pre>
-小技巧:通过hibernate来进行插入操作的时候，不管是一对多、一对一还是多对多，都只需要记住一点，在哪个实体类声明了外键，就由哪个类来维护关系，在保存数据时，总是先保存的是没有维护关联关系的那一方的数据，后保存维护了关联关系的那一方的数据，如：
-<pre  name="code" class="java">
-　　　　　　Person p = new Person();
-            p.setName("xiaoluo");
-            session.save(p);
-            
-            IDCard card = new IDCard();
-            card.setNo("1111111111");
-            card.setPerson(p);
-            session.save(card);
-</pre>
-注意fetch = FetchType.EAGER，如果选择LAZY，hibernate在事物结束后会关闭session（好像是session的问题），那么无法在事物之外取到被join出来的记录，会提示session被关闭。 
    <span class="include"> 
 		<strong class="s5">&nbsp;</strong> 
 		<strong class="s4">&nbsp;</strong> 

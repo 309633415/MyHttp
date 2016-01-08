@@ -36,14 +36,10 @@ public class RelationShipAction extends ActionSupport implements ServletRequestA
 	private List<Student> studentList;
 	private List<ClassRoom> classRoomList;
 	private String result;		//ajax返回的result节点，返回success
-	private String personCode;		
 	private HttpServletRequest request;
+	private String personCode;		
 	/** 操作类型 */
 	private String opreateType;
-	
-	public String relationshipDetail(){
-		return "success";
-	}
 	
 	public String doDeletePerson(){
 		relationShipService.deletePerson(personCode);

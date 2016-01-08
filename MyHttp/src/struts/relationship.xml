@@ -5,10 +5,7 @@
 
 <struts>
   <package name="relationship" extends="struts-default,json-default" namespace="/relationship" >
-    <action name ="relationShipAction" class ="demoinfo.hibernate.relationship.RelationShipAction" method="relationshipDetail">    
-        <result name="fail">/common/fail.jsp</result>
-         <result name="success">/common/success.jsp</result>   
-     </action> 
+  
     <action name ="queryLinkList" class ="demoinfo.hibernate.relationship.RelationShipAction" method="doQueryLinkList">    
          <result name="success">/hibernate/hibernateQueryLink.jsp</result>   
      </action> 

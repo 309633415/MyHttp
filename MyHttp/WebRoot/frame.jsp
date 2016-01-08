@@ -210,13 +210,13 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 								<a href="#" class="tablink arwlink">AJAX和javaScript</a>
 								<ul>
 									<li>
-										<a href="#"  id=""  onclick="">AJAX简单的校验</a>
+										<a href="#"  id="strutsAjaxDemo" onclick="strutsAjaxDemo()">Ajax简单特效</a>
 									</li>
 									<li>
-										<a href="#"  id=""  onclick="">AJAX查询</a>
+										<a href="#"  id="strutsAjaxJqueryDemo"  onclick="strutsAjaxJqueryDemo()">Ajax简单校验</a>
 									</li>
 									<li>
-										<a href="#"  id="strutsAjaxDemo" onclick="strutsAjaxDemo()">简单Ajax特效</a>
+										<a href="#"  id=""  onclick="">Ajax查询</a>
 									</li>
 									<li>
 										<a href="#"  id=""  onclick="">JS取值大全</a>
@@ -352,6 +352,10 @@ function strutsLoginDemo(){
     }
     function strutsAjaxDemo(){
     	document.getElementById("mainfrm1").src="./common/common.action?target=strutsAjaxDemo";
+    	document.getElementById("mainfrm1").onload;
+    }
+    function strutsAjaxJqueryDemo(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=strutsAjaxJqueryDemo";
     	document.getElementById("mainfrm1").onload;
     }
     function strutsJsonDemo(){

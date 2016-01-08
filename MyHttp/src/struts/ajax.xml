@@ -6,7 +6,6 @@
 <struts>
 
 <package name="ajax" extends="json-default" namespace="/ajax">
-
 <!--自动补全的Action-->
   <action name="autoCompleter" class="demoinfo.struts2.ajax.AjaxAction" method="autoCompleter">
       <result type="json">
@@ -16,6 +15,13 @@
 <!--   异步校验的Action-->
    <action name="checkAjax" class="demoinfo.struts2.ajax.AjaxAction" method="checkAjax">
         <result>/strut/ajax/waring.jsp</result>
+   </action>
+<!--   异步校验的Action-->
+   <action name="checkJqueryAjax" class="demoinfo.struts2.ajax.AjaxAction" method="checkJqueryAjax">
+        	<result name="fail"></result>
+			<result type="json"><!-- 返回json类型数据 -->
+				<param name="root">result</param><!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->
+			</result>
    </action>
 </package>
 </struts>

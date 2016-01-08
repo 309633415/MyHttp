@@ -11,11 +11,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="<%=basePath%>js/jquery-1.7.1.min.js" type="text/javascript"></script>
 </head>
 <body>
-<div style="color:blue;">
-<br/>
-afasdfsdfsd
-</div>
-       
 	<p><strong>ClassRoom.java实体类对应的数据表的内容是：</strong></p>
 	<table width="100%" border="1px" align="center" cellpadding="0" cellspacing="0">
 		<thead>
