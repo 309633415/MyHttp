@@ -1,6 +1,5 @@
 package demoinfo.struts2.ajax;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,7 +21,6 @@ public class AjaxAction extends ActionSupport implements ServletRequestAware{
 	private static final long serialVersionUID = -8201401726773589361L;
 
 	private List<String[]> names; // autocompleter返回客户端数组
-	private String start; // autocompleter客户端输入的起始文字
 
 	private String username; //用户名
 	private String pwd;//密码
@@ -56,7 +54,7 @@ public class AjaxAction extends ActionSupport implements ServletRequestAware{
 	}
 
 	// 下拉框
-	public String autoCompleter() throws UnsupportedEncodingException {
+	public String autoCompleter(){
 		names = new ArrayList<String[]>();
 		names.add(new String[]{"Alabama","Alabama"});
 		names.add(new String[]{"Alaska","Alaska"});
@@ -180,14 +178,6 @@ public class AjaxAction extends ActionSupport implements ServletRequestAware{
 
 	public void setNames(List<String[]> names) {
 		this.names = names;
-	}
-
-	public String getStart() {
-		return start;
-	}
-
-	public void setStart(String start) {
-		this.start = start;
 	}
 
 }

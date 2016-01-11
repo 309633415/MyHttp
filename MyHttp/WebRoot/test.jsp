@@ -36,22 +36,12 @@ background: cadetblue;
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
 	<span class="bg"> 
-struts2中autocompleter标签有如下几个属性:<br/>
-&nbsp;&nbsp;autoComplete:设置是否在单行文本输入框中显示提示输入<br/>
-&nbsp;&nbsp;forceValidOption:设置单行文本框内是否只接受下拉列表中列表项<br/>
-&nbsp;&nbsp;delay:指定显示下拉列表框之前的延迟时间<br/>
-&nbsp;&nbsp;href:指定异步生成下拉列表项的URL<br/>
-&nbsp;&nbsp;searchType:设置下拉列表项与单行文本框的字符串的匹配模式,可以接受3个值:startstring(显示以文本框中字符串开头的选项,这是默认值);startword(显示以文本框中单词开头的选项);substring(显示包含文本框中字符串的选项).<br/>
-&nbsp;&nbsp;dropdownHeight:设置下拉列表框的高度,默认是120<br/>
-&nbsp;&nbsp;dropdownWidth:设置下拉列表框的宽度,默认与单行文本框的宽度相同.<br/>
-&nbsp;&nbsp;formId:指定发送哪个表单里的表单域的请求参数<br/>
-&nbsp;&nbsp;value:当theme使用simple时,指定该标签的默认值<br/>
-&nbsp;&nbsp;list:指定用于迭代生成下拉选项的集合<br/>
-&nbsp;&nbsp;loadOnTextChange:设置当用户在单行文本框内输入时,是否重新加载列表项.<br/>
-&nbsp;&nbsp;loadMinimumCount:当loadOnTextChange属性设置为true时,该属性设置输入多少字符后,才会触发重新加载列表项.<br/>
-&nbsp;&nbsp;showDownArrow:是否显示下拉箭头,默认是显示.<br/>
-&nbsp;&nbsp;如果我们设置autocompleter标签的autoComplete=true(默认是false),该标签将会在单行文本框中生成输入提示.如果希望强制用户只能输入下拉列表中的列表项,则可以设置forceValidOption=true(默认是false).
-
+<p style="text-indent:2em">控制反转（Inversion of Control，英文缩写为IoC）是一个重要的面向对象编程的法则来削减计算机程序的耦合问题，也是轻量级的Spring框架的核心。 控制反转一般分为两种类型，依赖注入（Dependency Injection，简称DI）和依赖查找（Dependency Lookup）。依赖注入应用比较广泛。</p>
+<p style="text-indent:2em">从注入的方法上看，依赖注入主要可以划分为三种类型：属性注入（set注入）、构造函数注入和接口注入。由于接口注入需要额外声明一个接口，增加了类的数目，而且它的效果和属性注入并无本质区别，因此我们不提倡采用这种方式。</p>
+<p style="text-indent:2em">三种注入方式的区别：</p>
+<p style="text-indent:2em">1.属性注入方式：对于需要注入的东西比较明确。符合java的设计规则。更适合java开发人员，使用起来更加自然，更加方便。</p>
+<p style="text-indent:2em">2.构造函数注入方式：在类加载的时候，就已经注入依赖的组件。但是若是参数多的话，使用起来不方便。</p>
+<p style="text-indent:2em">3.接口注入：组件需要依赖特定接口的实现，其中的加载接口实现和接口实现的具体对象都是由容器来完成。由于需要额外声明一个接口，增加了类的数目，而且它的效果和属性注入并无本质区别，因此我们不提倡采用这种方式。</p>
 	</span> 
 		<span class="include"> 
 		<strong class="s5">&nbsp;</strong> 
@@ -119,12 +109,13 @@ request.setAttribute("basePath",basePath);
 					&lt;s:url id="dataUrl" value="%{#request.basePath}/ajax/autoCompleter.action" /&gt;
 					&lt;!-- name属性必须设置，其名字是什么无所谓 --&gt;
 					 &lt;sx:autocompleter  
+					 	name="start"
 						href="%{dataUrl}" 
 						loadOnTextChange="true"
 						loadMinimumCount="1"
 					 	autoComplete="false" 
-					 	showDownArrow="false" 		
-					 	indicator = "indicator"			
+					 	showDownArrow="false"
+					 	indicator = "indicator"
 					 	/&gt;
 					&lt;!-- indicator是加载时显示的动态图片 --&gt;
 					&lt;img id="indicator" src="../image/indicator.gif" alt="Loading" /&gt;&lt;/td&gt;
@@ -161,7 +152,6 @@ request.setAttribute("basePath",basePath);
    <pre  name="code" class="java">
 package demoinfo.struts2.ajax;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -175,10 +165,9 @@ public class AjaxAction extends ActionSupport{
 	private static final long serialVersionUID = -8201401726773589361L;
 
 	private List&lt;String[]&gt; names; // autocompleter返回客户端数组
-	private String start; // autocompleter客户端输入的起始文字
 
 	// 下拉框
-	public String autoCompleter() throws UnsupportedEncodingException {
+	public String autoCompleter(){
 		names = new ArrayList&lt;String[]&gt;();
 		names.add(new String[]{"Alabama","Alabama"});
 		names.add(new String[]{"Alaska","Alaska"});
@@ -256,14 +245,6 @@ public class AjaxAction extends ActionSupport{
 
 	public void setNames(List&lt;String[]&gt; names) {
 		this.names = names;
-	}
-
-	public String getStart() {
-		return start;
-	}
-
-	public void setStart(String start) {
-		this.start = start;
 	}
 
 }

@@ -26,7 +26,7 @@ request.setAttribute("basePath",basePath);
 					<s:url id="dataUrl" value="%{#request.basePath}/ajax/autoCompleter.action" />
 					<!-- name属性必须设置，其名字是什么无所谓 -->
 					 <sx:autocompleter 
-						name="aaa"
+						name="start"
 						href="%{dataUrl}" 
 						loadOnTextChange="true"
 						loadMinimumCount="1"
