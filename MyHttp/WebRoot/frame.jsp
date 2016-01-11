@@ -242,10 +242,16 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 								<a href="#" class="tablink arwlink">webService实例</a>
 								<ul>
 									<li>
-										<a href="#"  id="webServiceConf"  onclick="webServiceConf()">环境配置</a>
+										<a href="#"  id="webServiceConf"  onclick="webServiceConf()">环境配置(XFire、HttpClient两种方式)</a>
 									</li>
 									<li>
-										<a href="#"  id="webServiceTake"  onclick="webServiceTake()">调取网站服务</a>
+										<a href="#"  id="webServiceTake"  onclick="webServiceTake()">报文解析（Xstream+Xml）</a>
+									</li>
+									<li>
+										<a href="#"  id="webServiceConf"  onclick="webServiceConf()">服务端服务部署（Server）</a>
+									</li>
+									<li>
+										<a href="#"  id="webServiceTake"  onclick="webServiceTake()">客户端（Client）调用服务端</a>
 									</li>
 								</ul>
 							</li>
