@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
  <head>
@@ -7,6 +8,10 @@
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	int flag=1;
+	if(application.getAttribute("knowLedageReady")==null ||application.getAttribute("knowLedageReady")=="")
+		flag=0;
+	request.setAttribute("flag",flag);
 	response.setHeader("Pragma","no-cache");     
 	response.setHeader("Cache-Control","no-cache");    
 	response.setDateHeader("Expires",0);
@@ -25,65 +30,73 @@ background: cadetblue;
 </style>
   </head>
   <body>
-   <h3>知识准备</h3>
-   <div id="circle"> 
-	<span class="include"> 
-		<strong class="s1">&nbsp;</strong> 
-		<strong class="s2">&nbsp;</strong> 
-		<strong class="s3">&nbsp;</strong> 
-		<strong class="s4">&nbsp;</strong> 
-		<strong class="s5">&nbsp;</strong> 
-	</span> 
-	<span id="knowLedageReady" class="bg"> 
-			<%=application.getAttribute("knowLedageReady")%>
-	</span> 
-		<span class="include"> 
-		<strong class="s5">&nbsp;</strong> 
-		<strong class="s4">&nbsp;</strong> 
-		<strong class="s3">&nbsp;</strong> 
-		<strong class="s2">&nbsp;</strong> 
-		<strong class="s1">&nbsp;</strong> 
-	</span> 
-	</div> 
-   <h3>资源准备</h3>
-   <span class="include"> 
-		<strong class="s1">&nbsp;</strong> 
-		<strong class="s2">&nbsp;</strong> 
-		<strong class="s3">&nbsp;</strong> 
-		<strong class="s4">&nbsp;</strong> 
-		<strong class="s5">&nbsp;</strong> 
-	</span> 
-   <span id="resourceReady" class="bg"> 
-   	<%=application.getAttribute("resourceReady")%>
-   </span>
-   <span class="include"> 
-		<strong class="s5">&nbsp;</strong> 
-		<strong class="s4">&nbsp;</strong> 
-		<strong class="s3">&nbsp;</strong> 
-		<strong class="s2">&nbsp;</strong> 
-		<strong class="s1">&nbsp;</strong> 
-	</span> 
-   <h3>示例</h3>
-   <span class="include"> 
-		<strong class="s1">&nbsp;</strong> 
-		<strong class="s2">&nbsp;</strong> 
-		<strong class="s3">&nbsp;</strong> 
-		<strong class="s4">&nbsp;</strong> 
-		<strong class="s5">&nbsp;</strong> 
-	</span> 
-   <span id="example" class="bg">
-		<%=application.getAttribute("example")%>
-   </span>
-   <span class="include"> 
-		<strong class="s5">&nbsp;</strong> 
-		<strong class="s4">&nbsp;</strong> 
-		<strong class="s3">&nbsp;</strong> 
-		<strong class="s2">&nbsp;</strong> 
-		<strong class="s1">&nbsp;</strong> 
-	</span> 
-   <h3>文档</h3>
-<div id="df">
-</div>
+  <c:set var="salary" scope="session" value="${2000*2}"/>
+  <c:choose>
+       <c:when test="${flag==0}">
+              欢迎学习SSH框架
+       </c:when>
+       <c:otherwise>
+		   <h3>知识准备</h3>
+		   <div id="circle"> 
+			<span class="include"> 
+				<strong class="s1">&nbsp;</strong> 
+				<strong class="s2">&nbsp;</strong> 
+				<strong class="s3">&nbsp;</strong> 
+				<strong class="s4">&nbsp;</strong> 
+				<strong class="s5">&nbsp;</strong> 
+			</span> 
+			<span id="knowLedageReady" class="bg"> 
+					<%=application.getAttribute("knowLedageReady")%>
+			</span> 
+				<span class="include"> 
+				<strong class="s5">&nbsp;</strong> 
+				<strong class="s4">&nbsp;</strong> 
+				<strong class="s3">&nbsp;</strong> 
+				<strong class="s2">&nbsp;</strong> 
+				<strong class="s1">&nbsp;</strong> 
+			</span> 
+			</div> 
+		   <h3>资源准备</h3>
+		   <span class="include"> 
+				<strong class="s1">&nbsp;</strong> 
+				<strong class="s2">&nbsp;</strong> 
+				<strong class="s3">&nbsp;</strong> 
+				<strong class="s4">&nbsp;</strong> 
+				<strong class="s5">&nbsp;</strong> 
+			</span> 
+		   <span id="resourceReady" class="bg"> 
+		   	<%=application.getAttribute("resourceReady")%>
+		   </span>
+		   <span class="include"> 
+				<strong class="s5">&nbsp;</strong> 
+				<strong class="s4">&nbsp;</strong> 
+				<strong class="s3">&nbsp;</strong> 
+				<strong class="s2">&nbsp;</strong> 
+				<strong class="s1">&nbsp;</strong> 
+			</span> 
+		   <h3>示例</h3>
+		   <span class="include"> 
+				<strong class="s1">&nbsp;</strong> 
+				<strong class="s2">&nbsp;</strong> 
+				<strong class="s3">&nbsp;</strong> 
+				<strong class="s4">&nbsp;</strong> 
+				<strong class="s5">&nbsp;</strong> 
+			</span> 
+		   <span id="example" class="bg">
+				<%=application.getAttribute("example")%>
+		   </span>
+		   <span class="include"> 
+				<strong class="s5">&nbsp;</strong> 
+				<strong class="s4">&nbsp;</strong> 
+				<strong class="s3">&nbsp;</strong> 
+				<strong class="s2">&nbsp;</strong> 
+				<strong class="s1">&nbsp;</strong> 
+			</span> 
+		   <h3>文档</h3>
+			<div id="df">
+			</div>
+	  </c:otherwise>
+	</c:choose>
 <script language="javascript" src="<%=basePath%>/js/shCore.js"></script> 
 <script language="javascript" src="<%=basePath%>/js/shBrushCSharp.js"></script> 
 <script language="javascript" src="<%=basePath%>/js/shBrushPhp.js"></script> 

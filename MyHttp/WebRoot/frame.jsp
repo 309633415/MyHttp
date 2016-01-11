@@ -328,8 +328,6 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 				</div>
 
 			</div>
-
-
 	</body>
 </html>
 <script>
@@ -432,4 +430,17 @@ function strutsLoginDemo(){
     	document.getElementById("mainfrm1").onload;
     }
     //JBPM工作流实例
+    //iframe框的高度随着浏览器改变而改变
+	$(function(){
+	    var height = $(window).height();
+	    var contentHeight = height - (160);
+	    $("#mainfrm").css("height",contentHeight);
+	    $("#mainfrm1").css("height",contentHeight);
+	});
+	$(window).resize(function () {
+	    var height = $(window).height();
+	    var contentHeight = height - (160);
+	    $("#mainfrm").css("height",contentHeight);
+	    $("#mainfrm1").css("height",contentHeight);
+	});
 </script>
