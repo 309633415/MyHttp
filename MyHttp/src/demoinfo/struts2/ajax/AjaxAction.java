@@ -1,5 +1,6 @@
 package demoinfo.struts2.ajax;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,7 +27,7 @@ public class AjaxAction extends ActionSupport implements ServletRequestAware{
 	private String username; //用户名
 	private String pwd;//密码
 	private int flag;//返回客户端的值
-	
+
 	private String result;		//ajax返回的result节点，返回success
 	private HttpServletRequest request;	//获取页面传来的值
 
@@ -55,16 +56,75 @@ public class AjaxAction extends ActionSupport implements ServletRequestAware{
 	}
 
 	// 下拉框
-	public String autoCompleter() {
+	public String autoCompleter() throws UnsupportedEncodingException {
 		names = new ArrayList<String[]>();
-		if (start == null || "".equals(start.trim())) {
-				start = "a";
-			}
-		for (String s : Datas.NAMES) {
-				if (s.toLowerCase().startsWith(start.toLowerCase())) {
-					names.add(new String[] { s, s });
-				}
-			}
+		names.add(new String[]{"Alabama","Alabama"});
+		names.add(new String[]{"Alaska","Alaska"});
+		names.add(new String[]{"American Samoa","American Samoa"});
+		names.add(new String[]{"Arizona","Arizona"});
+		names.add(new String[]{"Arkansas","Arkansas"});
+		names.add(new String[]{"Armed Forces Europe","Armed Forces Europe"});
+		names.add(new String[]{"Armed Forces Pacific","Armed Forces Pacific"});
+		names.add(new String[]{"Armed Forces the Americas","Armed Forces the Americas"});
+		names.add(new String[]{"Beaver","Beaver"});
+		names.add(new String[]{"Banana Mania","Banana Mania"});
+		names.add(new String[]{"California","California"});
+		names.add(new String[]{"Colorado","Colorado"});
+		names.add(new String[]{"Connecticut","Connecticut"});
+		names.add(new String[]{"Delaware","Delaware"});
+		names.add(new String[]{"District of Columbia","District of Columbia"});
+		names.add(new String[]{"Eggplant","Eggplant"});
+		names.add(new String[]{"Electric Lime","Electric Lime"});
+		names.add(new String[]{"Federated States of Micronesia","Federated States of Micronesia"});
+		names.add(new String[]{"Florida","Florida"});
+		names.add(new String[]{"Georgia","Georgia"});
+		names.add(new String[]{"Guam","Guam"});
+		names.add(new String[]{"Hawaii","Hawaii"});
+		names.add(new String[]{"Idaho","Idaho"});
+		names.add(new String[]{"Illinois","Illinois"});
+		names.add(new String[]{"Indiana","Indiana"});
+		names.add(new String[]{"Iowa","Iowa"});
+		names.add(new String[]{"Jazzberry Jam","Jazzberry Jam"});
+		names.add(new String[]{"Jungle Green","IoJungle Greenwa"});
+		names.add(new String[]{"Kansas","Kansas"});
+		names.add(new String[]{"Kentucky","Kentucky"});
+		names.add(new String[]{"Louisiana","Louisiana"});
+		names.add(new String[]{"Maine","Maine"});
+		names.add(new String[]{"Marshall Islands","Marshall Islands"});
+		names.add(new String[]{"Maryland","Maryland"});
+		names.add(new String[]{"Massachusetts","Massachusetts"});
+		names.add(new String[]{"Michigan","Michigan"});
+		names.add(new String[]{"Minnesota","Minnesota"});
+		names.add(new String[]{"Mississippi","Mississippi"});
+		names.add(new String[]{"Missouri","Missouri"});
+		names.add(new String[]{"Montana","Montana"});
+		names.add(new String[]{"Nebraska","Nebraska"});
+		names.add(new String[]{"Nevada","Nevada"});
+		names.add(new String[]{"New Hampshire","New Hampshire"});
+		names.add(new String[]{"New Jersey","New Jersey"});
+		names.add(new String[]{"New Mexico","New Mexico"});
+		names.add(new String[]{"New York","New York"});
+		names.add(new String[]{"North Carolina","North Carolina"});
+		names.add(new String[]{"North Dakota","North Dakota"});
+		names.add(new String[]{"Northern Mariana Islands","Northern Mariana Islands"});
+		names.add(new String[]{"Oklahoma","Oklahoma"});
+		names.add(new String[]{"Oregon","Oregon"});
+		names.add(new String[]{"Pennsylvania","Pennsylvania"});
+		names.add(new String[]{"Puerto Rico","Puerto Rico"});
+		names.add(new String[]{"Rhode Island","Rhode Island"});
+		names.add(new String[]{"South Carolina","South Carolina"});
+		names.add(new String[]{"South Dakota","South Dakota"});
+		names.add(new String[]{"Tennessee","Tennessee"});
+		names.add(new String[]{"Texas","Texas"});
+		names.add(new String[]{"Utah","Utah"});
+		names.add(new String[]{"Vermont","Vermont"});
+		names.add(new String[]{"Virgin Islands U.S.","Virgin Islands U.S."});
+		names.add(new String[]{"Virginia","Virginia"});
+		names.add(new String[]{"Washington","Washington"});
+		names.add(new String[]{"West Virginia","West Virginia"});
+		names.add(new String[]{"Wisconsin","Wisconsin"});
+		names.add(new String[]{"Wyoming","Wyoming"});
+		names.add(new String[]{"Yellow","Yellow"});
 		return SUCCESS;
 	}
 
@@ -77,7 +137,7 @@ public class AjaxAction extends ActionSupport implements ServletRequestAware{
 		}
 		return SUCCESS;
 	}
-	
+
 	public String checkJqueryAjax() {
 		//获取数据
 		String name = request.getParameter("name");
@@ -129,6 +189,5 @@ public class AjaxAction extends ActionSupport implements ServletRequestAware{
 	public void setStart(String start) {
 		this.start = start;
 	}
-	
-	
+
 }

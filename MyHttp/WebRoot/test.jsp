@@ -36,7 +36,7 @@ background: cadetblue;
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
 	<span class="bg"> 
-autocompleter标签有如下几个属性:<br/>
+struts2中autocompleter标签有如下几个属性:<br/>
 &nbsp;&nbsp;autoComplete:设置是否在单行文本输入框中显示提示输入<br/>
 &nbsp;&nbsp;forceValidOption:设置单行文本框内是否只接受下拉列表中列表项<br/>
 &nbsp;&nbsp;delay:指定显示下拉列表框之前的延迟时间<br/>
@@ -72,7 +72,6 @@ autocompleter标签有如下几个属性:<br/>
    <span class="bg"> 
  1:jar包下载地址：<a href="http://struts.apache.org/download.cgi" target="_blank">struts2 jar包</a>
  <a href="http://download.csdn.net/detail/jiashubing/9381656" target="_blank">JSON包合集</a>（包括commons-beanutils.jar,commons-collections.jar,commons-lang-2.1.jar,commons-logging-1.0.4.jar,ezmorph-1.0.2.jar,json-lib-2.1.jar）<br/>
- 2:jQuery下载地址：<a href="http://download.csdn.net/detail/jiashubing/9395423" target="_blank">jquery-1.7.1.min.js  </a>
    </span>
    <span class="include"> 
 		<strong class="s5">&nbsp;</strong> 
@@ -90,8 +89,8 @@ autocompleter标签有如下几个属性:<br/>
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
    <span class="bg">
-&nbsp;&nbsp;首先导入需要的jar包，基于struts2的ajax在前端页面传值的时候，可以采用sx标签绑定事件的方法来提交。</br>
-&nbsp;&nbsp;ajax.jsp页面的代码如下：</br>
+&nbsp;&nbsp;首先导入需要的jar包，我们使用基于struts2的ajax来实现该例功能。</br>
+&nbsp;&nbsp;ajaxComplete.jsp页面的代码如下：</br>
    <pre  name="code" class="php">
 &lt;%@ page language="java" import="java.util.*" pageEncoding="GBK"%&gt;
 &lt;%
@@ -104,59 +103,37 @@ request.setAttribute("basePath",basePath);
 &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt;
 &lt;html&gt;
 &lt;head&gt;
-&lt;sx:head /&gt;
+	&lt;!-- 注意这里看要加这个标签 --&gt;
+	&lt;sx:head /&gt;
 &lt;/head&gt;
-
 &lt;body&gt;
-	&lt;h3&gt;异步校验（基于struts2实现ajax）&lt;/h3&gt;
 	&lt;br&gt;
-	&lt;div style="color:red"&gt;
-		&lt;h3&gt;当输入用户为tom时表示该用户已经注册过，用户名输入框失去焦点后触发异步提交事件&lt;/h3&gt;
-	&lt;/div&gt;
-	&lt;div id="checkinfo"&gt;&lt;/div&gt;
-	&lt;s:url id="url" action="/ajax/checkAjax.action"&gt;&lt;/s:url&gt;
-	&lt;form id="first" action="&lt;%=basePath %&gt;/ajax/checkAjax"&gt;
+	&lt;h3&gt;自动补全&lt;/h3&gt;
+	&lt;br /&gt;
+	&lt;form&gt;
 		&lt;table&gt;
 			&lt;tr&gt;
-				&lt;td&gt;
-					&lt;s:textfield name="username" label="用户名"&gt;&lt;/s:textfield&gt;&lt;br /&gt;
-					&lt;s:password name="pwd" label="密     码"&gt;&lt;/s:password&gt;&lt;br /&gt; 
-					&lt;s:submit value="提交"&gt;&lt;/s:submit&gt;&lt;br /&gt;&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-				&lt;td&gt;&lt;sx:bind formId="first" sources="username" events="onblur"
-						targets="checkinfo"&gt;&lt;/sx:bind&gt;&lt;/td&gt;
+				&lt;td class="tdLabel"&gt;&lt;label class="label"&gt;AJAX 自动补全:&lt;/label&gt;
+				&lt;/td&gt;
+				&lt;td &gt;
+					&lt;s:url id="dataUrl" value="%{#request.basePath}/ajax/autoCompleter.action" /&gt;
+					&lt;!-- name属性必须设置，其名字是什么无所谓 --&gt;
+					 &lt;sx:autocompleter  
+						href="%{dataUrl}" 
+						loadOnTextChange="true"
+						loadMinimumCount="1"
+					 	autoComplete="false" 
+					 	showDownArrow="false" 		
+					 	indicator = "indicator"			
+					 	/&gt;
+					&lt;!-- indicator是加载时显示的动态图片 --&gt;
+					&lt;img id="indicator" src="../image/indicator.gif" alt="Loading" /&gt;&lt;/td&gt;
 			&lt;/tr&gt;
 		&lt;/table&gt;
-	&lt;/form&gt;
+	&lt;/form&gt; 
 &lt;/body&gt;
 &lt;/html&gt;
 
-</pre>
-
-&nbsp;&nbsp;接收Action的返回值，显示结果的页面warning.jsp页面的代码如下：
-<pre  name="code" class="php">
-&lt;%@taglib  prefix="s" uri="/struts-tags" %&gt;
-&lt;%@ taglib prefix="sx" uri="/struts-dojo-tags" %&gt;
-&lt;%@page contentType="text/html" pageEncoding="GBK"%&gt;
-&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd"&gt;
-
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
-        &lt;sx:head/&gt;
-        &lt;title&gt;Test&lt;/title&gt;
-    &lt;/head&gt;
-    &lt;body&gt;&lt;br&gt;
-        &lt;s:if test="flag==1"&gt;
-            &lt;font color="red"&gt;对不起，该帐号已经被注册过了&lt;/font&gt;
-        &lt;/s:if&gt;
-        &lt;s:else&gt;
-                              该帐号还未被注册
-        &lt;/s:else&gt;
-    &lt;/body&gt;
-&lt;/html&gt;
 </pre>
 
 &nbsp;&nbsp;在struts.xm配置文件中包含ajax.xml，其中的内容是：</br>
@@ -167,12 +144,15 @@ request.setAttribute("basePath",basePath);
     "http://struts.apache.org/dtds/struts-2.0.dtd"&gt;
 
 &lt;struts&gt;
-&lt;package name="ajax" extends="json-default" namespace="/ajax"&gt;
 
-&lt;!--   异步校验的Action--&gt;
-   &lt;action name="checkAjax" class="demoinfo.struts2.ajax.AjaxAction" method="checkAjax"&gt;
-        &lt;result&gt;/strut/ajax/waring.jsp&lt;/result&gt;
-   &lt;/action&gt;
+&lt;package name="ajax" extends="json-default" namespace="/ajax"&gt;
+&lt;!--自动补全的Action--&gt;
+  &lt;action name="autoCompleter" class="demoinfo.struts2.ajax.AjaxAction" method="autoCompleter"&gt;
+  	&lt;result name="fail"&gt;&lt;/result&gt;
+      &lt;result type="json"&gt;
+        &lt;param name="root"&gt;names&lt;/param&gt;
+      &lt;/result&gt;
+   &lt;/action&gt;   
 &lt;/package&gt;
 &lt;/struts&gt;
 </pre>
@@ -181,52 +161,111 @@ request.setAttribute("basePath",basePath);
    <pre  name="code" class="java">
 package demoinfo.struts2.ajax;
 
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.opensymphony.xwork2.ActionSupport;
+
 /**
  * Ajax的Action
  * **/
-public class AjaxAction extends ActionSupport {
+public class AjaxAction extends ActionSupport{
 
 	private static final long serialVersionUID = -8201401726773589361L;
 
-	private String username; //用户名
-	private String pwd;//密码
-	private int flag;//返回客户端的值
-	
-	//Ajax校验
-	public String checkAjax() {
-		if (this.getUsername().equals("tom")) {
-			this.setFlag(1);
-		} else {
-			this.setFlag(2);
-		}
+	private List&lt;String[]&gt; names; // autocompleter返回客户端数组
+	private String start; // autocompleter客户端输入的起始文字
+
+	// 下拉框
+	public String autoCompleter() throws UnsupportedEncodingException {
+		names = new ArrayList&lt;String[]&gt;();
+		names.add(new String[]{"Alabama","Alabama"});
+		names.add(new String[]{"Alaska","Alaska"});
+		names.add(new String[]{"American Samoa","American Samoa"});
+		names.add(new String[]{"Arizona","Arizona"});
+		names.add(new String[]{"Arkansas","Arkansas"});
+		names.add(new String[]{"Armed Forces Europe","Armed Forces Europe"});
+		names.add(new String[]{"Armed Forces Pacific","Armed Forces Pacific"});
+		names.add(new String[]{"Armed Forces the Americas","Armed Forces the Americas"});
+		names.add(new String[]{"Beaver","Beaver"});
+		names.add(new String[]{"Banana Mania","Banana Mania"});
+		names.add(new String[]{"California","California"});
+		names.add(new String[]{"Colorado","Colorado"});
+		names.add(new String[]{"Connecticut","Connecticut"});
+		names.add(new String[]{"Delaware","Delaware"});
+		names.add(new String[]{"District of Columbia","District of Columbia"});
+		names.add(new String[]{"Eggplant","Eggplant"});
+		names.add(new String[]{"Electric Lime","Electric Lime"});
+		names.add(new String[]{"Federated States of Micronesia","Federated States of Micronesia"});
+		names.add(new String[]{"Florida","Florida"});
+		names.add(new String[]{"Georgia","Georgia"});
+		names.add(new String[]{"Guam","Guam"});
+		names.add(new String[]{"Hawaii","Hawaii"});
+		names.add(new String[]{"Idaho","Idaho"});
+		names.add(new String[]{"Illinois","Illinois"});
+		names.add(new String[]{"Indiana","Indiana"});
+		names.add(new String[]{"Iowa","Iowa"});
+		names.add(new String[]{"Jazzberry Jam","Jazzberry Jam"});
+		names.add(new String[]{"Jungle Green","IoJungle Greenwa"});
+		names.add(new String[]{"Kansas","Kansas"});
+		names.add(new String[]{"Kentucky","Kentucky"});
+		names.add(new String[]{"Louisiana","Louisiana"});
+		names.add(new String[]{"Maine","Maine"});
+		names.add(new String[]{"Marshall Islands","Marshall Islands"});
+		names.add(new String[]{"Maryland","Maryland"});
+		names.add(new String[]{"Massachusetts","Massachusetts"});
+		names.add(new String[]{"Michigan","Michigan"});
+		names.add(new String[]{"Minnesota","Minnesota"});
+		names.add(new String[]{"Mississippi","Mississippi"});
+		names.add(new String[]{"Missouri","Missouri"});
+		names.add(new String[]{"Montana","Montana"});
+		names.add(new String[]{"Nebraska","Nebraska"});
+		names.add(new String[]{"Nevada","Nevada"});
+		names.add(new String[]{"New Hampshire","New Hampshire"});
+		names.add(new String[]{"New Jersey","New Jersey"});
+		names.add(new String[]{"New Mexico","New Mexico"});
+		names.add(new String[]{"New York","New York"});
+		names.add(new String[]{"North Carolina","North Carolina"});
+		names.add(new String[]{"North Dakota","North Dakota"});
+		names.add(new String[]{"Northern Mariana Islands","Northern Mariana Islands"});
+		names.add(new String[]{"Oklahoma","Oklahoma"});
+		names.add(new String[]{"Oregon","Oregon"});
+		names.add(new String[]{"Pennsylvania","Pennsylvania"});
+		names.add(new String[]{"Puerto Rico","Puerto Rico"});
+		names.add(new String[]{"Rhode Island","Rhode Island"});
+		names.add(new String[]{"South Carolina","South Carolina"});
+		names.add(new String[]{"South Dakota","South Dakota"});
+		names.add(new String[]{"Tennessee","Tennessee"});
+		names.add(new String[]{"Texas","Texas"});
+		names.add(new String[]{"Utah","Utah"});
+		names.add(new String[]{"Vermont","Vermont"});
+		names.add(new String[]{"Virgin Islands U.S.","Virgin Islands U.S."});
+		names.add(new String[]{"Virginia","Virginia"});
+		names.add(new String[]{"Washington","Washington"});
+		names.add(new String[]{"West Virginia","West Virginia"});
+		names.add(new String[]{"Wisconsin","Wisconsin"});
+		names.add(new String[]{"Wyoming","Wyoming"});
+		names.add(new String[]{"Yellow","Yellow"});
 		return SUCCESS;
 	}
 
-	public int getFlag() {
-		return flag;
+	public List&lt;String[]&gt; getNames() {
+		return names;
 	}
 
-	public void setFlag(int flag) {
-		this.flag = flag;
+	public void setNames(List&lt;String[]&gt; names) {
+		this.names = names;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getStart() {
+		return start;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setStart(String start) {
+		this.start = start;
 	}
 
-	public String getPwd() {
-		return pwd;
-	}
-
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
-	}
-	
 }
    </pre>
    </span>
