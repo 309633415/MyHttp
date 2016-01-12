@@ -15,7 +15,8 @@ request.setAttribute("basePath",basePath);
 <body>
 	<br/>
 	<h3>自动补全</h3>
-	<br />
+	<p><strong>Autocompleter标签</strong><br/>
+         &nbsp;&nbsp;生成一个带下拉按钮的单行文本输入框,当用户单击下拉按钮时,将看到一系列的选项,单击某个选项时可以将该选项填入单行文本框。</p>
 	<p style="text-indent:2em">本例使用基于struts2的ajax方法实现，实现过程非常简单，其中数据是在Action中添加的，可以从右侧代码中查看详细信息。</p>
 	<form>
 		<table>

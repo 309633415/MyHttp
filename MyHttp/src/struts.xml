@@ -37,8 +37,10 @@
               <result name="ormCrudQueryLinkDemo" type="redirect">/relationship/queryLinkList.action</result>
               <result name="relationshipDemo" type="redirect">/relationship/oneToOneList.action</result>
               <result name="relationshipOneToMany" type="redirect">/relationship/oneToManyList.action</result>
-              <!-- <result name="relationshipDemo">/hibernate/hibernateRelationship.jsp</result>    -->  
               <!-- hibernate 实例　end -->
+              <!-- spring 实例  start-->
+              <result name="springIocDemo" >/spring/springIoc.jsp</result>
+              <!-- spring 实例  end-->
               <!-- webService 实例  start-->
               <result name="webServiceConf">/webservice/webServiceConf.jsp</result>
               <result name="webServiceTake">/webservice/webServiceTake.jsp</result>

@@ -69,7 +69,7 @@ request.setCharacterEncoding("GBK");
 	    </div>
 	    <div id="spring" class="mulu">
 		    <h2>Spring实例</h2>
-		    <a href="./strut/json/json.jsp">IOC</a><br/>
+		    <a href="./common/common.action?target=springIocDemo">IOC</a><br/>
 		    <a href="./strut/json/json.jsp">AOP</a><br/>
 		    <a href="./strut/json/json.jsp">Spring事务管理</a><br/>
 		    <a href="./strut/json/json.jsp">SpringJDBC数据库访问</a><br/>

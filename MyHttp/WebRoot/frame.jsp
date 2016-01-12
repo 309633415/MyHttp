@@ -198,7 +198,7 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 								<a href="#" class="tablink arwlink">SpringÊµÀý</a>
 								<ul>
 									<li>
-										<a href="#"  id=""  onclick="">IOC</a>
+										<a href="#"  id="springIocDemo"  onclick="springIocDemo()">IOC</a>
 									</li>
 									<li>
 										<a href="#"  id="" onclick="">AOP</a>
@@ -423,6 +423,10 @@ function strutsLoginDemo(){
     	document.getElementById("mainfrm1").onload;
     }
     //Spring
+   function springIocDemo(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=springIocDemo";
+    	document.getElementById("mainfrm1").onload;
+    }
     //AJAXºÍjavaScript
     //webService
     function webServiceConf(){
