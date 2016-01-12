@@ -36,12 +36,15 @@ background: cadetblue;
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
 	<span class="bg"> 
-<p style="text-indent:2em">控制反转（Inversion of Control，英文缩写为IoC）是一个重要的面向对象编程的法则来削减计算机程序的耦合问题，也是轻量级的Spring框架的核心。 控制反转一般分为两种类型，依赖注入（Dependency Injection，简称DI）和依赖查找（Dependency Lookup）。依赖注入应用比较广泛。</p>
-<p style="text-indent:2em">从注入的方法上看，依赖注入主要可以划分为三种类型：属性注入（set注入）、构造函数注入和接口注入。由于接口注入需要额外声明一个接口，增加了类的数目，而且它的效果和属性注入并无本质区别，因此我们不提倡采用这种方式。</p>
-<p style="text-indent:2em">三种注入方式的区别：</p>
-<p style="text-indent:2em">1.属性注入方式：对于需要注入的东西比较明确。符合java的设计规则。更适合java开发人员，使用起来更加自然，更加方便。</p>
-<p style="text-indent:2em">2.构造函数注入方式：在类加载的时候，就已经注入依赖的组件。但是若是参数多的话，使用起来不方便。</p>
-<p style="text-indent:2em">3.接口注入：组件需要依赖特定接口的实现，其中的加载接口实现和接口实现的具体对象都是由容器来完成。由于需要额外声明一个接口，增加了类的数目，而且它的效果和属性注入并无本质区别，因此我们不提倡采用这种方式。</p>
+<p>JavaScript取值的方法：</p>
+<p style="text-indent:2em">1.getElementById()	返回对拥有指定 id 的第一个对象的引用。假如对应的为一组对象，则返回该组对象中的第一个。</p>
+<p style="text-indent:2em">2.getElementsByName()	返回带有指定名称的对象集合。该方法与 getElementById() 方法相似，但是它查询元素的 name 属性，而不是 id 属性。<br/>
+&nbsp;&nbsp;另外，因为一个文档中的 name 属性可能不唯一（如 HTML 表单中的单选按钮通常具有相同的 name 属性），所有 getElementsByName() 方法返回的是元素的数组，而不是一个元素。</p>
+<p style="text-indent:2em">3.getElementsByClassName() 方法返回文档中所有指定类名的元素集合，作为 NodeList 对象。<br/>
+&nbsp;&nbsp;NodeList 对象代表一个有顺序的节点列表。NodeList 对象 我们可通过节点列表中的节点索引号来访问列表中的节点(索引号由0开始)。<br/>
+&nbsp;&nbsp;提示： 你可以使用 NodeList 对象的 length 属性来确定指定类名的元素个数，并循环各个元素来获取你需要的那个元素。</p>
+<p style="text-indent:2em">4.getElementsByTagName() 返回带有指定标签名的对象集合，该方法返回元素的顺序是它们在文档中的顺序。<br/>
+&nbsp;&nbsp;如果把特殊字符串 "*" 传递给 getElementsByTagName() 方法，它将返回文档中所有元素的列表，元素排列的顺序就是它们在文档中的顺序。</p>
 	</span> 
 		<span class="include"> 
 		<strong class="s5">&nbsp;</strong> 
@@ -79,52 +82,70 @@ background: cadetblue;
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
    <span class="bg">
-&nbsp;&nbsp;首先导入需要的jar包，我们使用基于struts2的ajax来实现该例功能。</br>
-&nbsp;&nbsp;ajaxComplete.jsp页面的代码如下：</br>
+&nbsp;&nbsp;JS取值只需要在普通的jsp页面中就可以使用</br>
+&nbsp;&nbsp;jsp页面的代码如下：</br>
    <pre  name="code" class="php">
 &lt;%@ page language="java" import="java.util.*" pageEncoding="GBK"%&gt;
-&lt;%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-request.setAttribute("basePath",basePath);
-%&gt;
-&lt;%@ taglib prefix="sx" uri="/struts-dojo-tags"%&gt;
-&lt;%@taglib prefix="s" uri="/struts-tags"%&gt;
 &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt;
 &lt;html&gt;
 &lt;head&gt;
-	&lt;!-- 注意这里看要加这个标签 --&gt;
-	&lt;sx:head /&gt;
 &lt;/head&gt;
+
 &lt;body&gt;
-	&lt;br&gt;
-	&lt;h3&gt;自动补全&lt;/h3&gt;
-	&lt;br /&gt;
-	&lt;form&gt;
-		&lt;table&gt;
-			&lt;tr&gt;
-				&lt;td class="tdLabel"&gt;&lt;label class="label"&gt;AJAX 自动补全:&lt;/label&gt;
-				&lt;/td&gt;
-				&lt;td &gt;
-					&lt;s:url id="dataUrl" value="%{#request.basePath}/ajax/autoCompleter.action" /&gt;
-					&lt;!-- name属性必须设置，其名字是什么无所谓 --&gt;
-					 &lt;sx:autocompleter  
-					 	name="start"
-						href="%{dataUrl}" 
-						loadOnTextChange="true"
-						loadMinimumCount="1"
-					 	autoComplete="false" 
-					 	showDownArrow="false"
-					 	indicator = "indicator"
-					 	/&gt;
-					&lt;!-- indicator是加载时显示的动态图片 --&gt;
-					&lt;img id="indicator" src="../image/indicator.gif" alt="Loading" /&gt;&lt;/td&gt;
-			&lt;/tr&gt;
-		&lt;/table&gt;
-	&lt;/form&gt; 
+	&lt;p&gt;
+	&lt;h3&gt;JS取值大全&lt;/h3&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		测试输入框：&lt;input type="text" id="testId" class="testClass" name="testName"
+			style="width:300px" /&gt;
+	&lt;/p&gt;
+	&lt;p&gt;1.通过 id属性 获取&lt;/p&gt;
+	&lt;p style="color:blue"&gt;document.getElementById("testId").value="我是通过id获取到的";&lt;/p&gt;
+	&lt;p&gt;
+		&lt;input type="button" onclick="selectById()" value="通过id获取" /&gt;
+	&lt;/p&gt;
+	&lt;p&gt;2.通过 name属性 获取&lt;/p&gt;
+	&lt;p style="color:blue"&gt;document.getElementsByName("testName")[0].value="我是通过name获取到的";&lt;/p&gt;
+	&lt;p style="text-indent:2em"&gt;注意：这里 getElementsByName 比 getElementById
+		多了一个s，一定要注意区分。因为一个文档中的 name 属性可能不唯一（如 HTML 表单中的单选按钮通常具有相同的 name 属性），所有
+		getElementsByName() 方法返回的是元素的数组，而不是一个元素。&lt;/p&gt;
+	&lt;p&gt;
+		&lt;input type="button" onclick="selectByName()" value="通过name获取" /&gt;
+	&lt;/p&gt;
+	&lt;p&gt;3.通过 class属性 获取&lt;/p&gt;
+	&lt;p style="color:blue"&gt;document.getElementsByName("testName")[0].value="我是通过name获取到的";&lt;/p&gt;
+	&lt;p style="text-indent:2em"&gt;注意: Internet Explorer 8 及更早 IE 版本不支持
+		getElementsByClassName() 方法。&lt;/p&gt;
+	&lt;p&gt;
+		&lt;input type="button" onclick="selectByClassName()" value="通过class获取" /&gt;
+	&lt;/p&gt;
+	&lt;p&gt;4.通过 tag 标签名获取&lt;/p&gt;
+	&lt;p style="color:blue"&gt;
+		var x= document.getElementsByTagName("input");&lt;br /&gt;
+		x[0].value="我是通过tag获取到的，共有"+x.length+"个&lt;input&gt;标签";
+	&lt;/p&gt;
+	&lt;p style="text-indent:2em"&gt;注意: Internet Explorer 8 及更早 IE 版本不支持
+		getElementsByClassName() 方法。&lt;/p&gt;
+	&lt;p&gt;
+		&lt;input type="button" onclick="selectByTagName()" value="通过tag标签获取" /&gt;
+	&lt;/p&gt;
+	&lt;script type="text/javascript"&gt;
+		function selectById() {
+			document.getElementById("testId").value = "我是通过id获取到的";
+		}
+		function selectByName() {
+			document.getElementsByName("testName")[0].value = "我是通过name获取到的";
+		}
+		function selectByClassName() {
+			document.getElementsByClassName("testClass")[0].value = "我是通过class获取到的";
+		}
+		function selectByTagName() {
+			var x = document.getElementsByTagName("input");
+			x[0].value = "我是通过tag获取到的，一共有" + x.length + "个&lt;input&gt;标签";
+		}
+	&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-
 </pre>
 
 &nbsp;&nbsp;在struts.xm配置文件中包含ajax.xml，其中的内容是：</br>

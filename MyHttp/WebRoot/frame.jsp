@@ -234,7 +234,7 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 										<a href="#"  id="strutsAutoCompleterDemo"  onclick="strutsAutoCompleterDemo()">Ajax查询</a>
 									</li>
 									<li>
-										<a href="#"  id=""  onclick="">JS取值大全</a>
+										<a href="#"  id="selectValueDemo"  onclick="selectValueDemo()">JS取值大全</a>
 									</li>
 								</ul>
 							</li>
@@ -379,6 +379,10 @@ function strutsLoginDemo(){
     }
     function strutsAutoCompleterDemo(){
     	document.getElementById("mainfrm1").src="./common/common.action?target=strutsAutoCompleterDemo";
+    	document.getElementById("mainfrm1").onload;
+    }
+    function selectValueDemo(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=selectValueDemo";
     	document.getElementById("mainfrm1").onload;
     }
     function strutsJsonDemo(){

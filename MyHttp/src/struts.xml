@@ -25,6 +25,7 @@
               <result name="strutsAjaxDemo">/strut/ajax/ajax.jsp</result>    
               <result name="strutsAjaxJqueryDemo">/strut/ajax/jqueryAjax.jsp</result>    
               <result name="strutsAutoCompleterDemo">/strut/ajax/autoCompleter.jsp</result>    
+              <result name="selectValueDemo">/strut/ajax/selectValue.jsp</result>    
               <result name="strutsJsonDemo">/strut/json/json.jsp</result>    
               <!--struts2 实例 end-->
               <!-- hibernate 实例　start -->

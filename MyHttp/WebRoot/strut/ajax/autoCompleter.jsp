@@ -13,7 +13,7 @@ request.setAttribute("basePath",basePath);
 	<sx:head />
 </head>
 <body>
-	<br>
+	<br/>
 	<h3>自动补全</h3>
 	<br />
 	<p style="text-indent:2em">本例使用基于struts2的ajax方法实现，实现过程非常简单，其中数据是在Action中添加的，可以从右侧代码中查看详细信息。</p>
