@@ -75,8 +75,8 @@ request.setCharacterEncoding("GBK");
 		    <h2>Spring实例</h2>
 		    <a href="./common/common.action?target=springIocDemo">IOC</a><br/>
 		    <a href="./common/common.action?target=springAopDemo">AOP</a><br/>
+		    <a href="./common/common.action?target=springJdbcDemo">SpringJDBC数据库访问</a><br/>
 		    <a href="./strut/json/json.jsp">Spring事务管理</a><br/>
-		    <a href="./strut/json/json.jsp">SpringJDBC数据库访问</a><br/>
 		    <a href="./strut/json/json.jsp">SpringORM整合</a><br/>
 		    <a href="./strut/json/json.jsp">Spring定时服务QuartZ</a><br/>
 		    <a href="./strut/json/json.jsp">SpringMVC</a><br/>

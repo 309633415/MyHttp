@@ -36,14 +36,16 @@ background: cadetblue;
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
 	<span class="bg"> 
-<p style="text-indent:2em">什么是AOP?<br/>
-&nbsp;&nbsp;AOP: (Aspect Oriented Programming) 面向切面编程。是目前软件开发中的一个热点，也是Spring框架中容。利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率。主要的功能是：日志记录，性能统计，安全控制，事务处理，异常处理等等。</p>
-<p style="text-indent:2em">什么是OOP？AOP与其有什么区别？<br/>
-&nbsp;&nbsp;AOP、OOP在字面上虽然非常类似，但却是面向不同领域的两种设计思想。OOP（面向对象编程）针对业务处理过程的实体及其属性和行为进行抽象封装，以获得更加清晰高效的逻辑单元划分。 而AOP则是针对业务处理过程中的切面进行提取，它所面对的是处理过程中的某个步骤或阶段，以获得逻辑过程中各部分之间低耦合性的隔离效果。这两种设计思想在目标上有着本质的差异。<br/>
-&nbsp;&nbsp;通俗来讲，OOP面向名词领域，AOP面向动词领域。</p>
-<p style="text-indent:2em">如何理解AOP?<br/>
-&nbsp;&nbsp;举个简单例子，比如你想在每次写字之前都检查一下笔里有没有墨水了，通常的做法是：在写字这个Action里调用判断是否有墨水的方法。这样做的不好一个方面是，写字的Action和是否有墨水的方法产生了依赖，如果你有十几支不同的笔写字，每一个笔的Action里都要调用判断是否有墨水的方法；另一个方面是：就面向对象的程序设计来说，写字和判断是否有墨水的方法是同一等级的，如果你让写字这个动作来判断是否有墨水不够人性化，有违面向对象的程序设计的思想。<br/>
-&nbsp;&nbsp;如果用Spring的AOP，是把写字的Action作为一个切面，在每次调用不同的笔来写字的方法之前，调用判断是否有墨水的方法。它是由&lt;aop:config/&gt;标签在Spring配置文件里定义的。</p>
+<p style="text-indent:2em">传统的Java后台数据开发，其步骤非常乏味枯燥，重复劳动特别多。Spring针对JDBC这种情况，重新对JDBC进行封装，避免了开发者每次都进行重复的、普通的开发，而集中精力去处理具体业务逻辑。</p>
+<p style="text-indent:2em">在Spring API中提供了四个包用于完成Spring JDBC操作，它们都在org.springframework.jdbc包下，分别是:<br/>
+&nbsp;&nbsp;1）core<br/>
+&nbsp;&nbsp;即核心包，它包含了JDBC的核心功能。此包内有很多重要的类，包括：JdbcTemplate类、SimpleJdbcInsert类，SimpleJdbcCall类，以及NamedParameterJdbcTemplate类。<br/>
+&nbsp;&nbsp;2）datasource<br/>
+&nbsp;&nbsp;即数据源包，访问数据源的实用工具类。它有多种数据源的实现，可以在JavaEE容器外部测试JDBC代码。<br/>
+&nbsp;&nbsp;3）object<br/>
+&nbsp;&nbsp;即对象包，以面向对象的方式访问数据库。它允许执行查询并返回结果作为业务对象。它可以在数据表的列和业务对象的属性之间映射查询结果。<br/>
+&nbsp;&nbsp;4）support<br/>
+&nbsp;&nbsp;即支持包，是core包和object包的支持类。例如提供了异常转换功能的SQLException类。</p>
 	</span> 
 		<span class="include"> 
 		<strong class="s5">&nbsp;</strong> 
@@ -81,105 +83,113 @@ background: cadetblue;
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
    <span class="bg">
-&nbsp;&nbsp;AOP的实现可以使用注解和xml配置文件两种方式，这里使用xml配置文件方式。示例的过程见左侧的“示例展示”，下面是源码：</br>
-&nbsp;&nbsp;首先建立一个接口Performer类</br>
+&nbsp;&nbsp;首先使用mysql数据库，简单的创建一张表，然后通过Spring配置数据源，读取该表中的内容</br>
+&nbsp;&nbsp;然后创建数据库操作类UserDAO，代码如下所示：</br>
    <pre  name="code" class="java">
-package demoinfo.spring.aop;
+package demoinfo.spring.jdbc;
 
-public interface Performer {
-	//表演歌曲
-	public void perform();
+import java.util.List;
+import org.springframework.jdbc.core.support.JdbcDaoSupport;
+
+public class UserDAO extends JdbcDaoSupport{
+	@SuppressWarnings("rawtypes")
+	public List getAllUserList(){
+		try{
+			return getJdbcTemplate().queryForList("select id,studentName,age from hibernate_relationship_student");
+		}catch (RuntimeException re){
+			throw re;
+		}
+	}
+	public int saveOrupdate(String sql,Object[] params,int[] types){
+		try{
+		return getJdbcTemplate().update(sql,params,types);
+		}catch (RuntimeException re){
+			throw re;
+		}
+	}
+
 }
+
 </pre>
-&nbsp;&nbsp;再建立一个接口实现类DukePerformer</br>
+&nbsp;&nbsp;实现测试类TestJDBC</br>
   <pre  name="code" class="java">
-package demoinfo.spring.aop;
+package demoinfo.spring.jdbc;
 
-public class DukePerformer implements  Performer{
-    private String name;  
-    public void setName(String name)  {  
-        this.name=name;  
-    }  
-    public String getName()  {  
-        return this.name;  
-    }  
-    public void perform() {  
-        System.out.println(this.name+" 开始演唱歌曲。");  
-    }  
-} 
+import java.util.Iterator;
+import java.util.Map;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-</pre>
-&nbsp;&nbsp;Audience观众业务类</br>
-  <pre  name="code" class="java">
-  package demoinfo.spring.aop;
-
-public class Audience {  
-	public void takeSeat()  {  
-		System.out.println("观众坐在座位上。");  
-	}  
-	public void turnOffPhone()   {  
-		System.out.println("观众关闭手机。");  
-	}  
-	public void applaud()  {  
-		System.out.println("观众鼓掌，掌声经久不息...");  
-	}  
-	public void unHappy()  {  
-		System.out.println("观众不高兴.");  
-	}  
-}  
+public class TestJDBC {
+	@SuppressWarnings("rawtypes")
+	public static void main(String[] args){
+		//获得Spring中定义的Bean实例(对象)
+        ApplicationContext ctx = new ClassPathXmlApplicationContext(     
+        "classpath:demoinfo/spring/jdbc/applicationContext.xml ");   
+        UserDAO userDAO = (UserDAO)ctx.getBean("userDAO");
+        Iterator iterator = userDAO.getAllUserList().iterator();
+        System.out.println("user     password");
+        while(iterator.hasNext()){
+        	Map user = (Map) iterator.next();
+        	System.out.println(user.get("studentName")+"     "+user.get("age"));
+        }
+	}
+}
 
 </pre>
-&nbsp;&nbsp;配置文件applicationContext.xml代码如下：</br>
-<pre  name="code" class="xml">
+&nbsp;&nbsp;编写配置文件applicationContext.xml</br>
+  <pre  name="code" class="xml">
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-           http://www.springframework.org/schema/aop
-           http://www.springframework.org/schema/aop/spring-aop-2.0.xsd"&gt;
-	&lt;!-- AOP学习时的配置 --&gt;
-	&lt;bean id="DukePerformer" class="demoinfo.spring.aop.DukePerformer"&gt;
-		&lt;property name="name" value="duke" /&gt;
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context   
+     http://www.springframework.org/schema/context/spring-context-3.0.xsd   
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd 
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd"&gt;
+	&lt;!-- 配置连接池 --&gt;
+	&lt;bean id="dataSource" 
+	class="org.springframework.jdbc.datasource.DriverManagerDataSource"&gt;
+		&lt;!-- 配置驱动程序 --&gt;
+		&lt;property name="driverClassName"&gt;
+			&lt;value&gt;com.mysql.jdbc.Driver&lt;/value&gt;
+		&lt;/property&gt;
+		&lt;!-- 配置URL --&gt;
+		&lt;property name="url"&gt;
+			&lt;value&gt;jdbc:mysql://localhost:3306/myhttp?useUnicode=true&amp;characterEncoding=gbk
+			&lt;/value&gt;
+		&lt;/property&gt;
+		&lt;!-- 配置用户 --&gt;
+		&lt;property name="username"&gt;
+			&lt;value&gt;root&lt;/value&gt;
+		&lt;/property&gt;
+		&lt;!-- 配置密码 --&gt;
+		&lt;property name="password"&gt;
+			&lt;value&gt;19921002&lt;/value&gt;
+		&lt;/property&gt;
 	&lt;/bean&gt;
-	&lt;bean id="audience" class="demoinfo.spring.aop.Audience" /&gt;
-	
-	&lt;aop:config&gt;
-		&lt;!-- 定义切入点 --&gt;
-		&lt;aop:pointcut id="sing" expression="execution(* *.perform(..))"/&gt;
-		&lt;!-- 定义切面 --&gt;
-		&lt;aop:aspect ref="audience"&gt;
-			&lt;!-- 前置通知 --&gt;
-			&lt;aop:before method="takeSeat" pointcut-ref="sing" /&gt;
-			&lt;aop:before method="turnOffPhone" pointcut-ref="sing" /&gt;
-			&lt;!-- 返回后通知 --&gt;
-			&lt;aop:after-returning method="applaud" pointcut-ref="sing" /&gt;
-			&lt;!-- 抛出后通知 --&gt;
-			&lt;aop:after-throwing method="unHappy" pointcut-ref="sing" /&gt;
-		&lt;/aop:aspect&gt;
-	&lt;/aop:config&gt;
-	&lt;!-- AOP学习时的配置 --&gt;
+	&lt;!-- 配置模板类 --&gt;
+	&lt;bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+		abstract="false" scope="singleton" lazy-init="default" autowire="default"&gt;
+		&lt;property name="dataSource"&gt;
+			&lt;ref local="dataSource" /&gt;
+		&lt;/property&gt;
+	&lt;/bean&gt;
+	&lt;!-- 配置DAO类 --&gt;
+	&lt;bean id="userDAO" class="demoinfo.spring.jdbc.UserDAO" abstract="false"
+		scope="singleton" lazy-init="default" autowire="default"&gt;
+		&lt;property name="jdbcTemplate"&gt;
+			&lt;ref local="jdbcTemplate" /&gt;
+		&lt;/property&gt;
+	&lt;/bean&gt;
+
 &lt;/beans&gt;
-
+ 
 </pre>
-&nbsp;&nbsp;最后测试类代码如下：</br>
-<pre  name="code" class="java">
-package demoinfo.spring.aop;
 
-import org.springframework.context.ApplicationContext;  
-import org.springframework.context.support.FileSystemXmlApplicationContext;  
-
-public class SpringDemo {  
-    public static void main(String[] args) {  
-    	//获得Spring中定义的Bean实例(对象)
-        ApplicationContext ctx=new FileSystemXmlApplicationContext(
-        		"classpath:demoinfo/spring/aop/applicationContext.xml");  
-        Performer per=(Performer)ctx.getBean("DukePerformer");  
-        per.perform();  
-    }  
-}  
-
-</pre>
    </span>
    <span class="include"> 
 		<strong class="s5">&nbsp;</strong> 

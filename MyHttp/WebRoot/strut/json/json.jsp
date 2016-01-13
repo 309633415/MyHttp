@@ -63,7 +63,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </script>
 </head>
 <body>
-<%=basePath%>
 	<input type="button" value="检索书" onclick="retrieveBook()" />
 	<div id="bookHolder"></div>
 	<a href="<%=basePath%>/json/writeJson.action">json显示JSON数据格式</a>

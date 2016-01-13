@@ -41,6 +41,7 @@
               <!-- spring 实例  start-->
               <result name="springIocDemo" >/spring/springIoc.jsp</result>
               <result name="springAopDemo" >/spring/springAop.jsp</result>
+              <result name="springJdbcDemo" >/spring/springJdbc.jsp</result>
               <!-- spring 实例  end-->
               <!-- webService 实例  start-->
               <result name="webServiceConf">/webservice/webServiceConf.jsp</result>

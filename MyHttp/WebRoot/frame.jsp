@@ -204,10 +204,10 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 										<a href="#"  id="springAopDemo" onclick="springAopDemo()">AOP</a>
 									</li>
 									<li>
-										<a href="#"  id=""  onclick="">事务管理</a>
+										<a href="#"  id="springJdbcDemo" onclick="springJdbcDemo()">JDBC数据库访问</a>
 									</li>
 									<li>
-										<a href="#"  id="" onclick="">JDBC数据库访问</a>
+										<a href="#"  id=""  onclick="">事务管理</a>
 									</li>
 									<li>
 										<a href="#"  id=""  onclick="">ORM整合</a>
@@ -429,6 +429,10 @@ function strutsLoginDemo(){
     }
    function springAopDemo(){
     	document.getElementById("mainfrm1").src="./common/common.action?target=springAopDemo";
+    	document.getElementById("mainfrm1").onload;
+    }
+   function springJdbcDemo(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=springJdbcDemo";
     	document.getElementById("mainfrm1").onload;
     }
     //AJAX和javaScript
