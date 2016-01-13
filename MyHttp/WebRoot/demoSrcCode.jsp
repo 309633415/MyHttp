@@ -33,7 +33,9 @@ background: cadetblue;
   <c:set var="salary" scope="session" value="${2000*2}"/>
   <c:choose>
        <c:when test="${flag==0}">
-              欢迎学习SSH框架
+              <p><h2>欢迎来到 Java菜鸟 学习网站</h1></p> 
+              <p><h3>本网站主要介绍SSH框架、Ajax、webService等基础知识，希望对您有所帮助！</h3></p>
+              <img alt="Java菜鸟" src="<%=basePath %>/image/java.jpg" style="width:50%; margin-left:25%; margin-right:25%;">
        </c:when>
        <c:otherwise>
 		   <h3>知识准备</h3>
