@@ -201,7 +201,7 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 										<a href="#"  id="springIocDemo"  onclick="springIocDemo()">IOC</a>
 									</li>
 									<li>
-										<a href="#"  id="" onclick="">AOP</a>
+										<a href="#"  id="springAopDemo" onclick="springAopDemo()">AOP</a>
 									</li>
 									<li>
 										<a href="#"  id=""  onclick="">事务管理</a>
@@ -242,16 +242,16 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 								<a href="#" class="tablink arwlink">webService实例</a>
 								<ul>
 									<li>
-										<a href="#"  id="webServiceConf"  onclick="webServiceConf()">环境配置(XFire、HttpClient两种方式)</a>
+										<a href="#"  id="webServiceConf"  onclick="webServiceConf()">环境配置</a>
 									</li>
 									<li>
-										<a href="#"  id="webServiceTake"  onclick="webServiceTake()">报文解析（Xstream+Xml）</a>
+										<a href="#"  id="webServiceTake"  onclick="webServiceTake()">报文解析</a>
 									</li>
 									<li>
-										<a href="#"  id="webServiceConf"  onclick="webServiceConf()">服务端服务部署（Server）</a>
+										<a href="#"  id="webServiceConf"  onclick="webServiceConf()">服务端服务部署</a>
 									</li>
 									<li>
-										<a href="#"  id="webServiceTake"  onclick="webServiceTake()">客户端（Client）调用服务端</a>
+										<a href="#"  id="webServiceTake"  onclick="webServiceTake()">客户端调用服务端</a>
 									</li>
 								</ul>
 							</li>
@@ -425,6 +425,10 @@ function strutsLoginDemo(){
     //Spring
    function springIocDemo(){
     	document.getElementById("mainfrm1").src="./common/common.action?target=springIocDemo";
+    	document.getElementById("mainfrm1").onload;
+    }
+   function springAopDemo(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=springAopDemo";
     	document.getElementById("mainfrm1").onload;
     }
     //AJAX和javaScript

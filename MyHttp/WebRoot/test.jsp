@@ -81,100 +81,103 @@ background: cadetblue;
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
    <span class="bg">
-&nbsp;&nbsp;我们使用set注入的方法来实现一个例子，示例的过程见左侧的“示例展示”，下面是源码：</br>
-&nbsp;&nbsp;首先建立一个设备接口IDeviceWriter类</br>
+&nbsp;&nbsp;AOP的实现可以使用注解和xml配置文件两种方式，这里使用xml配置文件方式。示例的过程见左侧的“示例展示”，下面是源码：</br>
+&nbsp;&nbsp;首先建立一个接口Performer类</br>
    <pre  name="code" class="java">
-package demoinfo.spring.ioc;
+package demoinfo.spring.aop;
 
-/**
- * 设备接口
- */
-public interface IDeviceWriter {     
-    public void saveToDevice();     
-}    
-
+public interface Performer {
+	//表演歌曲
+	public void perform();
+}
 </pre>
-&nbsp;&nbsp;再建立2个设备类</br>
-&nbsp;&nbsp;软盘类</br>
+&nbsp;&nbsp;再建立一个接口实现类DukePerformer</br>
   <pre  name="code" class="java">
-package demoinfo.spring.ioc;
+package demoinfo.spring.aop;
 
-/**
- * 软盘类
- */
-public class FloppyWriter implements IDeviceWriter {     
-    public void saveToDevice() {     
-        System.out.println("储存至软盘…");     
-    }     
-} 
-
-</pre>
-&nbsp;&nbsp;USB类</br>
-  <pre  name="code" class="java">
-package demoinfo.spring.ioc;
-
-/**
- * USB类
- */
-public class UsbDiskWriter implements IDeviceWriter {  
-    public void saveToDevice() {  
-        System.out.println("储存至移动硬盘…");  
+public class DukePerformer implements  Performer{
+    private String name;  
+    public void setName(String name)  {  
+        this.name=name;  
+    }  
+    public String getName()  {  
+        return this.name;  
+    }  
+    public void perform() {  
+        System.out.println(this.name+" 开始演唱歌曲。");  
     }  
 } 
 
 </pre>
-&nbsp;&nbsp;BusinessBean业务类</br>
+&nbsp;&nbsp;Audience观众业务类</br>
   <pre  name="code" class="java">
-  package demoinfo.spring.ioc;
+  package demoinfo.spring.aop;
 
-/**
- * 磁盘业务的业务JavaBean类
- */
-public class BusinessBean {  
-    private IDeviceWriter writer;  
-  
-    public void setDeviceWriter(IDeviceWriter writer) {  
-        this.writer = writer;  
-    }  
-  
-    public IDeviceWriter getDeviceWriter() {  
-        return writer;  
-    }  
-  
-    public void save() {  
-        if (writer == null) {  
-            throw new RuntimeException("DeviceWriter needed...");  
-        }  
-        writer.saveToDevice();  
-    }  
-} 
+public class Audience {  
+	public void takeSeat()  {  
+		System.out.println("观众坐在座位上。");  
+	}  
+	public void turnOffPhone()   {  
+		System.out.println("观众关闭手机。");  
+	}  
+	public void applaud()  {  
+		System.out.println("观众鼓掌，掌声经久不息...");  
+	}  
+	public void unHappy()  {  
+		System.out.println("观众不高兴.");  
+	}  
+}  
+
 </pre>
-&nbsp;&nbsp;配置文件businessFactoryConfig.xml代码如下：</br>
+&nbsp;&nbsp;配置文件applicationContext.xml代码如下：</br>
 <pre  name="code" class="xml">
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
-	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-	http://www.springframework.org/schema/context   
-     http://www.springframework.org/schema/context/spring-context-3.0.xsd   
-     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd 
-     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd"
-     default-autowire="byName"&gt;
-
-	&lt;bean id="floppy" class="demoinfo.spring.ioc.FloppyWriter"/&gt;    
-    &lt;bean id="usb" class="demoinfo.spring.ioc.UsbDiskWriter"/&gt;    
-            
-    &lt;bean id="businessBean"      
-          class="demoinfo.spring.ioc.BusinessBean"&gt;      
-        &lt;property name="deviceWriter"&gt;    
-            &lt;ref bean="usb"/&gt;    
-        &lt;/property&gt;      
-    &lt;/bean&gt;      
-
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-2.0.xsd"&gt;
+	&lt;!-- AOP学习时的配置 --&gt;
+	&lt;bean id="DukePerformer" class="demoinfo.spring.aop.DukePerformer"&gt;
+		&lt;property name="name" value="duke" /&gt;
+	&lt;/bean&gt;
+	&lt;bean id="audience" class="demoinfo.spring.aop.Audience" /&gt;
+	
+	&lt;aop:config&gt;
+		&lt;!-- 定义切入点 --&gt;
+		&lt;aop:pointcut id="sing" expression="execution(* *.perform(..))"/&gt;
+		&lt;!-- 定义切面 --&gt;
+		&lt;aop:aspect ref="audience"&gt;
+			&lt;!-- 前置通知 --&gt;
+			&lt;aop:before method="takeSeat" pointcut-ref="sing" /&gt;
+			&lt;aop:before method="turnOffPhone" pointcut-ref="sing" /&gt;
+			&lt;!-- 返回后通知 --&gt;
+			&lt;aop:after-returning method="applaud" pointcut-ref="sing" /&gt;
+			&lt;!-- 抛出后通知 --&gt;
+			&lt;aop:after-throwing method="unHappy" pointcut-ref="sing" /&gt;
+		&lt;/aop:aspect&gt;
+	&lt;/aop:config&gt;
+	&lt;!-- AOP学习时的配置 --&gt;
 &lt;/beans&gt;
+
+</pre>
+&nbsp;&nbsp;最后测试类代码如下：</br>
+<pre  name="code" class="java">
+package demoinfo.spring.aop;
+
+import org.springframework.context.ApplicationContext;  
+import org.springframework.context.support.FileSystemXmlApplicationContext;  
+
+public class SpringDemo {  
+    public static void main(String[] args) {  
+    	//获得Spring中定义的Bean实例(对象)
+        ApplicationContext ctx=new FileSystemXmlApplicationContext(
+        		"classpath:demoinfo/spring/aop/applicationContext.xml");  
+        Performer per=(Performer)ctx.getBean("DukePerformer");  
+        per.perform();  
+    }  
+}  
 
 </pre>
    </span>

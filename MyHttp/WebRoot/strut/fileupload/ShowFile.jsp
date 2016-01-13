@@ -7,7 +7,7 @@
 </head> 
 <body > 
     <div style ="padding: 3px; border: solid 1px #cccccc; text-align: center" > 
-           <img src ='../image/<s:property value ="imageFileName" />'/>
+           <img style="max-width:100%;"src ='../image/<s:property value ="imageFileName" />'/>
         <br/> 
         <s:property value ="caption" /> 
     </div> 

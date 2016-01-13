@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
 <p style="text-indent:2em">Spring的一大特点是利用配置的xml文件实现依赖注入。 所谓依赖注入是指把一个业务对象注入另一个业务对象，从而达到对象间的松耦合。（注意是业务对象哦！）<br/>
 &nbsp;&nbsp;依赖注入讲的通俗一点，就是让一个对象的创建不用new了，可以自动的生产。这其实是利用java里的反射，反射就是在运行时动态的去创建、调用对象。</p>
-<p style="text-indent:2em">下面我们来举个例子（具体代码参见右侧源码，只适合菜鸟看，高手看了不要笑） </p>
+<p style="text-indent:2em">下面我们来举个例子（具体代码参见右侧源码，只适合菜鸟看） </p>
 <p><strong>示例场景</strong></p>
 <p style="text-indent:2em">场景：现在有个磁盘输出的业务，客户端需要通过2个业务对象进行输出。 一个是通过Floppy(软盘)，另一个是通过USB接口。<br/>
 &nbsp;&nbsp;如果是一般的写法，如果我们要进行磁盘输出业务，必须先new一个USB对象或者软盘对象，进行的次数多了就会非常的重复。<br/>
