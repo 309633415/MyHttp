@@ -441,13 +441,13 @@ function strutsLoginDemo(){
     //iframe框的高度随着浏览器改变而改变
 	$(function(){
 	    var height = $(window).height();
-	    var contentHeight = height - (160);
+	    var contentHeight = height - (156);
 	    $("#mainfrm").css("height",contentHeight);
 	    $("#mainfrm1").css("height",contentHeight);
 	});
 	$(window).resize(function () {
 	    var height = $(window).height();
-	    var contentHeight = height - (160);
+	    var contentHeight = height - (156);
 	    $("#mainfrm").css("height",contentHeight);
 	    $("#mainfrm1").css("height",contentHeight);
 	});

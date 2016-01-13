@@ -36,12 +36,14 @@ background: cadetblue;
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
 	<span class="bg"> 
-<p style="text-indent:2em">控制反转（Inversion of Control，英文缩写为IoC）是一个重要的面向对象编程的法则来削减计算机程序的耦合问题，也是轻量级的Spring框架的核心。 控制反转一般分为两种类型，依赖注入（Dependency Injection，简称DI）和依赖查找（Dependency Lookup）。依赖注入应用比较广泛。<br/>
-&nbsp;&nbsp;从注入的方法上看，依赖注入主要可以划分为三种类型：属性注入（set注入）、构造函数注入和接口注入。由于接口注入需要额外声明一个接口，增加了类的数目，而且它的效果和属性注入并无本质区别，因此我们不提倡采用这种方式。</p>
-<p style="text-indent:2em">三种注入方式的区别：<br/>
-&nbsp;&nbsp;1.属性注入方式：对于需要注入的东西比较明确。符合java的设计规则。更适合java开发人员，使用起来更加自然，更加方便。<br/>
-&nbsp;&nbsp;2.构造函数注入方式：在类加载的时候，就已经注入依赖的组件。但是若是参数多的话，使用起来不方便。<br/>
-&nbsp;&nbsp;3.接口注入：组件需要依赖特定接口的实现，其中的加载接口实现和接口实现的具体对象都是由容器来完成。由于需要额外声明一个接口，增加了类的数目，而且它的效果和属性注入并无本质区别，因此我们不提倡采用这种方式。</p>
+<p style="text-indent:2em">什么是AOP?<br/>
+&nbsp;&nbsp;AOP: (Aspect Oriented Programming) 面向切面编程。是目前软件开发中的一个热点，也是Spring框架中容。利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率。主要的功能是：日志记录，性能统计，安全控制，事务处理，异常处理等等。</p>
+<p style="text-indent:2em">什么是OOP？AOP与其有什么区别？<br/>
+&nbsp;&nbsp;AOP、OOP在字面上虽然非常类似，但却是面向不同领域的两种设计思想。OOP（面向对象编程）针对业务处理过程的实体及其属性和行为进行抽象封装，以获得更加清晰高效的逻辑单元划分。 而AOP则是针对业务处理过程中的切面进行提取，它所面对的是处理过程中的某个步骤或阶段，以获得逻辑过程中各部分之间低耦合性的隔离效果。这两种设计思想在目标上有着本质的差异。<br/>
+&nbsp;&nbsp;通俗来讲，OOP面向名词领域，AOP面向动词领域。</p>
+<p style="text-indent:2em">如何理解AOP?<br/>
+&nbsp;&nbsp;举个简单例子，比如你想在每次写字之前都检查一下笔里有没有墨水了，通常的做法是：在写字这个Action里调用判断是否有墨水的方法。这样做的不好一个方面是，写字的Action和是否有墨水的方法产生了依赖，如果你有十几支不同的笔写字，每一个笔的Action里都要调用判断是否有墨水的方法；另一个方面是：就面向对象的程序设计来说，写字和判断是否有墨水的方法是同一等级的，如果你让写字这个动作来判断是否有墨水不够人性化，有违面向对象的程序设计的思想。<br/>
+&nbsp;&nbsp;如果用Spring的AOP，是把写字的Action作为一个切面，在每次调用不同的笔来写字的方法之前，调用判断是否有墨水的方法。它是由&lt;aop:config/&gt;标签在Spring配置文件里定义的。</p>
 	</span> 
 		<span class="include"> 
 		<strong class="s5">&nbsp;</strong> 
@@ -61,7 +63,7 @@ background: cadetblue;
 	</span> 
    <span class="bg"> 
  1:jar包下载地址：<a href="http://repo.springsource.org/libs-release-local" target="_blank">spring jar包</a><br/>
- 2.详细学习参考spring参考手册<a href="http://download.csdn.net/detail/jiashubing/9401325" target="_blank">spring jar包</a><br/>
+ 2.详细学习参考spring参考手册<a href="http://download.csdn.net/detail/jiashubing/9401325" target="_blank">spring参考手册</a>
    </span>
    <span class="include"> 
 		<strong class="s5">&nbsp;</strong> 

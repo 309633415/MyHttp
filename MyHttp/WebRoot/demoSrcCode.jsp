@@ -36,6 +36,10 @@ background: cadetblue;
               <p><h2>欢迎来到 Java菜鸟 学习网站</h1></p> 
               <p><h3>本网站主要介绍SSH框架、Ajax、webService等基础知识，希望对您有所帮助！</h3></p>
               <img alt="Java菜鸟" src="<%=basePath %>/image/java.jpg" style="width:50%; margin-left:25%; margin-right:25%;">
+              <p style="text-indent:2em"><strong>使用方法：</strong></p>
+              <p style="text-indent:2em">针对每一个知识点，在左侧页面“示例展示”中会使用该知识点举一个例子，实现它的效果；在右侧“源码”中将它相关的代码都列了出来。为了尽量简单讲解，有些程序是运行在web项目中，有些则是直接运行application。</p>
+              <p style="text-indent:2em">因为代码是从项目中单独拿出来的，可能会有赘余或者不足，如遇错误之处，还望谅解。</p>
+              </p>
        </c:when>
        <c:otherwise>
 		   <h3>知识准备</h3>
