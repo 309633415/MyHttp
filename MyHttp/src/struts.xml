@@ -43,6 +43,7 @@
               <result name="springAopDemo" >/spring/springAop.jsp</result>
               <result name="springJdbcDemo" >/spring/springJdbc.jsp</result>
               <result name="springTransactionDemo" >/spring/springTransaction.jsp</result>
+              <result name="springMvcDemo" >/spring/springMvc.jsp</result>
               <!-- spring 实例  end-->
               <!-- webService 实例  start-->
               <result name="webServiceConf">/webservice/webServiceConf.jsp</result>

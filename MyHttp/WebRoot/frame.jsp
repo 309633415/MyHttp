@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
-		<title>实例展示及代码分析</title>
+		<title>JAVA菜鸟学习</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 		<script type="text/javascript" src="js/js.js"></script>
@@ -16,6 +16,7 @@ body {
 	margin: 0px 2px;
 	padding: 0;
 	line-height: 2em;
+	
 	background-color: lightslategray;
 }
 
@@ -124,7 +125,7 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 				<div class="innertube">
 					<center>
 						<h1>
-							示例和代码分析
+							JAVA菜鸟学习
 							<br />
 						</h1>
 					</center>
@@ -216,7 +217,7 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 										<a href="#"  id="" onclick="">定时服务QuartZ</a>
 									</li>
 									<li>
-										<a href="#"  id=""  onclick="">SpringMVC</a>
+										<a href="#"  id="springMvcDemo"  onclick="springMvcDemo()">SpringMVC</a>
 									</li>
 								</ul>
 								<div class="hot"></div>
@@ -437,6 +438,10 @@ function strutsLoginDemo(){
     }
    function springTransactionDemo(){
     	document.getElementById("mainfrm1").src="./common/common.action?target=springTransactionDemo";
+    	document.getElementById("mainfrm1").onload;
+    }
+   function springMvcDemo(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=springMvcDemo";
     	document.getElementById("mainfrm1").onload;
     }
     //AJAX和javaScript

@@ -79,7 +79,7 @@ request.setCharacterEncoding("GBK");
 		    <a href="./common/common.action?target=springTransactionDemo">Spring事务管理</a><br/>
 		    <a href="./strut/json/json.jsp">SpringORM整合</a><br/>
 		    <a href="./strut/json/json.jsp">Spring定时服务QuartZ</a><br/>
-		    <a href="./strut/json/json.jsp">SpringMVC</a><br/>
+		    <a href="./common/common.action?target=springMvcDemo">SpringMVC</a><br/>
 	    </div>
 	    <div id="ajax" class="mulu">
 		    <h2>AJAX和javaScript</h2>
