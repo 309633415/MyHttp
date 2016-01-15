@@ -36,24 +36,15 @@ background: cadetblue;
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
 	<span class="bg"> 
-<p style="text-indent:2em">什么是Quartz？<br/>
-&nbsp;&nbsp;Quartz是一个强大的企业级任务调度框架。它允许开发人员灵活地定义触发器的调度时间表，并可对触发器和任务进行关联映射。此外，Quartz提供了调度运行环境的持久化机制，可以保存并会发调度现场，即使系统因故障关闭，任务调度现场数据并不会丢失。Spring中继承并简化了Quartz。
-</p>
-<p style="text-indent:2em">
-什么是ORM？<br/>
-&nbsp;&nbsp;ORM[Object-Relation-Mapping]对象关系映射。面向对象的OO编程已经成为企业级开发中主流开发方法，而关系型数据库也成为企业级应用环境中永久存放数据的主流数据存储系统。同样的数据一个是在实际编程中一Object面向对象方式体现，而另外一种就是把这种内存对象持久化存储到硬盘文件上。<br/>
-&nbsp;&nbsp;内存中的对象之间存在关联和继承关系，而在数据库中，关系数据无法直接表达多对多关联和继承关系。因此，对象-关系映射(ORM)系统一般以中间件的形式存在，主要实现程序对象到关系数据库数据的映射。<br/>
-&nbsp;&nbsp;目前主流的ORM框架有JPA,JDO,Hibernate,Mybatis等</p>
-<p style="text-indent:2em">
-Spring如何支持各种ORM框架？<br/>
-&nbsp;&nbsp;Spring支持ORM框架的方法有很多，通常，在Spring环境下使用这些ORM框架时，都会通过一个Template来使用。<br/>
-&nbsp;&nbsp;例如Hibernate，在使用Hibernate时（没有在Spring环境下使用Hibernate），会使用到SessionFactory。用一个工具类SessionFactoryUtil，来获取到SessionFactory。
-在Spring环境下， 我们将SessionFactory作为一个依赖注入到Dao层的Bean中。</p>
 
-<p style="text-indent:2em">
-Spring整合ORM框架时，事务管理用哪个类?<br/>
-&nbsp;&nbsp;Spring整合ORM框架时事务管理用的是相应ORM框架的事务管理器类如Hibernate对应于HibernateTransactionManager，JPA对应于JpaTransactionManager等。整合过后可配置由Spring控制事务的提交。事务提交前执行两个更新操作。其工作原理是采用AOP编程的原理来进行控制。
-</p>
+
+<p style="text-indent:2em"><strong>什么是IOC？</strong><br/>
+&nbsp;&nbsp;控制反转（Inversion of Control，英文缩写为IoC）是一个重要的面向对象编程的法则来削减计算机程序的耦合问题，也是轻量级的Spring框架的核心。 控制反转一般分为两种类型，依赖注入（Dependency Injection，简称DI）和依赖查找（Dependency Lookup）。依赖注入应用比较广泛。<br/>
+&nbsp;&nbsp;从注入的方法上看，依赖注入主要可以划分为三种类型：属性注入（set注入）、构造函数注入和接口注入。由于接口注入需要额外声明一个接口，增加了类的数目，而且它的效果和属性注入并无本质区别，因此我们不提倡采用这种方式。</p>
+<p style="text-indent:2em"><strong>三种注入方式的区别：</strong><br/>
+&nbsp;&nbsp;1.属性注入方式：对于需要注入的东西比较明确。符合java的设计规则。更适合java开发人员，使用起来更加自然，更加方便。<br/>
+&nbsp;&nbsp;2.构造函数注入方式：在类加载的时候，就已经注入依赖的组件。但是若是参数多的话，使用起来不方便。<br/>
+&nbsp;&nbsp;3.接口注入：组件需要依赖特定接口的实现，其中的加载接口实现和接口实现的具体对象都是由容器来完成。由于需要额外声明一个接口，增加了类的数目，而且它的效果和属性注入并无本质区别，因此我们不提倡采用这种方式。</p>
 
 	</span> 
 		<span class="include"> 
@@ -93,14 +84,15 @@ Spring整合ORM框架时，事务管理用哪个类?<br/>
 	</span> 
    <span class="bg">
  
-<p style="text-indent:2em">1:导入必要的jar包，新建一个 Java 工程，然后引入必要的 jar 包，右击项目工程，依次选择 Properties->Java Build Path->Libraries->Add External JARs。一般需要Hibernate.jar包和mysql-connector.jar包还有一些基本jar包</p>
-<p style="text-indent:2em">2:编写Code<br/>
-　&nbsp;&nbsp;1>创建数据库hibernate_user_info<br/>
-	&nbsp;&nbsp;2>新建实体类 User.java<br/>
-	&nbsp;&nbsp;这个没什么太多说的，一个用户具有：id、username、password 三个属性。</p>
+ <p style="text-indent:2em">
+ 1:导入必要的jar包，新建一个 Java 工程，然后引入必要的 jar 包，右击项目工程，依次选择 Properties->Java Build Path->Libraries->Add External JARs。一般需要Hibernate.jar包和mysql-connector.jar包还有一些基本jar包。</p>
+<p style="text-indent:2em">
+2:编写Code<br/>
+&nbsp;&nbsp;1>创建数据库hibernate_user_info<br/>
+&nbsp;&nbsp;2>新建实体类 User.java和Goods.java<br/>
+&nbsp;&nbsp;这个没什么太多说的，一个用户具有：id、username、password 三个属性。每个用户可以有多个商品，而一个商品只能对应一个用户。</p>
 <pre name="code" class="java">
 public class User {
-
     private int id;
     private String username;
     private String password;
@@ -125,6 +117,34 @@ public class User {
     }
 }
 </pre>
+<pre name="code" class="java">
+public class Goods {  
+    private int id;  
+    private String goodsname;  
+    private String userId;  
+  
+    public int getId() {  
+        return id;  
+    }  
+    public void setId(int id) {  
+        this.id = id;  
+    }  
+    public String getGoodsname() {  
+        return goodsname;  
+    }  
+    public void setGoodsname(String goodsname) {  
+        this.goodsname = goodsname;  
+    }  
+    public String getUserId() {  
+        return userId;  
+    }  
+    public void setUserId(String userId) {  
+        this.userId = userId;  
+    }  
+}  
+</pre>
+&nbsp;&nbsp;现在要实现两表连接查询，查出每个用户所拥有的商品，并把该用户的信息和其商品信息显示出来。<br/>
+&nbsp;&nbsp;使用Hibernate反向生成的实体类分别是Users和Goods。<br/>
 &nbsp;&nbsp;3>配置 hibernate.cfg.xml（仅供参考，具体配置自行变换）<br/>
 &nbsp;&nbsp;在 src 目录下，新建 hibernate.cfg.xml 文件（配置文件存放的位置要求统一化，命名规范化），其配置如下：
 <pre name="code" class="xml">
@@ -155,99 +175,90 @@ public class User {
         <!-- 第一次加载 hibernate 时根据实体类自动建立表结构，以后自动更新表结构 -->
         <property name="hbm2ddl.auto">update</property>         
         <!-- 映射文件 -->
-        <mapping resource="MyHttp/test/hibernate/relationship/pojo/User.hbm.xml"/>
+        <mapping resource="demoinfo/hibernate/relationship/pojo/User.hbm.xml" /> 
+        <mapping resource="demoinfo/hibernate/relationship/pojo/Goods.hbm.xml" />  
     </session-factory>
 </hibernate-configuration>
 </pre>
-&nbsp;&nbsp;注：对于MySql查询url端口号，可以通过下面的命令来查看:show variables like 'port';<br/>
+注：<1>对于MySql查询url端口号，可以通过下面的命令来查看:show variables like 'port';<br/>
 &nbsp;&nbsp;查询用户名和密码可以通过下面的命令来查看：select host,user,password from mysql.user;<br/>
-&nbsp;&nbsp;在创建SessionFactory时,如果不是放在ｓｒｃ下第一层，则应该对加载语句进行修改，以防找不到配置文件，例子如下:
+&nbsp;&nbsp;<2>在创建SessionFactory时,如果不是放在ｓｒｃ下第一层，则应该对加载语句进行修改，以防找不到配置文件，例子如下
 <pre name="code" class="java">
 Configuration cfg=newConfiguration().configure("hibernate/hibernate.cfg.xml");  //实例化Configuration并加载hibernate.cfg.xml文件  
-</pre>
-&nbsp;&nbsp;4>配置 User.hbm.xml<br/>
+</pre>&nbsp;&nbsp;4>配置 User.hbm.xml和Goods.hbm.xml<br/>
 &nbsp;&nbsp;一个实体类对应一个映射文件，且位于同一个包（package）下。<br/>
 <pre name="code" class="xml">
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- 映射对应的 package -->
-<hibernate-mapping package="demoinfo.hibernate.relationship.pojo.User">
+<!-- 映射对应的package -->
+<hibernate-mapping package="demoinfo.hibernate.relationship.pojo">
     <!-- 实体类和数据库中的表对应（如果没有这个表则新建） -->
     <class name="User" table="hibernate_user_info">
         <!-- id主键 和其他属性对应表中相应的字段（这些都是在 User.java 实体类中定义的） -->
-        <id name="id" column="user_id"/>
+        <id name="id" column="user_id" ></id>
         <property name="username" column="user_username"></property>
         <property name="password" column="user_password"></property>
-    </class>
+   </class>
 </hibernate-mapping>
 </pre>
-&nbsp;&nbsp;5>创建Test测试运行<br/>
+<pre name="code" class="xml">
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 映射对应的package -->
+<hibernate-mapping package="demoinfo.hibernate.relationship.pojo">
+     <!-- 实体类和数据库中的表对应（如果没有这个表则新建） -->
+    <class name="Goods" table="hibernate_goods_info">
+         <!-- id主键 和其他属性对应表中相应的字段（这些都是在 Goods.java 实体类中定义的） -->
+        <id name="id" column="goods_id" ></id>
+        <property name="goodsname" column="goods_goodsname"></property>
+        <property name="userId" column="goods_userId"></property>
+   </class>
+</hibernate-mapping>
+</pre>
+&nbsp;&nbsp;5>实现语句<br/>
+&nbsp;&nbsp;有两种方式：<br/>
+&nbsp;&nbsp;（1）使用传统方式：<br/>
 <pre name="code" class="java">
-public class Test {
+String hql="select u.userame,g.goodsname from User u, Goods g where u.id=g.userId";
+</pre>
+&nbsp;&nbsp;根据这个查询语句，调用query.list()方法得到一个List值，这个List中的每一个值都是Object[]类型的，里面包含了查询出来的所有值，剩下的自个儿去处理就行了<br/>
+&nbsp;&nbsp;（2）增加一个映射类<br/>
+&nbsp;&nbsp;增加一个映射类UserVoGoods.java，添加需要查询的信息相关的所有属性，本例中添加username, goodsame。并为这几个属性添加setter和getter方法，增加构造函数，参数与这两个属性对应，那么可以用hql查询方式：<br/>
+<pre name="code" class="java">
+ String hql="select new demoinfo.hibernate.pojo.UsersVoGoods(u.id,g.id,u.username, g.goodsname) from User u,Goods g where u.id=g.userId"; 
+</pre>
+&nbsp;&nbsp;query.list()的返回值List中的值都是UserVoGoods型的，直接使用get()就能获取。<br/>
+&nbsp;&nbsp;其实不增加映射类也是可以的，只需要在User.java实体类里增加一个构造函数，函数参数还是需要的所有字段，并为这些参数中User实体原来没有的字段添加属性和getter() setter()即可。<br/>
+&nbsp;&nbsp;创建Test运行<br/>
+<pre name="code" class="java">
+public class QueryLink {
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {
-        // 获取 Hibernate 配置信息
-        Configuration configuration = new Configuration().configure();
-        // 根据 configuration 建立 sessionFactory
+    	AnnotationConfiguration configuration = new AnnotationConfiguration().configure();
         SessionFactory sessionFactory = configuration.buildSessionFactory();
-        // 开启 session（相当于开启 JDBC 的 connection）
         Session session = sessionFactory.openSession();
-        // 创建并开启事务对象
         session.beginTransaction();
-        // 新建对象，并赋值
-        User user = new User();
-        user.setId(1);
-        user.setUsername("admin");
-        user.setPassword("admin");
-        // 保存对象
-        session.save(user);
-        // 提交事务
+        // hibernate 实现多表连接查询 查询结果映射到自定义类中
+        String hql="select new demoinfo.hibernate.pojo.UserVoGoods(u.id,g.id,u.username, g.goodsname) from User u,Goods g where u.id=g.userId";  
+        // 利用 session 建立 query  
+        Query query = session.createQuery(hql);  
+        // 序列化 query 的结果为一个 list 集合  
+        List&lt;UserVoGoods&gt; list = query.list();  
+        // 打印每一个 User 信息（这里只打印了名字，你也可以打印其他信息）  
+        for (UserVoGoods li : list) {  
+            System.out.println( "用户名："+li.getUsername() +"  商品名："+li.getGoodsname() );  
+        }  
         session.getTransaction().commit();
-        // 关闭 session 和 sessionFactory
         session.close();
         sessionFactory.close();
     }
 }
 </pre>
-&nbsp;&nbsp;注：1>如上的代码是最基本的流程，现在公司使用的框架表面上或许赋值后只会出现XXXDao.sava（user）;<br/>
-&nbsp;&nbsp;2>通过JPA注解的方式，我们能将第２步和第４步整合在一起．代码如下：<br/>
-<pre name="code" class="java">
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
-@Entity
-@Table(name="hibernate_user_info")
-// 数据库中默认会对应生成同名的 Table
-// 如果要修改 Table 名，使用 @Table(name="")
-// "" 内为自定义的 Table 名
-public class User {
-    private int id;
-    private String username;
-    private String password;
-    @Id
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public String getUsername() {
-        return username;
-    }
-    public void setUsername(String username) {
-        this.username = username;
-    }
-    public String getPassword() {
-        return password;
-    }
-    public void setPassword(String password) {
-        this.password = password;
-    }
-}
-</pre>
-其他步骤基本不变
 
    </span>
    <span class="include"> 
