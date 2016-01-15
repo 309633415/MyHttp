@@ -39,22 +39,20 @@ background: cadetblue;
 <p style="text-indent:2em">什么是Quartz？<br/>
 &nbsp;&nbsp;Quartz是一个强大的企业级任务调度框架。它允许开发人员灵活地定义触发器的调度时间表，并可对触发器和任务进行关联映射。此外，Quartz提供了调度运行环境的持久化机制，可以保存并会发调度现场，即使系统因故障关闭，任务调度现场数据并不会丢失。Spring中继承并简化了Quartz。
 </p>
-<p style="text-indent:2em">如何使用Quartz？<br/>
-&nbsp;&nbsp;对于Quartz，我们使用的时候主要是注重两个方面，一个是定时任务的业务，另一个就是Cron表达式。<br/>
-&nbsp;&nbsp;1>Quartz存在两种方式来定义定时执行任务，一种是使用QuartJobBean和JobDetailBean；另一种是使用MethodInvokingJobDetailFactoryBean。<br/>
-&nbsp;&nbsp;2>Cron表达式包括下面7个字段并区别顺序：秒0-59，分0-59，小时0-23，月内日期1-31，月1-12或者JAN-DEC，周内日期1-7或者SUN-SAT，年(可选字段)留空或者1970-2099并且通过特殊字符表示特殊意义，具体为下：<br/>
-&nbsp;&nbsp;&nbsp;斜线(/)字符表示增量值。例如，在秒字段中"5/15"代表从第5秒开始，每15秒一次。<br/>
-&nbsp;&nbsp;&nbsp;问号(?)字符和字母L字符只有在月内日期和周内日期字段中可用。问号表示这个字段不包含具体值。所以，如果指定月内日期，可以在周内日期字段中插入"?"，表示周内日期值无关紧要。这里有个很蛋疼的设定，无关Quartz，而是Spring集成Quartz后，它自己加的一个约束，那就是：日期(1-31)和星期(SUN-SAT)两者，必须有一个是问号(?)，系统在启动的时候，Spring会检查表达式，如果不符合它的规则，就会抛异常。所以在使用的时候这个地方一定要注意，而这个在Linux上执行Cron是没有这个限制的。<br/>
-&nbsp;&nbsp;&nbsp;字母L字符是last的缩写。放在月内日期字段中，表示安排在当月最后一天执行。在周内日期字段中，如果"L"单独存在,就等于"7"，否则代表当月内周内日期的最后一个实例。所以"0L"表示安排在当月的最后一个星期日执行。<br/>
-&nbsp;&nbsp;&nbsp;字母(W)字符把执行安排在最靠近指定值的工作日。把"1W"放在月内日期字段中，表示把执行安排在当月的第一个工作日内。<br/>
-&nbsp;&nbsp;&nbsp;井号(#)字符为给定月份指定具体的工作日实例。把"MON#2"放在周内日期字段中，表示把任务安排在当月的第二个星期一。<br/>
-&nbsp;&nbsp;&nbsp;星号(*)字符是通配字符,表示该字段可以接受任何可能的值、表达式例子。<br/>
-&nbsp;&nbsp;&nbsp;例子：<br/>
-&nbsp;&nbsp;&nbsp;"0 0 08 * * ?" 每天上午8点触发<br/>
-&nbsp;&nbsp;&nbsp;"0 15 10 ? * *" 每天上午10:15触发<br/>
-&nbsp;&nbsp;&nbsp;"0 15 10 * * ?" 每天上午10:15触发<br/>
-&nbsp;&nbsp;&nbsp;"0 15 10 ? * 6L 2009-2019" 2009年至2019年的每月的最后一个星期五上午10:15触发<br/>
-&nbsp;&nbsp;&nbsp;"0 15 10 ? * 6#3" 每月的第三个星期五上午10:15触发<br/>
+<p style="text-indent:2em">
+什么是ORM？<br/>
+&nbsp;&nbsp;ORM[Object-Relation-Mapping]对象关系映射。面向对象的OO编程已经成为企业级开发中主流开发方法，而关系型数据库也成为企业级应用环境中永久存放数据的主流数据存储系统。同样的数据一个是在实际编程中一Object面向对象方式体现，而另外一种就是把这种内存对象持久化存储到硬盘文件上。<br/>
+&nbsp;&nbsp;内存中的对象之间存在关联和继承关系，而在数据库中，关系数据无法直接表达多对多关联和继承关系。因此，对象-关系映射(ORM)系统一般以中间件的形式存在，主要实现程序对象到关系数据库数据的映射。<br/>
+&nbsp;&nbsp;目前主流的ORM框架有JPA,JDO,Hibernate,Mybatis等</p>
+<p style="text-indent:2em">
+Spring如何支持各种ORM框架？<br/>
+&nbsp;&nbsp;Spring支持ORM框架的方法有很多，通常，在Spring环境下使用这些ORM框架时，都会通过一个Template来使用。<br/>
+&nbsp;&nbsp;例如Hibernate，在使用Hibernate时（没有在Spring环境下使用Hibernate），会使用到SessionFactory。用一个工具类SessionFactoryUtil，来获取到SessionFactory。
+在Spring环境下， 我们将SessionFactory作为一个依赖注入到Dao层的Bean中。</p>
+
+<p style="text-indent:2em">
+Spring整合ORM框架时，事务管理用哪个类?<br/>
+&nbsp;&nbsp;Spring整合ORM框架时事务管理用的是相应ORM框架的事务管理器类如Hibernate对应于HibernateTransactionManager，JPA对应于JpaTransactionManager等。整合过后可配置由Spring控制事务的提交。事务提交前执行两个更新操作。其工作原理是采用AOP编程的原理来进行控制。
 </p>
 
 	</span> 
@@ -75,7 +73,7 @@ background: cadetblue;
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
    <span class="bg"> 
- 1:jar包下载地址：<a href="http://repo.spring.io" target="_blank">spring jar包</a>&nbsp;<a href="http://download.csdn.net/detail/jiashubing/9405044" target="_blank">quartz-all-1.6.5.jar包</a><br/>
+ 1:jar包下载地址：<a href="http://repo.spring.io" target="_blank">spring jar包</a><br/>
  2.详细学习参考spring参考手册<a href="http://download.csdn.net/detail/jiashubing/9401325" target="_blank">spring参考手册</a>
    </span>
    <span class="include"> 
@@ -94,146 +92,162 @@ background: cadetblue;
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
    <span class="bg">
-<p style="text-indent:2em">我们使用Spring定时服务Quartz来实现一个每5秒打印一次当前时间的小例子。<br/>
- &nbsp;&nbsp;1:定义接口IPrintInfoService类</p>
-   <pre  name="code" class="java">
-package demoinfo.spring.quartz;
-public interface IPrintInfoService {
-	public void print();
+ 
+<p style="text-indent:2em">1:导入必要的jar包，新建一个 Java 工程，然后引入必要的 jar 包，右击项目工程，依次选择 Properties->Java Build Path->Libraries->Add External JARs。一般需要Hibernate.jar包和mysql-connector.jar包还有一些基本jar包</p>
+<p style="text-indent:2em">2:编写Code<br/>
+　&nbsp;&nbsp;1>创建数据库hibernate_user_info<br/>
+	&nbsp;&nbsp;2>新建实体类 User.java<br/>
+	&nbsp;&nbsp;这个没什么太多说的，一个用户具有：id、username、password 三个属性。</p>
+<pre name="code" class="java">
+public class User {
+
+    private int id;
+    private String username;
+    private String password;
+
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
-   </pre>
-<p style="text-indent:2em">2:实现接口类PrintInfoServiceImpl</p>
-<pre  name="code" class="java">
-package demoinfo.spring.quartz;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
-import demoinfo.spring.quartz.IPrintInfoService;
-
-public class PrintInfoServiceImpl implements IPrintInfoService{
-
-	public void print() {
-		Calendar now = Calendar.getInstance();
-		System.out.println("现在是北京时间：" + this.format(now.getTime()));
-	}
-	
-	public String format(Date date){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		return sdf.format(date);
-	}
-	
+</pre>
+&nbsp;&nbsp;3>配置 hibernate.cfg.xml（仅供参考，具体配置自行变换）<br/>
+&nbsp;&nbsp;在 src 目录下，新建 hibernate.cfg.xml 文件（配置文件存放的位置要求统一化，命名规范化），其配置如下：
+<pre name="code" class="xml">
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection settings -->
+        <!-- 表示使用 mysql 数据库驱动类 -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <!-- jdbc 的连接 url 和数据库（使用我们之前新建的 hibernate）-->
+        <property name="connection.url">jdbc:mysql://localhost:3306/mynet</property>
+        <!-- 数据库用户名 -->
+        <property name="connection.username">root</property>
+        <!-- 密码（这里为空） -->
+        <property name="connection.password"></property>
+        <!-- JDBC connection pool (use the built-in) -->
+        <!-- <property name="connection.pool_size">1</property>-->
+        <!-- 数据库使用的方言 -->
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <!-- Echo all executed SQL to stdout -->
+        <!-- 设置 打印输出 sql 语句 为真 -->
+        <property name="show_sql">true</property>
+        <!-- 设置格式为 sql -->
+        <property name="format_sql">true</property>
+        <!-- 第一次加载 hibernate 时根据实体类自动建立表结构，以后自动更新表结构 -->
+        <property name="hbm2ddl.auto">update</property>         
+        <!-- 映射文件 -->
+        <mapping resource="MyHttp/test/hibernate/relationship/pojo/User.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>
+</pre>
+&nbsp;&nbsp;注：对于MySql查询url端口号，可以通过下面的命令来查看:show variables like 'port';<br/>
+&nbsp;&nbsp;查询用户名和密码可以通过下面的命令来查看：select host,user,password from mysql.user;<br/>
+&nbsp;&nbsp;在创建SessionFactory时,如果不是放在ｓｒｃ下第一层，则应该对加载语句进行修改，以防找不到配置文件，例子如下:
+<pre name="code" class="java">
+Configuration cfg=newConfiguration().configure("hibernate/hibernate.cfg.xml");  //实例化Configuration并加载hibernate.cfg.xml文件  
+</pre>
+&nbsp;&nbsp;4>配置 User.hbm.xml<br/>
+&nbsp;&nbsp;一个实体类对应一个映射文件，且位于同一个包（package）下。<br/>
+<pre name="code" class="xml">
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 映射对应的 package -->
+<hibernate-mapping package="demoinfo.hibernate.relationship.pojo.User">
+    <!-- 实体类和数据库中的表对应（如果没有这个表则新建） -->
+    <class name="User" table="hibernate_user_info">
+        <!-- id主键 和其他属性对应表中相应的字段（这些都是在 User.java 实体类中定义的） -->
+        <id name="id" column="user_id"/>
+        <property name="username" column="user_username"></property>
+        <property name="password" column="user_password"></property>
+    </class>
+</hibernate-mapping>
+</pre>
+&nbsp;&nbsp;5>创建Test测试运行<br/>
+<pre name="code" class="java">
+public class Test {
+    @SuppressWarnings("unchecked")
+    public static void main(String[] args) {
+        // 获取 Hibernate 配置信息
+        Configuration configuration = new Configuration().configure();
+        // 根据 configuration 建立 sessionFactory
+        SessionFactory sessionFactory = configuration.buildSessionFactory();
+        // 开启 session（相当于开启 JDBC 的 connection）
+        Session session = sessionFactory.openSession();
+        // 创建并开启事务对象
+        session.beginTransaction();
+        // 新建对象，并赋值
+        User user = new User();
+        user.setId(1);
+        user.setUsername("admin");
+        user.setPassword("admin");
+        // 保存对象
+        session.save(user);
+        // 提交事务
+        session.getTransaction().commit();
+        // 关闭 session 和 sessionFactory
+        session.close();
+        sessionFactory.close();
+    }
 }
-
 </pre>
-<p style="text-indent:2em">3:基于QuartzJobBean的实现类PrintInfoJob</p>
-<pre  name="code" class="java">
-package demoinfo.spring.quartz;
+&nbsp;&nbsp;注：1>如上的代码是最基本的流程，现在公司使用的框架表面上或许赋值后只会出现XXXDao.sava（user）;<br/>
+&nbsp;&nbsp;2>通过JPA注解的方式，我们能将第２步和第４步整合在一起．代码如下：<br/>
+<pre name="code" class="java">
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
-import org.springframework.scheduling.quartz.QuartzJobBean;
-
-import demoinfo.spring.quartz.IPrintInfoService;
-
-public class PrintInfoJob extends QuartzJobBean{
-	
-	private IPrintInfoService prinfInfoService = null;
-	public IPrintInfoService getPrinfInfoService() {
-		return prinfInfoService;
-	}
-	public void setPrinfInfoService(IPrintInfoService prinfInfoService) {
-		this.prinfInfoService = prinfInfoService;
-	}
-	@Override
-	protected void executeInternal(JobExecutionContext arg0)
-			throws JobExecutionException {
-		this.prinfInfoService.print();
-		
-	}
+@Entity
+@Table(name="hibernate_user_info")
+// 数据库中默认会对应生成同名的 Table
+// 如果要修改 Table 名，使用 @Table(name="")
+// "" 内为自定义的 Table 名
+public class User {
+    private int id;
+    private String username;
+    private String password;
+    @Id
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
-
 </pre>
-<p style="text-indent:2em">4:Spring配置文件applicationContext.xml</p>
-<pre  name="code" class="xml">
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
-				http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-				http://www.springframework.org/schema/context 
-				http://www.springframework.org/schema/context/spring-context-2.5.xsd
-				http://www.springframework.org/schema/tx 
-				http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"&gt;
-
-
-	&lt;bean id="printInfoService" class="demoinfo.spring.quartz.PrintInfoServiceImpl" /&gt;
-	&lt;!-- 配置一个Job --&gt;
-	&lt;bean id="printInfoJob" class="org.springframework.scheduling.quartz.JobDetailBean"&gt;
-		&lt;property name="jobClass" value="demoinfo.spring.quartz.PrintInfoJob" /&gt;
-		&lt;property name="jobDataAsMap"&gt;
-			&lt;map&gt;
-				&lt;entry key="prinfInfoService" value-ref="printInfoService"&gt;&lt;/entry&gt;
-			&lt;/map&gt;
-		&lt;/property&gt;
-	&lt;/bean&gt;
-
-	&lt;!-- 简单的触发器 --&gt;
-	&lt;bean id="simplePrintInfoTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean"&gt;
-		&lt;property name="jobDetail"&gt;
-			&lt;ref bean="printInfoJob" /&gt;
-		&lt;/property&gt;
-		&lt;property name="startDelay"&gt;
-			&lt;value&gt;6000&lt;/value&gt;
-		&lt;/property&gt;
-		&lt;property name="repeatInterval"&gt;
-			&lt;value&gt;6000&lt;/value&gt;
-		&lt;/property&gt;
-	&lt;/bean&gt;
-
-	&lt;!--复杂的触发器 --&gt;
-	&lt;bean id="complexPrintInfoTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean"&gt;
-		&lt;property name="jobDetail"&gt;
-			&lt;ref bean="printInfoJob" /&gt;
-		&lt;/property&gt;
-		&lt;property name="cronExpression"&gt;
-			&lt;value&gt;00,05,10,15,20,25,30,35,40,45,50,55 * * * * ?&lt;/value&gt;
-		&lt;/property&gt;
-	&lt;/bean&gt;
-
-	&lt;!-- spring触发工厂 --&gt;
-	&lt;bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean"&gt;
-		&lt;property name="triggers"&gt;
-			&lt;list&gt;
-				&lt;ref bean="complexPrintInfoTrigger" /&gt;
-			&lt;/list&gt;
-		&lt;/property&gt;
-	&lt;/bean&gt;
-&lt;/beans&gt;
-</pre>
-<p style="text-indent:2em">5:测试用例类SpringQuartzDemo</p>
-<pre  name="code" class="java">
-package demoinfo.spring.quartz;
-
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-public class SpringQuartzDemo {
-
-	public static void main(String[] args) {
-		System.out.println("测试开始......");
-		new ClassPathXmlApplicationContext(
-				"classpath:demoinfo/spring/quartz/applicationContext.xml");     
-		System.out.println("测试结束......");
-	}
-
-}
-
-</pre>
-<p style="text-indent:2em">运行测试用例，可以看到控制台每过5秒钟就打印一次时间信息。</p>
-
+其他步骤基本不变
 
    </span>
    <span class="include"> 

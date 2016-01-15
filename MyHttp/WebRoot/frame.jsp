@@ -211,7 +211,7 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 										<a href="#"  id="springTransactionDemo"  onclick="springTransactionDemo()">事务管理</a>
 									</li>
 									<li>
-										<a href="#"  id=""  onclick="">ORM整合</a>
+										<a href="#"  id="springOrmDemo"  onclick="springOrmDemo()">ORM整合</a>
 									</li>
 									<li>
 										<a href="#"  id="springQuartzDemo" onclick="springQuartzDemo()">定时服务QuartZ</a>
@@ -438,6 +438,10 @@ function strutsLoginDemo(){
     }
    function springTransactionDemo(){
     	document.getElementById("mainfrm1").src="./common/common.action?target=springTransactionDemo";
+    	document.getElementById("mainfrm1").onload;
+    }
+   function springOrmDemo(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=springOrmDemo";
     	document.getElementById("mainfrm1").onload;
     }
    function springQuartzDemo(){

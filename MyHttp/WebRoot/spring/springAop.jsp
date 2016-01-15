@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 &nbsp;&nbsp;1.首先建立一个歌手接口 Performer。<br/>
 &nbsp;&nbsp;2.再建立爵士音乐歌手类 DukePerformer 来实现这个接口，类中包括了歌手的个人信息。<br/>
 &nbsp;&nbsp;3.然后定义观众类 Audience，包含观众的行为通知。<br/>
-&nbsp;&nbsp;4.完成之后，我们便可以在配置文件 applicationContext.xml 中进行aop切面配置。关键代码如下：<br/>
+&nbsp;&nbsp;4.完成之后，我们便可以在配置文件 applicationContext.xml 中进行aop切面配置。关键代码如下：</p>
 <pre style="color:blue">
 &lt;aop:config&gt;
 	&lt;!-- 定义切入点 --&gt;
@@ -61,6 +61,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 duke 开始演唱歌曲。
 观众鼓掌，掌声经久不息...
 </pre>
-</p>
+
   </body>
 </html>

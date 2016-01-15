@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 &nbsp;&nbsp;1.首先建立一个设备接口 IDeviceWriter 类。<br/>
 &nbsp;&nbsp;2.再建立软盘和USB类来实现这个接口，分别是 FloppyWriter 类和 UsbDiskWriter 类。<br/>
 &nbsp;&nbsp;3.然后建立磁盘业务的JavaBean类，我们简称它为 BusinessBean 。 该Bean有一个成员用于存放设备－writer。 然后有get,set方法和一个核心的磁盘输出业务的方法。<br/>
-&nbsp;&nbsp;4.业务类完成之后，我们便可以在配置文件 businessFactoryConfig.xml 中进行配置依赖关系了。 (注：bean依赖关键字是ref)。关键代码如下：<br/>
+&nbsp;&nbsp;4.业务类完成之后，我们便可以在配置文件 businessFactoryConfig.xml 中进行配置依赖关系了。 (注：bean依赖关键字是ref)。关键代码如下：</p>
 <pre style="color:blue">
 &lt;bean id="floppy" class="spring.basic.BusinessFactory.FloppyWriter"/&gt;    
     &lt;bean id="usb" class="spring.basic.BusinessFactory.UsbDiskWriter"/&gt;          
@@ -50,6 +50,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </pre>
 &nbsp;&nbsp;5.编写客户端代码，获得Spring中定义的Bean对象，执行save方法，查看磁盘输出时是使用了哪一种方法。<br/>
 &nbsp;&nbsp;在上面的配置文件中，如果注入了floppy bean，那么是储存至软盘… 如果注入usb bean，那么是储存至移动硬盘…<br/>
-</p>
+
   </body>
 </html>

@@ -46,6 +46,6 @@ class="org.springframework.jdbc.datasource.DriverManagerDataSource"&gt;
  <p style="color:blue">getJdbcTemplate().queryForList(sql);</p>
  &nbsp;&nbsp;更新方法是：<br/>
  <p style="color:blue">getJdbcTemplate().update(sql,params,types);</p>
-  <p style="text-indent:2em>是不是很简单！！</p>
+  <p style="text-indent:2em">是不是很简单！！</p>
   </body>
 </html>
