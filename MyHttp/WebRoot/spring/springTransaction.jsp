@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'SpringTransation.jsp' starting page</title>
+    <title>SpringTransation</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -22,12 +22,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <p style="text-indent:2em">事务，就是保证一系列业务逻辑全部执行或者全部不执行。</p>
+    <p style="text-indent:2em">事务，就是保证一系列业务逻辑全部执行或者全部不执行。如果不配置事务，那么执行增删改操作后，只会存在缓冲中，并不会更新到数据库。</p>
     <p style="text-indent:2em">在开发中，将hibernate和Spring集成，较常使用Spring框架的声明式事务。<br/>
        &nbsp;&nbsp;使用Spring的声明式事务，不再需要自动创建sessionFactory和Session，不再需要手动控制事务的开启和关闭。</p>
        <p style="text-indent:2em">使用Spring声明式事务的两个个步骤：<br/>
 	       &nbsp;&nbsp;&nbsp;&nbsp;1.applicationContext.xml中进行配置。<br/>
 	       &nbsp;&nbsp;&nbsp;&nbsp;2.提交事务类继承HibernateDaoSupport。  </p>
-	       <p style="text-indent:2em">具体源码请看右侧</p>
+	       <p style="text-indent:2em">具体源码请看右侧。</p>
   </body>
 </html>

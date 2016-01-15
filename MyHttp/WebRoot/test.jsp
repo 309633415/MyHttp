@@ -36,14 +36,26 @@ background: cadetblue;
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
 	<span class="bg"> 
-<p>SpringMVC的特点：<br/>
-&nbsp;&nbsp;1、清晰的角色划分，Spring在Model、View和Controller方面提供了一个非常清晰的划分，这3个方面真正是各司其职，各负其责。<br/>
-&nbsp;&nbsp;2、灵活的配置功能，因为Spring的核心是IOC,同样在实现MVC上，也可以把各种类当做Bean来通过XML进行配置。<br/>
-&nbsp;&nbsp;3、提供了大量的控制器接口和实现类，这样开发人员可以使用Spring提供的控制器实现类，也可以自己实现控制器接口。<br/>
-&nbsp;&nbsp;4、SpringMVC是真正的View层实现无关的，它不会强制开发员使用JSP,我们可以使用其他View技术，比如Velocity，Xskt等。<br/>
-&nbsp;&nbsp;5、国际化支持，Spring的ApplicationContext提供了对国际化的支持，在这里可以很方便的使用。<br/>
-&nbsp;&nbsp;6、面向接口编程，其实这不仅是springMVC的特点，整个Spring来看，这个特点都是很明显的，因为它使开发人员对程序易于进行测试，并且很方便的进行管理。<br/>
-&nbsp;&nbsp;7、Spring提供了Web应用开发的一整套流程，而不仅仅是MVC，他们之间可以很方便的结合在一起。下面有一个自己做得例子，做完这个例子后真的体会到了SpringMVC的强大。</p>
+<p style="text-indent:2em">什么是Quartz？<br/>
+&nbsp;&nbsp;Quartz是一个强大的企业级任务调度框架。它允许开发人员灵活地定义触发器的调度时间表，并可对触发器和任务进行关联映射。此外，Quartz提供了调度运行环境的持久化机制，可以保存并会发调度现场，即使系统因故障关闭，任务调度现场数据并不会丢失。Spring中继承并简化了Quartz。
+</p>
+<p style="text-indent:2em">如何使用Quartz？<br/>
+&nbsp;&nbsp;对于Quartz，我们使用的时候主要是注重两个方面，一个是定时任务的业务，另一个就是Cron表达式。<br/>
+&nbsp;&nbsp;1>Quartz存在两种方式来定义定时执行任务，一种是使用QuartJobBean和JobDetailBean；另一种是使用MethodInvokingJobDetailFactoryBean。<br/>
+&nbsp;&nbsp;2>Cron表达式包括下面7个字段并区别顺序：秒0-59，分0-59，小时0-23，月内日期1-31，月1-12或者JAN-DEC，周内日期1-7或者SUN-SAT，年(可选字段)留空或者1970-2099并且通过特殊字符表示特殊意义，具体为下：<br/>
+&nbsp;&nbsp;&nbsp;斜线(/)字符表示增量值。例如，在秒字段中"5/15"代表从第5秒开始，每15秒一次。<br/>
+&nbsp;&nbsp;&nbsp;问号(?)字符和字母L字符只有在月内日期和周内日期字段中可用。问号表示这个字段不包含具体值。所以，如果指定月内日期，可以在周内日期字段中插入"?"，表示周内日期值无关紧要。这里有个很蛋疼的设定，无关Quartz，而是Spring集成Quartz后，它自己加的一个约束，那就是：日期(1-31)和星期(SUN-SAT)两者，必须有一个是问号(?)，系统在启动的时候，Spring会检查表达式，如果不符合它的规则，就会抛异常。所以在使用的时候这个地方一定要注意，而这个在Linux上执行Cron是没有这个限制的。<br/>
+&nbsp;&nbsp;&nbsp;字母L字符是last的缩写。放在月内日期字段中，表示安排在当月最后一天执行。在周内日期字段中，如果"L"单独存在,就等于"7"，否则代表当月内周内日期的最后一个实例。所以"0L"表示安排在当月的最后一个星期日执行。<br/>
+&nbsp;&nbsp;&nbsp;字母(W)字符把执行安排在最靠近指定值的工作日。把"1W"放在月内日期字段中，表示把执行安排在当月的第一个工作日内。<br/>
+&nbsp;&nbsp;&nbsp;井号(#)字符为给定月份指定具体的工作日实例。把"MON#2"放在周内日期字段中，表示把任务安排在当月的第二个星期一。<br/>
+&nbsp;&nbsp;&nbsp;星号(*)字符是通配字符,表示该字段可以接受任何可能的值、表达式例子。<br/>
+&nbsp;&nbsp;&nbsp;例子：<br/>
+&nbsp;&nbsp;&nbsp;"0 0 08 * * ?" 每天上午8点触发<br/>
+&nbsp;&nbsp;&nbsp;"0 15 10 ? * *" 每天上午10:15触发<br/>
+&nbsp;&nbsp;&nbsp;"0 15 10 * * ?" 每天上午10:15触发<br/>
+&nbsp;&nbsp;&nbsp;"0 15 10 ? * 6L 2009-2019" 2009年至2019年的每月的最后一个星期五上午10:15触发<br/>
+&nbsp;&nbsp;&nbsp;"0 15 10 ? * 6#3" 每月的第三个星期五上午10:15触发<br/>
+</p>
 
 	</span> 
 		<span class="include"> 
@@ -63,7 +75,7 @@ background: cadetblue;
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
    <span class="bg"> 
- 1:jar包下载地址：<a href="http://download.csdn.net/detail/jiashubing/9403927" target="_blank">SpringMVC框架所需要的jar包</a><br/>
+ 1:jar包下载地址：<a href="http://repo.spring.io" target="_blank">spring jar包</a>&nbsp;<a href="http://download.csdn.net/detail/jiashubing/9405044" target="_blank">quartz-all-1.6.5.jar包</a><br/>
  2.详细学习参考spring参考手册<a href="http://download.csdn.net/detail/jiashubing/9401325" target="_blank">spring参考手册</a>
    </span>
    <span class="include"> 
@@ -82,358 +94,145 @@ background: cadetblue;
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
    <span class="bg">
- &nbsp;&nbsp;接下来搭建第一个SpringMVC框架的项目，实现从数据库中读取数据的功能。<br/>
- &nbsp;&nbsp;首先为自己的项目新建一个数据库，本例使用mysql数据库，创建了一张USERMBO表，里面有三个字段 USERID，USERNAME，USERAGE，使用下面的sql语句快速建表：<br/>
-   <pre  name="code" class="xml">
-   SET FOREIGN_KEY_CHECKS=0;
--- ----------------------------
--- Table structure for `usermbo`
--- ----------------------------
-DROP TABLE IF EXISTS `usermbo`;
-CREATE TABLE `usermbo` (
-  `USERID` int(11) NOT NULL DEFAULT '0',
-  `USERNAME` varchar(50) DEFAULT NULL,
-  `USERAGE` int(11) DEFAULT NULL,
-  PRIMARY KEY (`USERID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+<p style="text-indent:2em">我们使用Spring定时服务Quartz来实现一个每5秒打印一次当前时间的小例子。<br/>
+ &nbsp;&nbsp;1:定义接口IPrintInfoService类</p>
+   <pre  name="code" class="java">
+package demoinfo.spring.quartz;
+public interface IPrintInfoService {
+	public void print();
+}
+   </pre>
+<p style="text-indent:2em">2:实现接口类PrintInfoServiceImpl</p>
+<pre  name="code" class="java">
+package demoinfo.spring.quartz;
 
--- ----------------------------
--- Records of usermbo
--- ----------------------------
-INSERT INTO `usermbo` VALUES ('1', '小红', '25');
-INSERT INTO `usermbo` VALUES ('2', '小明', '27');
-INSERT INTO `usermbo` VALUES ('3', '小花', '26');
-</pre>
-&nbsp;&nbsp; 然后新建一个项目，导入必要的jar包以后。配置WEB-INF目录下的web.xml，代码如下:</br>
-   <pre  name="code" class="xml">
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
-	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"&gt;
-	&lt;servlet&gt;
-		&lt;!--springmvc的核心是DispatcherServlet，它负责控制整个页面的请求路径--&gt;
-		&lt;servlet-name&gt;dispatcherServlet&lt;/servlet-name&gt;
-		&lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
-		&lt;!--初始化参数 &gt;--&gt;
-		&lt;init-param&gt;
-			&lt;!-- 这个param-name必须是contextConfigLocation--&gt;
-			&lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
-			&lt;param-value&gt;/WEB-INF/classes/applicationContext.xml&lt;/param-value&gt;
-		&lt;/init-param&gt;
-		&lt;load-on-startup&gt;2&lt;/load-on-startup&gt;
-	&lt;/servlet&gt;
-	&lt;!--拦截所有以do结尾的请求--&gt;
-	&lt;servlet-mapping&gt;
-		&lt;servlet-name&gt;dispatcherServlet&lt;/servlet-name&gt;
-		&lt;url-pattern&gt;*.do&lt;/url-pattern&gt;
-	&lt;/servlet-mapping&gt;
-	&lt;!--处理从页面传递中文到后台而出现的中文乱码问题--&gt;
-	&lt;filter&gt;
-		&lt;filter-name&gt;encodingFilter&lt;/filter-name&gt;
-		&lt;filter-class&gt;org.springframework.web.filter.CharacterEncodingFilter&lt;/filter-class&gt;
-		&lt;init-param&gt;
-			&lt;param-name&gt;encoding&lt;/param-name&gt;
-			&lt;param-value&gt;UTF-8&lt;/param-value&gt;
-		&lt;/init-param&gt;
-	&lt;/filter&gt;
-	&lt;filter-mapping&gt;
-		&lt;filter-name&gt;encodingFilter&lt;/filter-name&gt;
-		&lt;url-pattern&gt;/*&lt;/url-pattern&gt;
-	&lt;/filter-mapping&gt;
-	&lt;welcome-file-list&gt;
-		&lt;welcome-file&gt;index.jsp&lt;/welcome-file&gt;
-	&lt;/welcome-file-list&gt;
-&lt;/web-app&gt;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+import demoinfo.spring.quartz.IPrintInfoService;
+
+public class PrintInfoServiceImpl implements IPrintInfoService{
+
+	public void print() {
+		Calendar now = Calendar.getInstance();
+		System.out.println("现在是北京时间：" + this.format(now.getTime()));
+	}
+	
+	public String format(Date date){
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return sdf.format(date);
+	}
+	
+}
 
 </pre>
-&nbsp;&nbsp;spring配置文件applicationContext.xml的代码如下：<br/>
+<p style="text-indent:2em">3:基于QuartzJobBean的实现类PrintInfoJob</p>
+<pre  name="code" class="java">
+package demoinfo.spring.quartz;
+
+import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
+import org.springframework.scheduling.quartz.QuartzJobBean;
+
+import demoinfo.spring.quartz.IPrintInfoService;
+
+public class PrintInfoJob extends QuartzJobBean{
+	
+	private IPrintInfoService prinfInfoService = null;
+	public IPrintInfoService getPrinfInfoService() {
+		return prinfInfoService;
+	}
+	public void setPrinfInfoService(IPrintInfoService prinfInfoService) {
+		this.prinfInfoService = prinfInfoService;
+	}
+	@Override
+	protected void executeInternal(JobExecutionContext arg0)
+			throws JobExecutionException {
+		this.prinfInfoService.print();
+		
+	}
+}
+
+</pre>
+<p style="text-indent:2em">4:Spring配置文件applicationContext.xml</p>
 <pre  name="code" class="xml">
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
-	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"&gt;
-	&lt;!-- 定义个缺省的控制适配器 --&gt;
-	&lt;bean
-		class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" /&gt;
-	&lt;!-- 获取配置文件 --&gt;
-	&lt;bean id="config"
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"&gt;
-		&lt;property name="locations"&gt;
+				http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+				http://www.springframework.org/schema/context 
+				http://www.springframework.org/schema/context/spring-context-2.5.xsd
+				http://www.springframework.org/schema/tx 
+				http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"&gt;
+
+
+	&lt;bean id="printInfoService" class="demoinfo.spring.quartz.PrintInfoServiceImpl" /&gt;
+	&lt;!-- 配置一个Job --&gt;
+	&lt;bean id="printInfoJob" class="org.springframework.scheduling.quartz.JobDetailBean"&gt;
+		&lt;property name="jobClass" value="demoinfo.spring.quartz.PrintInfoJob" /&gt;
+		&lt;property name="jobDataAsMap"&gt;
+			&lt;map&gt;
+				&lt;entry key="prinfInfoService" value-ref="printInfoService"&gt;&lt;/entry&gt;
+			&lt;/map&gt;
+		&lt;/property&gt;
+	&lt;/bean&gt;
+
+	&lt;!-- 简单的触发器 --&gt;
+	&lt;bean id="simplePrintInfoTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean"&gt;
+		&lt;property name="jobDetail"&gt;
+			&lt;ref bean="printInfoJob" /&gt;
+		&lt;/property&gt;
+		&lt;property name="startDelay"&gt;
+			&lt;value&gt;6000&lt;/value&gt;
+		&lt;/property&gt;
+		&lt;property name="repeatInterval"&gt;
+			&lt;value&gt;6000&lt;/value&gt;
+		&lt;/property&gt;
+	&lt;/bean&gt;
+
+	&lt;!--复杂的触发器 --&gt;
+	&lt;bean id="complexPrintInfoTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean"&gt;
+		&lt;property name="jobDetail"&gt;
+			&lt;ref bean="printInfoJob" /&gt;
+		&lt;/property&gt;
+		&lt;property name="cronExpression"&gt;
+			&lt;value&gt;00,05,10,15,20,25,30,35,40,45,50,55 * * * * ?&lt;/value&gt;
+		&lt;/property&gt;
+	&lt;/bean&gt;
+
+	&lt;!-- spring触发工厂 --&gt;
+	&lt;bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean"&gt;
+		&lt;property name="triggers"&gt;
 			&lt;list&gt;
-				&lt;value&gt;classpath:db-config.properties&lt;/value&gt;
+				&lt;ref bean="complexPrintInfoTrigger" /&gt;
 			&lt;/list&gt;
 		&lt;/property&gt;
 	&lt;/bean&gt;
-	&lt;!-- 获取数据源 --&gt;
-	&lt;bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"&gt;
-		&lt;property name="driverClassName"&gt;
-			&lt;value&gt;${db.dirverClass}&lt;/value&gt;
-		&lt;/property&gt;
-		&lt;property name="url"&gt;
-			&lt;value&gt;${db.url}&lt;/value&gt;
-		&lt;/property&gt;
-		&lt;property name="username"&gt;
-			&lt;value&gt;${db.username}&lt;/value&gt;
-		&lt;/property&gt;
-		&lt;property name="password"&gt;
-			&lt;value&gt;${db.password}&lt;/value&gt;
-		&lt;/property&gt;
-	&lt;/bean&gt;
-	&lt;!--
-		URL到处理器的映射列表可以配置多个
-		mappings属性健值为URL程序文件地址，而值为处理器的Bean名字，URL程序文件地址可采用路径匹配的模式，如：
-		com/mvc/t?st.jsp:匹配com/mvc/test.jsp、com/mvc/tast.jsp等
-		 com/mvc /*.jsp：匹配所有com/mvc/下带jsp后缀的URL com/mvc
-		/**/test.jsp：匹配所有在com/mvc路径下或子孙路径下的test.jsp com/mvc
-		/**/*.jsp：匹配所有com/mvc路径下或子孙路径下带.jsp后缀的URL 
-		cn/**/web/bla.jsp：匹配cn/option/web/dog.jsp cn/option/test/web/dog.jsp cn/web/ dog.jsp的请求
-	--&gt;
-	&lt;bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"&gt;
-		&lt;property name="mappings"&gt;
-			&lt;value&gt;
-				user.do=userAction
-&lt;/value&gt;
-		&lt;/property&gt;
-	&lt;/bean&gt;
-
-	&lt;!--定义视图 通过internalResourceView来表示 使用的是Servlet/jsp技术--&gt;
-	&lt;bean id="viewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver"&gt;
-		&lt;property name="viewClass"&gt;
-			&lt;value&gt;org.springframework.web.servlet.view.InternalResourceView
-			&lt;/value&gt;
-		&lt;/property&gt;
-		&lt;!--jsp存放的目录--&gt;
-		&lt;property name="prefix"&gt;
-			&lt;value&gt;jsp/&lt;/value&gt;
-		&lt;/property&gt;
-		&lt;!--jsp文件的后缀--&gt;
-		&lt;property name="suffix"&gt;
-			&lt;value&gt;.jsp&lt;/value&gt;
-		&lt;/property&gt;
-	&lt;/bean&gt;
-	&lt;bean id="userDao" class="com.springmvc.UserDao "&gt;
-		&lt;property name="dataSource" ref="dataSource"&gt;&lt;/property&gt;
-	&lt;/bean&gt;
-	&lt;!--定义控制器--&gt;
-	&lt;bean id="userAction" class="com.springmvc.UserController"&gt;
-		&lt;property name="dao"&gt;
-			&lt;ref bean="userDao" /&gt;
-		&lt;/property&gt;
-		&lt;property name="commandClass"&gt;
-			&lt;value&gt;com.springmvc.UserDao&lt;/value&gt;
-		&lt;/property&gt;
-		&lt;property name="viewpage"&gt;
-			&lt;value&gt;userInfo&lt;/value&gt;
-		&lt;/property&gt;
-	&lt;/bean&gt;
 &lt;/beans&gt;
-
 </pre>
-&nbsp;&nbsp;数据源配置文件db-config.properties的代码如下：<br/>
-<pre  name="code" class="xml">
-db.url=jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8
-db.username=root
-db.password=19921002
-db.dirverClass=com.mysql.jdbc.Driver
-dbName=springmvcdb
-</pre>
-&nbsp;&nbsp;配置文件配置好以后我们开始编写具体的JAVA类，我们需要一个Dao类，一个Controller类和一个PO。把它们建在com.springmvc包下面、<br/>
-&nbsp;&nbsp;UserControer.java代码如下：<br/>
+<p style="text-indent:2em">5:测试用例类SpringQuartzDemo</p>
 <pre  name="code" class="java">
-package com.springmvc;
+package demoinfo.spring.quartz;
 
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+public class SpringQuartzDemo {
 
-
-import org.springframework.validation.BindException;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.SimpleFormController;
-
-@SuppressWarnings("all")
-// SimpleFormController是spring提供的表单控制器，把页面中Form中的元素名称设定为和bean中的一样，当传入的时候Spring会自动抓取form中和Bean名称一样的元素值，把它转换成一个bean,使得开发人员可以很方便的使用。
-public class UserController extends SimpleFormController {
-	private String viewpage;
-	private UserDao dao;
-
-	public String getViewpage() {
-		return viewpage;
-	}
-
-	public void setViewpage(String viewpage) {
-		this.viewpage = viewpage;
-	}
-
-	@Override
-	protected ModelAndView onSubmit(HttpServletRequest request,
-			HttpServletResponse response, Object command, BindException errors)
-			throws Exception {
-		UserDao tmp = (UserDao) command;
-		Collection&lt;UserPO&gt; list = dao.doquery();
-		List&lt;UserPO&gt; users = new ArrayList&lt;UserPO&gt;();
-		UserPO user;
-		for (UserPO userPO : list) {
-			user = new UserPO();
-			user.setUserId(userPO.getUserId());
-			user.setUserName(userPO.getUserName());
-			user.setUserAge(userPO.getUserAge());
-			users.add(user);
-		}
-		Map mp = new HashMap();
-		mp.put("list", users);
-		return new ModelAndView(getViewpage(), mp);
-	}
-
-	public void setDao(UserDao dao) {
-		this.dao = dao;
+	public static void main(String[] args) {
+		System.out.println("测试开始......");
+		new ClassPathXmlApplicationContext(
+				"classpath:demoinfo/spring/quartz/applicationContext.xml");     
+		System.out.println("测试结束......");
 	}
 
 }
 
 </pre>
-&nbsp;&nbsp;UserDao.java代码如下：<br/>
-<pre  name="code" class="java">
-package com.springmvc;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Collection;
-import java.util.List;
-
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.support.JdbcDaoSupport;
-
-@SuppressWarnings("all")
-public class UserDao extends JdbcDaoSupport {
-	private String msg;
-
-	public String getMsg() {
-		return msg;
-	}
-
-	public void setMsg(String msg) {
-		this.msg = msg;
-	}
-
-	// 此方法把USEMBO表对应的字段查询出来依次放入userPO中
-	public Collection&lt;UserPO&gt; doquery() {
-		String sql = "SELECT T.USERID,T.USERNAME,T.USERAGE FROM USERMBO T";
-		return super.getJdbcTemplate().query(sql, new RowMapper() {
-
-			public Object mapRow(ResultSet rs, int num) throws SQLException {
-				UserPO user = new UserPO();
-				user.setUserId(rs.getInt("USERID"));
-				user.setUserName(rs.getString("USERNAME"));
-				user.setUserAge(rs.getInt("USERAGE"));
-				return user;
-			}
-		});
-	}
-}
-
-</pre>
-&nbsp;&nbsp;UserPO.java代码如下：<br/>
-<pre  name="code" class="java">
-package com.springmvc;
-
-public class UserPO {
-	private Integer userId;
-	private String userName;
-	private Integer userAge;
-
-	public Integer getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public Integer getUserAge() {
-		return userAge;
-	}
-
-	public void setUserAge(Integer userAge) {
-		this.userAge = userAge;
-	}
-}
-
-</pre>
-&nbsp;&nbsp;最后是相应的jsp页面，index.jsp的代码如下：<br/>
-<pre  name="code" class="php">
-&lt;%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%&gt;
-&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;title&gt;My SpringMVC&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-	第一个SpringMVC框架，点击按钮可以获取数据库中的数据！
-	&lt;br /&gt;&lt;br /&gt;
-	&lt;form action="user.do" method="post"&gt;
-		&lt;input type="submit" value="获取人员信息列表"&gt;
-	&lt;/form&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-
-</pre>
-&nbsp;&nbsp;jsp文件夹下userInfo.jsp代码如下：<br/>
-<pre  name="code" class="php">
-&lt;%@ page language="java" import="java.util.*" pageEncoding="utf-8"%&gt;
-&lt;%@ page import="com.springmvc.UserPO"%&gt;
-&lt;%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-List&lt;UserPO&gt; str= (List&lt;UserPO&gt;)request.getAttribute("list");
-%&gt;
-
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;SpringMVC&lt;/title&gt;
-  &lt;/head&gt;
-  
-  &lt;body&gt;
-  &lt;table border="1" width="500" align="center" cellpadding="0" cellspacing="0" &gt;
-  		&lt;tr&gt;
-			&lt;td &gt;编号&lt;/td&gt;
-			&lt;td &gt;姓名&lt;/td&gt;
-			&lt;td &gt;年龄&lt;/td&gt;
-		&lt;/tr&gt;
-   &lt;%
-   		for(UserPO user:str){
-   			%&gt;
-   				&lt;tr&gt;
-   					&lt;td&gt;&lt;%=user.getUserId() %&gt;&lt;/td&gt;
-   					&lt;td&gt;&lt;%=user.getUserName() %&gt;&lt;/td&gt;
-   					&lt;td&gt;&lt;%=user.getUserAge() %&gt;&lt;/td&gt;
-   				&lt;/tr&gt;
-   			&lt;%
-   		}
-    %&gt;
-    &lt;/table&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-
-</pre>
-&nbsp;&nbsp;至此，第一个SpringMVC框架就搭建好了，赶快运行一下，看看效果吧^_^<br/>
+<p style="text-indent:2em">运行测试用例，可以看到控制台每过5秒钟就打印一次时间信息。</p>
 
 
    </span>

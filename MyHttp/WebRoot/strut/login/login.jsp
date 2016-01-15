@@ -6,6 +6,7 @@
     <title>struts登录实例</title>
 </head>
 <body>
+<h2>示例用户为：</h2>
 <div style="color:blue;">
 用户名:tom<br/>
 密码：123
