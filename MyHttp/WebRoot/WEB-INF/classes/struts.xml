@@ -22,10 +22,6 @@
               <result name="strutsFileUploadDemo">/strut/fileupload/upload.jsp</result>    
               <result name="strutsTagDemo" type="redirect">/tag/tag.action</result>    
               <result name="strutsCrudDemo" type="redirect">/crud/List.action</result>    
-              <result name="strutsAjaxDemo">/strut/ajax/ajax.jsp</result>    
-              <result name="strutsAjaxJqueryDemo">/strut/ajax/jqueryAjax.jsp</result>    
-              <result name="strutsAutoCompleterDemo">/strut/ajax/autoCompleter.jsp</result>    
-              <result name="selectValueDemo">/strut/ajax/selectValue.jsp</result>    
               <result name="strutsJsonDemo">/strut/json/json.jsp</result>    
               <!--struts2 实例 end-->
               <!-- hibernate 实例　start -->
@@ -47,6 +43,12 @@
               <result name="springQuartzDemo" >/spring/springQuartz.jsp</result>
               <result name="springMvcDemo" >/spring/springMvc.jsp</result>
               <!-- spring 实例  end-->
+              <!-- ajax和JS 实例  start-->
+              <result name="ajaxJsDemo">/ajaxjs/ajax.jsp</result>    
+              <result name="ajaxJsJqueryDemo">/ajaxjs/jqueryAjax.jsp</result>    
+              <result name="ajaxJsAutoCompleterDemo">/ajaxjs/autoCompleter.jsp</result>    
+              <result name="ajaxJsSelectValueDemo">/ajaxjs/selectValue.jsp</result>    
+              <!-- ajax和JS 实例  end-->
               <!-- webService 实例  start-->
               <result name="webServiceConf">/webservice/webServiceConf.jsp</result>
               <result name="webServiceTake">/webservice/webServiceTake.jsp</result>

@@ -226,16 +226,16 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 								<a href="#" class="tablink arwlink">AJAX和javaScript</a>
 								<ul>
 									<li>
-										<a href="#"  id="strutsAjaxDemo" onclick="strutsAjaxDemo()">Ajax简单特效</a>
+										<a href="#"  id="ajaxJsDemo" onclick="ajaxJsDemo()">Ajax简单特效</a>
 									</li>
 									<li>
-										<a href="#"  id="strutsAjaxJqueryDemo"  onclick="strutsAjaxJqueryDemo()">Ajax简单校验</a>
+										<a href="#"  id="ajaxJsJqueryDemo"  onclick="ajaxJsJqueryDemo()">Ajax简单校验</a>
 									</li>
 									<li>
-										<a href="#"  id="strutsAutoCompleterDemo"  onclick="strutsAutoCompleterDemo()">Ajax查询</a>
+										<a href="#"  id="ajaxJsAutoCompleterDemo"  onclick="ajaxJsAutoCompleterDemo()">Ajax查询</a>
 									</li>
 									<li>
-										<a href="#"  id="selectValueDemo"  onclick="selectValueDemo()">JS取值大全</a>
+										<a href="#"  id="ajaxJsSelectValueDemo"  onclick="ajaxJsSelectValueDemo()">JS取值大全</a>
 									</li>
 								</ul>
 							</li>
@@ -370,20 +370,20 @@ function strutsLoginDemo(){
     	document.getElementById("mainfrm1").src="./common/common.action?target=strutsCrudDemo";
     	document.getElementById("mainfrm1").onload;
     }
-    function strutsAjaxDemo(){
-    	document.getElementById("mainfrm1").src="./common/common.action?target=strutsAjaxDemo";
+    function ajaxJsDemo(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=ajaxJsDemo";
     	document.getElementById("mainfrm1").onload;
     }
-    function strutsAjaxJqueryDemo(){
-    	document.getElementById("mainfrm1").src="./common/common.action?target=strutsAjaxJqueryDemo";
+    function ajaxJsJqueryDemo(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=ajaxJsJqueryDemo";
     	document.getElementById("mainfrm1").onload;
     }
-    function strutsAutoCompleterDemo(){
-    	document.getElementById("mainfrm1").src="./common/common.action?target=strutsAutoCompleterDemo";
+    function ajaxJsAutoCompleterDemo(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=ajaxJsAutoCompleterDemo";
     	document.getElementById("mainfrm1").onload;
     }
-    function selectValueDemo(){
-    	document.getElementById("mainfrm1").src="./common/common.action?target=selectValueDemo";
+    function ajaxJsSelectValueDemo(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=ajaxJsSelectValueDemo";
     	document.getElementById("mainfrm1").onload;
     }
     function strutsJsonDemo(){

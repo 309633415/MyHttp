@@ -1,4 +1,4 @@
-package demoinfo.struts2.ajax;
+package demoinfo.ajaxjs.ajax;
 
 import java.util.ArrayList;
 import java.util.List;

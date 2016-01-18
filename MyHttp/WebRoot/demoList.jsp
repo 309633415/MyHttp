@@ -83,10 +83,10 @@ request.setCharacterEncoding("GBK");
 	    </div>
 	    <div id="ajax" class="mulu">
 		    <h2>AJAX和javaScript</h2>
-		    <a href="./common/common.action?target=strutsAjaxDemo">Ajax简单特效(struts2)</a><br/>
-		    <a href="./common/common.action?target=strutsAjaxJqueryDemo">Ajax简单校验(struts2+jQuery)</a><br/>
-		    <a href="./common/common.action?target=strutsAutoCompleterDemo">Ajax查询(自动补全例子)</a><br/>
-		    <a href="./common/common.action?target=selectValueDemo">JavaScript取值大全</a><br/>
+		    <a href="./common/common.action?target=ajaxJsDemo">Ajax简单特效(struts2)</a><br/>
+		    <a href="./common/common.action?target=ajaxJsJqueryDemo">Ajax简单校验(struts2+jQuery)</a><br/>
+		    <a href="./common/common.action?target=ajaxJsAutoCompleterDemo">Ajax查询(自动补全例子)</a><br/>
+		    <a href="./common/common.action?target=ajaxJsSelectValueDemo">JavaScript取值大全</a><br/>
 	    </div>
 	    <div id="webService" class="mulu">
 		    <h2>webService实例</h2>
