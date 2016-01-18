@@ -1,5 +1,8 @@
 package demoinfo.struts2.crud;
 
+/**
+ * 暂时没有用到这个包里面的内容，之前的小伙伴写的
+ */
 public class Book {
 	   private String isbn;
 	   private String title;

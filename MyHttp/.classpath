@@ -74,7 +74,6 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xfire-java5-1.2.6.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xfire-jaxws-1.2.6.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xfire-jsr181-api-1.0-M1.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xfire-spring-1.2.6.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/XmlSchema-1.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xmlsec.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xwork-core-2.1.6.jar"/>
@@ -101,5 +100,11 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/aspectjweaver.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/quartz-all-1.6.5.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/spring.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/webservices-api-2.2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/webservices-extra-2.2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/webservices-extra-api-2.2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/webservices-rt-1.2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/webservices-tools-2.2.0-4.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xfire-spring-1.2.6.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
