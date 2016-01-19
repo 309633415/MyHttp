@@ -36,7 +36,7 @@ public class CommonAction {
 		System.out.println();
 	 if(!"".equals(target.trim()) && target!=null){
 		 Session xx=HibernateSessionFactory.getSession();
-		 List<DemoInfo> demoInfoList=factory.HibernateSessionFactory.getSession().createQuery("from DemoInfo where title='"+target+"'").list();
+		 List<DemoInfo> demoInfoList=xx.createQuery("from DemoInfo where title='"+target+"'").list();
 		 HttpServletRequest request = ServletActionContext.getRequest ();
 		 HttpSession session=request.getSession(); 
 		 ServletContext application=session.getServletContext();

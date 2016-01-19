@@ -16,6 +16,7 @@ import demoinfo.hibernate.relationship.pojo.Person;
 import demoinfo.hibernate.relationship.pojo.User;
 import demoinfo.hibernate.relationship.pojo.Goods;
 
+@SuppressWarnings("unused")
 public class test {
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {

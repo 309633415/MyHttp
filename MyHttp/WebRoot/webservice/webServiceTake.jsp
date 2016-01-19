@@ -5,6 +5,7 @@
     <title>webService实例</title>
 </head>
 <body>
+<h2>通过发布的HelloWebService服务接口调用网站服务</h2><br/>
 <div style="color:blue;">
 调用方法名:example或者test<br/>
 发送文本内容:任意输入
