@@ -25,7 +25,6 @@
 		<param-name>contextConfigLocation</param-name>
 		<!-- 需要加载的配置文件，可以有多个，用逗号或者空格或者分号隔开 -->
 		<param-value>/WEB-INF/classes/spring/application*.xml
-		,/WEB-INF/classes/spring/webService.xml
 		</param-value>
 	</context-param>
 	<listener>

@@ -10,7 +10,7 @@
 调用方法名:example或者test<br/>
 发送文本内容:任意输入
 </div>
-    <form action="<%=basePath %>/take/Take.action" method="post">
+    <form action="<%=basePath %>/webservice/take.action" method="post">
        <s:textfield name="name" label="调用方法名" /><br/>
        <s:textfield name="message"  label="发送文本内容"/><br/>
        <s:submit value="提交"/><br/>

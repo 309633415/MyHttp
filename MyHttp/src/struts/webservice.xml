@@ -4,7 +4,7 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-  <package name="take" extends="struts-default" namespace="/take">
+  <package name="webservice" extends="struts-default" namespace="/webservice">
       <action name="take" class="demoinfo.webservice.take.WebServiceAction" method="webService">
             <result>/webservice/webServiceTake.jsp</result>
       </action>
