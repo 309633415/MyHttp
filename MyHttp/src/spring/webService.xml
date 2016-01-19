@@ -14,11 +14,11 @@
 	<!-- 引入xfire.xml-->
      <import resource="classpath:org/codehaus/xfire/spring/xfire.xml"/>
      <!-- Service实现类-->
-     <bean id="hello" class="com.webservices.HelloWebServiceImpl"/>
-     <!-- 这里的name属性并不是调用时的Service名字；调用时要用类名，不知道为什么-->
-     <bean name="HelloWebService" class="org.codehaus.xfire.spring.ServiceBean">
+     <bean id="hello" class="demoinfo.webservice.build.HelloWebServiceImpl"/>
+     <!-- 这里的name属性并不是调用时的Service名字；调用时要用类名，不知道为什么，所以这个bean的名字随便定义-->
+     <bean name="webService" class="org.codehaus.xfire.spring.ServiceBean">
 		<property name="serviceBean" ref="hello"/>                          <!-- Service实现类-->
-        <property name="serviceClass" value="com.webservices.IHelloWebService"/>       <!-- Service接口-->
+        <property name="serviceClass" value="demoinfo.webservice.build.HelloWebService"/>       <!-- Service接口-->
         <property name="inHandlers">
 			<list>
 				<ref bean="addressingHandler"/>

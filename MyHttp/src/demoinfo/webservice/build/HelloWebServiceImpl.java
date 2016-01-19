@@ -1,7 +1,10 @@
 package demoinfo.webservice.build;
 
 public class HelloWebServiceImpl implements HelloWebService {
-	public String sayHello(String name) {  
-        return "hello " + name;  
-    }  
+	public String example(String message) {
+		return "example:"+message;
+	}
+	public String test(String name) {
+		return "test:"+name;
+	}
 }

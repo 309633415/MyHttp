@@ -25,6 +25,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     当发布服务接口成功以后就可以通过地址栏访问查看 </br>
     <a href="<%=basePath%>services">发布成功后的样例</a></br>
-    <button onclick="window.open('<%=basePath%>services/HelloWebService?WSDL')">查看WebService内容</button>
+    <button onclick="window.open('<%=basePath%>services')">查看WebService内容</button>
   </body>
 </html>

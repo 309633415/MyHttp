@@ -5,9 +5,8 @@
 
 <struts>
   <package name="take" extends="struts-default" namespace="/take">
-      <action name="Take" class="demoinfo.webservice.take.WebServiceAction" method="webService">
+      <action name="take" class="demoinfo.webservice.take.WebServiceAction" method="webService">
             <result>/webservice/webServiceTake.jsp</result>
       </action>
-      
   </package>
 </struts>

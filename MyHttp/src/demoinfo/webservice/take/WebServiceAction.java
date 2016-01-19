@@ -10,6 +10,7 @@ import org.codehaus.xfire.client.Client;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+@SuppressWarnings("serial")
 public class WebServiceAction extends ActionSupport{
 	private String name;
 	private String message;
@@ -41,9 +42,6 @@ public class WebServiceAction extends ActionSupport{
 
 	public String webService(){
 		HttpServletRequest request = ServletActionContext.getRequest();
-		 
-		 
-
 		Client client;
 		try {
 			client = new Client(new URL("http://localhost:8080/MyHttp/services/HelloWebService?WSDL"));
@@ -61,4 +59,6 @@ public class WebServiceAction extends ActionSupport{
 		} 
  		return SUCCESS;
 	}
+	
+	
 }
