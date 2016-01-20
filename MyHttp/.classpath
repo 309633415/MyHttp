@@ -9,13 +9,43 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="melibrary.com.genuitec.eclipse.j2eedt.core.MYECLIPSE_JAVAEE_5_CONTAINER"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/asm-3.3.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cxf-2.7.6.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cxf-manifest.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cxf-services-sts-core-2.7.6.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cxf-services-ws-discovery-api-2.7.6.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cxf-services-ws-discovery-service-2.7.6.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cxf-services-wsn-api-2.7.6.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cxf-services-wsn-core-2.7.6.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cxf-xjc-boolean-2.6.2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cxf-xjc-bug671-2.6.2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cxf-xjc-dv-2.6.2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cxf-xjc-runtime-2.6.2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cxf-xjc-ts-2.6.2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jettison-1.3.4.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jetty-continuation-8.1.7.v20120910.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jetty-http-8.1.7.v20120910.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jetty-io-8.1.7.v20120910.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jetty-security-8.1.7.v20120910.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jetty-server-8.1.7.v20120910.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jetty-util-8.1.7.v20120910.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/neethi-3.0.2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/oauth-20100527.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/oauth-provider-20100527.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/slf4j-api-1.7.5.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/slf4j-jdk14-1.7.5.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/woodstox-core-asl-4.2.0.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xml-resolver-1.2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xmlbeans-2.6.0.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xmlschema-core-2.0.3.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xmltooling-1.3.2-1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/XmlSchema-1.4.7.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/activation-1.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/activation.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/antlr-2.7.6.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/axis-ant.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/axis-schema.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/axis.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-beanutils-1.7.0.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-beanutils.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-codec-1.3.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-collections.jar"/>
@@ -47,8 +77,6 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jta.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/junit.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/log4j-1.2.14.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/log4j-1.2.8.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mail-1.4.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mail.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mysql-connector-java-3.1.7-bin.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/ognl-2.7.3.jar"/>
@@ -61,8 +89,6 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2-core-2.1.8.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2-dojo-plugin-2.1.8.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2-json-plugin-2.1.8.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/wsdl4j-1.5.1.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/wsdl4j-1.6.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/wstx-asl-3.2.0.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xbean-2.2.0.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xbean-spring-2.8.jar"/>
@@ -103,33 +129,15 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/webservices-rt-1.2.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/webservices-tools-2.2.0-4.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xfire-spring-1.2.6.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cxf-2.7.6.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cxf-manifest.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cxf-services-sts-core-2.7.6.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cxf-services-ws-discovery-api-2.7.6.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cxf-services-ws-discovery-service-2.7.6.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cxf-services-wsn-api-2.7.6.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cxf-services-wsn-core-2.7.6.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cxf-xjc-boolean-2.6.2.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cxf-xjc-bug671-2.6.2.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cxf-xjc-dv-2.6.2.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cxf-xjc-runtime-2.6.2.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cxf-xjc-ts-2.6.2.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/neethi-3.0.2.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jettison-1.3.4.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jetty-continuation-8.1.7.v20120910.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jetty-http-8.1.7.v20120910.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jetty-io-8.1.7.v20120910.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jetty-security-8.1.7.v20120910.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jetty-server-8.1.7.v20120910.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jetty-util-8.1.7.v20120910.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/slf4j-api-1.7.5.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/slf4j-jdk14-1.7.5.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xfire-all-1.2.6.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/XmlSchema-1.4.7.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xml-resolver-1.2.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xmlbeans-2.6.0.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xmlschema-core-2.0.3.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xmltooling-1.3.2-1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/geronimo-javamail_1.4_spec-1.7.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/geronimo-jaxws_2.2_spec-1.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/geronimo-jms_1.1_spec-1.1.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/geronimo-servlet_3.0_spec-1.0.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mina-core-2.0.7.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/msv-core-2011.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/stax2-api-3.1.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/wsdl4j-1.6.3.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/wss4j-1.6.11.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
