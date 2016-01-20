@@ -1,6 +1,6 @@
 package demoinfo.webservice.service;
 
-import demoinfo.webservice.XfireSayHello;
+import demoinfo.webservice.backup.XfireSayHello;
 
 public class XfireSayHelloSpringImpl implements XfireSayHello {
 

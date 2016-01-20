@@ -1,4 +1,4 @@
-package demoinfo.webservice.take;
+package demoinfo.webservice.xfire;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -59,6 +59,4 @@ public class WebServiceAction extends ActionSupport{
 		} 
  		return SUCCESS;
 	}
-	
-	
 }

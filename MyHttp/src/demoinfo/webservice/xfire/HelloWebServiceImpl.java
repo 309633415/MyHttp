@@ -1,10 +1,10 @@
 package demoinfo.webservice.xfire;
 
 public class HelloWebServiceImpl implements HelloWebService {
-	public String example(String message) {
-		return "example:"+message;
+	public String sayHello(String name) {
+		return "<font color='red'>"+name+"</font> Hello , welcome to Webservice !";
 	}
-	public String test(String name) {
-		return "test:"+name;
+	public String sayLove(String name) {
+		return "<font color='red'>"+name+"</font> I Love You !";
 	}
 }

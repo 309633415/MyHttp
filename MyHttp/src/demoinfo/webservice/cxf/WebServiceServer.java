@@ -1,5 +1,7 @@
 package demoinfo.webservice.cxf;
 
+import javax.xml.ws.Endpoint;
+
 import org.apache.cxf.jaxws.JaxWsServerFactoryBean;  
 import demoinfo.webservice.cxf.HelloWebService;  
 import demoinfo.webservice.cxf.HelloWebServiceImpl;  
@@ -7,7 +9,7 @@ import demoinfo.webservice.cxf.HelloWebServiceImpl;
 public class WebServiceServer {  
   
     public WebServiceServer(){  
-        //方法一：  
+      /*  //方法一：  
         //创建webService接口  
         JaxWsServerFactoryBean factory = new JaxWsServerFactoryBean();  
           
@@ -19,10 +21,10 @@ public class WebServiceServer {
         factory.setServiceBean(new HelloWebServiceImpl());  
           
         //创建Service  
-        factory.create();  
+        factory.create();  */
           
         //方法二：  
-        //Endpoint.publish("http://localhost:8080/hellowebservice", new HelloWebServiceImpl());  
+        Endpoint.publish("http://localhost:8083/hellowebservice", new HelloWebServiceImpl());  
     }  
       
     public static void main(String[] args) {  

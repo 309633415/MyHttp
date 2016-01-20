@@ -90,8 +90,11 @@ request.setCharacterEncoding("GBK");
 	    </div>
 	    <div id="webService" class="mulu">
 		    <h2>webService实例</h2>
-		    <a href="./common/common.action?target=webServiceConf">环境配置</a><br/>
-		    <a href="./common/common.action?target=webServiceTake">调取网站服务</a><br/>
+		    <a href="./common/common.action?target=webServiceConf">环境配置(XFire)</a><br/>
+		    <a href="./common/common.action?target=webServiceTake">调取网站服务(XFire)</a><br/>
+		    <a href="./strut/json/json.jsp">Xstream+XML解析</a><br/>
+		    <a href="">调用服务端(CXFire)</a><br/>
+		    <a href="./strut/json/json.jsp">调用服务端(HttpClient)</a><br/>
 	    </div>
 	    <div id="jbpm" class="mulu">
 		    <h2>JBPM工作流实例</h2>

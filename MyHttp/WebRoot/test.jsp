@@ -37,14 +37,21 @@ background: cadetblue;
 	</span> 
 	<span class="bg"> 
 
-
-<p style="text-indent:2em"><strong>什么是IOC？</strong><br/>
-&nbsp;&nbsp;控制反转（Inversion of Control，英文缩写为IoC）是一个重要的面向对象编程的法则来削减计算机程序的耦合问题，也是轻量级的Spring框架的核心。 控制反转一般分为两种类型，依赖注入（Dependency Injection，简称DI）和依赖查找（Dependency Lookup）。依赖注入应用比较广泛。<br/>
-&nbsp;&nbsp;从注入的方法上看，依赖注入主要可以划分为三种类型：属性注入（set注入）、构造函数注入和接口注入。由于接口注入需要额外声明一个接口，增加了类的数目，而且它的效果和属性注入并无本质区别，因此我们不提倡采用这种方式。</p>
-<p style="text-indent:2em"><strong>三种注入方式的区别：</strong><br/>
-&nbsp;&nbsp;1.属性注入方式：对于需要注入的东西比较明确。符合java的设计规则。更适合java开发人员，使用起来更加自然，更加方便。<br/>
-&nbsp;&nbsp;2.构造函数注入方式：在类加载的时候，就已经注入依赖的组件。但是若是参数多的话，使用起来不方便。<br/>
-&nbsp;&nbsp;3.接口注入：组件需要依赖特定接口的实现，其中的加载接口实现和接口实现的具体对象都是由容器来完成。由于需要额外声明一个接口，增加了类的数目，而且它的效果和属性注入并无本质区别，因此我们不提倡采用这种方式。</p>
+<p style="text-indent:2em"><strong>什么是WebService?</strong><br/>
+&nbsp;&nbsp;Web Service也叫XML Web Service WebService是一种可以接收从Internet或者Intranet上的其它系统中传递过来的请求，轻量级的独立的通讯技术。是:通过SOAP在Web上提供的软件服务，使用WSDL文件进行说明，并通过UDDI进行注册。
+</p>
+<p style="text-indent:2em"><strong>WebService能做什么?</strong><br/>
+&nbsp;&nbsp;我们可以调用互联网上查询天气信息Web服务，然后将它嵌入到我们的程序(C/S或B/S程序)当中来，当用户从我们的网点看到天气信息时，他会认为我们为他提供了很多的信息服务，但其实我们什么也没有做，只是简单了调用了一下别人服务器上的一段代码而已。
+</p>
+<p style="text-indent:2em"><strong>为什么要学习WebService?</strong><br/>
+&nbsp;&nbsp;学习WebSerice可以将你的服务(一段代码)发布到互联网上让别人去调用,也可以调用别人机器上发布的WebService,就像使用自己的代码一样.。
+</p>
+<p style="text-indent:2em"><strong>Web Service基本概念</strong><br/>
+&nbsp;&nbsp;XML：(Extensible Markup Language)扩展型可标记语言。面向短期的临时数据处理、面向万维网络，是Soap的基础。<br/>
+&nbsp;&nbsp;Soap：(Simple Object Access Protocol)简单对象存取协议。是XML Web Service 的通信协议。当用户通过UDDI找到你的WSDL描述文档后，他通过可以SOAP调用你建立的Web服务中的一个或多个操作。SOAP是XML文档形式的调用方法的规范，它可以支持不同的底层接口，像HTTP(S)或者SMTP。<br/>
+&nbsp;&nbsp;WSDL：(Web Services Description Language) WSDL 文件是一个 XML 文档，用于说明一组 SOAP 消息以及如何交换这些消息。大多数情况下由软件自动生成和使用。<br/>
+&nbsp;&nbsp;UDDI (Universal Description, Discovery, and Integration) 是一个主要针对Web服务供应商和使用者的新项目。在用户能够调用Web服务之前，必须确定这个服务内包含哪些商务方法，找到被调用的接口定义，还要在服务端来编制软件，UDDI是一种根据描述文档来引导系统查找相应服务的机制。UDDI利用SOAP消息机制（标准的XML/HTTP）来发布，编辑，浏览以及查找注册信息。它采用XML格式来封装各种不同类型的数据，并且发送到注册中心或者由注册中心来返回需要的数据。
+</p>
 
 	</span> 
 		<span class="include"> 
@@ -64,8 +71,7 @@ background: cadetblue;
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
    <span class="bg"> 
- 1:jar包下载地址：<a href="http://repo.spring.io" target="_blank">spring jar包</a><br/>
- 2.详细学习参考spring参考手册<a href="http://download.csdn.net/detail/jiashubing/9401325" target="_blank">spring参考手册</a>
+ 1:jar包下载地址：<a href="http://download.csdn.net/detail/jiashubing/9411845" target="_blank">;XFire+WebService的jar包合集</a>（jar包介绍这里就不啰嗦了）
    </span>
    <span class="include"> 
 		<strong class="s5">&nbsp;</strong> 
@@ -84,181 +90,119 @@ background: cadetblue;
 	</span> 
    <span class="bg">
  
- <p style="text-indent:2em">
- 1:导入必要的jar包，新建一个 Java 工程，然后引入必要的 jar 包，右击项目工程，依次选择 Properties->Java Build Path->Libraries->Add External JARs。一般需要Hibernate.jar包和mysql-connector.jar包还有一些基本jar包。</p>
 <p style="text-indent:2em">
-2:编写Code<br/>
-&nbsp;&nbsp;1>创建数据库hibernate_user_info<br/>
-&nbsp;&nbsp;2>新建实体类 User.java和Goods.java<br/>
-&nbsp;&nbsp;这个没什么太多说的，一个用户具有：id、username、password 三个属性。每个用户可以有多个商品，而一个商品只能对应一个用户。</p>
+1:在发布服务项目的基础上调用服务，首先建立WebServiceAction类：</p>
 <pre name="code" class="java">
-public class User {
-    private int id;
-    private String username;
-    private String password;
+package demoinfo.webservice.xfire;
 
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public String getUsername() {
-        return username;
-    }
-    public void setUsername(String username) {
-        this.username = username;
-    }
-    public String getPassword() {
-        return password;
-    }
-    public void setPassword(String password) {
-        this.password = password;
-    }
-}
-</pre>
-<pre name="code" class="java">
-public class Goods {  
-    private int id;  
-    private String goodsname;  
-    private String userId;  
-  
-    public int getId() {  
-        return id;  
-    }  
-    public void setId(int id) {  
-        this.id = id;  
-    }  
-    public String getGoodsname() {  
-        return goodsname;  
-    }  
-    public void setGoodsname(String goodsname) {  
-        this.goodsname = goodsname;  
-    }  
-    public String getUserId() {  
-        return userId;  
-    }  
-    public void setUserId(String userId) {  
-        this.userId = userId;  
-    }  
-}  
-</pre>
-&nbsp;&nbsp;现在要实现两表连接查询，查出每个用户所拥有的商品，并把该用户的信息和其商品信息显示出来。<br/>
-&nbsp;&nbsp;使用Hibernate反向生成的实体类分别是Users和Goods。<br/>
-&nbsp;&nbsp;3>配置 hibernate.cfg.xml（仅供参考，具体配置自行变换）<br/>
-&nbsp;&nbsp;在 src 目录下，新建 hibernate.cfg.xml 文件（配置文件存放的位置要求统一化，命名规范化），其配置如下：
-<pre name="code" class="xml">
-<?xml version='1.0' encoding='utf-8'?>
-<!DOCTYPE hibernate-configuration PUBLIC
-        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
-<hibernate-configuration>
-    <session-factory>
-        <!-- Database connection settings -->
-        <!-- 表示使用 mysql 数据库驱动类 -->
-        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <!-- jdbc 的连接 url 和数据库（使用我们之前新建的 hibernate）-->
-        <property name="connection.url">jdbc:mysql://localhost:3306/mynet</property>
-        <!-- 数据库用户名 -->
-        <property name="connection.username">root</property>
-        <!-- 密码（这里为空） -->
-        <property name="connection.password"></property>
-        <!-- JDBC connection pool (use the built-in) -->
-        <!-- <property name="connection.pool_size">1</property>-->
-        <!-- 数据库使用的方言 -->
-        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-        <!-- Echo all executed SQL to stdout -->
-        <!-- 设置 打印输出 sql 语句 为真 -->
-        <property name="show_sql">true</property>
-        <!-- 设置格式为 sql -->
-        <property name="format_sql">true</property>
-        <!-- 第一次加载 hibernate 时根据实体类自动建立表结构，以后自动更新表结构 -->
-        <property name="hbm2ddl.auto">update</property>         
-        <!-- 映射文件 -->
-        <mapping resource="demoinfo/hibernate/relationship/pojo/User.hbm.xml" /> 
-        <mapping resource="demoinfo/hibernate/relationship/pojo/Goods.hbm.xml" />  
-    </session-factory>
-</hibernate-configuration>
-</pre>
-注：<1>对于MySql查询url端口号，可以通过下面的命令来查看:show variables like 'port';<br/>
-&nbsp;&nbsp;查询用户名和密码可以通过下面的命令来查看：select host,user,password from mysql.user;<br/>
-&nbsp;&nbsp;<2>在创建SessionFactory时,如果不是放在ｓｒｃ下第一层，则应该对加载语句进行修改，以防找不到配置文件，例子如下
-<pre name="code" class="java">
-Configuration cfg=newConfiguration().configure("hibernate/hibernate.cfg.xml");  //实例化Configuration并加载hibernate.cfg.xml文件  
-</pre>&nbsp;&nbsp;4>配置 User.hbm.xml和Goods.hbm.xml<br/>
-&nbsp;&nbsp;一个实体类对应一个映射文件，且位于同一个包（package）下。<br/>
-<pre name="code" class="xml">
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC
-        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- 映射对应的package -->
-<hibernate-mapping package="demoinfo.hibernate.relationship.pojo">
-    <!-- 实体类和数据库中的表对应（如果没有这个表则新建） -->
-    <class name="User" table="hibernate_user_info">
-        <!-- id主键 和其他属性对应表中相应的字段（这些都是在 User.java 实体类中定义的） -->
-        <id name="id" column="user_id" ></id>
-        <property name="username" column="user_username"></property>
-        <property name="password" column="user_password"></property>
-   </class>
-</hibernate-mapping>
-</pre>
-<pre name="code" class="xml">
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC
-        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- 映射对应的package -->
-<hibernate-mapping package="demoinfo.hibernate.relationship.pojo">
-     <!-- 实体类和数据库中的表对应（如果没有这个表则新建） -->
-    <class name="Goods" table="hibernate_goods_info">
-         <!-- id主键 和其他属性对应表中相应的字段（这些都是在 Goods.java 实体类中定义的） -->
-        <id name="id" column="goods_id" ></id>
-        <property name="goodsname" column="goods_goodsname"></property>
-        <property name="userId" column="goods_userId"></property>
-   </class>
-</hibernate-mapping>
-</pre>
-&nbsp;&nbsp;5>实现语句<br/>
-&nbsp;&nbsp;有两种方式：<br/>
-&nbsp;&nbsp;（1）使用传统方式：<br/>
-<pre name="code" class="java">
-String hql="select u.userame,g.goodsname from User u, Goods g where u.id=g.userId";
-</pre>
-&nbsp;&nbsp;根据这个查询语句，调用query.list()方法得到一个List值，这个List中的每一个值都是Object[]类型的，里面包含了查询出来的所有值，剩下的自个儿去处理就行了<br/>
-&nbsp;&nbsp;（2）增加一个映射类<br/>
-&nbsp;&nbsp;增加一个映射类UserVoGoods.java，添加需要查询的信息相关的所有属性，本例中添加username, goodsame。并为这几个属性添加setter和getter方法，增加构造函数，参数与这两个属性对应，那么可以用hql查询方式：<br/>
-<pre name="code" class="java">
- String hql="select new demoinfo.hibernate.pojo.UsersVoGoods(u.id,g.id,u.username, g.goodsname) from User u,Goods g where u.id=g.userId"; 
-</pre>
-&nbsp;&nbsp;query.list()的返回值List中的值都是UserVoGoods型的，直接使用get()就能获取。<br/>
-&nbsp;&nbsp;其实不增加映射类也是可以的，只需要在User.java实体类里增加一个构造函数，函数参数还是需要的所有字段，并为这些参数中User实体原来没有的字段添加属性和getter() setter()即可。<br/>
-&nbsp;&nbsp;创建Test运行<br/>
-<pre name="code" class="java">
-public class QueryLink {
-    @SuppressWarnings("unchecked")
-    public static void main(String[] args) {
-    	AnnotationConfiguration configuration = new AnnotationConfiguration().configure();
-        SessionFactory sessionFactory = configuration.buildSessionFactory();
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        // hibernate 实现多表连接查询 查询结果映射到自定义类中
-        String hql="select new demoinfo.hibernate.pojo.UserVoGoods(u.id,g.id,u.username, g.goodsname) from User u,Goods g where u.id=g.userId";  
-        // 利用 session 建立 query  
-        Query query = session.createQuery(hql);  
-        // 序列化 query 的结果为一个 list 集合  
-        List&lt;UserVoGoods&gt; list = query.list();  
-        // 打印每一个 User 信息（这里只打印了名字，你也可以打印其他信息）  
-        for (UserVoGoods li : list) {  
-            System.out.println( "用户名："+li.getUsername() +"  商品名："+li.getGoodsname() );  
-        }  
-        session.getTransaction().commit();
-        session.close();
-        sessionFactory.close();
-    }
-}
-</pre>
+import java.net.MalformedURLException;
+import java.net.URL;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
+import org.codehaus.xfire.client.Client;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+@SuppressWarnings("serial")
+public class WebServiceAction extends ActionSupport{
+	private String name;
+	private String message;
+	private Object[] results;
+	
+	public Object[] getResults() {
+		return results;
+	}
+
+	public void setResults(Object[] results) {
+		this.results = results;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public String webService(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		Client client;
+		try {
+			client = new Client(new URL("http://localhost:8080/MyHttp/services/HelloWebService?WSDL"));
+			results=client.invoke(name, new Object[]{message});
+			System.out.print(results); 
+			if(results!=null&&results.length!=0){
+				request.setAttribute("results",results);
+			}
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+			return ERROR;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERROR;
+		} 
+ 		return SUCCESS;
+	}
+}
+
+</pre>
+<p style="text-indent:2em">
+2:再建立struts配置文件。在struts.xml中包含webservice.xml，webservice.xml的代码如下：</p>
+<pre name="code" class="xml">
+&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd"&gt;
+
+&lt;struts&gt;
+  &lt;package name="webservice" extends="struts-default" namespace="/webservice"&gt;
+      &lt;action name="take" class="demoinfo.webservice.xfire.WebServiceAction" method="webService"&gt;
+            &lt;result&gt;/webservice/webServiceTake.jsp&lt;/result&gt;
+      &lt;/action&gt;
+  &lt;/package&gt;
+&lt;/struts&gt;
+</pre>
+<p style="text-indent:2em">
+3:最后是jsp的展示页面webServiceTake.jsp，代码如下：<br/>
+</p>
+<pre name="code" class="php">
+&lt;%@ include file="/common/taglibs.jsp" %&gt;
+&lt;%@ page language="java" import="java.util.*" pageEncoding="GBK"%&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;webService实例&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h2&gt;通过发布的HelloWebService服务接口调用网站服务&lt;/h2&gt;&lt;br/&gt;
+&lt;div style="color:blue;"&gt;
+调用方法名 : sayHello或者sayLove&lt;br/&gt;
+发送文本内容 : 任意输入 
+&lt;/div&gt;&lt;br/&gt;&lt;br/&gt;
+    &lt;form action="&lt;%=basePath %&gt;/webservice/take.action" method="post"&gt;
+       &lt;s:textfield name="name" label="调用方法名" /&gt;&lt;br/&gt;
+       &lt;s:textfield name="message"  label="发送文本内容"/&gt;&lt;br/&gt;
+       &lt;s:submit value="提交"/&gt;&lt;br/&gt;
+    &lt;/form&gt;
+&lt;div&gt;
+	返回数据为：
+    &lt;c:forEach items="&#36;{requestScope.results}" var="it"&gt;
+    	&#36;{it}
+    &lt;/c:forEach&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
 
    </span>
    <span class="include"> 

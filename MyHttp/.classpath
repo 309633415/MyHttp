@@ -40,7 +40,6 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xmlschema-core-2.0.3.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xmltooling-1.3.2-1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/XmlSchema-1.4.7.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/activation-1.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/activation.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/antlr-2.7.6.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/axis-ant.jar"/>

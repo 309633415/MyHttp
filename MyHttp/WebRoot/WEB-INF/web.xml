@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
-  <!-- 
-<web-app version="2.5" 
-	xmlns="http://java.sun.com/xml/ns/javaee" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
-	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-	 -->
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	version="2.4"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
-	 
-  <!--	struts2的配置  Start -->
-  <filter>
-    <filter-name>struts2</filter-name>
-    <filter-class>org.apache.struts2.dispatcher.FilterDispatcher</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>struts2</filter-name>
-    <url-pattern>*.action</url-pattern>
-  </filter-mapping>
-  
+	<!-- struts2的配置 Start -->
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.FilterDispatcher</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping>
+	<!-- struts2的配置 end -->
+
 	<!-- Spring配置和监听start -->
 	<context-param>
 		<!-- 配置多个文件时需要的参数 -->
@@ -30,25 +25,24 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	<!--end -->  
-	
-	<!-- Xfire Servlet start-->
+	<!--end -->
+
+	<!-- Xfire Servlet start -->
 	<servlet>
 		<servlet-name>XFireServlet</servlet-name>
 		<display-name>XFire Servlet</display-name>
 		<!-- 不整合时使用org.codehaus.xfire.transport.http.XFireConfigurableServlet -->
-	        <servlet-class>org.codehaus.xfire.spring.XFireSpringServlet</servlet-class>
-	        <load-on-startup>0</load-on-startup>
+		<servlet-class>org.codehaus.xfire.spring.XFireSpringServlet</servlet-class>
+		<load-on-startup>0</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>XFireServlet</servlet-name>
 		<url-pattern>/services/*</url-pattern>
 	</servlet-mapping>
 	<!-- Xfire Servlet end -->
-  
-  <!--	struts2的配置 end -->
-  <welcome-file-list>
-    <welcome-file>frame.jsp</welcome-file>
-  </welcome-file-list>
+
+	<welcome-file-list>
+		<welcome-file>frame.jsp</welcome-file>
+	</welcome-file-list>
 </web-app>
 

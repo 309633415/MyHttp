@@ -5,7 +5,7 @@
 
 <struts>
   <package name="webservice" extends="struts-default" namespace="/webservice">
-      <action name="take" class="demoinfo.webservice.take.WebServiceAction" method="webService">
+      <action name="take" class="demoinfo.webservice.xfire.WebServiceAction" method="webService">
             <result>/webservice/webServiceTake.jsp</result>
       </action>
   </package>
