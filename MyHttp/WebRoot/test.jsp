@@ -71,7 +71,7 @@ background: cadetblue;
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
    <span class="bg"> 
- 1:jar包下载地址：<a href="http://download.csdn.net/detail/jiashubing/9411845" target="_blank">;XFire+WebService的jar包合集</a>（jar包介绍这里就不啰嗦了）
+ 1:jar包下载地址：<a href="http://download.csdn.net/detail/jiashubing/9411845" target="_blank">XFire+WebService的jar包合集</a>（jar包介绍这里就不啰嗦了）
    </span>
    <span class="include"> 
 		<strong class="s5">&nbsp;</strong> 
@@ -89,120 +89,164 @@ background: cadetblue;
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
    <span class="bg">
- 
-<p style="text-indent:2em">
-1:在发布服务项目的基础上调用服务，首先建立WebServiceAction类：</p>
+ <p style="text-indent:2em">
+1:建立webservice首先需要建立一个服务接口，我们的例子是HelloWebService。</p>
 <pre name="code" class="java">
 package demoinfo.webservice.xfire;
 
-import java.net.MalformedURLException;
-import java.net.URL;
+import javax.jws.WebService;  
+@WebService 
+public interface HelloWebService {
+	public String sayHello(String name);
+	public String sayLove(String name);
+}
+</pre>
+<p style="text-indent:2em">
+2:建立这个接口的实现类。</p>
+<pre name="code" class="java">
+package demoinfo.webservice.xfire;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts2.ServletActionContext;
-import org.codehaus.xfire.client.Client;
-
-import com.opensymphony.xwork2.ActionSupport;
-
-@SuppressWarnings("serial")
-public class WebServiceAction extends ActionSupport{
-	private String name;
-	private String message;
-	private Object[] results;
-	
-	public Object[] getResults() {
-		return results;
+public class HelloWebServiceImpl implements HelloWebService {
+	public String sayHello(String name) {
+		return "&lt;font color='red'&gt;"+name+"&lt;/font&gt; Hello , welcome to Webservice !";
 	}
-
-	public void setResults(Object[] results) {
-		this.results = results;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public String webService(){
-		HttpServletRequest request = ServletActionContext.getRequest();
-		Client client;
-		try {
-			client = new Client(new URL("http://localhost:8080/MyHttp/services/HelloWebService?WSDL"));
-			results=client.invoke(name, new Object[]{message});
-			System.out.print(results); 
-			if(results!=null&&results.length!=0){
-				request.setAttribute("results",results);
-			}
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-			return ERROR;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return ERROR;
-		} 
- 		return SUCCESS;
+	public String sayLove(String name) {
+		return "&lt;font color='red'&gt;"+name+"&lt;/font&gt; I Love You !";
 	}
 }
-
 </pre>
 <p style="text-indent:2em">
-2:再建立struts配置文件。在struts.xml中包含webservice.xml，webservice.xml的代码如下：</p>
-<pre name="code" class="xml">
-&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;!DOCTYPE struts PUBLIC
-    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
-    "http://struts.apache.org/dtds/struts-2.0.dtd"&gt;
-
-&lt;struts&gt;
-  &lt;package name="webservice" extends="struts-default" namespace="/webservice"&gt;
-      &lt;action name="take" class="demoinfo.webservice.xfire.WebServiceAction" method="webService"&gt;
-            &lt;result&gt;/webservice/webServiceTake.jsp&lt;/result&gt;
-      &lt;/action&gt;
-  &lt;/package&gt;
-&lt;/struts&gt;
-</pre>
-<p style="text-indent:2em">
-3:最后是jsp的展示页面webServiceTake.jsp，代码如下：<br/>
+3:建立服务端，将服务发布出去。<br/>
+&nbsp;&nbsp;这里有两种方法，一种是运行java类，手动将其发布；另一种是通过XML配置文件，在项目启动的时候自动发布。<br/>
+&nbsp;&nbsp;第一种方法，需要新建一个服务类WebServiceServer。
 </p>
-<pre name="code" class="php">
-&lt;%@ include file="/common/taglibs.jsp" %&gt;
-&lt;%@ page language="java" import="java.util.*" pageEncoding="GBK"%&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;webService实例&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;h2&gt;通过发布的HelloWebService服务接口调用网站服务&lt;/h2&gt;&lt;br/&gt;
-&lt;div style="color:blue;"&gt;
-调用方法名 : sayHello或者sayLove&lt;br/&gt;
-发送文本内容 : 任意输入 
-&lt;/div&gt;&lt;br/&gt;&lt;br/&gt;
-    &lt;form action="&lt;%=basePath %&gt;/webservice/take.action" method="post"&gt;
-       &lt;s:textfield name="name" label="调用方法名" /&gt;&lt;br/&gt;
-       &lt;s:textfield name="message"  label="发送文本内容"/&gt;&lt;br/&gt;
-       &lt;s:submit value="提交"/&gt;&lt;br/&gt;
-    &lt;/form&gt;
-&lt;div&gt;
-	返回数据为：
-    &lt;c:forEach items="&#36;{requestScope.results}" var="it"&gt;
-    	&#36;{it}
-    &lt;/c:forEach&gt;
-&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+<pre name="code" class="java">
+package demoinfo.webservice.xfire;
+
+import javax.xml.ws.Endpoint;
+import demoinfo.webservice.xfire.HelloWebServiceImpl;  
+  
+public class WebServiceServer {  
+    public static void main(String[] args) {  
+    	Endpoint.publish("http://localhost:8080/hellowebservice", new HelloWebServiceImpl());  
+    	System.out.println("server is ready...");  
+        try {  
+            Thread.sleep(1000*300);  
+        } catch (InterruptedException e) {  
+            e.printStackTrace();  
+        }  
+        System.out.println("server exit...");  
+        System.exit(0);  
+    }  
+}  
+
 </pre>
+<p style="text-indent:2em">
+这时候我们就可以通过浏览器访问http://localhost:8080/hellowebservice来访问我们这个类，看到它的类的描述文件了。<br/>
+&nbsp;&nbsp;我们还可以使用另外一种方法，通过XML配置文件来发布服务，这也是比较常用的方法。<br/>
+&nbsp;&nbsp;首先在web.xml中增加Xfire Servlet的配置。
+</p>
+<pre name="code" class="xml">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	version="2.4"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"&gt;
+
+	&lt;!-- struts2的配置 Start --&gt;
+	&lt;filter&gt;
+		&lt;filter-name&gt;struts2&lt;/filter-name&gt;
+		&lt;filter-class&gt;org.apache.struts2.dispatcher.FilterDispatcher&lt;/filter-class&gt;
+	&lt;/filter&gt;
+	&lt;filter-mapping&gt;
+		&lt;filter-name&gt;struts2&lt;/filter-name&gt;
+		&lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+	&lt;/filter-mapping&gt;
+	&lt;!-- struts2的配置 end --&gt;
+
+	&lt;!-- Spring配置和监听start --&gt;
+	&lt;context-param&gt;
+		&lt;!-- 配置多个文件时需要的参数 --&gt;
+		&lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+		&lt;!-- 需要加载的配置文件，可以有多个，用逗号或者空格或者分号隔开 --&gt;
+		&lt;param-value&gt;/WEB-INF/classes/spring/application*.xml
+		&lt;/param-value&gt;
+	&lt;/context-param&gt;
+	&lt;listener&gt;
+		&lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;
+	&lt;/listener&gt;
+	&lt;!--end --&gt;
+
+	&lt;!-- Xfire Servlet start --&gt;
+	&lt;servlet&gt;
+		&lt;servlet-name&gt;XFireServlet&lt;/servlet-name&gt;
+		&lt;display-name&gt;XFire Servlet&lt;/display-name&gt;
+		&lt;!-- 不整合时使用org.codehaus.xfire.transport.http.XFireConfigurableServlet --&gt;
+		&lt;servlet-class&gt;org.codehaus.xfire.spring.XFireSpringServlet&lt;/servlet-class&gt;
+		&lt;load-on-startup&gt;0&lt;/load-on-startup&gt;
+	&lt;/servlet&gt;
+	&lt;servlet-mapping&gt;
+		&lt;servlet-name&gt;XFireServlet&lt;/servlet-name&gt;
+		&lt;url-pattern&gt;/services/*&lt;/url-pattern&gt;
+	&lt;/servlet-mapping&gt;
+	&lt;!-- Xfire Servlet end --&gt;
+
+	&lt;welcome-file-list&gt;
+		&lt;welcome-file&gt;frame.jsp&lt;/welcome-file&gt;
+	&lt;/welcome-file-list&gt;
+&lt;/web-app&gt;
+
+</pre>
+<p style="text-indent:2em">
+注意为了不让struts对他进行拦截，需要在struts.xml里为它放行,struts.xml里面添加如下代码：
+</p>
+<pre name="code" class="xml">
+
+&lt;package name="XFireServlet" extends="struts-default" &gt;
+	    &lt;action name="*"&gt;
+	        &lt;result&gt;{1}&lt;/result&gt;
+	    &lt;/action&gt;
+	&lt;/package&gt;
+&lt;/pre&gt;
+&lt;!--webService的xml文件，下一步调用服务需要用到--&gt;
+&lt;include file="/struts/webservice.xml"&gt;&lt;/include&gt;
+
+<p style="text-indent:2em">
+同时也要在spring包下增加xfir的配置文件applicationContext-xfire.xml。</p>
+<pre name="code" class="xml">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context   
+     http://www.springframework.org/schema/context/spring-context-3.0.xsd   
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd 
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd"
+	default-autowire="byName"&gt;
+
+	&lt;!-- 引入xfire.xml--&gt;
+     &lt;import resource="classpath:org/codehaus/xfire/spring/xfire.xml"/&gt;
+     &lt;!-- Service实现类--&gt;
+     &lt;bean id="hello" class="demoinfo.webservice.xfire.HelloWebServiceImpl"/&gt;
+     &lt;!-- 这里的name属性并不是调用时的Service名字；调用时要用类名，不知道为什么，所以这个bean的名字随便定义--&gt;
+     &lt;bean name="webService" class="org.codehaus.xfire.spring.ServiceBean"&gt;
+		&lt;property name="serviceBean" ref="hello"/&gt;                          &lt;!-- Service实现类--&gt;
+        &lt;property name="serviceClass" value="demoinfo.webservice.xfire.HelloWebService"/&gt;       &lt;!-- Service接口--&gt;
+        &lt;property name="inHandlers"&gt;
+			&lt;list&gt;
+				&lt;ref bean="addressingHandler"/&gt;
+			&lt;/list&gt;
+		&lt;/property&gt;
+     &lt;/bean&gt;
+
+     &lt;bean id="addressingHandler" class="org.codehaus.xfire.addressing.AddressingInHandler"/&gt;
+	
+&lt;/beans&gt;
+</pre>
+<p style="text-indent:2em">
+这样的话项目启动以后，服务会自动发布，可以通过浏览器访问http://localhost:8080/MyHttp/services/HelloWebService来访问这个服务。</p>
 
    </span>
    <span class="include"> 

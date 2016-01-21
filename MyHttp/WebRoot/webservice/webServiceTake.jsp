@@ -10,10 +10,10 @@
 调用方法名 : sayHello或者sayLove<br/>
 发送文本内容 : 任意输入 
 </div><br/><br/>
-    <form action="<%=basePath %>/webservice/take.action" method="post">
-       <s:textfield name="name" label="调用方法名" /><br/>
+    <form id="fm1" action="<%=basePath %>/webservice/take.action" method="post">
+       <s:textfield id="name" name="name" label="调用方法名" /><br/>
        <s:textfield name="message"  label="发送文本内容"/><br/>
-       <s:submit value="提交"/><br/>
+       <input type="button" value="提交" onclick="check()"/>
     </form>
 <div>
 	返回数据为：
@@ -23,5 +23,18 @@
 </div>
 <br/><br/>
     <p style="text-indent:2em;">上一步我们发布了服务，现在我们学习建立客户端去调用，在之前项目的基础上实现以上效果。</p>
+    <script type="text/javascript">
+    function check(){
+	   	 var temp=document.getElementById("name");
+	   	 if(temp.value !="sayHello" && temp.value !="sayLove"){
+	   	 	alert("您输入的 "+temp.value + " 不是服务的接口哦！");
+			temp.focus();
+			return;
+		}
+		else{
+			document.getElementById("fm1").submit();
+		}
+    }
+    </script>
 </body>
 </html>
