@@ -249,7 +249,7 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 										<a href="#"  id="webServiceTake"  onclick="webServiceTake()">调取网站服务</a>
 									</li>
 									<li>
-										<a href="#"  id=""  onclick="">Xstream+XML解析</a>
+										<a href="#"  id="webServiceXstream"  onclick="webServiceXstream()">Xstream+XML解析</a>
 									</li>
 									<li>
 										<a href="#"  id="webServiceCxf"  onclick="webServiceCxf()">调用服务端(CXF)</a>
@@ -463,6 +463,10 @@ function strutsLoginDemo(){
     }
     function webServiceTake(){
     	document.getElementById("mainfrm1").src="./common/common.action?target=webServiceTake";
+    	document.getElementById("mainfrm1").onload;
+    }
+    function webServiceXstream(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=webServiceXstream";
     	document.getElementById("mainfrm1").onload;
     }
     function webServiceCxf(){

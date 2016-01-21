@@ -36,19 +36,31 @@ background: cadetblue;
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
 	<span class="bg"> 
-
-<p style="text-indent:2em"><strong>什么是CXF?</strong><br/>
-&nbsp;&nbsp;CXF是apache旗下的开源框架，由Celtix + XFire这两门经典的框架合成，是一套非常流行的web service框架。<br/>
-&nbsp;&nbsp;它允许创建高性能和可扩展的服务，您可以将这样的服务部署在 Tomcat 和基于 Spring 的轻量级容器中，以及部署在更高级的服务器上。
+	
+<p style="text-indent:2em"><strong>XStream概念：</strong><br/>
+&nbsp;&nbsp;XStream是一个序列化对象为XML或XML转换为对象的库。
 </p>
-<p style="text-indent:2em"><strong>主要搭建的步骤：</strong><br/>
-&nbsp;&nbsp;1、 到apache的cxf官网上下载相应的jar包。<br/>
-&nbsp;&nbsp;2、 建立一个java工程、将下载的jar包引入到项目中。<br/>
-&nbsp;&nbsp;3、 创建服务端功能接口。<br/>
-&nbsp;&nbsp;4、 创建实现服务端功能接口的具体类。<br/>
-&nbsp;&nbsp;5、 发布服务接口。<br/>
-&nbsp;&nbsp;6、 创建测试类、充当客户端调用服务端提供的功能、获取服务调用服务端提供的服务（具体点就是调用服务端提供的方法）。</p>
+<p style="text-indent:2em"><strong>特点：</strong><br/>
+&nbsp;&nbsp;简化的API;<br/>
+&nbsp;&nbsp;无映射文件;<br/>
+&nbsp;&nbsp;高性能,低内存占用;<br/>
+&nbsp;&nbsp;整洁的XML;<br/>
+&nbsp;&nbsp;不需要修改对象;<br/>
+&nbsp;&nbsp;提供序列化接口;<br/>
+&nbsp;&nbsp;自定义转换类型策略;<br/>
+&nbsp;&nbsp;详细的错误诊断;<br/>
+&nbsp;&nbsp;快速输出格式;当前支持 JSON 和 morphing.</p>
 
+<p style="text-indent:2em"><strong>使用场景：</strong><br/>
+&nbsp;&nbsp;Transport&nbsp;&nbsp;转换<br/>
+&nbsp;&nbsp;Persistence&nbsp;&nbsp;持久化对象<br/>
+&nbsp;&nbsp;Configuration&nbsp;&nbsp;配置<br/>
+&nbsp;&nbsp;Unit Tests&nbsp;&nbsp;单元测试</p>
+
+<p style="text-indent:2em"><strong>限制：</strong><br/>
+&nbsp;&nbsp;enhanced 模式: JDK版本 不能&lt;1.5.<br/>
+&nbsp;&nbsp;虽然预处理注解是安全的,但自动侦查注解可能发生竞争条件.
+</p>
 	</span> 
 		<span class="include"> 
 		<strong class="s5">&nbsp;</strong> 
@@ -68,8 +80,8 @@ background: cadetblue;
 	</span> 
    <span class="bg"> 
  1:jar包下载地址：
- <a href="http://cxf.apache.org/download.html" target="_blank">CXF官网下载</a>&nbsp;或者直接使用
- <a href="http://pan.baidu.com/s/1eRjOvz8" target="_blank">CXF+WebService的jar包合集</a>（jar包介绍这里就不啰嗦了）
+ <a href="http://xstream.codehaus.org/" target="_blank">XStream官网下载</a>&nbsp;或者直接使用
+ <a href="http://download.csdn.net/detail/jiashubing/9413416" target="_blank">xstream-1.4.2.jar</a>（jar包介绍这里就不啰嗦了）
    </span>
    <span class="include"> 
 		<strong class="s5">&nbsp;</strong> 
@@ -88,106 +100,76 @@ background: cadetblue;
 	</span> 
    <span class="bg">
  
-&nbsp;&nbsp;1、创建java项目、引入jar包、方便起见就直接把jar包（除endorsed文件夹下的之外）全部引入即可下载之后的包中我们还可以发现有自带的spring的包、这样我们在使用spring集成它的时候就方便很多了、这里先不提集成。<br/>
-&nbsp;&nbsp;2、创建服务端接口：<br/>
-&nbsp;&nbsp;注意别忘了在服务端接口类级别上加上@WebService ! <br/>
-&nbsp;&nbsp;HelloWebService代码：<br/>
+&nbsp;&nbsp;导入jar包后，创建javaBean类，本例中使用Person类<br/>
 <pre name="code" class="java">
-package demoinfo.webservice.cxf;
+package demoinfo.webservice.xstream;
 
-import javax.jws.WebService;  
-@WebService  
-public interface HelloWebService {  
-    public String sayHello(String name);  
-} 
+public class Person {
+	private String name;
+	private String sayHello;
+	public Person(String name,String sayHello){
+		this.name = name;
+		this.sayHello = sayHello;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getSayHello() {
+		return sayHello;
+	}
+	public void setSayHello(String sayHello) {
+		this.sayHello = sayHello;
+	}
 
-</pre>
-&nbsp;&nbsp;3、创建实现服务端功能接口的具体类——HelloWebServiceImpl代码：<br/>
-<pre name="code" class="java">
-package demoinfo.webservice.cxf;
-
-import javax.jws.WebService;  
-@WebService(endpointInterface="demoinfo.webservice.cxf.HelloWebService")  
-public class HelloWebServiceImpl implements HelloWebService{  
-    public String sayHello(String name) {  
-        return "hello " + name;  
-    }  
-}  
-</pre>
-&nbsp;&nbsp;4、发布服务接口——WebServiceServer代码：<br/>
-<pre name="code" class="java">
-package demoinfo.webservice.cxf;
-
-import javax.xml.ws.Endpoint;
-
-import org.apache.cxf.jaxws.JaxWsServerFactoryBean;  
-import demoinfo.webservice.cxf.HelloWebService;  
-import demoinfo.webservice.cxf.HelloWebServiceImpl;  
-  
-public class WebServiceServer {  
-  
-    public WebServiceServer(){  
-        //方法一：  
-        //创建webService接口  
-        JaxWsServerFactoryBean factory = new JaxWsServerFactoryBean();  
-          
-        //设置地址  
-        factory.setAddress("http://localhost:8083/hellowebservice");  
-          
-        //注册webService  
-        factory.setServiceClass(HelloWebService.class);  
-        factory.setServiceBean(new HelloWebServiceImpl());  
-          
-        //创建Service  
-        factory.create();  
-          
-        //方法二：  
-//        Endpoint.publish("http://localhost:8083/hellowebservice", new HelloWebServiceImpl());  
-    }  
-      
-    public static void main(String[] args) {  
-        new WebServiceServer();  
-        System.out.println("server is ready...");  
-        try {  
-            Thread.sleep(1000*300);  
-        } catch (InterruptedException e) {  
-            e.printStackTrace();  
-        }  
-        System.out.println("server exit...");  
-        System.exit(0);  
-    }  
-}  
-
-</pre>
-&nbsp;&nbsp;5、通过浏览器访问地址：http://localhost:8083/hellowebservice?WSDL 若有结果则发布成功！<br/>
-&nbsp;&nbsp;6、测试类——WebServiceClient代码（先将服务端启动或者发布）：<br/>
-<pre name="code" class="java">
-package demoinfo.webservice.cxf;
-
-import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;  
-
-import demoinfo.webservice.cxf.HelloWebService;  
-  
-public class WebServiceClient {  
-    public static void main(String[] args) {  
-        //创建Service代理工厂  
-        JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();  
-          
-        //设置地址  
-        factory.setAddress("http://localhost:8083/hellowebservice");  
-          
-        //注册接口  
-        factory.setServiceClass(HelloWebService.class);  
-          
-        //获取bean  
-        HelloWebService hello = (HelloWebService) factory.create();  
-          
-        //输出结果  
-        System.out.println("invoking service...");  
-        System.out.println(hello.sayHello("Hello WebService !"));  
-    }  
 }
 
+</pre>
+&nbsp;&nbsp;将JavaBean转换成xml的序列化测试类BeanToXmlTest，代码如下：<br/>
+<pre name="code" class="java">
+package demoinfo.webservice.xstream;
+
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+
+public class BeanToXmlTest {
+	public static void main(String[] args) {
+		//XStream初始化
+		XStream xstream = new XStream(new DomDriver()); 
+		//设置节点对应的实体类
+		xstream.alias("person", Person.class);
+		Person person = new Person("Tom","Hello , I am Tom !");
+		//将JavaBean转换成xml
+		String xml = xstream.toXML(person);
+		System.out.println(xml);
+	}
+}
+
+</pre>
+&nbsp;&nbsp;将xml转换成JavaBean的反序列化类XmlToBeanTest，代码如下：<br/>
+<pre name="code" class="java">
+package demoinfo.webservice.xstream;
+
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+
+public class XmlToBeanTest {
+	public static void main(String[] args) {
+		//XStream初始化
+		XStream xstream = new XStream(new DomDriver()); 
+		//设置节点对应的实体类
+		xstream.alias("person", Person.class);
+		String str ="<person>"+
+								"<name>Bob</name>"+
+								"<sayHello>Hello , I am Bob !</sayHello>"+
+						  "</person>";
+		//将xml转换成JavaBean
+		Person person = (Person)xstream.fromXML(str);
+		System.out.println(person.getSayHello());
+	}
+}
 </pre>
 
    </span>

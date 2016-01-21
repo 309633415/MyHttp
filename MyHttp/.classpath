@@ -138,5 +138,6 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/stax2-api-3.1.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/wsdl4j-1.6.3.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/wss4j-1.6.11.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xstream-1.4.2.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
