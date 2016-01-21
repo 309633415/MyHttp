@@ -20,6 +20,6 @@ public class WebServiceClient {
           
         //输出结果  
         System.out.println("invoking service...");  
-        System.out.println(hello.sayHello("knight"));  
+        System.out.println(hello.sayHello("Hello WebService !"));  
     }  
 }

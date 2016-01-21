@@ -40,7 +40,7 @@
 		<url-pattern>/services/*</url-pattern>
 	</servlet-mapping>
 	<!-- Xfire Servlet end -->
-
+	
 	<welcome-file-list>
 		<welcome-file>frame.jsp</welcome-file>
 	</welcome-file-list>

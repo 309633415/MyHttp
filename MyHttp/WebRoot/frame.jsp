@@ -252,7 +252,7 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 										<a href="#"  id=""  onclick="">Xstream+XML解析</a>
 									</li>
 									<li>
-										<a href="#"  id=""  onclick="">调用服务端(CXFire)</a>
+										<a href="#"  id="webServiceCxf"  onclick="webServiceCxf()">调用服务端(CXF)</a>
 									</li>
 									<li>
 										<a href="#"  id=""  onclick="">调用服务端(HttpClient)</a>
@@ -373,22 +373,6 @@ function strutsLoginDemo(){
     	document.getElementById("mainfrm1").src="./common/common.action?target=strutsCrudDemo";
     	document.getElementById("mainfrm1").onload;
     }
-    function ajaxJsDemo(){
-    	document.getElementById("mainfrm1").src="./common/common.action?target=ajaxJsDemo";
-    	document.getElementById("mainfrm1").onload;
-    }
-    function ajaxJsJqueryDemo(){
-    	document.getElementById("mainfrm1").src="./common/common.action?target=ajaxJsJqueryDemo";
-    	document.getElementById("mainfrm1").onload;
-    }
-    function ajaxJsAutoCompleterDemo(){
-    	document.getElementById("mainfrm1").src="./common/common.action?target=ajaxJsAutoCompleterDemo";
-    	document.getElementById("mainfrm1").onload;
-    }
-    function ajaxJsSelectValueDemo(){
-    	document.getElementById("mainfrm1").src="./common/common.action?target=ajaxJsSelectValueDemo";
-    	document.getElementById("mainfrm1").onload;
-    }
     function strutsJsonDemo(){
     	document.getElementById("mainfrm1").src="./common/common.action?target=strutsJsonDemo";
     	document.getElementById("mainfrm1").onload;
@@ -456,6 +440,22 @@ function strutsLoginDemo(){
     	document.getElementById("mainfrm1").onload;
     }
     //AJAX和javaScript
+     function ajaxJsDemo(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=ajaxJsDemo";
+    	document.getElementById("mainfrm1").onload;
+    }
+    function ajaxJsJqueryDemo(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=ajaxJsJqueryDemo";
+    	document.getElementById("mainfrm1").onload;
+    }
+    function ajaxJsAutoCompleterDemo(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=ajaxJsAutoCompleterDemo";
+    	document.getElementById("mainfrm1").onload;
+    }
+    function ajaxJsSelectValueDemo(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=ajaxJsSelectValueDemo";
+    	document.getElementById("mainfrm1").onload;
+    }
     //webService
     function webServiceConf(){
     	document.getElementById("mainfrm1").src="./common/common.action?target=webServiceConf";
@@ -463,6 +463,10 @@ function strutsLoginDemo(){
     }
     function webServiceTake(){
     	document.getElementById("mainfrm1").src="./common/common.action?target=webServiceTake";
+    	document.getElementById("mainfrm1").onload;
+    }
+    function webServiceCxf(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=webServiceCxf";
     	document.getElementById("mainfrm1").onload;
     }
     //JBPM工作流实例
