@@ -20,7 +20,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <h2>当发布服务接口成功以后就可以通过地址栏访问查看 </h2></br>
+    <h2>使用XFire发布服务接口 </h2>
+      <p style="text-indent:2em;">注：成功以后就可以通过地址栏访问查看</p>
     <a href="<%=basePath%>services" target="_blank">发布成功后的样例</a><br/><br/>
     <button onclick="window.open('<%=basePath%>services/HelloWebService?WSDL')">查看WebService内容</button>
     <p style="text-indent:2em;">发布成功后可以从代码中看出，HelloWebService 接口中有 sayHello 和 sayLove 两个方法。</p>

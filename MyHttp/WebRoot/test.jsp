@@ -36,31 +36,12 @@ background: cadetblue;
 		<strong class="s5">&nbsp;</strong> 
 	</span> 
 	<span class="bg"> 
-	
-<p style="text-indent:2em"><strong>XStream概念：</strong><br/>
-&nbsp;&nbsp;XStream是一个序列化对象为XML或XML转换为对象的库。
-</p>
-<p style="text-indent:2em"><strong>特点：</strong><br/>
-&nbsp;&nbsp;简化的API;<br/>
-&nbsp;&nbsp;无映射文件;<br/>
-&nbsp;&nbsp;高性能,低内存占用;<br/>
-&nbsp;&nbsp;整洁的XML;<br/>
-&nbsp;&nbsp;不需要修改对象;<br/>
-&nbsp;&nbsp;提供序列化接口;<br/>
-&nbsp;&nbsp;自定义转换类型策略;<br/>
-&nbsp;&nbsp;详细的错误诊断;<br/>
-&nbsp;&nbsp;快速输出格式;当前支持 JSON 和 morphing.</p>
 
-<p style="text-indent:2em"><strong>使用场景：</strong><br/>
-&nbsp;&nbsp;Transport&nbsp;&nbsp;转换<br/>
-&nbsp;&nbsp;Persistence&nbsp;&nbsp;持久化对象<br/>
-&nbsp;&nbsp;Configuration&nbsp;&nbsp;配置<br/>
-&nbsp;&nbsp;Unit Tests&nbsp;&nbsp;单元测试</p>
-
-<p style="text-indent:2em"><strong>限制：</strong><br/>
-&nbsp;&nbsp;enhanced 模式: JDK版本 不能&lt;1.5.<br/>
-&nbsp;&nbsp;虽然预处理注解是安全的,但自动侦查注解可能发生竞争条件.
+<p style="text-indent:2em"><strong>什么是HttpClient？</strong><br/>
+&nbsp;&nbsp;HttpClient是Apache Jakarta Common下的子项目，用来提供高效的、最新的、功能丰富的支持HTTP协议的客户端编程工具包，并且它支持HTTP协议最新的版本和建议。<br/>
+&nbsp;&nbsp;HttpClient相比传统JDK自带的URLConnection，增加了易用性和灵活性，它不仅是客户端发送Http请求变得容易，而且也方便了开发人员测试接口（基于Http协议的），即提高了开发的效率，也方便提高代码的健壮性。
 </p>
+
 	</span> 
 		<span class="include"> 
 		<strong class="s5">&nbsp;</strong> 
@@ -80,8 +61,7 @@ background: cadetblue;
 	</span> 
    <span class="bg"> 
  1:jar包下载地址：
- <a href="http://xstream.codehaus.org/" target="_blank">XStream官网下载</a>&nbsp;或者直接使用
- <a href="http://download.csdn.net/detail/jiashubing/9413416" target="_blank">xstream-1.4.2.jar</a>（jar包介绍这里就不啰嗦了）
+ <a href="http://download.csdn.net/detail/jiashubing/9414107" target="_blank">HttpClient所需jar包</a>
    </span>
    <span class="include"> 
 		<strong class="s5">&nbsp;</strong> 
@@ -100,76 +80,45 @@ background: cadetblue;
 	</span> 
    <span class="bg">
  
-&nbsp;&nbsp;导入jar包后，创建javaBean类，本例中使用Person类<br/>
+&nbsp;&nbsp;本例实现使用HttpClient请求weiService接口，导入jar包后，直接看测试类HttpClientTest，代码如下：<br/>
 <pre name="code" class="java">
-package demoinfo.webservice.xstream;
+package demoinfo.webservice.httpclient;
 
-public class Person {
-	private String name;
-	private String sayHello;
-	public Person(String name,String sayHello){
-		this.name = name;
-		this.sayHello = sayHello;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getSayHello() {
-		return sayHello;
-	}
-	public void setSayHello(String sayHello) {
-		this.sayHello = sayHello;
-	}
+import java.util.ArrayList;
+import java.util.List;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.protocol.HTTP;
+import org.apache.http.util.EntityUtils;
+
+public class HttpClientTest {
+
+	@SuppressWarnings("deprecation")
+	public static void main(String[] args){
+		try {  
+			final String SERVER_URL = "http://webservice.webxml.com.cn/WebServices/MobileCodeWS.asmx/getMobileCodeInfo"; // 定义需要获取的内容来源地址  
+			HttpPost request = new HttpPost(SERVER_URL);    	//构建HttpPost对象
+			List&lt;BasicNameValuePair&gt; params = new ArrayList&lt;BasicNameValuePair&gt;();  	//键值对List
+			params.add(new BasicNameValuePair("mobileCode", "18814868249"));   //（注意这里的号码必须大于6位）  
+			params.add(new BasicNameValuePair("userId", ""));   
+			request.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));   	 //将传入的参数转换为UTF-8编码，封装到request
+			HttpResponse httpResponse = new DefaultHttpClient().execute(request);    	 //提交HttpClient请求
+			if (httpResponse.getStatusLine().getStatusCode() != 404)  
+			{  
+				String result = EntityUtils.toString(httpResponse.getEntity());  	//获取返回值
+				System.out.println(result);   
+			}  
+		} catch (Exception e) {  
+			System.out.println("Error");  
+			e.printStackTrace();  
+		}  
+	}  
 }
 
-</pre>
-&nbsp;&nbsp;将JavaBean转换成xml的序列化测试类BeanToXmlTest，代码如下：<br/>
-<pre name="code" class="java">
-package demoinfo.webservice.xstream;
-
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
-
-public class BeanToXmlTest {
-	public static void main(String[] args) {
-		//XStream初始化
-		XStream xstream = new XStream(new DomDriver()); 
-		//设置节点对应的实体类
-		xstream.alias("person", Person.class);
-		Person person = new Person("Tom","Hello , I am Tom !");
-		//将JavaBean转换成xml
-		String xml = xstream.toXML(person);
-		System.out.println(xml);
-	}
-}
-
-</pre>
-&nbsp;&nbsp;将xml转换成JavaBean的反序列化类XmlToBeanTest，代码如下：<br/>
-<pre name="code" class="java">
-package demoinfo.webservice.xstream;
-
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
-
-public class XmlToBeanTest {
-	public static void main(String[] args) {
-		//XStream初始化
-		XStream xstream = new XStream(new DomDriver()); 
-		//设置节点对应的实体类
-		xstream.alias("person", Person.class);
-		String str ="<person>"+
-								"<name>Bob</name>"+
-								"<sayHello>Hello , I am Bob !</sayHello>"+
-						  "</person>";
-		//将xml转换成JavaBean
-		Person person = (Person)xstream.fromXML(str);
-		System.out.println(person.getSayHello());
-	}
-}
 </pre>
 
    </span>

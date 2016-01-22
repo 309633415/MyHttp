@@ -13,7 +13,6 @@ request.setAttribute("basePath",basePath);
 	<sx:head />
 </head>
 <body>
-	<br/>
 	<h3>自动补全</h3>
 	<p><strong>Autocompleter标签</strong><br/>
          &nbsp;&nbsp;生成一个带下拉按钮的单行文本输入框,当用户单击下拉按钮时,将看到一系列的选项,单击某个选项时可以将该选项填入单行文本框。</p>

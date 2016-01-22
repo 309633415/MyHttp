@@ -8,5 +8,8 @@
       <action name="take" class="demoinfo.webservice.xfire.WebServiceAction" method="webService">
             <result>/webservice/webServiceTake.jsp</result>
       </action>
+      <action name="httpclient" class="demoinfo.webservice.httpclient.WebServiceAction" >
+            <result>/webservice/webServiceHttpClient.jsp</result>
+      </action>
   </package>
 </struts>

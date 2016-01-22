@@ -255,7 +255,7 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 										<a href="#"  id="webServiceCxf"  onclick="webServiceCxf()">调用服务端(CXF)</a>
 									</li>
 									<li>
-										<a href="#"  id=""  onclick="">调用服务端(HttpClient)</a>
+										<a href="#"  id="webServiceHttpClient"  onclick="webServiceHttpClient()">调用服务端(HttpClient)</a>
 									</li>
 								</ul>
 							</li>
@@ -471,6 +471,10 @@ function strutsLoginDemo(){
     }
     function webServiceCxf(){
     	document.getElementById("mainfrm1").src="./common/common.action?target=webServiceCxf";
+    	document.getElementById("mainfrm1").onload;
+    }
+    function webServiceHttpClient(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=webServiceHttpClient";
     	document.getElementById("mainfrm1").onload;
     }
     //JBPM工作流实例
