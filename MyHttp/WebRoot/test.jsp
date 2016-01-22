@@ -80,45 +80,136 @@ background: cadetblue;
 	</span> 
    <span class="bg">
  
-&nbsp;&nbsp;本例实现使用HttpClient请求weiService接口，导入jar包后，直接看测试类HttpClientTest，代码如下：<br/>
+<p style="text-indent:2em">
+在发布服务项目的基础上调用服务，这里有两种方法，一种是直接在java测试类中调用，一种是从页面传值后，在action中调用，其实质是一样的。<br/>
+&nbsp;&nbsp;第一种方法，建立测试类ClientTest，代码如下：</p>
 <pre name="code" class="java">
-package demoinfo.webservice.httpclient;
+package demoinfo.webservice.xfire;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.net.URL;
+import org.codehaus.xfire.client.Client;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.protocol.HTTP;
-import org.apache.http.util.EntityUtils;
-
-public class HttpClientTest {
-
-	@SuppressWarnings("deprecation")
-	public static void main(String[] args){
-		try {  
-			final String SERVER_URL = "http://webservice.webxml.com.cn/WebServices/MobileCodeWS.asmx/getMobileCodeInfo"; // 定义需要获取的内容来源地址  
-			HttpPost request = new HttpPost(SERVER_URL);    	//构建HttpPost对象
-			List&lt;BasicNameValuePair&gt; params = new ArrayList&lt;BasicNameValuePair&gt;();  	//键值对List
-			params.add(new BasicNameValuePair("mobileCode", "18814868249"));   //（注意这里的号码必须大于6位）  
-			params.add(new BasicNameValuePair("userId", ""));   
-			request.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));   	 //将传入的参数转换为UTF-8编码，封装到request
-			HttpResponse httpResponse = new DefaultHttpClient().execute(request);    	 //提交HttpClient请求
-			if (httpResponse.getStatusLine().getStatusCode() != 404)  
-			{  
-				String result = EntityUtils.toString(httpResponse.getEntity());  	//获取返回值
-				System.out.println(result);   
-			}  
-		} catch (Exception e) {  
-			System.out.println("Error");  
-			e.printStackTrace();  
-		}  
-	}  
+public class ClientTest {
+	public static void main(String[] args)throws Exception {
+		Client client= new Client(new URL("http://localhost:8080/MyHttp/services/HelloWebService?WSDL")); 
+	    Object[] results=client.invoke("sayHello", new Object[]{"  HelloWorld，WebService！"});
+	    System.out.println(results[0]);
+    }
 }
 
+</pre>
+<p style="text-indent:2em">第二种方法：<br/>
+&nbsp;&nbsp;1:首先建立WebServiceAction类：</p>
+<pre name="code" class="java">
+package demoinfo.webservice.xfire;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
+import org.codehaus.xfire.client.Client;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+@SuppressWarnings("serial")
+public class WebServiceAction extends ActionSupport{
+	private String name;
+	private String message;
+	private Object[] results;
+	
+	public Object[] getResults() {
+		return results;
+	}
+
+	public void setResults(Object[] results) {
+		this.results = results;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public String webService(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		Client client;
+		try {
+			client = new Client(new URL("http://localhost:8080/MyHttp/services/HelloWebService?WSDL"));
+			results=client.invoke(name, new Object[]{message});
+			System.out.print(results); 
+			if(results!=null&&results.length!=0){
+				request.setAttribute("results",results);
+			}
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+			return ERROR;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERROR;
+		} 
+ 		return SUCCESS;
+	}
+}
+
+</pre>
+<p style="text-indent:2em">
+2:再建立struts配置文件。在struts.xml中包含webservice.xml，webservice.xml的代码如下：</p>
+<pre name="code" class="xml">
+&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd"&gt;
+
+&lt;struts&gt;
+  &lt;package name="webservice" extends="struts-default" namespace="/webservice"&gt;
+      &lt;action name="take" class="demoinfo.webservice.xfire.WebServiceAction" method="webService"&gt;
+            &lt;result&gt;/webservice/webServiceTake.jsp&lt;/result&gt;
+      &lt;/action&gt;
+  &lt;/package&gt;
+&lt;/struts&gt;
+</pre>
+<p style="text-indent:2em">
+3:最后是jsp的展示页面webServiceTake.jsp，代码如下：<br/>
+</p>
+<pre name="code" class="php">
+&lt;%@ include file="/common/taglibs.jsp" %&gt;
+&lt;%@ page language="java" import="java.util.*" pageEncoding="GBK"%&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;webService实例&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h2&gt;通过发布的HelloWebService服务接口调用网站服务&lt;/h2&gt;&lt;br/&gt;
+&lt;div style="color:blue;"&gt;
+调用方法名 : sayHello或者sayLove&lt;br/&gt;
+发送文本内容 : 任意输入 
+&lt;/div&gt;&lt;br/&gt;&lt;br/&gt;
+    &lt;form action="&lt;%=basePath %&gt;/webservice/take.action" method="post"&gt;
+       &lt;s:textfield name="name" label="调用方法名" /&gt;&lt;br/&gt;
+       &lt;s:textfield name="message"  label="发送文本内容"/&gt;&lt;br/&gt;
+       &lt;s:submit value="提交"/&gt;&lt;br/&gt;
+    &lt;/form&gt;
+&lt;div&gt;
+	返回数据为：
+    &lt;c:forEach items="&#36;{requestScope.results}" var="it"&gt;
+    	&#36;{it}
+    &lt;/c:forEach&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 </pre>
 
    </span>

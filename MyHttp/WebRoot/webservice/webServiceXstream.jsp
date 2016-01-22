@@ -1,3 +1,4 @@
+<%@ include file="/common/taglibs.jsp" %>
 <%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
 <html>
 <head>
@@ -25,5 +26,20 @@
 <pre style="color:blue">
 Hello , I am Bob !
 </pre>
+<p style="text-indent:2em;">
+你也可以亲自试一试。
+</p>
+<form action="<%=basePath %>/webservice/xstream.action"" method="post">
+输入第一个人姓名：<input type="text" name="name1" value="${name1} "/><br/>
+输入要说的一句话：<input type="text" name="message1" value="${ message1}"/><br/>
+输入第二个人姓名：<input type="text" name="name2" value="${ name2}"/><br/>
+输入要说的一句话：<input type="text" name="message2" value="${ message2}"/><br/>
+<input type="submit" value="提交"/>
+</form>
+<p style="text-indent:2em;">序列化结果为：</p>
+<pre style="color:red">
+${result }
+</pre>
+
 </body>
 </html>

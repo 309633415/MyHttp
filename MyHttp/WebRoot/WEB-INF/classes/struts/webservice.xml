@@ -11,5 +11,8 @@
       <action name="httpclient" class="demoinfo.webservice.httpclient.WebServiceAction" >
             <result>/webservice/webServiceHttpClient.jsp</result>
       </action>
+      <action name="xstream" class="demoinfo.webservice.xstream.WebServiceAction" >
+            <result>/webservice/webServiceXstream.jsp</result>
+      </action>
   </package>
 </struts>
