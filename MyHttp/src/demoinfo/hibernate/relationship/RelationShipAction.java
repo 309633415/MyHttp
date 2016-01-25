@@ -38,6 +38,7 @@ public class RelationShipAction extends ActionSupport implements ServletRequestA
 	private String result;		//ajax返回的result节点，返回success
 	private HttpServletRequest request;
 	private String personCode;		
+	private int sum;
 	/** 操作类型 */
 	private String opreateType;
 	
@@ -87,6 +88,7 @@ public class RelationShipAction extends ActionSupport implements ServletRequestA
 	public String doOneToOneList(){
 		personList = relationShipService.findPersonAll();
 		personInformList = relationShipService.findPersonInformAll();
+		sum = personList.size();
 		return SUCCESS;
 	}
 	
@@ -311,6 +313,14 @@ public class RelationShipAction extends ActionSupport implements ServletRequestA
 
 	public void setClassRoomList(List<ClassRoom> classRoomList) {
 		this.classRoomList = classRoomList;
+	}
+
+	public int getSum() {
+		return sum;
+	}
+
+	public void setSum(int sum) {
+		this.sum = sum;
 	}
 	
 	

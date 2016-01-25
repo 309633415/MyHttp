@@ -89,7 +89,6 @@ td {
 		}
 		function checkDelete(h){
 		temp = $($(h).parent().prevAll().eq(2)).text();
-		console.log(temp);
 			if( ${sum} < 6){
 				alert("万水千山总是情，不要删我行不行。若是定要删了我，数据太少可不好！");
 			}

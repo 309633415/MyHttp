@@ -24,7 +24,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<table border="1" cellpadding="0" cellspacing="0"  width="70%" >
 					<thead>
 						  <tr bgcolor="#ADD8E6">
-						    <td align="center" colspan="2" height="30"><c:choose>
+						    <td align="center" colspan="2" height="30">
+						    <c:choose>
 								<c:when test="${opreateType == 'edit'}">
 									修改用户信息
 								</c:when>

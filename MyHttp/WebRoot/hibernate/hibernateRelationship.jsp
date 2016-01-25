@@ -6,7 +6,8 @@
     <title>hibernate关系映射实例</title>
 </head>
 <body>
-    <a href="relationship/prepareAddPerson.action">增加人员</a>
+    <a href="javascript:void(0)" onclick="checkAdd()">增加人员</a>
+    <a id="addHref"  href="relationship/prepareAddPerson.action"></a>
     <p><strong>Person</strong></p>
     <a href="relationship/viewPerson.action?personCode=${person.personCode}">${person.personCode}</a>
     <table width="100%" border="1px" align="center" cellpadding="0" cellspacing="0">
@@ -24,7 +25,9 @@
 					<td>${person.personName}</td>
 					<td style="stylel-align: center;">
 							<a href="relationship/prepareUpdatePerson.action?personCode=${person.personCode}">编辑</a> 
-							<a href="relationship/deletePerson.action?personCode=${person.personCode}">删除</a> </td>
+							<a href="javascript:void(0)" onclick="checkDelete(this)">删除</a> 
+							<a href="relationship/deletePerson.action?personCode=${person.personCode}" class="deleteTd"></a>
+							 </td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -85,5 +88,25 @@ public String doDeletePerson(){
 </pre>
 <br/>
 <br/>
+<script src="<%=basePath%>js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+		$("#addHref").click();
+		function checkAdd(){
+			if( ${sum} >9){
+				alert("数据这种东西，够用就好，不必太多！");
+			}
+			else{
+			window.location.href = 'relationship/prepareAddPerson.action';
+			} 
+		}
+		function checkDelete(h){
+			if( ${sum} < 4){
+				alert("万水千山总是情，不要删我行不行。若是定要删了我，数据太少可不好！");
+			}
+			else{
+				$(h).siblings(".deleteTd")[0].click(); 
+			} 
+		}
+	</script>
 </body>
 </html>
