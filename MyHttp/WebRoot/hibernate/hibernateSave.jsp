@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <base href="<%=basePath%>">
 
-<title>My JSP 'hibernateSave.jsp' starting page</title>
+<title>hibernateSave</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -47,9 +47,11 @@ td {
 					<td>${user.id}</td>
 					<td>${user.username}</td>
 					<td>${user.password}</td>
-					<td style="stylel-align: center;">
-							<a href="hibernatecrud/prepareUpdate.action?id=${user.id}">编辑</a>
-							<a href="hibernatecrud/delete.action?id=${user.id}">删除</a> </td>
+						<td style="stylel-align: center;">
+								<a href="hibernatecrud/prepareUpdate.action?id=${user.id}">编辑</a>
+								<a href="javascript:void(0)" onclick="checkDelete(this)">删除</a>
+								<a href="hibernatecrud/delete.action?id=${user.id}" class="deleteTd" ></a>
+ 						</td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -66,12 +68,38 @@ td {
 				</td>
 		</tr>
 		<tr>
-			<td><input type="button" value="添加新用户"
-				onclick="window.location.href='hibernatecrud/prepareAdd.action'" />
+			<td>
+				<form action="hibernatecrud/prepareAdd.action" method="post"  id="addFm">
+					<input type="button" value="添加新用户"onclick="checkAdd()" />
+				</form>
 			</td>
 		</tr>
 	</table>
 	<br />
 	<br />
+	<script src="<%=basePath%>js/jquery-1.7.1.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		function checkAdd(){
+			if( ${sum} >14){
+				alert("数据这种东西，够用就好，不必太多！");
+			}
+			else{
+				addFm.submit();
+			} 
+		}
+		function checkDelete(h){
+		temp = $($(h).parent().prevAll().eq(2)).text();
+		console.log(temp);
+			if( ${sum} < 6){
+				alert("万水千山总是情，不要删我行不行。若是定要删了我，数据太少可不好！");
+			}
+			else if(temp < 4){
+				alert("请不要删除前三条数据，它们的id在‘连接查询’中使用到");
+			}
+			else{
+				$(h).siblings(".deleteTd")[0].click(); 
+			} 
+		}
+	</script>
 </body>
 </html>

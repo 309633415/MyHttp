@@ -15,13 +15,17 @@ public class CrudAction extends ActionSupport {
 	private User user;
 	private List<User> users;
 	private String searchText;
+	private int sum;
 
 	public String doList(){
 		users = crudService.findAll();
+		sum = users.size();
 		return "success";
 	}
 
 	public String doPrepareAdd(){
+		users = crudService.findAll();
+		sum = users.size();
 		return "addUser";
 	}
 	
@@ -99,6 +103,12 @@ public class CrudAction extends ActionSupport {
 		this.searchText = searchText;
 	}
 
+	public int getSum() {
+		return sum;
+	}
 
+	public void setSum(int sum) {
+		this.sum = sum;
+	}
 
 }
