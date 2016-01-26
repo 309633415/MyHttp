@@ -13,6 +13,8 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class FileUploadAction extends ActionSupport {
 	
+//	public static String sss = ServletActionContext.getServletContext().getRealPath( "/strut/fileupload/image");
+	
     private static final long serialVersionUID = 572146812454l ;
     private static final int BUFFER_SIZE = 16 * 1024 ; //设置大小
    
@@ -57,7 +59,7 @@ public class FileUploadAction extends ActionSupport {
         try {
            InputStream in = null ;
            OutputStream out = null ;
-           System.out.println("************" + src.getPath());
+//           System.out.println("************" + src.getPath());
             try {                
             	//输入输出流
                in = new BufferedInputStream( new FileInputStream(src), BUFFER_SIZE);
@@ -82,15 +84,15 @@ public class FileUploadAction extends ActionSupport {
     private static String getExtention(String fileName) {   //获取文件类型
         int pos = fileName.lastIndexOf("."); //以.为文件名称和文件类型的分隔符
         return fileName.substring(pos); //字符串截取获得文件名
-   } 
+   }  
 
     public String execute()     {        
     	 //根据服务器的文件保存地址和原文件名创建目录文件的路径，我们这里图片的保存在tomcat中对应项目的image文件夹下
        imageFileName = new Date().getTime() + getExtention(fileName);  //组成新的文件名 时间+文件类型
-       File imageFile = new File(ServletActionContext.getServletContext().getRealPath( "/image") + "/" + imageFileName); //在系统目录下生成新的文件   
+       File imageFile = new File(ServletActionContext.getServletContext().getRealPath( "/strut/fileupload/image") + "/" + imageFileName); //在系统目录下生成新的文件
        copy(myFile, imageFile); //文件流复制
        return SUCCESS;
    }
-
+    
 } 
 
