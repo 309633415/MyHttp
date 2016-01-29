@@ -5,8 +5,6 @@
 
 <struts>
   <package name="fileupload" extends="struts-default" namespace="/fileupload">
-    <!-- <action name ="clearService" class ="demoinfo.struts2.fileupload.ClearServiceImpl" method="getImgPath">
-    </action>  -->
     <action name ="fileupload" class ="demoinfo.struts2.fileupload.FileUploadAction"> 
         <interceptor-ref name ="fileUploadStack"/> 
         <interceptor-ref name ="fileUpload"> 

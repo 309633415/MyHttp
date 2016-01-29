@@ -13,8 +13,6 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class FileUploadAction extends ActionSupport {
 	
-//	public static String sss = ServletActionContext.getServletContext().getRealPath( "/strut/fileupload/image");
-	
     private static final long serialVersionUID = 572146812454l ;
     private static final int BUFFER_SIZE = 16 * 1024 ; //设置大小
    

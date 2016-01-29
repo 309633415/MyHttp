@@ -1,6 +1,11 @@
 package demoinfo.struts2.fileupload;
 
 import java.io.File;
+import java.io.InputStream;
+import java.util.Iterator;
+import java.util.Properties;
+
+import org.apache.struts2.ServletActionContext;
 
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -8,16 +13,24 @@ import com.opensymphony.xwork2.ActionSupport;
 public class ClearServiceImpl implements IClearService{
 
 	public void clearImage() {
-		String fileRoot = "D:/tomcat/apache-tomcat-7.0.57/webapps/MyHttp/strut/fileupload/image";
-//		String fileRoot = ServletActionContext.getServletContext().getRealPath( "/strut/fileupload/image") ;
-//		System.out.println(this.getClass().getClassLoader().getResource("/").getPath());
-//		System.out.println(System.getProperty("user.dir"));
-//		FileUploadAction f= new FileUploadAction();
-//		System.out.println(FileUploadAction.sss);
-		delFolder(fileRoot);
-		System.out.println("deleted");
-	}
+		Properties prop = new Properties();     
+		try{
+			//读取属性文件a.properties
+			InputStream in = this.getClass().getClassLoader().getResourceAsStream("config.properties"); 
+			prop.load(in);     ///加载属性列表
+			//获取路径
+			String path = prop.getProperty("localpath");
+			in.close();
+			String fileRoot = path+"MyHttp/strut/fileupload/image";
+			//删除图片
+			delFolder(fileRoot);
+			System.out.println("执行了删除struts上传的图片的任务。");
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 
+	}
 
 	// 删除完文件后删除文件夹
 	//	param folderPath 文件夹完整绝对路径
