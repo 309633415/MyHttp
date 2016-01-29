@@ -15,26 +15,50 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class WebServiceAction  extends ActionSupport{
 	private static final long serialVersionUID = 1L;
-	private String number;
-	private String address;
-	
-	public String getNumber() {
-		return number;
+	private String province;
+	private String city;
+	private String result;
+
+	public String getProvince() {
+		return province;
 	}
 
-	public void setNumber(String number) {
-		this.number = number;
+	public void setProvince(String province) {
+		this.province = province;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getCity() {
+		return city;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setCity(String city) {
+		this.city = city;
 	}
 
-	@SuppressWarnings("deprecation")
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
+
+	public String execute(){
+		WeatherUtil weatherUtil = new WeatherUtil();
+		System.out.println(province +"************"+city);
+		int provinceCode = weatherUtil.getProvinceCode(province.trim());   
+		int cityCode = weatherUtil.getCityCode(provinceCode, city.trim());     
+		List<String>weatherList = weatherUtil.getWeather(cityCode);   
+		result="";
+		for(String weather:weatherList){   
+			result += weather;
+			result+= "<br/>";
+			System.out.println(weather);   
+		}   			
+		return SUCCESS;
+	}
+
+	/*@SuppressWarnings("deprecation")
 	public String execute(){
 		try {  
 			final String SERVER_URL = "http://webservice.webxml.com.cn/WebServices/MobileCodeWS.asmx/getMobileCodeInfo"; // 定义需要获取的内容来源地址  
@@ -57,5 +81,6 @@ public class WebServiceAction  extends ActionSupport{
 			e.printStackTrace();  
 		}  
 		return SUCCESS;
-	}
+	}*/
+
 }
