@@ -2,13 +2,7 @@ package demoinfo.struts2.fileupload;
 
 import java.io.File;
 import java.io.InputStream;
-import java.util.Iterator;
 import java.util.Properties;
-
-import org.apache.struts2.ServletActionContext;
-
-
-import com.opensymphony.xwork2.ActionSupport;
 
 public class ClearServiceImpl implements IClearService{
 
