@@ -15,7 +15,7 @@ public class ClearServiceImpl implements IClearService{
 			//获取路径
 			String path = prop.getProperty("localpath");
 			in.close();
-			String fileRoot = path+"MyHttp/strut/fileupload/image";
+			String fileRoot = path+"strut/fileupload/image";
 			//删除图片
 			delFolder(fileRoot);
 			System.out.println("执行了删除struts上传的图片的任务。");
