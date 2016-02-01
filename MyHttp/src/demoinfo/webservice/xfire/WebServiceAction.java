@@ -1,7 +1,9 @@
 package demoinfo.webservice.xfire;
 
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,7 +17,7 @@ public class WebServiceAction extends ActionSupport{
 	private String name;
 	private String message;
 	private Object[] results;
-	
+
 	public Object[] getResults() {
 		return results;
 	}
@@ -42,9 +44,13 @@ public class WebServiceAction extends ActionSupport{
 
 	public String webService(){
 		HttpServletRequest request = ServletActionContext.getRequest();
+		Properties prop = new Properties();  
 		Client client;
 		try {
-			client = new Client(new URL("http://localhost:8080/MyHttp/services/HelloWebService?WSDL"));
+			InputStream in = this.getClass().getClassLoader().getResourceAsStream("config.properties"); 
+			prop.load(in);     ///加载属性列表
+			String temp = prop.getProperty("httppath");
+			client = new Client(new URL(temp+"services/HelloWebService?WSDL"));
 			results=client.invoke(name, new Object[]{message});
 			System.out.print(results); 
 			if(results!=null&&results.length!=0){
@@ -57,6 +63,6 @@ public class WebServiceAction extends ActionSupport{
 			e.printStackTrace();
 			return ERROR;
 		} 
- 		return SUCCESS;
+		return SUCCESS;
 	}
 }
