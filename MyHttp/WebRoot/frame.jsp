@@ -257,6 +257,9 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 									<li>
 										<a href="#"  id="webServiceHttpClient"  onclick="webServiceHttpClient()">调用服务端(HttpClient)</a>
 									</li>
+									<li>
+										<a href="#"  id="webServiceSoap"  onclick="webServiceSoap()">调用服务端(Soap)</a>
+									</li>
 								</ul>
 							</li>
 							<li>
@@ -475,6 +478,10 @@ function strutsLoginDemo(){
     }
     function webServiceHttpClient(){
     	document.getElementById("mainfrm1").src="./common/common.action?target=webServiceHttpClient";
+    	document.getElementById("mainfrm1").onload;
+    }
+    function webServiceSoap(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=webServiceSoap";
     	document.getElementById("mainfrm1").onload;
     }
     //JBPM工作流实例

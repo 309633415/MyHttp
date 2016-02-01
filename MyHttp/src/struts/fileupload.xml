@@ -5,7 +5,7 @@
 
 <struts>
   <package name="fileupload" extends="struts-default" namespace="/fileupload">
-    <action name ="fileupload" class ="demoinfo.struts2.fileupload.FileUploadAction"> 
+    <action name ="fileupload" class ="fileUploadAction"> 
         <interceptor-ref name ="fileUploadStack"/> 
         <interceptor-ref name ="fileUpload"> 
 		<!--  设置允许上传的文件类型，过滤文件-->

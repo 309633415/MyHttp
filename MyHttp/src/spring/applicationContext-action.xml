@@ -19,5 +19,32 @@
 	<bean id="relationShipAction" class="demoinfo.hibernate.relationship.RelationShipAction"
 		scope="prototype">
 	</bean>
+	<!-- ajax中的Action -->
+	<bean id="ajaxAction" class="demoinfo.ajaxjs.ajax.AjaxAction" scope="prototype">
+	</bean>
+	<!-- demoinfo中的Action -->
+	<bean id="demoinfoAction" class="maintain.action.DemoInfoMaintainAction" scope="prototype">
+	</bean>
+	<!-- struts中的Action -->
+	<bean id="fileUploadAction" class="demoinfo.struts2.fileupload.FileUploadAction" scope="prototype">
+	</bean>
+	<bean id="jsonAction" class="demoinfo.struts2.json.JsonAction" scope="prototype">
+	</bean>
+	<bean id="tagAction" class="demoinfo.struts2.tag.TagAction" scope="prototype">
+	</bean>
+	<bean id="validationAction" class="demoinfo.struts2.validation.ValidationAction" scope="prototype">
+	</bean>
+	<bean id="loginAction" class="demoinfo.struts2.interceptor.LoginAction" scope="prototype">
+	</bean>
+	
+	<!-- webservice中的Action -->
+	<bean id="httpclientAction" class="demoinfo.webservice.httpclient.WebServiceAction" scope="prototype">
+	</bean>
+	<bean id="soapAction" class="demoinfo.webservice.soap.WebServiceAction" scope="prototype">
+	</bean>
+	<bean id="xfireAction" class="demoinfo.webservice.xfire.WebServiceAction" scope="prototype">
+	</bean>
+	<bean id="xstreamAction" class="demoinfo.webservice.xstream.WebServiceAction" scope="prototype">
+	</bean>
 
 </beans>

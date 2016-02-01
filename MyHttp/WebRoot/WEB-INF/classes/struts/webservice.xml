@@ -5,14 +5,17 @@
 
 <struts>
   <package name="webservice" extends="struts-default" namespace="/webservice">
-      <action name="take" class="demoinfo.webservice.xfire.WebServiceAction" method="webService">
+      <action name="take" class="xfireAction" method="webService">
             <result>/webservice/webServiceTake.jsp</result>
       </action>
-      <action name="httpclient" class="demoinfo.webservice.httpclient.WebServiceAction" >
+      <action name="httpclient" class="httpclientAction" >
             <result>/webservice/webServiceHttpClient.jsp</result>
       </action>
-      <action name="xstream" class="demoinfo.webservice.xstream.WebServiceAction" >
+      <action name="xstream" class="xstreamAction" >
             <result>/webservice/webServiceXstream.jsp</result>
+      </action>
+      <action name="soap"  class="soapAction" >
+            <result>/webservice/webServiceSoap.jsp</result>
       </action>
   </package>
 </struts>

@@ -7,18 +7,18 @@
 
 <package name="ajax" extends="json-default" namespace="/ajax">
 <!--自动补全的Action-->
-  <action name="autoCompleter" class="demoinfo.ajaxjs.ajax.AjaxAction" method="autoCompleter">
+  <action name="autoCompleter" class="ajaxAction" method="autoCompleter">
   	<result name="fail"></result>
       <result type="json">
         <param name="root">names</param>
       </result>
    </action>   
 <!--   异步校验的Action-->
-   <action name="checkAjax" class="demoinfo.ajaxjs.ajax.AjaxAction" method="checkAjax">
+   <action name="checkAjax" class="ajaxAction" method="checkAjax">
         <result>/ajaxjs/waring.jsp</result>
    </action>
 <!--   异步校验的Action-->
-   <action name="checkJqueryAjax" class="demoinfo.ajaxjs.ajax.AjaxAction" method="checkJqueryAjax">
+   <action name="checkJqueryAjax" class="ajaxAction" method="checkJqueryAjax">
         	<result name="fail"></result>
 			<result type="json"><!-- 返回json类型数据 -->
 				<param name="root">result</param><!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->

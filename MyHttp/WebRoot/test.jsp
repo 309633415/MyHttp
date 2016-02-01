@@ -37,11 +37,14 @@ background: cadetblue;
 	</span> 
 	<span class="bg"> 
 
-<p style="text-indent:2em"><strong>什么是HttpClient？</strong><br/>
-&nbsp;&nbsp;HttpClient是Apache Jakarta Common下的子项目，用来提供高效的、最新的、功能丰富的支持HTTP协议的客户端编程工具包，并且它支持HTTP协议最新的版本和建议。<br/>
-&nbsp;&nbsp;HttpClient相比传统JDK自带的URLConnection，增加了易用性和灵活性，它不仅是客户端发送Http请求变得容易，而且也方便了开发人员测试接口（基于Http协议的），即提高了开发的效率，也方便提高代码的健壮性。
+&nbsp;&nbsp;Web Service、WSDL、SOAP、HTTP的概念存在诸多联系，在不同的产品中体现的概念也不一样。
+<p style="text-indent:2em"><strong>WebService 和 WSDL的关系？</strong><br/>
+&nbsp;&nbsp;Web Service提供一种可被调用的服务，该服务必须通过WSDL定义接口，接口描述了WEB SERVICE 的逻辑定义（types，messages，portTypes）和传输协议（bindings，services）。客户端通过WSDL定义的访问方式和逻辑结构调用该服务。
 </p>
-
+<p style="text-indent:2em"><strong>Web Service和SOAP以及HTTP的关系？</strong><br/>
+&nbsp;&nbsp;SOAP是简单对象访问协议，定义了一种跨平台的分布式系统通信协议。SOAP需要绑定到更低层次的传输协议（比如， HTTP,RMI,JMS）等。最常用的是HTTP绑定，所以也经常把SOAP的概念和HTTP混在一起说。<br/>
+&nbsp;&nbsp;理论上通过WSDL描述的Web Service可以有很多种不同的绑定，但是实际上经常使用SOAP HTTP绑定 （就是采用“SOAP通信协议的HTTP绑定格式”来绑定）。
+</p>
 	</span> 
 		<span class="include"> 
 		<strong class="s5">&nbsp;</strong> 
@@ -62,6 +65,7 @@ background: cadetblue;
    <span class="bg"> 
  1:jar包下载地址：
  <a href="http://download.csdn.net/detail/jiashubing/9414107" target="_blank">HttpClient所需jar包</a>
+ 该程序不需要额外的jar包
    </span>
    <span class="include"> 
 		<strong class="s5">&nbsp;</strong> 
@@ -81,135 +85,135 @@ background: cadetblue;
    <span class="bg">
  
 <p style="text-indent:2em">
-在发布服务项目的基础上调用服务，这里有两种方法，一种是直接在java测试类中调用，一种是从页面传值后，在action中调用，其实质是一样的。<br/>
-&nbsp;&nbsp;第一种方法，建立测试类ClientTest，代码如下：</p>
+本例实现使用Soap请求webService接口，直接看测试类SoapTest，代码如下：</p>
 <pre name="code" class="java">
-package demoinfo.webservice.xfire;
-
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.URL;
-import org.codehaus.xfire.client.Client;
+import java.net.URLConnection;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
-public class ClientTest {
-	public static void main(String[] args)throws Exception {
-		Client client= new Client(new URL("http://localhost:8080/MyHttp/services/HelloWebService?WSDL")); 
-	    Object[] results=client.invoke("sayHello", new Object[]{"  HelloWorld，WebService！"});
-	    System.out.println(results[0]);
-    }
-}
-
-</pre>
-<p style="text-indent:2em">第二种方法：<br/>
-&nbsp;&nbsp;1:首先建立WebServiceAction类：</p>
-<pre name="code" class="java">
-package demoinfo.webservice.xfire;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts2.ServletActionContext;
-import org.codehaus.xfire.client.Client;
-
-import com.opensymphony.xwork2.ActionSupport;
-
-@SuppressWarnings("serial")
-public class WebServiceAction extends ActionSupport{
-	private String name;
-	private String message;
-	private Object[] results;
-	
-	public Object[] getResults() {
-		return results;
+/**
+ * @ClassName WeatherUtils
+ * @Description TODO 天气信息数据来源(http://www.webxml.com.cn/)
+ * 根据城市或地区名称查询获得未来三天内天气情况、现在的天气实况、天气和生活指数:
+ * 调用方法如下：输入参数：theCityName = 城市中文名称(国外城市可用英文)或城市代码(不输入默认为上海市)，如：上海 或 58367，如有
+ * 城市名称重复请使用城市代码查询(可通过 getSupportCity 或 getSupportDataSet 获得)；返回数据： 一个一维数组 String(22)，共有
+ * 23个元素。String(0) 到 String(4)：省份，城市，城市代码，城市图片名称，最后更新时间。String(5) 到 String(11)：当天的 气温，
+ * 概况，风向和风力，天气趋势开始图片名称(以下称：图标一)，天气趋势结束图片名称(以下称：图标二)，现在的天气实况，天气和生活
+ * 指数。String(12) 到String(16)：第二天的 气温，概况，风向和风力，图标一，图标二。String(17) 到 String(21)：第三天的 气温，
+ * 概况，风向和风力，图标一，图标二。String(22) 被查询的城市或地区的介绍
+ */
+public class SoapTest {
+	/**
+	 * 获取SOAP的请求头，并替换其中的标志符号为用户输入的城市
+	 * 
+	 * @param city
+	 *            用户输入的城市名称
+	 * @return 客户将要发送给服务器的SOAP请求
+	 */
+	private static String getSoapRequest(String city) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("&lt;?xml version=\"1.0\" encoding=\"utf-8\"?&gt;"
+					+ "&lt;soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" "
+					+ "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" "
+					+ "xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"&gt;"
+					+ "&lt;soap:Body&gt;    &lt;getWeather xmlns=\"http://WebXml.com.cn/\"&gt;"
+					+ "&lt;theCityCode&gt;" + city
+					+ "&lt;/theCityCode&gt;    &lt;/getWeather&gt;"
+					+ "&lt;/soap:Body&gt;&lt;/soap:Envelope&gt;");
+		return sb.toString();
 	}
 
-	public void setResults(Object[] results) {
-		this.results = results;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public String webService(){
-		HttpServletRequest request = ServletActionContext.getRequest();
-		Client client;
+	/**
+	 * 用户把SOAP请求发送给服务器端，并返回服务器点返回的输入流
+	 * 
+	 * @param city
+	 *            用户输入的城市名称
+	 * @return 服务器端返回的输入流，供客户端读取
+	 * @throws Exception
+	 */
+	private static InputStream getSoapInputStream(String city) throws Exception {
 		try {
-			client = new Client(new URL("http://localhost:8080/MyHttp/services/HelloWebService?WSDL"));
-			results=client.invoke(name, new Object[]{message});
-			System.out.print(results); 
-			if(results!=null&&results.length!=0){
-				request.setAttribute("results",results);
+			String soap = getSoapRequest(city);
+			if (soap == null) {
+				return null;
 			}
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-			return ERROR;
+			URL url = new URL(
+					"http://www.webxml.com.cn/WebServices/WeatherWS.asmx");
+			URLConnection conn = url.openConnection();
+			conn.setUseCaches(false);
+			conn.setDoInput(true);
+			conn.setDoOutput(true);
+
+			conn.setRequestProperty("Content-Length", Integer.toString(soap
+					.length()));
+			conn.setRequestProperty("Content-Type", "text/xml; charset=utf-8");
+			conn.setRequestProperty("SOAPAction",
+					"http://WebXml.com.cn/getWeather");
+
+			OutputStream os = conn.getOutputStream();
+			OutputStreamWriter osw = new OutputStreamWriter(os, "utf-8");
+			osw.write(soap);
+			osw.flush();
+			osw.close();
+
+			InputStream is = conn.getInputStream();
+			return is;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return ERROR;
-		} 
- 		return SUCCESS;
+			return null;
+		}
+	}
+
+	/**
+	 * 对服务器端返回的XML进行解析
+	 * 
+	 * @param city
+	 *            用户输入的城市名称
+	 * @return 字符串 用#分割
+	 */
+	public static String getWeather(String city) {
+		try {
+			Document doc;
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			dbf.setNamespaceAware(true);
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			InputStream is = getSoapInputStream(city);
+			doc = db.parse(is);
+			NodeList nl = doc.getElementsByTagName("string");
+			StringBuffer sb = new StringBuffer();
+			for (int count = 0; count < nl.getLength(); count++) {
+				Node n = nl.item(count);
+				if(n.getFirstChild().getNodeValue().equals("查询结果为空！")) {
+					sb = new StringBuffer("#") ;
+					break ;
+				}
+				sb.append(n.getFirstChild().getNodeValue() + "#");
+			}
+			is.close();
+			return sb.toString();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	/**
+	 * 测试
+	 * @param args
+	 * @throws Exception
+	 */
+	public static void main(String[] args) throws Exception {
+		String weatherInfo = getWeather("北京");
+		System.out.println(weatherInfo);
 	}
 }
 
-</pre>
-<p style="text-indent:2em">
-2:再建立struts配置文件。在struts.xml中包含webservice.xml，webservice.xml的代码如下：</p>
-<pre name="code" class="xml">
-&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;!DOCTYPE struts PUBLIC
-    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
-    "http://struts.apache.org/dtds/struts-2.0.dtd"&gt;
-
-&lt;struts&gt;
-  &lt;package name="webservice" extends="struts-default" namespace="/webservice"&gt;
-      &lt;action name="take" class="demoinfo.webservice.xfire.WebServiceAction" method="webService"&gt;
-            &lt;result&gt;/webservice/webServiceTake.jsp&lt;/result&gt;
-      &lt;/action&gt;
-  &lt;/package&gt;
-&lt;/struts&gt;
-</pre>
-<p style="text-indent:2em">
-3:最后是jsp的展示页面webServiceTake.jsp，代码如下：<br/>
-</p>
-<pre name="code" class="php">
-&lt;%@ include file="/common/taglibs.jsp" %&gt;
-&lt;%@ page language="java" import="java.util.*" pageEncoding="GBK"%&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;webService实例&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;h2&gt;通过发布的HelloWebService服务接口调用网站服务&lt;/h2&gt;&lt;br/&gt;
-&lt;div style="color:blue;"&gt;
-调用方法名 : sayHello或者sayLove&lt;br/&gt;
-发送文本内容 : 任意输入 
-&lt;/div&gt;&lt;br/&gt;&lt;br/&gt;
-    &lt;form action="&lt;%=basePath %&gt;/webservice/take.action" method="post"&gt;
-       &lt;s:textfield name="name" label="调用方法名" /&gt;&lt;br/&gt;
-       &lt;s:textfield name="message"  label="发送文本内容"/&gt;&lt;br/&gt;
-       &lt;s:submit value="提交"/&gt;&lt;br/&gt;
-    &lt;/form&gt;
-&lt;div&gt;
-	返回数据为：
-    &lt;c:forEach items="&#36;{requestScope.results}" var="it"&gt;
-    	&#36;{it}
-    &lt;/c:forEach&gt;
-&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
 </pre>
 
    </span>

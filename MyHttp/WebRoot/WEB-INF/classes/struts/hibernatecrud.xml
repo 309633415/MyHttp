@@ -9,16 +9,16 @@
 			<result name="error">/hibernate/hibernateError.jsp</result>
 			<result name="success">/hibernate/hibernateSave.jsp</result>
 		</global-results>
-     <action name="list" class="demoinfo.hibernate.crud.CrudAction" method="doList" />
-     <action name="add" class="demoinfo.hibernate.crud.CrudAction" method="doAdd" />
-     <action name="prepareAdd" class="demoinfo.hibernate.crud.CrudAction" method="doPrepareAdd">
+     <action name="list" class="crudAction" method="doList" />
+     <action name="add" class="crudAction" method="doAdd" />
+     <action name="prepareAdd" class="crudAction" method="doPrepareAdd">
 		<result name="addUser">/hibernate/hibernateAddUser.jsp</result>
 	</action>
-	<action name="query" class="demoinfo.hibernate.crud.CrudAction" method="doQuery" />
-	<action name="delete" class="demoinfo.hibernate.crud.CrudAction" method="doDelete" />
-	<action name="prepareUpdate" class="demoinfo.hibernate.crud.CrudAction" method="doPrepareUpdate">
+	<action name="query" class="crudAction" method="doQuery" />
+	<action name="delete" class="crudAction" method="doDelete" />
+	<action name="prepareUpdate" class="crudAction" method="doPrepareUpdate">
 		<result name="updateUser">/hibernate/hibernateEditUser.jsp</result>
 	</action>
-	 <action name="update" class="demoinfo.hibernate.crud.CrudAction" method="doUpdate" />
+	 <action name="update" class="crudAction" method="doUpdate" />
   </package>
 </struts>

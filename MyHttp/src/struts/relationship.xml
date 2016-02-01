@@ -6,79 +6,79 @@
 <struts>
   <package name="relationship" extends="struts-default,json-default" namespace="/relationship" >
   
-    <action name ="queryLinkList" class ="demoinfo.hibernate.relationship.RelationShipAction" method="doQueryLinkList">    
+    <action name ="queryLinkList" class ="relationShipAction" method="doQueryLinkList">    
          <result name="success">/hibernate/hibernateQueryLink.jsp</result>   
      </action> 
      
-    <action name ="oneToOneList" class ="demoinfo.hibernate.relationship.RelationShipAction" method="doOneToOneList">    
+    <action name ="oneToOneList" class ="relationShipAction" method="doOneToOneList">    
          <result name="success">/hibernate/hibernateRelationship.jsp</result>   
      </action> 
      
-    <action name ="oneToManyList" class ="demoinfo.hibernate.relationship.RelationShipAction" method="doOneToManyList">    
+    <action name ="oneToManyList" class ="relationShipAction" method="doOneToManyList">    
          <result name="success">/hibernate/hibernateOneToMany.jsp</result>   
      </action> 
      
-    <action name ="prepareUpdatePerson" class ="demoinfo.hibernate.relationship.RelationShipAction" method="doPrepareUpdatePerson">    
+    <action name ="prepareUpdatePerson" class ="relationShipAction" method="doPrepareUpdatePerson">    
          <result name="success">/hibernate/hibernatePersonEdit.jsp</result>   
      </action> 
      
-    <action name ="prepareAddPerson" class ="demoinfo.hibernate.relationship.RelationShipAction" method="doPrepareAddPerson">    
+    <action name ="prepareAddPerson" class ="relationShipAction" method="doPrepareAddPerson">    
          <result name="success">/hibernate/hibernatePersonEdit.jsp</result>   
      </action> 
      
-    <action name ="viewPerson" class ="demoinfo.hibernate.relationship.RelationShipAction" method="doViewPerson">    
+    <action name ="viewPerson" class ="relationShipAction" method="doViewPerson">    
          <result name="success">/hibernate/hibernatePersonEdit.jsp</result>   
      </action> 
      
-    <action name ="updatePerson" class ="demoinfo.hibernate.relationship.RelationShipAction" method="doUpdatePerson">    
+    <action name ="updatePerson" class ="relationShipAction" method="doUpdatePerson">    
          <result name="success" type="redirect">/relationship/oneToOneList.action</result>
      </action> 
      
-    <action name ="addPerson" class ="demoinfo.hibernate.relationship.RelationShipAction" method="doAddPerson">    
+    <action name ="addPerson" class ="relationShipAction" method="doAddPerson">    
          <result name="success" type="redirect">/relationship/oneToOneList.action</result>
      </action> 
      
-    <action name ="deletePerson" class ="demoinfo.hibernate.relationship.RelationShipAction" method="doDeletePerson" >
+    <action name ="deletePerson" class ="relationShipAction" method="doDeletePerson" >
     	<result name="success" type="redirect">/relationship/oneToOneList.action</result>
     </action>    
     
      	<action name="oneToManyQuery"
-			class="demoinfo.hibernate.relationship.RelationShipAction" method="doOneToManyQuery">
+			class="relationShipAction" method="doOneToManyQuery">
 			<result name="fail"></result>
 				<result type="json"><param name="root">result</param>
 			</result>
 		</action>
 		
      	<action name="checkPersonCode"
-			class="demoinfo.hibernate.relationship.RelationShipAction" method="doCheckPersonCode">
+			class="relationShipAction" method="doCheckPersonCode">
 			<result name="fail"></result>
 				<result type="json"><param name="root">result</param>
 			</result>
 		</action>
 		
      	<action name="commonQuery"
-			class="demoinfo.hibernate.relationship.RelationShipAction" method="doCommonQuery">
+			class="relationShipAction" method="doCommonQuery">
 			<result name="fail"></result>
 				<result type="json"><param name="root">result</param>
 			</result>
 		</action>
 		
      	<action name="conditionQuery"
-			class="demoinfo.hibernate.relationship.RelationShipAction" method="doConditionQuery">
+			class="relationShipAction" method="doConditionQuery">
 			<result name="fail"></result>
 				<result type="json"><param name="root">result</param>
 			</result>
 		</action>
 		
      	<action name="originalQuery"
-			class="demoinfo.hibernate.relationship.RelationShipAction" method="doOriginalQuery">
+			class="relationShipAction" method="doOriginalQuery">
 			<result name="fail"></result>
 				<result type="json"><param name="root">result</param>
 			</result>
 		</action>
 		
      	<action name="criteriaQuery"
-			class="demoinfo.hibernate.relationship.RelationShipAction" method="doCriteriaQuery">
+			class="relationShipAction" method="doCriteriaQuery">
 			<result name="fail"></result>
 				<result type="json"><param name="root">result</param>
 			</result>

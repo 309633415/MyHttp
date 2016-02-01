@@ -6,10 +6,10 @@
 <struts>
   <package name="tag" extends="struts-default" namespace="/tag">
 <!--       注意Class的值加上包路径 如果 集成了Spring就不用了-->
-    <action name ="tag" class ="demoinfo.struts2.tag.TagAction"> 
+    <action name ="tag" class ="tagAction"> 
         <result name="input">/strut/tag/tag.jsp</result>
      </action> 
-    <action name ="tagForm" class ="demoinfo.struts2.tag.TagAction" method="doSubmit"> 
+    <action name ="tagForm" class ="tagAction" method="doSubmit"> 
         <result name="success">/strut/tag/showTag.jsp</result>
      </action> 
   </package>

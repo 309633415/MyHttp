@@ -93,8 +93,9 @@ request.setCharacterEncoding("GBK");
 		    <a href="./common/common.action?target=webServiceConf">环境配置(XFire)</a><br/>
 		    <a href="./common/common.action?target=webServiceTake">调取网站服务(XFire)</a><br/>
 		    <a href="./common/common.action?target=webServiceXstream">Xstream+XML解析</a><br/>
-		    <a href="./common/common.action?target=webServiceCxf">调用服务端(CXF)</a><br/>
-		    <a href="./common/common.action?target=webServiceHttpClient">调用服务端(HttpClient)</a><br/>
+		    <a href="./common/common.action?target=webServiceCxf">调用本地服务端(CXF)</a><br/>
+		    <a href="./common/common.action?target=webServiceHttpClient">调用外网服务端(HttpClient)</a><br/>
+		    <a href="./common/common.action?target=webServiceSoap">调用外网服务端(Soap)</a><br/>
 	    </div>
 	    <div id="jbpm" class="mulu">
 		    <h2>JBPM工作流实例</h2>

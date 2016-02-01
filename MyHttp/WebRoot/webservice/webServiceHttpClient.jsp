@@ -8,31 +8,29 @@
   <title>webService实例</title>
   </head>
   <body>
-  <h2>使用HttpClient调用公共服务接口</h2>
-  <p style="text-indent:2em;">注：实例中是查询天气的接口，请求过程比较慢，需要等待较长时间。</p>
+    <h2>使用HttpClient调用公共服务接口</h2>
+  <p style="text-indent:2em;">注：实例中是查询电话号码归属地的接口，使用的webservice网站为<br/><a href="http://webservice.webxml.com.cn/WebServices/MobileCodeWS.asmx" target="_blank">http://webservice.webxml.com.cn/WebServices/MobileCodeWS.asmx</a>
+  由于服务器的原因，请求过程比较慢，需要等待较长时间，有时也会出现“服务器繁忙”的现象。</p>
     <form id="fm1" method="post" action="<%=basePath %>/webservice/httpclient.action">
-    	省份：<input type="text"  id="province" name="province"  value="${province}"/>
-    	城市：<input type="text"  id="city" name="city"  value="${city}"/>
-    	<input type="button"  value="提交" onclick="check()"/>
+    	电话号码：<input type="text"  id="number" name="number"  value="${number} "
+    	onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/>（电话号码大于6位）
+    	<input type="button" value="提交" onclick="check()"/>
     </form>
-    该地的天气情况是：<font color="red">
-    ${ result } 
-    </font>
+    归属地是：<font color="red">${address} </font>
     <br/><br/><br/>
       <script type="text/javascript">
     function check(){
-	   	  if(fm1.province.value.replace(/(^\s*)|(\s*$)/g, "")==""){
-	   	 	alert("省份不能为空！");
-	   	 	document.getElementById("province").focus();
-	   	 	return;
+	   	 var temp=document.getElementById("number").value.length;
+	   	 if(temp>6){
+	   	 	document.getElementById("fm1").submit();
 	   	 }
-	   	 if(fm1.city.value.replace(/(^\s*)|(\s*$)/g, "")==""){
-	   	 	alert("城市不能为空！");
-	   	 	document.getElementById("city").focus();
-	   	 	return;
+	   	 else{
+	   	 	alert("电话号码需要大于6位");
+			document.getElementById("number").focus();
+			return;
 	   	 }
-	   	  fm1.submit(); 
     }
     </script>
+    
   </body>
 </html>

@@ -59,6 +59,7 @@
               <result name="webServiceXstream">/webservice/webServiceXstream.jsp</result>
               <result name="webServiceCxf">/webservice/webServiceCxf.jsp</result>
               <result name="webServiceHttpClient">/webservice/webServiceHttpClient.jsp</result>
+              <result name="webServiceSoap">/webservice/webServiceSoap.jsp</result>
    			  <!-- webService 实例  end-->
       </action>
   

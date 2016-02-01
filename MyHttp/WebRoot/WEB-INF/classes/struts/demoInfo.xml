@@ -5,7 +5,7 @@
 
 <struts>
   <package name="action" extends="struts-default" namespace="/action">
-      <action name="demoInfoAdd" class="maintain.action.DemoInfoMaintainAction" method="demoInfoAdd">
+      <action name="demoInfoAdd" class="demoinfoAction" method="demoInfoAdd">
             <result name="error">/common/fail.jsp</result>
             <result name="success">/test.jsp</result>
         </action>
