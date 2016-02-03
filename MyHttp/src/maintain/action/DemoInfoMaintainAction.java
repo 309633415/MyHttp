@@ -1,7 +1,6 @@
 package maintain.action;
 
 import org.hibernate.Session;
-import java.util.regex.*;
 
 import org.hibernate.Transaction;
 import maintain.hbm.DemoInfo;

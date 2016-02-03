@@ -1,7 +1,5 @@
 package demoinfo.webservice.cxf;
 
-import javax.xml.ws.Endpoint;
-
 import org.apache.cxf.jaxws.JaxWsServerFactoryBean;  
 import demoinfo.webservice.cxf.HelloWebService;  
 import demoinfo.webservice.cxf.HelloWebServiceImpl;  

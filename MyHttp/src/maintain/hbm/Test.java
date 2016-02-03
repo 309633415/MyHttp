@@ -8,6 +8,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+@SuppressWarnings("all")
 public class Test {
 public static void  main(String args[]) throws HibernateException, SQLException{
 	ResultSet rs=null;

@@ -15,6 +15,7 @@ import java.io.File;
 /**
  * struts2标签实例
  */
+@SuppressWarnings("all")
 public class TagAction extends ActionSupport implements Validateable  {
 
 	private static final long serialVersionUID = -94044809860988047L;        
@@ -33,6 +34,7 @@ public class TagAction extends ActionSupport implements Validateable  {
 	String favouriteVehicalType = "MotorcycleKey";		//喜欢的汽车种类
 	String favouriteVehicalSpecific = "YamahaKey";		//喜欢汽车种类中的某个品牌的汽车
 
+	@SuppressWarnings("rawtypes")
 	List leftSideCartoonCharacters;
 	List rightSideCartoonCharacters;
 
