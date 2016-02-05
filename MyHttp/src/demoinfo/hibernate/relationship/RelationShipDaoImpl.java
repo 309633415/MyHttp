@@ -11,6 +11,7 @@ import demoinfo.hibernate.relationship.pojo.PersonInform;
 import demoinfo.hibernate.relationship.pojo.Student;
 import demoinfo.hibernate.relationship.pojo.User;
 
+@SuppressWarnings("unchecked")
 public class RelationShipDaoImpl extends HibernateDaoSupport implements RelationShipDao{
 
 	public List<User> findUserAll() {
@@ -25,13 +26,12 @@ public class RelationShipDaoImpl extends HibernateDaoSupport implements Relation
 		return this.getHibernateTemplate().loadAll(Goods.class);
 	}
 	
-	@SuppressWarnings("unchecked")
 	public List<User> getUsers(String queryString) {
 		return (List<User>)this.getHibernateTemplate().find(queryString);
 	}
 
 	public Person getPerson(String personCode) {
-		return this.getHibernateTemplate().get(Person.class, personCode);
+		return (Person) this.getHibernateTemplate().get(Person.class, personCode);
 	}
 
 	public void deletePerson(String personCode) {
@@ -58,7 +58,7 @@ public class RelationShipDaoImpl extends HibernateDaoSupport implements Relation
 	}
 
 	public ClassRoom getClassRoom(int roomId) {
-		return this.getHibernateTemplate().get(ClassRoom.class, roomId);
+		return (ClassRoom) this.getHibernateTemplate().get(ClassRoom.class, roomId);
 	}
 
 }

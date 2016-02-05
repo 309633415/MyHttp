@@ -6,13 +6,13 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import demoinfo.hibernate.relationship.pojo.User;
 
+@SuppressWarnings("unchecked")
 public class CrudDaoImpl extends HibernateDaoSupport implements CrudDao{
 
 	public List<User> findAll() {
 		return this.getHibernateTemplate().loadAll(User.class);
 	}
 
-	@SuppressWarnings("unchecked")
 	public List<User> getUsers(String queryString) {
 		return (List<User>)this.getHibernateTemplate().find(queryString);
 	}

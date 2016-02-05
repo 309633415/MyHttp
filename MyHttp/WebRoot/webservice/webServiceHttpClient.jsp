@@ -16,7 +16,7 @@
     	onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/>（电话号码大于6位）
     	<input type="button" value="提交" onclick="check()"/>
     </form>
-    归属地是：<font color="red">${address} </font>
+    归属地是：<font color="red">${result} </font>
     <br/><br/><br/>
       <script type="text/javascript">
     function check(){
