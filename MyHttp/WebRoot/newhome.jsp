@@ -140,7 +140,7 @@
 			   <li><a href="#"  id="webServiceSoap"  onclick="webServiceSoap()">调用服务端(Soap)</a></li>
             </ul>
          </li>
-		 <li class="dropdown">
+		 <!-- <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                JBPM工作流实例
                <b class="caret"></b>
@@ -154,7 +154,7 @@
                <li class="divider"></li>
                <li><a href="#">流程跳转和退回</a></li>
             </ul>
-         </li>
+         </li> -->
 		 <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                设计模式23种
@@ -166,7 +166,7 @@
                <li><a href="#">观察者模式</a></li>
             </ul>
          </li>
-		 <li id="nav_fhzy"><a href="#"  onclick="mpost('codehome.html' , {code : 'oldindex' })">返回旧版</a></li>
+		 <li id="nav_fhzy"><a href="frame.jsp" >返回旧版</a></li>
       </ul>
    </div>
 </div>
@@ -276,7 +276,9 @@
 	<div id="footer_box">
 		<a href="#">法律声明</a></li>
 		<span>备案证号：京##########</span>
-		<span>&copy;版权20xx-20xx ############有限公司</span>
+		<span>&copy;版权20xx-20xx ############有限公司
+		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257110248'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1257110248%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+		</span>
 	</div>
 </div>
 <script>
@@ -477,7 +479,8 @@ function strutsLoginDemo(){
 	    $("#mainfrm1").css("height",contentHeight); 
 		$("#section_sljj").css("height",theight);
 		$("#section_ydm").css("height",theight);
-	    
+	    $("#section_box").css("height",2*theight);
+	    $("#section").css("background-color","#1c1d21");
 		/* var theight = $("#mainfrm1").height() + (45);
 		$("#section_sljj").css("height",theight);
 		var theight2 = $("#mainfrm").height() + (45);
@@ -492,6 +495,8 @@ function strutsLoginDemo(){
 	    $("#mainfrm1").css("height",contentHeight); 
 		$("#section_sljj").css("height",theight);
 		$("#section_ydm").css("height",theight);
+		$("#section_box").css("height",2*theight);
+		$("#section").css("background-color","#1c1d21");
 	});
 	$(function(){
 		 var temp = "<%=code%>";

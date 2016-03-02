@@ -278,9 +278,9 @@ i.i_top{
 				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceSoap' })">调用服务端(Soap)</a></li>
             </ul>
          </li>
-		 <li class="dropdown">
+		<!--  <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-               JBPM工作流实例
+               
                <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
@@ -292,7 +292,7 @@ i.i_top{
                <li class="divider"></li>
                <li><a href="#">流程跳转和退回</a></li>
             </ul>
-         </li>
+         </li> -->
 		 <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                设计模式23种
@@ -304,7 +304,7 @@ i.i_top{
                <li><a href="#">观察者模式</a></li>
             </ul>
          </li>
-		 <li id="nav_fhzy"><a href="#"  onclick="mpost('codehome.html' , {code : 'oldindex' })">返回旧版</a></li>
+		 <li id="nav_fhzy"><a href="frame.jsp">返回旧版</a></li>
       </ul>
    </div>
 </div>
@@ -341,9 +341,9 @@ i.i_top{
 							<div class="left">
 								<h2>WebService实例</h2>
 							</div>
-							<div class="right">
+							<!-- <div class="right">
 								<h2>JBPM工作流实例</h2>
-							</div>
+							</div> -->
 							<!--内部旋转立方体-->
 							<i class="i_front"></i>
 							<i class="i_back"></i>
@@ -437,7 +437,9 @@ i.i_top{
 	<div id="footer_box">
 		<a href="#">法律声明</a></li>
 		<span>备案证号：京##########</span>
-		<span>&copy;版权20xx-20xx ############有限公司</span>
+		<span>&copy;版权20xx-20xx ############有限公司
+		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257110248'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1257110248%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+		</span>
 	</div>
 </div>
 <script>
