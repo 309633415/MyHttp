@@ -10,12 +10,17 @@
 	</package>
     <constant name="struts.enable.DynamicMethodInvocation" value="false" />
     <constant name="struts.devMode" value="false" />
+    <constant name="struts.action.extension" value="action,html"/>
     <constant name="struts.multipart.saveDir" value="/tmp"/> 
     <constant name="struts.i18n.encoding" value="GBK"/>
     <include file ="struts-default.xml" />  
     <package name="default"  extends="struts-default">
-        
-     <action name="common" class="common.CommonAction">
+	<action name="codehome" class="codeAction" >
+		<result name="success">/newhome.jsp</result>
+		<result name="oldindex">/frame.jsp</result>
+		<result name="newindex">/newindex.jsp</result>
+	</action>
+     <action name="common" class="commonAction">
               <result name="fail">/common/fail.jsp</result>
               <result name="success">/jee/struts/struts.jsp</result>
               <result name="backDemoList">/demoList.jsp</result>

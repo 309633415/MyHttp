@@ -11,6 +11,13 @@
      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd"
      default-autowire="byName">
 
+	<bean id="codeAction" class="common.CodeAction"
+		scope="prototype">
+	</bean>
+	<bean id="commonAction" class="common.CommonAction"
+		scope="prototype">
+	</bean>
+
 	<!-- 简单的增删改查的操作 -->
 	<bean id="crudAction" class="demoinfo.hibernate.crud.CrudAction"
 		scope="prototype">

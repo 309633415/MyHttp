@@ -137,7 +137,7 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 						<ul class="menu">
 							
 							<li class="no_sub">
-								<a  href="#" onclick="demoIndex()"
+								<a  href="#"  onclick="mpost('codehome.html' , {code : 'oldindex' })"
 									class="tablink nosub">首 页</a>
 							</li>
 							<li>
@@ -284,7 +284,7 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 								<a href="#" class="tablink arwlink">设计模式23种</a>
 								<ul>
 									<li>
-										<a href="#"  id="" onclick="">单利模式</a>
+										<a href="#"  id="" onclick="">单例模式</a>
 									</li>
 									<li>
 										<a href="#"  id="" onclick="">观察者模式</a>
@@ -292,8 +292,8 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 								</ul>
 							</li>
 							<li class="no_sub">
-								<a  href="" onclick="demoIndex()"
-									class="tablink nosub">返回主页</a>
+								<a  href="#"  onclick="mpost('codehome.html' , {code : 'newindex' })"
+									class="tablink nosub">返回新版</a>
 							</li>
 						</ul>
 					</div>
@@ -498,4 +498,19 @@ function strutsLoginDemo(){
 	    $("#mainfrm").css("height",contentHeight);
 	    $("#mainfrm1").css("height",contentHeight);
 	});
+	function mpost(URL, PARAMS) {      
+		var temp = document.createElement("form");      
+		temp.action = URL;      
+		temp.method = "post";      
+		temp.style.display = "none";      
+		for (var x in PARAMS) {      
+		var opt = document.createElement("textarea");      
+		opt.name = x;      
+		opt.value = PARAMS[x];      
+	    			temp.appendChild(opt);      
+		  }      
+	   document.body.appendChild(temp);      
+	   temp.submit();      
+	  		return temp;      
+		}
 </script>

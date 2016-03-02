@@ -42,6 +42,7 @@
 	<!-- Xfire Servlet end -->
 	
 	<welcome-file-list>
+		<welcome-file>newindex.jsp</welcome-file>
 		<welcome-file>frame.jsp</welcome-file>
 	</welcome-file-list>
 </web-app>
