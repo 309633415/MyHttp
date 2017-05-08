@@ -4,23 +4,23 @@
 <%@taglib prefix="s" uri="/struts-tags"%>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-   <title>JAVA ²ËÄñÑ§Ï°</title>
+   <title>JAVA èœé¸Ÿå­¦ä¹ </title>
    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
-   <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-   <link href="css/kendo.common.min.css" rel="stylesheet" type="text/css" />
-   <link href="css/kendo.silver.min.css" rel="stylesheet" type="text/css">
-   <link href="css/index.css" rel="stylesheet"><!--Ë½ÓĞCSS-->
+   <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+   <link href="http://kendo.cdn.telerik.com/2017.1.118/styles/kendo.common.min.css" rel="stylesheet" type="text/css" />
+   <link href="http://kendo.cdn.telerik.com/2017.1.118/styles/kendo.silver.min.css" rel="stylesheet" type="text/css">
+   <link href="css/index.css" rel="stylesheet"><!--ç§æœ‰CSS-->
    <link rel = "Shortcut Icon" href="cainiao.jpg"> 
-   <script src="js/jquery.min.js" type="text/javascript"></script>
+   <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js" type="text/javascript"></script>
    <script src="js/bootstrap.min.js" type="text/javascript"></script>
    <script src="js/prefixfree.min.js" type="text/javascript"></script>
-   <script src="js/kendo.all.min.js" type="text/javascript"></script>
+   <script src="http://kendo.cdn.telerik.com/2017.1.118/js/kendo.all.min.js" type="text/javascript"></script>
    <!--[if IE]>
 		<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
    <![endif]-->
 </head>
 <style>
-/***************ÄÚ²¿CSSÑùÊ½ÎªĞı×ªÁ¢·½ÌåÑùÊ½ÎğÉ¾£¬²»ÒªĞ´ÔÚÍâ²¿**************************/
+/***************å†…éƒ¨CSSæ ·å¼ä¸ºæ—‹è½¬ç«‹æ–¹ä½“æ ·å¼å‹¿åˆ ï¼Œä¸è¦å†™åœ¨å¤–éƒ¨**************************/
 .wrap {
 	perspective: 1000px;
 	perspective-origin: 50% 50%;
@@ -167,65 +167,65 @@ i.i_top{
 
 </style>
 <body>
-<!--µ¼º½²¿·Ö-->
+<!--å¯¼èˆªéƒ¨åˆ†-->
 <div id="nav" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
    <div class="navbar-header">
 	  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
-         <span class="sr-only">ÇĞ»»µ¼º½</span>
+         <span class="sr-only">åˆ‡æ¢å¯¼èˆª</span>
 		 <span class="icon-bar"></span>
 		 <span class="icon-bar"></span>
 		 <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand"  href="#"  onclick="mpost('codehome.html' , {code : 'newindex' })">JAVA ²ËÄñÑ§Ï°</a>
+      <a class="navbar-brand"  href="#"  onclick="mpost('codehome.html' , {code : 'newindex' })">JAVA èœé¸Ÿå­¦ä¹ </a>
    </div>
    <div class="collapse navbar-collapse" id="example-navbar-collapse">
       <ul class="nav navbar-nav">
-		 <li id="nav_zy"><a href="#"  onclick="mpost('codehome.html' , {code : 'newindex' })">Ö÷Ò³</a></li>
+		 <li id="nav_zy"><a href="#"  onclick="mpost('codehome.html' , {code : 'newindex' })">ä¸»é¡µ</a></li>
          <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-               Struts2ÊµÀı 
+               Struts2å®ä¾‹ 
                <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'strutsLoginDemo' })">µÇÂ½ÊµÀı</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'strutsLoginDemo' })">ç™»é™†å®ä¾‹</a></li>
 				 <li class="divider"></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'strutsValidDemo' })">¿ò¼ÜĞ£ÑéÊµÀı</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'strutsValidDemo' })">æ¡†æ¶æ ¡éªŒå®ä¾‹</a></li>
 				 <li class="divider"></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'strutsInterceptorDemo' })">À¹½ØÆ÷ÊµÀı</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'strutsInterceptorDemo' })">æ‹¦æˆªå™¨å®ä¾‹</a></li>
 				 <li class="divider"></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'strutsFileUploadDemo' })">ÎÄ¼şÉÏ´«ÊµÀı</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'strutsFileUploadDemo' })">æ–‡ä»¶ä¸Šä¼ å®ä¾‹</a></li>
 				 <li class="divider"></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'strutsTagDemo' })">struts2±êÇ©ÊµÀı</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'strutsTagDemo' })">struts2æ ‡ç­¾å®ä¾‹</a></li>
 				 <li class="divider"></li>
 				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'code=strutsJsonDemo' })">json</a></li>
             </ul>
          </li>
 		 <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-               HibernateÊµÀı 
+               Hibernateå®ä¾‹ 
                <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ormCrudDemo' })">Ôö¼Ó</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ormCrudDemo' })">å¢åŠ </a></li>
 				<li class="divider"></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ormCrudDeleteDemo' })">É¾³ı</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ormCrudDeleteDemo' })">åˆ é™¤</a></li>
 				<li class="divider"></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ormCrudUpdateDemo' })">ĞŞ¸Ä</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ormCrudUpdateDemo' })">ä¿®æ”¹</a></li>
 				<li class="divider"></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ormCrudQueryDemo' })">¼òµ¥²éÑ¯</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ormCrudQueryDemo' })">ç®€å•æŸ¥è¯¢</a></li>
 				<li class="divider"></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ormCrudQueryLinkDemo' })">Á¬½Ó²éÑ¯</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ormCrudQueryLinkDemo' })">è¿æ¥æŸ¥è¯¢</a></li>
 				<li class="divider"></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ormCrudQueryHqlDemo' })">×Ô¶¨Òå²éÑ¯£¨HQL»òÕßSQL¾ù¿É£©</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ormCrudQueryHqlDemo' })">è‡ªå®šä¹‰æŸ¥è¯¢ï¼ˆHQLæˆ–è€…SQLå‡å¯ï¼‰</a></li>
 				<li class="divider"></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'relationshipDemo' })">¹ØÏµ(Ò»¶ÔÒ»)</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'relationshipDemo' })">å…³ç³»(ä¸€å¯¹ä¸€)</a></li>
 				<li class="divider"></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'relationshipOneToMany' })">¹ØÏµ(Ò»¶Ô¶à)</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'relationshipOneToMany' })">å…³ç³»(ä¸€å¯¹å¤š)</a></li>
             </ul>
          </li>
 		 <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-               SpringÊµÀı 
+               Springå®ä¾‹ 
                <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
@@ -233,49 +233,49 @@ i.i_top{
 				<li class="divider"></li>
 				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'springAopDemo' })">AOP</a></li>
 				<li class="divider"></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'springJdbcDemo' })">JDBCÊı¾İ¿â·ÃÎÊ</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'springJdbcDemo' })">JDBCæ•°æ®åº“è®¿é—®</a></li>
 				<li class="divider"></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'springTransactionDemo' })">ÊÂÎñ¹ÜÀí</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'springTransactionDemo' })">äº‹åŠ¡ç®¡ç†</a></li>
 				<li class="divider"></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'springTransactionDemo' })">SpringORMÕûºÏ</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'springTransactionDemo' })">SpringORMæ•´åˆ</a></li>
 				<li class="divider"></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'springQuartzDemo' })">Spring¶¨Ê±·şÎñQuartZ</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'springQuartzDemo' })">Springå®šæ—¶æœåŠ¡QuartZ</a></li>
 				<li class="divider"></li>
 				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'springMvcDemo' })">SpringMVC</a></li>
             </ul>
          </li>
 		 <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-               AJAXºÍJavaScript 
+               AJAXå’ŒJavaScript 
                <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ajaxJsDemo' })">Ajax¼òµ¥ÌØĞ§(struts2)</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ajaxJsDemo' })">Ajaxç®€å•ç‰¹æ•ˆ(struts2)</a></li>
 				<li class="divider"></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ajaxJsJqueryDemo' })">Ajax¼òµ¥Ğ£Ñé(struts2+jQuery)</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ajaxJsJqueryDemo' })">Ajaxç®€å•æ ¡éªŒ(struts2+jQuery)</a></li>
 				<li class="divider"></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ajaxJsAutoCompleterDemo' })">Ajax²éÑ¯(×Ô¶¯²¹È«Àı×Ó)</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ajaxJsAutoCompleterDemo' })">AjaxæŸ¥è¯¢(è‡ªåŠ¨è¡¥å…¨ä¾‹å­)</a></li>
 				<li class="divider"></li>
-				<li><a href="#" onclick="mpost('codehome.html' , {code : 'ajaxJsSelectValueDemo' })">JavaScriptÈ¡Öµ´óÈ«</a></li>
+				<li><a href="#" onclick="mpost('codehome.html' , {code : 'ajaxJsSelectValueDemo' })">JavaScriptå–å€¼å¤§å…¨</a></li>
             </ul>
          </li>
 		 <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-               WebServiceÊµÀı
+               WebServiceå®ä¾‹
                <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceConf' })">»·¾³ÅäÖÃ(XFire)</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceConf' })">ç¯å¢ƒé…ç½®(XFire)</a></li>
 				<li class="divider"></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceTake' })">µ÷È¡ÍøÕ¾·şÎñ(XFire)</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceTake' })">è°ƒå–ç½‘ç«™æœåŠ¡(XFire)</a></li>
 				<li class="divider"></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceXstream' })">Xstream+XML½âÎö</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceXstream' })">Xstream+XMLè§£æ</a></li>
 				<li class="divider"></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceCxf' })">µ÷ÓÃ·şÎñ¶Ë(CXF)</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceCxf' })">è°ƒç”¨æœåŠ¡ç«¯(CXF)</a></li>
 				<li class="divider"></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceHttpClient' })">µ÷ÓÃ·şÎñ¶Ë(HttpClient)</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceHttpClient' })">è°ƒç”¨æœåŠ¡ç«¯(HttpClient)</a></li>
 				<li class="divider"></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceSoap' })">µ÷ÓÃ·şÎñ¶Ë(Soap)</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceSoap' })">è°ƒç”¨æœåŠ¡ç«¯(Soap)</a></li>
             </ul>
          </li>
 		<!--  <li class="dropdown">
@@ -284,67 +284,67 @@ i.i_top{
                <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-               <li><a href="#">×¼±¸Óë»·¾³´î½¨</a></li>
+               <li><a href="#">å‡†å¤‡ä¸ç¯å¢ƒæ­å»º</a></li>
 			   <li class="divider"></li>
-               <li><a href="#">·¢²¼</a></li>
+               <li><a href="#">å‘å¸ƒ</a></li>
 			   <li class="divider"></li>
-               <li><a href="#">ÈÎÎñ·¢Æğ</a></li>
+               <li><a href="#">ä»»åŠ¡å‘èµ·</a></li>
                <li class="divider"></li>
-               <li><a href="#">Á÷³ÌÌø×ªºÍÍË»Ø</a></li>
+               <li><a href="#">æµç¨‹è·³è½¬å’Œé€€å›</a></li>
             </ul>
          </li> -->
 		 <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-               Éè¼ÆÄ£Ê½23ÖÖ
+               è®¾è®¡æ¨¡å¼23ç§
                <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-               <li><a href="#">µ¥ÀıÄ£Ê½</a></li>
+               <li><a href="#">å•ä¾‹æ¨¡å¼</a></li>
 			   <li class="divider"></li>
-               <li><a href="#">¹Û²ìÕßÄ£Ê½</a></li>
+               <li><a href="#">è§‚å¯Ÿè€…æ¨¡å¼</a></li>
             </ul>
          </li>
-		 <li id="nav_fhzy"><a href="frame.jsp">·µ»Ø¾É°æ</a></li>
+		 <li id="nav_fhzy"><a href="frame.jsp">è¿”å›æ—§ç‰ˆ</a></li>
       </ul>
    </div>
 </div>
-<!--´øÓĞĞı×ªÁ¢·½ÌåµÄbanner-->
+<!--å¸¦æœ‰æ—‹è½¬ç«‹æ–¹ä½“çš„banner-->
 <div id="banner">
 	<div id="banner_box">
 		<div id="banner_box_left">
-			<h1>»¶Ó­À´µ½Java²ËÄñÑ§Ï°ÍøÕ¾</h1>
-			<h3>&nbsp;&nbsp;±¾ÍøÕ¾Ö÷Òª½éÉÜSSH¿ò¼Ü¡¢Ajax¡¢webServiceµÈ»ù´¡ÖªÊ¶£¬Ï£Íû¶ÔÄúÓĞËù°ïÖú£¡</h3>
-			<h4>Ê¹ÓÃ·½·¨£º</h4>
-			<h4>&nbsp;&nbsp;Õë¶ÔÃ¿Ò»¸öÖªÊ¶µã£¬ÔÚ×ó²àÒ³Ãæ¡°Ê¾ÀıÕ¹Ê¾¡±ÖĞ»áÊ¹ÓÃ¸ÃÖªÊ¶µã¾ÙÒ»¸öÀı×Ó£¬ÊµÏÖËüµÄĞ§¹û£»ÔÚÓÒ²à¡°Ô´Âë¡±ÖĞ½«ËüÏà¹ØµÄ´úÂë¶¼ÁĞÁË³öÀ´¡£ÎªÁË¾¡Á¿¼òµ¥½²½â£¬ÓĞĞ©³ÌĞòÊÇÔËĞĞÔÚWeb ServerÖĞ£¬ÓĞĞ©ÔòÊÇÖ±½ÓÔËĞĞJava Application¡£</h4>
+			<h1>æ¬¢è¿æ¥åˆ°Javaèœé¸Ÿå­¦ä¹ ç½‘ç«™</h1>
+			<h3>&nbsp;&nbsp;æœ¬ç½‘ç«™ä¸»è¦ä»‹ç»SSHæ¡†æ¶ã€Ajaxã€webServiceç­‰åŸºç¡€çŸ¥è¯†ï¼Œå¸Œæœ›å¯¹æ‚¨æœ‰æ‰€å¸®åŠ©ï¼</h3>
+			<h4>ä½¿ç”¨æ–¹æ³•ï¼š</h4>
+			<h4>&nbsp;&nbsp;é’ˆå¯¹æ¯ä¸€ä¸ªçŸ¥è¯†ç‚¹ï¼Œåœ¨å·¦ä¾§é¡µé¢â€œç¤ºä¾‹å±•ç¤ºâ€ä¸­ä¼šä½¿ç”¨è¯¥çŸ¥è¯†ç‚¹ä¸¾ä¸€ä¸ªä¾‹å­ï¼Œå®ç°å®ƒçš„æ•ˆæœï¼›åœ¨å³ä¾§â€œæºç â€ä¸­å°†å®ƒç›¸å…³çš„ä»£ç éƒ½åˆ—äº†å‡ºæ¥ã€‚ä¸ºäº†å°½é‡ç®€å•è®²è§£ï¼Œæœ‰äº›ç¨‹åºæ˜¯è¿è¡Œåœ¨Web Serverä¸­ï¼Œæœ‰äº›åˆ™æ˜¯ç›´æ¥è¿è¡ŒJava Applicationã€‚</h4>
 
-			<h4>&nbsp;&nbsp;ÒòÎª´úÂëÊÇ´ÓÏîÄ¿ÖĞµ¥¶ÀÄÃ³öÀ´µÄ£¬¿ÉÄÜ»áÓĞ×¸Óà»òÕß²»×ã£¬ÈçÓö´íÎóÖ®´¦£¬»¹ÍûÁÂ½â¡£</h4>
-			<div id="banner_box_left_botton">Á¢¼´¿ªÊ¼</div>
+			<h4>&nbsp;&nbsp;å› ä¸ºä»£ç æ˜¯ä»é¡¹ç›®ä¸­å•ç‹¬æ‹¿å‡ºæ¥çš„ï¼Œå¯èƒ½ä¼šæœ‰èµ˜ä½™æˆ–è€…ä¸è¶³ï¼Œå¦‚é‡é”™è¯¯ä¹‹å¤„ï¼Œè¿˜æœ›è°…è§£ã€‚</h4>
+			<div id="banner_box_left_botton">ç«‹å³å¼€å§‹</div>
 		</div>
 		<div id="banner_box_right">
-			<!--Ğı×ªÁ¢·½Ìå-->
+			<!--æ—‹è½¬ç«‹æ–¹ä½“-->
 			<div class="htmleaf-container">
 				<div align="center" style="direction: ltr;">
 					<div class="wrap">
 						<div class="cube">
 							<div class="front">
-								<h2>Struts2ÊµÀı</h2><!--Ğı×ªÁ¢·½Ìå¸÷ÃæÎÄ×Ö£¬ÈçÓĞĞèÒª¿ÉÒÔ¼Ó<a>Á´½Ó-->
+								<h2>Struts2å®ä¾‹</h2><!--æ—‹è½¬ç«‹æ–¹ä½“å„é¢æ–‡å­—ï¼Œå¦‚æœ‰éœ€è¦å¯ä»¥åŠ <a>é“¾æ¥-->
 							</div>
 							<div class="back">
-								<h2>HibernateÊµÀı</h2>
+								<h2>Hibernateå®ä¾‹</h2>
 							</div>
 							<div class="top">
-								<h2>SpringÊµÀı</h2>
+								<h2>Springå®ä¾‹</h2>
 							</div>
 							<div class="bottom">
-								<h2>AJAXºÍJavaScript</h2>
+								<h2>AJAXå’ŒJavaScript</h2>
 							</div>
 							<div class="left">
-								<h2>WebServiceÊµÀı</h2>
+								<h2>WebServiceå®ä¾‹</h2>
 							</div>
 							<!-- <div class="right">
-								<h2>JBPM¹¤×÷Á÷ÊµÀı</h2>
+								<h2>JBPMå·¥ä½œæµå®ä¾‹</h2>
 							</div> -->
-							<!--ÄÚ²¿Ğı×ªÁ¢·½Ìå-->
+							<!--å†…éƒ¨æ—‹è½¬ç«‹æ–¹ä½“-->
 							<i class="i_front"></i>
 							<i class="i_back"></i>
 							<i class="i_top"></i>
@@ -358,70 +358,70 @@ i.i_top{
 		</div>
 	</div>
 </div>
-<!--Ê¾ÀıÕ¹Ê¾Á´½Ó²¿·Öshow-->
+<!--ç¤ºä¾‹å±•ç¤ºé“¾æ¥éƒ¨åˆ†show-->
 <div id="show">
 	<div id="show_box">
 		<div class="show_box_win bgcolor1">
-			<span class="show_box_win_title">Struts2ÊµÀı</span>
+			<span class="show_box_win_title">Struts2å®ä¾‹</span>
 			<ul>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'strutsLoginDemo' })">µÇÂ½ÊµÀı</a></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'strutsValidDemo' })">¿ò¼ÜĞ£ÑéÊµÀı</a></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'strutsInterceptorDemo' })">À¹½ØÆ÷ÊµÀı</a></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'strutsFileUploadDemo' })">ÎÄ¼şÉÏ´«ÊµÀı</a></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'strutsTagDemo' })">struts2±êÇ©ÊµÀı</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'strutsLoginDemo' })">ç™»é™†å®ä¾‹</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'strutsValidDemo' })">æ¡†æ¶æ ¡éªŒå®ä¾‹</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'strutsInterceptorDemo' })">æ‹¦æˆªå™¨å®ä¾‹</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'strutsFileUploadDemo' })">æ–‡ä»¶ä¸Šä¼ å®ä¾‹</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'strutsTagDemo' })">struts2æ ‡ç­¾å®ä¾‹</a></li>
 				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'code=strutsJsonDemo' })">json</a></li>
 			</ul>
 		</div>
 		<div class="show_box_win bgcolor2">
-			<span class="show_box_win_title">HibernateÊµÀı</span>
+			<span class="show_box_win_title">Hibernateå®ä¾‹</span>
 			<ul>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ormCrudDemo' })">Ôö¼Ó</a></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ormCrudDeleteDemo' })">É¾³ı</a></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ormCrudUpdateDemo' })">ĞŞ¸Ä</a></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ormCrudQueryDemo' })">¼òµ¥²éÑ¯</a></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ormCrudQueryLinkDemo' })">Á¬½Ó²éÑ¯</a></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ormCrudQueryHqlDemo' })">×Ô¶¨Òå²éÑ¯£¨HQL»òÕßSQL¾ù¿É£©</a></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'relationshipDemo' })">¹ØÏµ(Ò»¶ÔÒ»)</a></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'relationshipOneToMany' })">¹ØÏµ(Ò»¶Ô¶à)</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ormCrudDemo' })">å¢åŠ </a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ormCrudDeleteDemo' })">åˆ é™¤</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ormCrudUpdateDemo' })">ä¿®æ”¹</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ormCrudQueryDemo' })">ç®€å•æŸ¥è¯¢</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ormCrudQueryLinkDemo' })">è¿æ¥æŸ¥è¯¢</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ormCrudQueryHqlDemo' })">è‡ªå®šä¹‰æŸ¥è¯¢ï¼ˆHQLæˆ–è€…SQLå‡å¯ï¼‰</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'relationshipDemo' })">å…³ç³»(ä¸€å¯¹ä¸€)</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'relationshipOneToMany' })">å…³ç³»(ä¸€å¯¹å¤š)</a></li>
 			</ul>
 		</div>
 		<div class="show_box_win bgcolor3">
-			<span class="show_box_win_title">SpringÊµÀı</span>
+			<span class="show_box_win_title">Springå®ä¾‹</span>
 			<ul>
 				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'springIocDemo' })">IOC</a></li>
 				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'springAopDemo' })">AOP</a></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'springJdbcDemo' })">JDBCÊı¾İ¿â·ÃÎÊ</a></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'springTransactionDemo' })">ÊÂÎñ¹ÜÀí</a></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'springTransactionDemo' })">SpringORMÕûºÏ</a></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'springQuartzDemo' })">Spring¶¨Ê±·şÎñQuartZ</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'springJdbcDemo' })">JDBCæ•°æ®åº“è®¿é—®</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'springTransactionDemo' })">äº‹åŠ¡ç®¡ç†</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'springTransactionDemo' })">SpringORMæ•´åˆ</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'springQuartzDemo' })">Springå®šæ—¶æœåŠ¡QuartZ</a></li>
 				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'springMvcDemo' })">SpringMVC</a></li>
 			</ul>
 		</div>
 		<div class="show_box_win bgcolor4">
-			<span class="show_box_win_title">AJAXºÍjavaScript</span>
+			<span class="show_box_win_title">AJAXå’ŒjavaScript</span>
 			<ul>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ajaxJsDemo' })">Ajax¼òµ¥ÌØĞ§(struts2)</a></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ajaxJsJqueryDemo' })">Ajax¼òµ¥Ğ£Ñé(struts2+jQuery)</a></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ajaxJsAutoCompleterDemo' })">Ajax²éÑ¯(×Ô¶¯²¹È«Àı×Ó)</a></li>
-				<li><a href="#" onclick="mpost('codehome.html' , {code : 'ajaxJsSelectValueDemo' })">JavaScriptÈ¡Öµ´óÈ«</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ajaxJsDemo' })">Ajaxç®€å•ç‰¹æ•ˆ(struts2)</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ajaxJsJqueryDemo' })">Ajaxç®€å•æ ¡éªŒ(struts2+jQuery)</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'ajaxJsAutoCompleterDemo' })">AjaxæŸ¥è¯¢(è‡ªåŠ¨è¡¥å…¨ä¾‹å­)</a></li>
+				<li><a href="#" onclick="mpost('codehome.html' , {code : 'ajaxJsSelectValueDemo' })">JavaScriptå–å€¼å¤§å…¨</a></li>
 			</ul>
 		</div>
 		<div class="show_box_win bgcolor5">
-			<span class="show_box_win_title">webServiceÊµÀı</span>
+			<span class="show_box_win_title">webServiceå®ä¾‹</span>
 			<ul>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceConf' })">»·¾³ÅäÖÃ(XFire)</a></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceTake' })">µ÷È¡ÍøÕ¾·şÎñ(XFire)</a></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceXstream' })">Xstream+XML½âÎö</a></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceCxf' })">µ÷ÓÃ·şÎñ¶Ë(CXF)</a></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceHttpClient' })">µ÷ÓÃ·şÎñ¶Ë(HttpClient)</a></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceSoap' })">µ÷ÓÃ·şÎñ¶Ë(Soap)</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceConf' })">ç¯å¢ƒé…ç½®(XFire)</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceTake' })">è°ƒå–ç½‘ç«™æœåŠ¡(XFire)</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceXstream' })">Xstream+XMLè§£æ</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceCxf' })">è°ƒç”¨æœåŠ¡ç«¯(CXF)</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceHttpClient' })">è°ƒç”¨æœåŠ¡ç«¯(HttpClient)</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceSoap' })">è°ƒç”¨æœåŠ¡ç«¯(Soap)</a></li>
 			</ul>
 		</div>
 		<div class="show_box_win bgcolor6">
-			<span class="show_box_win_title">Éè¼ÆÄ£Ê½23ÖÖ</span>
+			<span class="show_box_win_title">è®¾è®¡æ¨¡å¼23ç§</span>
 			<ul>
-				<li><a href="#">µ¥ÀıÄ£Ê½</a></li>
-				<li><a href="#">¹Û²ìÕßÄ£Ê½</a></li>
+				<li><a href="#">å•ä¾‹æ¨¡å¼</a></li>
+				<li><a href="#">è§‚å¯Ÿè€…æ¨¡å¼</a></li>
 			</ul>
 		</div>
 	</div>
@@ -429,15 +429,15 @@ i.i_top{
 
 <div id="footer">
 	<div id="footer_link">
-		<a href="#">Ê×Ò³</a></li>
-		<a href="#">JAVA²ËÄñ</a></li>
-		<a href="#">²ËÄñÉçÇø</a></li>
-		<a id="footer_link_last" href="#">ÁªÏµÎÒÃÇ</a>
+		<a href="#">é¦–é¡µ</a></li>
+		<a href="#">JAVAèœé¸Ÿ</a></li>
+		<a href="#">èœé¸Ÿç¤¾åŒº</a></li>
+		<a id="footer_link_last" href="#">è”ç³»æˆ‘ä»¬</a>
 	</div>
 	<div id="footer_box">
-		<a href="#">·¨ÂÉÉùÃ÷</a></li>
-		<span>±¸°¸Ö¤ºÅ£º¾©##########</span>
-		<span>&copy;°æÈ¨20xx-20xx ############ÓĞÏŞ¹«Ë¾
+		<a href="#">æ³•å¾‹å£°æ˜</a></li>
+		<span>å¤‡æ¡ˆè¯å·ï¼šäº¬##########</span>
+		<span>&copy;ç‰ˆæƒ20xx-20xx ############æœ‰é™å…¬å¸
 		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257110248'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1257110248%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
 		</span>
 	</div>
@@ -445,7 +445,7 @@ i.i_top{
 <script>
 $(function () {
 	$("#panelbar").kendoPanelBar({
-		expandMode: "single" // ÉèÖÃÕ¹¿ªÄ£Ê½Ö»ÄÜÕ¹¿ªµ¥¸ö
+		expandMode: "single" // è®¾ç½®å±•å¼€æ¨¡å¼åªèƒ½å±•å¼€å•ä¸ª
 	});
 });
 $("#banner_box_left_botton").click(function(){
@@ -466,23 +466,23 @@ $("#section_fhsl_btn").click(function(){
 });
 
 /*********
-	×¢ÒâÏÂÃæÕâÀïÊÇ¹ØÓÚµã»÷Á´½ÓÌø×ªµÄ·½·¨£¬
-	ÊÇ¸ù¾İÔªËØÏÂ±ê»ñÈ¡µÄ£¬
-	ËùÒÔÔÚ¸üĞÂÍøÒ³µÄÊ±ºòÒª×¢ÒâÒ»ÏÂ<a>±êÇ©ÄÚÈİµÄÊéĞ´Ë³ĞòÒªÒ»Ò»¶ÔÓ¦
-	ÍøÒ³µÄ²¼¾Ö²»Òª¶¯£¬Õâ¸ö·½·¨ÊÇ¸ù¾İ¸¸ÔªËØ£¬×ÓÔªËØÏÂ±ê½øĞĞ²éÕÒµÄ£¬
-	Èç¹û¸Ä±äÔªËØµÄÎ»ÖÃÕÒ²»µ½¶ÔÓ¦ÔªËØ
+	æ³¨æ„ä¸‹é¢è¿™é‡Œæ˜¯å…³äºç‚¹å‡»é“¾æ¥è·³è½¬çš„æ–¹æ³•ï¼Œ
+	æ˜¯æ ¹æ®å…ƒç´ ä¸‹æ ‡è·å–çš„ï¼Œ
+	æ‰€ä»¥åœ¨æ›´æ–°ç½‘é¡µçš„æ—¶å€™è¦æ³¨æ„ä¸€ä¸‹<a>æ ‡ç­¾å†…å®¹çš„ä¹¦å†™é¡ºåºè¦ä¸€ä¸€å¯¹åº”
+	ç½‘é¡µçš„å¸ƒå±€ä¸è¦åŠ¨ï¼Œè¿™ä¸ªæ–¹æ³•æ˜¯æ ¹æ®çˆ¶å…ƒç´ ï¼Œå­å…ƒç´ ä¸‹æ ‡è¿›è¡ŒæŸ¥æ‰¾çš„ï¼Œ
+	å¦‚æœæ”¹å˜å…ƒç´ çš„ä½ç½®æ‰¾ä¸åˆ°å¯¹åº”å…ƒç´ 
 	***********/
 $(".show_box_win a").click(function(){
-	var n = $(this).parent().index();//»ñÈ¡µ±Ç°ÔªËØ¸¸½ÚµãÏÂ±ê
-	var i = $(this).parent().parent().parent().index();//»ñÈ¡µ±Ç°ÔªËØ¸ß²ã¸¸½ÚµãÏÂ±ê
+	var n = $(this).parent().index();//è·å–å½“å‰å…ƒç´ çˆ¶èŠ‚ç‚¹ä¸‹æ ‡
+	var i = $(this).parent().parent().parent().index();//è·å–å½“å‰å…ƒç´ é«˜å±‚çˆ¶èŠ‚ç‚¹ä¸‹æ ‡
 	$('#panelbar').children('li:eq('+i+')').addClass('k-state-active');
 	$('#panelbar').children('li:eq('+i+')').children().children('li:eq('+n+')').children().addClass('k-state-selected k-state-focused');
-	$('#panelbar').data("kendoPanelBar").expand($("#panelbar .k-state-active"));//Õ¹¿ªÔªËØ
+	$('#panelbar').data("kendoPanelBar").expand($("#panelbar .k-state-active"));//å±•å¼€å…ƒç´ 
 
 });
 </script>
 <script>
-//jsÊµÏÖpostÌá½»
+//jså®ç°postæäº¤
      function mpost(URL, PARAMS) {      
 		var temp = document.createElement("form");      
 		temp.action = URL;      
