@@ -12,82 +12,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <title>JAVA ²ËÄñÑ§Ï°</title>
+   <title>JAVA èœé¸Ÿå­¦ä¹ </title>
    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
-   <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-   <link href="css/kendo.common.min.css" rel="stylesheet" type="text/css" />
-   <link href="css/kendo.silver.min.css" rel="stylesheet" type="text/css">
-   <link href="css/index.css" rel="stylesheet"><!--Ë½ÓĞCSS-->
+   <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+   <link href="http://kendo.cdn.telerik.com/2017.1.118/styles/kendo.common.min.css" rel="stylesheet" type="text/css" />
+   <link href="http://kendo.cdn.telerik.com/2017.1.118/styles/kendo.silver.min.css" rel="stylesheet" type="text/css">
+   <link href="css/index.css" rel="stylesheet"><!--ç§æœ‰CSS-->
    <link rel = "Shortcut Icon" href="cainiao.jpg"> 
-   <script src="js/jquery.min.js" type="text/javascript"></script>
+   <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js" type="text/javascript"></script>
    <script src="js/bootstrap.min.js" type="text/javascript"></script>
    <script src="js/prefixfree.min.js" type="text/javascript"></script>
-   <script src="js/kendo.all.min.js" type="text/javascript"></script>
+   <script src="http://kendo.cdn.telerik.com/2017.1.118/js/kendo.all.min.js" type="text/javascript"></script>
    
    <!--[if IE]>
 		<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
    <![endif]-->
 </head>
 <body>
-<!--µ¼º½²¿·Ö-->
+<!--å¯¼èˆªéƒ¨åˆ†-->
 <div id="nav" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
    <div class="navbar-header">
 	  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
-         <span class="sr-only">ÇĞ»»µ¼º½</span>
+         <span class="sr-only">åˆ‡æ¢å¯¼èˆª</span>
 		 <span class="icon-bar"></span>
 		 <span class="icon-bar"></span>
 		 <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#"  onclick="mpost('codehome.html' , {code : 'newindex' })">JAVA ²ËÄñÑ§Ï°</a>
+      <a class="navbar-brand" href="#"  onclick="mpost('codehome.html' , {code : 'newindex' })">JAVA èœé¸Ÿå­¦ä¹ </a>
    </div>
    <div class="collapse navbar-collapse" id="example-navbar-collapse">
       <ul class="nav navbar-nav">
-		 <li id="nav_zy"><a href="#"  onclick="mpost('codehome.html' , {code : 'newindex' })">Ö÷Ò³</a></li>
+		 <li id="nav_zy"><a href="#"  onclick="mpost('codehome.html' , {code : 'newindex' })">ä¸»é¡µ</a></li>
          <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-               Struts2ÊµÀı 
+               Struts2å®ä¾‹ 
                <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-                <li><a href="#" id="strutsLoginDemo" onclick="strutsLoginDemo()">µÇÂ½ÊµÀı</a></li>
+                <li><a href="#" id="strutsLoginDemo" onclick="strutsLoginDemo()">ç™»é™†å®ä¾‹</a></li>
 			    <li class="divider"></li>
-               <li><a href="#" id="strutsValidDemo" onclick="strutsValidDemo()">¿ò¼ÜĞ£ÑéÊµÀı</a></li>
+               <li><a href="#" id="strutsValidDemo" onclick="strutsValidDemo()">æ¡†æ¶æ ¡éªŒå®ä¾‹</a></li>
 			    <li class="divider"></li>
-               <li><a href="#"  id="strutsInterceptorDemo" onclick="strutsInterceptorDemo()">À¹½ØÆ÷ÊµÀı</a></li>
+               <li><a href="#"  id="strutsInterceptorDemo" onclick="strutsInterceptorDemo()">æ‹¦æˆªå™¨å®ä¾‹</a></li>
                <li class="divider"></li>
-               <li><a href="#"  id="strutsFileUploadDemo" onclick="strutsFileUploadDemo()">ÎÄ¼şÉÏ´«ÊµÀı</a></li>
+               <li><a href="#"  id="strutsFileUploadDemo" onclick="strutsFileUploadDemo()">æ–‡ä»¶ä¸Šä¼ å®ä¾‹</a></li>
                <li class="divider"></li>
-               <li><a href="#"  id="strutsTagDemo" onclick="strutsTagDemo()">Struts2±êÇ©ÊµÀı</a></li>
+               <li><a href="#"  id="strutsTagDemo" onclick="strutsTagDemo()">Struts2æ ‡ç­¾å®ä¾‹</a></li>
 			   <li class="divider"></li>
               <li><a href="#"  id="strutsJsonDemo" onclick="strutsJsonDemo()">json</a></li>
             </ul>
          </li>
 		 <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-               HibernateÊµÀı 
+               Hibernateå®ä¾‹ 
                <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-               <li><a href="#"  id="ormCrudDemo"  onclick="ormCrudDemo()">Ôö¼Ó</a></li>
+               <li><a href="#"  id="ormCrudDemo"  onclick="ormCrudDemo()">å¢åŠ </a></li>
                <li class="divider"></li>
-			   <li><a href="#"  id="ormCrudDeleteDemo"  onclick="ormCrudDeleteDemo(this.value)">É¾³ı</a></li>
+			   <li><a href="#"  id="ormCrudDeleteDemo"  onclick="ormCrudDeleteDemo(this.value)">åˆ é™¤</a></li>
 			   <li class="divider"></li>
-			   <li><a href="#"  id="ormCrudUpdateDemo" onclick="ormCrudUpdateDemo(this.value)">ĞŞ¸Ä</a></li>
+			   <li><a href="#"  id="ormCrudUpdateDemo" onclick="ormCrudUpdateDemo(this.value)">ä¿®æ”¹</a></li>
 			   <li class="divider"></li>
-			   <li><a href="#"  id="ormCrudQueryDemo" onclick="ormCrudQueryDemo(this.value)">¼òµ¥²éÑ¯</a></li>
+			   <li><a href="#"  id="ormCrudQueryDemo" onclick="ormCrudQueryDemo(this.value)">ç®€å•æŸ¥è¯¢</a></li>
 			   <li class="divider"></li>
-			   <li><a href="#"  id="ormCrudQueryLinkDemo" onclick="ormCrudQueryLinkDemo(this.value)">Á¬½Ó²éÑ¯</a></li>
+			   <li><a href="#"  id="ormCrudQueryLinkDemo" onclick="ormCrudQueryLinkDemo(this.value)">è¿æ¥æŸ¥è¯¢</a></li>
 			   <li class="divider"></li>
-			   <li><a href="#"  id="ormCrudQueryHqlDemo" onclick="ormCrudQueryHqlDemo(this.value)">×Ô¶¨Òå²éÑ¯</a></li>
+			   <li><a href="#"  id="ormCrudQueryHqlDemo" onclick="ormCrudQueryHqlDemo(this.value)">è‡ªå®šä¹‰æŸ¥è¯¢</a></li>
 			   <li class="divider"></li>
-			   <li><a href="#"  id="relationshipDemo" onclick="relationshipDemo(this.value)">¹ØÏµ(Ò»¶ÔÒ»)</a></li>
+			   <li><a href="#"  id="relationshipDemo" onclick="relationshipDemo(this.value)">å…³ç³»(ä¸€å¯¹ä¸€)</a></li>
 			   <li class="divider"></li>
-			   <li><a href="#"  id="relationshipOneToMany" onclick="relationshipOneToMany(this.value)">¹ØÏµ(Ò»¶Ô¶à)</a></li>
+			   <li><a href="#"  id="relationshipOneToMany" onclick="relationshipOneToMany(this.value)">å…³ç³»(ä¸€å¯¹å¤š)</a></li>
             </ul>
          </li>
 		 <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-               SpringÊµÀı 
+               Springå®ä¾‹ 
                <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
@@ -95,172 +95,172 @@
                <li class="divider"></li>
 			   <li><a href="#"  id="springAopDemo" onclick="springAopDemo()">AOP</a></li>
 			   <li class="divider"></li>
-			   <li><a href="#"  id="springJdbcDemo" onclick="springJdbcDemo()">JDBCÊı¾İ¿â·ÃÎÊ</a></li>
+			   <li><a href="#"  id="springJdbcDemo" onclick="springJdbcDemo()">JDBCæ•°æ®åº“è®¿é—®</a></li>
 			   <li class="divider"></li>
-			   <li><a href="#"  id="springTransactionDemo"  onclick="springTransactionDemo()">ÊÂÎñ¹ÜÀí</a></li>
+			   <li><a href="#"  id="springTransactionDemo"  onclick="springTransactionDemo()">äº‹åŠ¡ç®¡ç†</a></li>
 			   <li class="divider"></li>
-			   <li><a href="#"  id="springTransactionDemo"  onclick="springTransactionDemo()">ORMÕûºÏ</a></li>
+			   <li><a href="#"  id="springTransactionDemo"  onclick="springTransactionDemo()">ORMæ•´åˆ</a></li>
 			   <li class="divider"></li>
-			   <li><a href="#"  id="springQuartzDemo" onclick="springQuartzDemo()">¶¨Ê±·şÎñQuartZ</a></li>
+			   <li><a href="#"  id="springQuartzDemo" onclick="springQuartzDemo()">å®šæ—¶æœåŠ¡QuartZ</a></li>
 			   <li class="divider"></li>
 			   <li><a href="#"  id="springMvcDemo"  onclick="springMvcDemo()">SpringMVC</a></li>
             </ul>
          </li>
 		 <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-               AJAXºÍJavaScript 
+               AJAXå’ŒJavaScript 
                <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-               <li><a href="#"  id="ajaxJsDemo" onclick="ajaxJsDemo()">Ajax¼òµ¥ÌØĞ§</a></li>
+               <li><a href="#"  id="ajaxJsDemo" onclick="ajaxJsDemo()">Ajaxç®€å•ç‰¹æ•ˆ</a></li>
                <li class="divider"></li>
-			   <li><a href="#"  id="ajaxJsJqueryDemo"  onclick="ajaxJsJqueryDemo()">Ajax¼òµ¥Ğ£Ñé</a></li>
+			   <li><a href="#"  id="ajaxJsJqueryDemo"  onclick="ajaxJsJqueryDemo()">Ajaxç®€å•æ ¡éªŒ</a></li>
 			   <li class="divider"></li>
-			   <li><a href="#"  id="ajaxJsAutoCompleterDemo"  onclick="ajaxJsAutoCompleterDemo()">Ajax²éÑ¯(×Ô¶¯²¹È«Àı×Ó)</a></li>
+			   <li><a href="#"  id="ajaxJsAutoCompleterDemo"  onclick="ajaxJsAutoCompleterDemo()">AjaxæŸ¥è¯¢(è‡ªåŠ¨è¡¥å…¨ä¾‹å­)</a></li>
 			   <li class="divider"></li>
-			   <li><a href="#"  id="ajaxJsSelectValueDemo"  onclick="ajaxJsSelectValueDemo()">JavaScriptÈ¡Öµ´óÈ«</a></li>
+			   <li><a href="#"  id="ajaxJsSelectValueDemo"  onclick="ajaxJsSelectValueDemo()">JavaScriptå–å€¼å¤§å…¨</a></li>
             </ul>
          </li>
 		 <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-               WebServiceÊµÀı
+               WebServiceå®ä¾‹
                <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-               <li><a href="#"  id="webServiceConf"  onclick="webServiceConf()">»·¾³ÅäÖÃ(XFire)</a></li>
+               <li><a href="#"  id="webServiceConf"  onclick="webServiceConf()">ç¯å¢ƒé…ç½®(XFire)</a></li>
                 <li class="divider"></li>
-			   <li><a href="#"  id="webServiceTake"  onclick="webServiceTake()">µ÷È¡ÍøÕ¾·şÎñ(XFire)</a></li>
+			   <li><a href="#"  id="webServiceTake"  onclick="webServiceTake()">è°ƒå–ç½‘ç«™æœåŠ¡(XFire)</a></li>
 			    <li class="divider"></li>
-			   <li><a href="#"  id="webServiceXstream"  onclick="webServiceXstream()">Xstream+XML½âÎö</a></li>
+			   <li><a href="#"  id="webServiceXstream"  onclick="webServiceXstream()">Xstream+XMLè§£æ</a></li>
 			    <li class="divider"></li>
-			   <li><a href="#"  id="webServiceCxf"  onclick="webServiceCxf()">µ÷ÓÃ·şÎñ¶Ë(CXF)</a></li>
+			   <li><a href="#"  id="webServiceCxf"  onclick="webServiceCxf()">è°ƒç”¨æœåŠ¡ç«¯(CXF)</a></li>
 			    <li class="divider"></li>
-			   <li><a href="#"  id="webServiceHttpClient"  onclick="webServiceHttpClient()">µ÷ÓÃ·şÎñ¶Ë(HttpClient)</a></li>
+			   <li><a href="#"  id="webServiceHttpClient"  onclick="webServiceHttpClient()">è°ƒç”¨æœåŠ¡ç«¯(HttpClient)</a></li>
 			    <li class="divider"></li>
-			   <li><a href="#"  id="webServiceSoap"  onclick="webServiceSoap()">µ÷ÓÃ·şÎñ¶Ë(Soap)</a></li>
+			   <li><a href="#"  id="webServiceSoap"  onclick="webServiceSoap()">è°ƒç”¨æœåŠ¡ç«¯(Soap)</a></li>
             </ul>
          </li>
 		 <!-- <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-               JBPM¹¤×÷Á÷ÊµÀı
+               JBPMå·¥ä½œæµå®ä¾‹
                <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-               <li><a href="#">×¼±¸Óë»·¾³´î½¨</a></li>
+               <li><a href="#">å‡†å¤‡ä¸ç¯å¢ƒæ­å»º</a></li>
 			   <li class="divider"></li>
-               <li><a href="#">·¢²¼</a></li>
+               <li><a href="#">å‘å¸ƒ</a></li>
 			   <li class="divider"></li>
-               <li><a href="#">ÈÎÎñ·¢Æğ</a></li>
+               <li><a href="#">ä»»åŠ¡å‘èµ·</a></li>
                <li class="divider"></li>
-               <li><a href="#">Á÷³ÌÌø×ªºÍÍË»Ø</a></li>
+               <li><a href="#">æµç¨‹è·³è½¬å’Œé€€å›</a></li>
             </ul>
          </li> -->
 		 <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-               Éè¼ÆÄ£Ê½23ÖÖ
+               è®¾è®¡æ¨¡å¼23ç§
                <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-               <li><a href="#">µ¥ÀıÄ£Ê½</a></li>
+               <li><a href="#">å•ä¾‹æ¨¡å¼</a></li>
 			   <li class="divider"></li>
-               <li><a href="#">¹Û²ìÕßÄ£Ê½</a></li>
+               <li><a href="#">è§‚å¯Ÿè€…æ¨¡å¼</a></li>
             </ul>
          </li>
-		 <li id="nav_fhzy"><a href="frame.jsp" >·µ»Ø¾É°æ</a></li>
+		 <li id="nav_fhzy"><a href="frame.jsp" >è¿”å›æ—§ç‰ˆ</a></li>
       </ul>
    </div>
 </div>
 
-<!--ÊµÀıÕ¹Ê¾²¿·Ö-->
+<!--å®ä¾‹å±•ç¤ºéƒ¨åˆ†-->
 <div id="section">
 	<div id="section_box">
 		<div id="section_left">
-			<div id="section_left_title">ÊµÀıÕ¹Ê¾</div>
+			<div id="section_left_title">å®ä¾‹å±•ç¤º</div>
 			<ul id="panelbar">
-				<li><!--Ìí¼ÓÕâ¸öclass   k-state-activeµÄÔªËØ»áÄ¬ÈÏÕ¹¿ª-->
-					<span class="panelbar_title">Struts2ÊµÀı</span>
+				<li><!--æ·»åŠ è¿™ä¸ªclass   k-state-activeçš„å…ƒç´ ä¼šé»˜è®¤å±•å¼€-->
+					<span class="panelbar_title">Struts2å®ä¾‹</span>
 					<ul>
-						<li><a href="#" id="strutsLoginDemo" onclick="strutsLoginDemo()">µÇÂ½ÊµÀı</a></li>
-						<li><a href="#" id="strutsValidDemo" onclick="strutsValidDemo()">¿ò¼ÜĞ£ÑéÊµÀı</a></li>
-						<li><a href="#"  id="strutsInterceptorDemo" onclick="strutsInterceptorDemo()">À¹½ØÆ÷ÊµÀı</a></li>
-						<li><a href="#"  id="strutsFileUploadDemo" onclick="strutsFileUploadDemo()">ÎÄ¼şÉÏ´«ÊµÀı</a></li>
-						<li><a href="#"  id="strutsTagDemo" onclick="strutsTagDemo()">struts2±êÇ©ÊµÀı</a></li>
+						<li><a href="#" id="strutsLoginDemo" onclick="strutsLoginDemo()">ç™»é™†å®ä¾‹</a></li>
+						<li><a href="#" id="strutsValidDemo" onclick="strutsValidDemo()">æ¡†æ¶æ ¡éªŒå®ä¾‹</a></li>
+						<li><a href="#"  id="strutsInterceptorDemo" onclick="strutsInterceptorDemo()">æ‹¦æˆªå™¨å®ä¾‹</a></li>
+						<li><a href="#"  id="strutsFileUploadDemo" onclick="strutsFileUploadDemo()">æ–‡ä»¶ä¸Šä¼ å®ä¾‹</a></li>
+						<li><a href="#"  id="strutsTagDemo" onclick="strutsTagDemo()">struts2æ ‡ç­¾å®ä¾‹</a></li>
 						<li><a href="#"  id="strutsJsonDemo" onclick="strutsJsonDemo()">json</a></li>
 					</ul>
 				</li>
 				<li>
-					<span class="panelbar_title">HibernateÊµÀı</span>
+					<span class="panelbar_title">Hibernateå®ä¾‹</span>
 					<ul>
-						<li><a href="#"  id="ormCrudDemo"  onclick="ormCrudDemo()">Ôö¼Ó</a></li>
-						<li><a href="#"  id="ormCrudDeleteDemo"  onclick="ormCrudDeleteDemo(this.value)">É¾³ı</a></li>
-						<li><a href="#"  id="ormCrudUpdateDemo" onclick="ormCrudUpdateDemo(this.value)">ĞŞ¸Ä</a></li>
-						<li><a href="#"  id="ormCrudQueryDemo" onclick="ormCrudQueryDemo(this.value)">¼òµ¥²éÑ¯</a></li>
-						<li><a href="#"  id="ormCrudQueryLinkDemo" onclick="ormCrudQueryLinkDemo(this.value)">Á¬½Ó²éÑ¯</a></li>
-						<li><a href="#"  id="ormCrudQueryHqlDemo" onclick="ormCrudQueryHqlDemo(this.value)">×Ô¶¨Òå²éÑ¯£¨HQL»òÕßSQL¾ù¿É£©</a></li>
-						<li><a href="#"  id="relationshipDemo" onclick="relationshipDemo(this.value)">¹ØÏµ(Ò»¶ÔÒ»)</a></li>
-						<li><a href="#"  id="relationshipOneToMany" onclick="relationshipOneToMany(this.value)">¹ØÏµ(Ò»¶Ô¶à)</a></li>
+						<li><a href="#"  id="ormCrudDemo"  onclick="ormCrudDemo()">å¢åŠ </a></li>
+						<li><a href="#"  id="ormCrudDeleteDemo"  onclick="ormCrudDeleteDemo(this.value)">åˆ é™¤</a></li>
+						<li><a href="#"  id="ormCrudUpdateDemo" onclick="ormCrudUpdateDemo(this.value)">ä¿®æ”¹</a></li>
+						<li><a href="#"  id="ormCrudQueryDemo" onclick="ormCrudQueryDemo(this.value)">ç®€å•æŸ¥è¯¢</a></li>
+						<li><a href="#"  id="ormCrudQueryLinkDemo" onclick="ormCrudQueryLinkDemo(this.value)">è¿æ¥æŸ¥è¯¢</a></li>
+						<li><a href="#"  id="ormCrudQueryHqlDemo" onclick="ormCrudQueryHqlDemo(this.value)">è‡ªå®šä¹‰æŸ¥è¯¢ï¼ˆHQLæˆ–è€…SQLå‡å¯ï¼‰</a></li>
+						<li><a href="#"  id="relationshipDemo" onclick="relationshipDemo(this.value)">å…³ç³»(ä¸€å¯¹ä¸€)</a></li>
+						<li><a href="#"  id="relationshipOneToMany" onclick="relationshipOneToMany(this.value)">å…³ç³»(ä¸€å¯¹å¤š)</a></li>
 					</ul>
 				</li>
 				<li>
-					<span class="panelbar_title">SpringÊµÀı</span>
+					<span class="panelbar_title">Springå®ä¾‹</span>
 					<ul>
 						<li><a href="#"  id="springIocDemo"  onclick="springIocDemo()">IOC</a></li>
 						<li><a href="#"  id="springAopDemo" onclick="springAopDemo()">AOP</a></li>
-						<li><a href="#"  id="springJdbcDemo" onclick="springJdbcDemo()">JDBCÊı¾İ¿â·ÃÎÊ</a></li>
-						<li><a href="#"  id="springTransactionDemo"  onclick="springTransactionDemo()">ÊÂÎñ¹ÜÀí</a></li>
-						<li><a href="#"  id="springTransactionDemo"  onclick="springTransactionDemo()">SpringORMÕûºÏ</a></li>
-						<li><a href="#"  id="springQuartzDemo" onclick="springQuartzDemo()">Spring¶¨Ê±·şÎñQuartZ</a></li>
+						<li><a href="#"  id="springJdbcDemo" onclick="springJdbcDemo()">JDBCæ•°æ®åº“è®¿é—®</a></li>
+						<li><a href="#"  id="springTransactionDemo"  onclick="springTransactionDemo()">äº‹åŠ¡ç®¡ç†</a></li>
+						<li><a href="#"  id="springTransactionDemo"  onclick="springTransactionDemo()">SpringORMæ•´åˆ</a></li>
+						<li><a href="#"  id="springQuartzDemo" onclick="springQuartzDemo()">Springå®šæ—¶æœåŠ¡QuartZ</a></li>
 						<li><a href="#"  id="springMvcDemo"  onclick="springMvcDemo()">SpringMVC</a></li>
 					</ul>
 				</li>
 				<li>
-					<span class="panelbar_title">AJAXºÍjavaScript</span>
+					<span class="panelbar_title">AJAXå’ŒjavaScript</span>
 					<ul>
-						<li><a href="#"  id="ajaxJsDemo" onclick="ajaxJsDemo()">Ajax¼òµ¥ÌØĞ§(struts2)</a></li>
-						<li><a href="#"  id="ajaxJsJqueryDemo"  onclick="ajaxJsJqueryDemo()">Ajax¼òµ¥Ğ£Ñé(struts2+jQuery)</a></li>
-						<li><a href="#"  id="ajaxJsAutoCompleterDemo"  onclick="ajaxJsAutoCompleterDemo()">Ajax²éÑ¯(×Ô¶¯²¹È«Àı×Ó)</a></li>
-						<li><a href="#"  id="ajaxJsSelectValueDemo"  onclick="ajaxJsSelectValueDemo()">JavaScriptÈ¡Öµ´óÈ«</a></li>
+						<li><a href="#"  id="ajaxJsDemo" onclick="ajaxJsDemo()">Ajaxç®€å•ç‰¹æ•ˆ(struts2)</a></li>
+						<li><a href="#"  id="ajaxJsJqueryDemo"  onclick="ajaxJsJqueryDemo()">Ajaxç®€å•æ ¡éªŒ(struts2+jQuery)</a></li>
+						<li><a href="#"  id="ajaxJsAutoCompleterDemo"  onclick="ajaxJsAutoCompleterDemo()">AjaxæŸ¥è¯¢(è‡ªåŠ¨è¡¥å…¨ä¾‹å­)</a></li>
+						<li><a href="#"  id="ajaxJsSelectValueDemo"  onclick="ajaxJsSelectValueDemo()">JavaScriptå–å€¼å¤§å…¨</a></li>
 					</ul>
 				</li>
 				<li>
-					<span class="panelbar_title">webServiceÊµÀı</span>
+					<span class="panelbar_title">webServiceå®ä¾‹</span>
 					<ul>
-						<li><a href="#"  id="webServiceConf"  onclick="webServiceConf()">»·¾³ÅäÖÃ(XFire)</a></li>
-						<li><a href="#"  id="webServiceTake"  onclick="webServiceTake()">µ÷È¡ÍøÕ¾·şÎñ(XFire)</a></li>
-						<li><a href="#"  id="webServiceXstream"  onclick="webServiceXstream()">Xstream+XML½âÎö</a></li>
-						<li><a href="#"  id="webServiceCxf"  onclick="webServiceCxf()">µ÷ÓÃ·şÎñ¶Ë(CXF)</a></li>
-						<li><a href="#"  id="webServiceHttpClient"  onclick="webServiceHttpClient()">µ÷ÓÃ·şÎñ¶Ë(HttpClient)</a></li>
-						<li><a href="#"  id="webServiceSoap"  onclick="webServiceSoap()">µ÷ÓÃ·şÎñ¶Ë(Soap)</a></li>
+						<li><a href="#"  id="webServiceConf"  onclick="webServiceConf()">ç¯å¢ƒé…ç½®(XFire)</a></li>
+						<li><a href="#"  id="webServiceTake"  onclick="webServiceTake()">è°ƒå–ç½‘ç«™æœåŠ¡(XFire)</a></li>
+						<li><a href="#"  id="webServiceXstream"  onclick="webServiceXstream()">Xstream+XMLè§£æ</a></li>
+						<li><a href="#"  id="webServiceCxf"  onclick="webServiceCxf()">è°ƒç”¨æœåŠ¡ç«¯(CXF)</a></li>
+						<li><a href="#"  id="webServiceHttpClient"  onclick="webServiceHttpClient()">è°ƒç”¨æœåŠ¡ç«¯(HttpClient)</a></li>
+						<li><a href="#"  id="webServiceSoap"  onclick="webServiceSoap()">è°ƒç”¨æœåŠ¡ç«¯(Soap)</a></li>
 					</ul>
 				</li>
 				<li>
-					<span class="panelbar_title">Éè¼ÆÄ£Ê½23ÖÖ</span>
+					<span class="panelbar_title">è®¾è®¡æ¨¡å¼23ç§</span>
 					<ul>
-						<li><a href="#">µ¥ÀıÄ£Ê½</a></li>
-						<li><a href="#">¹Û²ìÕßÄ£Ê½</a></li>
+						<li><a href="#">å•ä¾‹æ¨¡å¼</a></li>
+						<li><a href="#">è§‚å¯Ÿè€…æ¨¡å¼</a></li>
 					</ul>
 				</li>
 			</ul>
 		</div>
 		<div id="section_right">
-			<div id="section_sljj"><!--ÊµÀı¼ò½é-->
-				<div id="section_sljj_title">ÊµÀı¼ò½é¼°Õ¹Ê¾</div>
+			<div id="section_sljj"><!--å®ä¾‹ç®€ä»‹-->
+				<div id="section_sljj_title">å®ä¾‹ç®€ä»‹åŠå±•ç¤º</div>
 				<div id="section_sljj_body">
 					<iframe id="mainfrm1" src="./demoList.jsp" name="mainfrm1"
 						onload="mainfrm.window.location.reload();" width="100%"  height="100%"
 						scrolling="yes" style="border: solid 1px;" frameborder="0">
 					</iframe>
 				</div>
-				<div id="section_ckdm_btn">²é¿´´úÂë</div>
+				<div id="section_ckdm_btn">æŸ¥çœ‹ä»£ç </div>
 			</div>
-			<div id="section_ydm"><!--Ô´´úÂë-->
-				<div id="section_ydm_title">²é¿´Ô´´úÂë</div>
+			<div id="section_ydm"><!--æºä»£ç -->
+				<div id="section_ydm_title">æŸ¥çœ‹æºä»£ç </div>
 				<div id="section_ydm_body">
 					<iframe id="mainfrm" src="./demoSrcCode.jsp" name="mainfrm"
 								width=100% height=690 scrolling="yes" frameborder="0">
 					</iframe>
 				</div>
-				<div id="section_fhsl_btn">·µ»ØÊµÀı</div>
+				<div id="section_fhsl_btn">è¿”å›å®ä¾‹</div>
 			</div>
 		</div>
 		
@@ -268,15 +268,15 @@
 </div>
 <div id="footer">
 	<div id="footer_link">
-		<a href="#">Ê×Ò³</a></li>
-		<a href="#">JAVA²ËÄñ</a></li>
-		<a href="#">²ËÄñÉçÇø</a></li>
-		<a id="footer_link_last" href="#">ÁªÏµÎÒÃÇ</a>
+		<a href="#">é¦–é¡µ</a></li>
+		<a href="#">JAVAèœé¸Ÿ</a></li>
+		<a href="#">èœé¸Ÿç¤¾åŒº</a></li>
+		<a id="footer_link_last" href="#">è”ç³»æˆ‘ä»¬</a>
 	</div>
 	<div id="footer_box">
-		<a href="#">·¨ÂÉÉùÃ÷</a></li>
-		<span>±¸°¸Ö¤ºÅ£º¾©##########</span>
-		<span>&copy;°æÈ¨20xx-20xx ############ÓĞÏŞ¹«Ë¾
+		<a href="#">æ³•å¾‹å£°æ˜</a></li>
+		<span>å¤‡æ¡ˆè¯å·ï¼šäº¬##########</span>
+		<span>&copy;ç‰ˆæƒ20xx-20xx ############æœ‰é™å…¬å¸
 		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257110248'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1257110248%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
 		</span>
 	</div>
@@ -284,7 +284,7 @@
 <script>
 $(function () {
 	$("#panelbar").kendoPanelBar({
-		expandMode: "single" // ÉèÖÃÕ¹¿ªÄ£Ê½Ö»ÄÜÕ¹¿ªµ¥¸ö
+		expandMode: "single" // è®¾ç½®å±•å¼€æ¨¡å¼åªèƒ½å±•å¼€å•ä¸ª
 	});
 });
 $("#banner_box_left_botton").click(function(){
@@ -305,25 +305,25 @@ $("#section_fhsl_btn").click(function(){
 });
 
 /*********
-	×¢ÒâÏÂÃæÕâÀïÊÇ¹ØÓÚµã»÷Á´½ÓÌø×ªµÄ·½·¨£¬
-	ÊÇ¸ù¾İÔªËØÏÂ±ê»ñÈ¡µÄ£¬
-	ËùÒÔÔÚ¸üĞÂÍøÒ³µÄÊ±ºòÒª×¢ÒâÒ»ÏÂ<a>±êÇ©ÄÚÈİµÄÊéĞ´Ë³ĞòÒªÒ»Ò»¶ÔÓ¦
-	ÍøÒ³µÄ²¼¾Ö²»Òª¶¯£¬Õâ¸ö·½·¨ÊÇ¸ù¾İ¸¸ÔªËØ£¬×ÓÔªËØÏÂ±ê½øĞĞ²éÕÒµÄ£¬
-	Èç¹û¸Ä±äÔªËØµÄÎ»ÖÃÕÒ²»µ½¶ÔÓ¦ÔªËØ
+	æ³¨æ„ä¸‹é¢è¿™é‡Œæ˜¯å…³äºç‚¹å‡»é“¾æ¥è·³è½¬çš„æ–¹æ³•ï¼Œ
+	æ˜¯æ ¹æ®å…ƒç´ ä¸‹æ ‡è·å–çš„ï¼Œ
+	æ‰€ä»¥åœ¨æ›´æ–°ç½‘é¡µçš„æ—¶å€™è¦æ³¨æ„ä¸€ä¸‹<a>æ ‡ç­¾å†…å®¹çš„ä¹¦å†™é¡ºåºè¦ä¸€ä¸€å¯¹åº”
+	ç½‘é¡µçš„å¸ƒå±€ä¸è¦åŠ¨ï¼Œè¿™ä¸ªæ–¹æ³•æ˜¯æ ¹æ®çˆ¶å…ƒç´ ï¼Œå­å…ƒç´ ä¸‹æ ‡è¿›è¡ŒæŸ¥æ‰¾çš„ï¼Œ
+	å¦‚æœæ”¹å˜å…ƒç´ çš„ä½ç½®æ‰¾ä¸åˆ°å¯¹åº”å…ƒç´ 
 	***********/
 $(".show_box_win a").click(function(){
-	var n = $(this).parent().index();//»ñÈ¡µ±Ç°ÔªËØ¸¸½ÚµãÏÂ±ê
-	var i = $(this).parent().parent().parent().index();//»ñÈ¡µ±Ç°ÔªËØ¸ß²ã¸¸½ÚµãÏÂ±ê
+	var n = $(this).parent().index();//è·å–å½“å‰å…ƒç´ çˆ¶èŠ‚ç‚¹ä¸‹æ ‡
+	var i = $(this).parent().parent().parent().index();//è·å–å½“å‰å…ƒç´ é«˜å±‚çˆ¶èŠ‚ç‚¹ä¸‹æ ‡
 	$('#panelbar').children('li:eq('+i+')').addClass('k-state-active');
 	$('#panelbar').children('li:eq('+i+')').children().children('li:eq('+n+')').children().addClass('k-state-selected k-state-focused');
-	$('#panelbar').data("kendoPanelBar").expand($("#panelbar .k-state-active"));//Õ¹¿ªÔªËØ
+	$('#panelbar').data("kendoPanelBar").expand($("#panelbar .k-state-active"));//å±•å¼€å…ƒç´ 
 
 });
 </script>
 </body>
 </html>
 <script>
-//Ë¢ĞÂÔ´Âë´°¿Ú
+//åˆ·æ–°æºç çª—å£
 function refreshMainfrm(){
 	document.getElementById("mainfrm").reload(); 
 	document.frames('mainfrm').location.reload(); 
@@ -427,7 +427,7 @@ function strutsLoginDemo(){
     	document.getElementById("mainfrm1").src="./common/common.action?target=springMvcDemo";
     	document.getElementById("mainfrm1").onload;
     }
-    //AJAXºÍjavaScript
+    //AJAXå’ŒjavaScript
      function ajaxJsDemo(){
     	document.getElementById("mainfrm1").src="./common/common.action?target=ajaxJsDemo";
     	document.getElementById("mainfrm1").onload;
@@ -469,8 +469,8 @@ function strutsLoginDemo(){
     	document.getElementById("mainfrm1").src="./common/common.action?target=webServiceSoap";
     	document.getElementById("mainfrm1").onload;
     }
-    //JBPM¹¤×÷Á÷ÊµÀı
-    //iframe¿òµÄ¸ß¶ÈËæ×Åä¯ÀÀÆ÷¸Ä±ä¶ø¸Ä±ä
+    //JBPMå·¥ä½œæµå®ä¾‹
+    //iframeæ¡†çš„é«˜åº¦éšç€æµè§ˆå™¨æ”¹å˜è€Œæ”¹å˜
 	$(function(){
 	   	var height = $(window).height();
 	    var contentHeight = height - (156);
@@ -503,7 +503,7 @@ function strutsLoginDemo(){
 		 if(temp != "null")
 		 	eval( temp+"()");
  	
-		/* var url = location.search; //»ñÈ¡urlÖĞ"?"·ûºóµÄ×Ö´® 
+		/* var url = location.search; //è·å–urlä¸­"?"ç¬¦åçš„å­—ä¸² 
 		var theRequest = new Object(); 
 		if (url.indexOf("?") != -1) { 
 			var str = url.substr(1); 
