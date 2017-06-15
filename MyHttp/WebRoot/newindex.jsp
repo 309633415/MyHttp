@@ -265,17 +265,20 @@ i.i_top{
                <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceConf' })">环境配置(XFire)</a></li>
+				<!-- <li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceConf' })">环境配置(XFire)</a></li>
 				<li class="divider"></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceTake' })">调取网站服务(XFire)</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceTake' })">调取网站服务(XFire)</a></li> -->
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceCxf' })">环境配置和发布服务（CXF）</a></li>
 				<li class="divider"></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceXstream' })">Xstream+XML解析</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceCxf' })">调用CXF服务示例（调用客户端）</a></li>
 				<li class="divider"></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceCxf' })">调用服务端(CXF)</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'deployServlet' })">发布Servlet</a></li>
 				<li class="divider"></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceHttpClient' })">调用服务端(HttpClient)</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceXstream' })">XStream解析XML</a></li>
 				<li class="divider"></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceSoap' })">调用服务端(Soap)</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceHttpClient' })">httpClient调用Servlet</a></li>
+				<!--<li class="divider"></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceSoap' })">调用服务端(Soap)</a></li>  -->
             </ul>
          </li>
 		<!--  <li class="dropdown">
@@ -293,7 +296,7 @@ i.i_top{
                <li><a href="#">流程跳转和退回</a></li>
             </ul>
          </li> -->
-		 <li class="dropdown">
+        <!-- <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                设计模式23种
                <b class="caret"></b>
@@ -302,6 +305,21 @@ i.i_top{
                <li><a href="#">单例模式</a></li>
 			   <li class="divider"></li>
                <li><a href="#">观察者模式</a></li>
+            </ul>
+         </li> --> 
+		 <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+               JBPM工作流
+               <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+               <li><a href="#" onclick="mpost('codehome.html' , {code : 'JbpmIntroduction' })">简介</a></li>
+               <li class="divider"></li>
+               <li><a href="#" onclick="mpost('codehome.html' , {code : 'deployProcess' })">发布工作流</a></li>
+               <li class="divider"></li>
+			   <li><a href="#" onclick="mpost('codehome.html' , {code : 'startTask' })">发起任务</a></li>
+			   <li class="divider"></li>
+			   <li><a href="#" onclick="mpost('codehome.html' , {code : 'handleFlow' })">流程跳转和退回</a></li>
             </ul>
          </li>
 		 <li id="nav_fhzy"><a href="frame.jsp">返回旧版</a></li>
@@ -409,19 +427,31 @@ i.i_top{
 		<div class="show_box_win bgcolor5">
 			<span class="show_box_win_title">webService实例</span>
 			<ul>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceConf' })">环境配置(XFire)</a></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceTake' })">调取网站服务(XFire)</a></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceXstream' })">Xstream+XML解析</a></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceCxf' })">调用服务端(CXF)</a></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceHttpClient' })">调用服务端(HttpClient)</a></li>
-				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceSoap' })">调用服务端(Soap)</a></li>
+				<!-- <li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceConf' })">环境配置(XFire)</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceTake' })">调取网站服务(XFire)</a></li> -->
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceCxf' })">环境配置和发布服务（CXF）</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceCxf' })">调用CXF服务示例（调用客户端）</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'deployServlet' })">发布Servlet </a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceXstream' })">XStream解析XML</a></li>
+				<li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceHttpClient' })">httpClient调用Servlet</a></li>
+				<!-- <li><a href="#"  onclick="mpost('codehome.html' , {code : 'webServiceSoap' })">调用服务端(Soap)</a></li> -->
 			</ul>
 		</div>
+		<!-- 
 		<div class="show_box_win bgcolor6">
 			<span class="show_box_win_title">设计模式23种</span>
 			<ul>
 				<li><a href="#">单例模式</a></li>
 				<li><a href="#">观察者模式</a></li>
+			</ul>
+		</div> -->
+		<div class="show_box_win bgcolor6">
+			<span class="show_box_win_title">JBPM工作流</span>
+			<ul>
+				<li><a href="#" onclick="mpost('codehome.html' , {code : 'JbpmIntroduction' })">简介</a></li>
+				<li><a href="#" onclick="mpost('codehome.html' , {code : 'deployProcess' })">发布工作流</a></li>
+				<li><a href="#" onclick="mpost('codehome.html' , {code : 'startTask' })">发起任务</a></li>
+				<li><a href="#" onclick="mpost('codehome.html' , {code : 'handleFlow' })">流程跳转和退回</a></li>
 			</ul>
 		</div>
 	</div>
