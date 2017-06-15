@@ -39,10 +39,10 @@ request.setCharacterEncoding("GBK");
 		color: #333;
 		text-decoration: underline;
 	}
-	.mulu a:link{text-decoration: none; /* Ö¸Õı³£µÄÎ´±»·ÃÎÊ¹ıµÄÁ´½Ó*/}
-	.mulu a:visited{text-decoration:none; /*Ö¸ÒÑ¾­·ÃÎÊ¹ıµÄÁ´½Ó*/}
-	.mulu a:hover{ text-decoration:underline;  font-size:17px;color:blue/*Ö¸Êó±êÔÚÁ´½Ó*/}
-	.mulu a:active{text-decoration:none;color:purple;/* Ö¸ÕıÔÚµãµÄÁ´½Ó*/ }
+	.mulu a:link{text-decoration: none; /* æŒ‡æ­£å¸¸çš„æœªè¢«è®¿é—®è¿‡çš„é“¾æ¥*/}
+	.mulu a:visited{text-decoration:none; /*æŒ‡å·²ç»è®¿é—®è¿‡çš„é“¾æ¥*/}
+	.mulu a:hover{ text-decoration:underline;  font-size:17px;color:blue/*æŒ‡é¼ æ ‡åœ¨é“¾æ¥*/}
+	.mulu a:active{text-decoration:none;color:purple;/* æŒ‡æ­£åœ¨ç‚¹çš„é“¾æ¥*/ }
 	
 	</style>
   </head>
@@ -51,63 +51,72 @@ request.setCharacterEncoding("GBK");
     
     <div style="float:left;">
 	    <div id="struts" class="mulu">
-		    <h2>Struts2ÊµÀı</h2><br/>
-		    <a href="./common/common.action?target=strutsLoginDemo" >µÇÂ½ÊµÀı</a><br>
-		    <a href="./common/common.action?target=strutsValidDemo" >¿ò¼ÜĞ£ÑéÊµÀı</a><br/>
-		    <a href="./common/common.action?target=strutsInterceptorDemo" >À¹½ØÆ÷ÊµÀı</a><br/>
-		    <a href="./common/common.action?target=strutsFileUploadDemo" >ÎÄ¼şÉÏ´«ÊµÀı</a><br/>
-		    <a href="./common/common.action?target=strutsTagDemo" >struts2±êÇ©ÊµÀı</a><br/>
+		    <h2>Struts2å®ä¾‹</h2><br/>
+		    <a href="./common/common.action?target=strutsLoginDemo" >ç™»é™†å®ä¾‹</a><br>
+		    <a href="./common/common.action?target=strutsValidDemo" >æ¡†æ¶æ ¡éªŒå®ä¾‹</a><br/>
+		    <a href="./common/common.action?target=strutsInterceptorDemo" >æ‹¦æˆªå™¨å®ä¾‹</a><br/>
+		    <a href="./common/common.action?target=strutsFileUploadDemo" >æ–‡ä»¶ä¸Šä¼ å®ä¾‹</a><br/>
+		    <a href="./common/common.action?target=strutsTagDemo" >struts2æ ‡ç­¾å®ä¾‹</a><br/>
 		    <a href="./common/common.action?target=strutsJsonDemo">json</a>
 	    </div>
 	    <div id="hibernate" class="mulu">
-		    <h2>HibernateÊµÀı</h2>
-		    <a href="./common/common.action?target=ormCrudDemo">Ôö¼Ó</a><br/>
-		    <a href="./common/common.action?target=ormCrudDeleteDemo">É¾³ı</a><br/>
-		    <a href="./common/common.action?target=ormCrudUpdateDemo">ĞŞ¸Ä</a><br/>
-		    <a href="./common/common.action?target=ormCrudQueryDemo">¼òµ¥²éÑ¯</a><br/>
-		    <a href="./common/common.action?target=ormCrudQueryLinkDemo">Á¬½Ó²éÑ¯</a><br/>
-		    <a href="./common/common.action?target=ormCrudQueryHqlDemo">×Ô¶¨Òå²éÑ¯£¨HQL»òÕßSQL¾ù¿É£©</a><br/>
-		    <a href="./common/common.action?target=relationshipDemo">¹ØÏµ(Ò»¶ÔÒ»)</a><br/>
-		    <a href="./common/common.action?target=relationshipOneToMany">¹ØÏµ(Ò»¶Ô¶à)</a><br/>
-		    <!-- <a href="./common/common.action?target=strutsCrudDemo" >crudÊµÀı</a><br/> -->
+		    <h2>Hibernateå®ä¾‹</h2>
+		    <a href="./common/common.action?target=ormCrudDemo">å¢åŠ </a><br/>
+		    <a href="./common/common.action?target=ormCrudDeleteDemo">åˆ é™¤</a><br/>
+		    <a href="./common/common.action?target=ormCrudUpdateDemo">ä¿®æ”¹</a><br/>
+		    <a href="./common/common.action?target=ormCrudQueryDemo">ç®€å•æŸ¥è¯¢</a><br/>
+		    <a href="./common/common.action?target=ormCrudQueryLinkDemo">è¿æ¥æŸ¥è¯¢</a><br/>
+		    <a href="./common/common.action?target=ormCrudQueryHqlDemo">è‡ªå®šä¹‰æŸ¥è¯¢ï¼ˆHQLæˆ–è€…SQLå‡å¯ï¼‰</a><br/>
+		    <a href="./common/common.action?target=relationshipDemo">å…³ç³»(ä¸€å¯¹ä¸€)</a><br/>
+		    <a href="./common/common.action?target=relationshipOneToMany">å…³ç³»(ä¸€å¯¹å¤š)</a><br/>
+		    <!-- <a href="./common/common.action?target=strutsCrudDemo" >crudå®ä¾‹</a><br/> -->
 	    </div>
 	    <div id="spring" class="mulu">
-		    <h2>SpringÊµÀı</h2>
+		    <h2>Springå®ä¾‹</h2>
 		    <a href="./common/common.action?target=springIocDemo">IOC</a><br/>
 		    <a href="./common/common.action?target=springAopDemo">AOP</a><br/>
-		    <a href="./common/common.action?target=springJdbcDemo">SpringJDBCÊı¾İ¿â·ÃÎÊ</a><br/>
-		    <a href="./common/common.action?target=springTransactionDemo">SpringÊÂÎñ¹ÜÀí</a><br/>
-		    <a href="./common/common.action?target=springOrmDemo">SpringORMÕûºÏ</a><br/>
-		    <a href="./common/common.action?target=springQuartzDemo">Spring¶¨Ê±·şÎñQuartZ</a><br/>
+		    <a href="./common/common.action?target=springJdbcDemo">SpringJDBCæ•°æ®åº“è®¿é—®</a><br/>
+		    <a href="./common/common.action?target=springTransactionDemo">Springäº‹åŠ¡ç®¡ç†</a><br/>
+		    <a href="./common/common.action?target=springOrmDemo">SpringORMæ•´åˆ</a><br/>
+		    <a href="./common/common.action?target=springQuartzDemo">Springå®šæ—¶æœåŠ¡QuartZ</a><br/>
 		    <a href="./common/common.action?target=springMvcDemo">SpringMVC</a><br/>
 	    </div>
 	    <div id="ajax" class="mulu">
-		    <h2>AJAXºÍjavaScript</h2>
-		    <a href="./common/common.action?target=ajaxJsDemo">Ajax¼òµ¥ÌØĞ§(struts2)</a><br/>
-		    <a href="./common/common.action?target=ajaxJsJqueryDemo">Ajax¼òµ¥Ğ£Ñé(struts2+jQuery)</a><br/>
-		    <a href="./common/common.action?target=ajaxJsAutoCompleterDemo">Ajax²éÑ¯(×Ô¶¯²¹È«Àı×Ó)</a><br/>
-		    <a href="./common/common.action?target=ajaxJsSelectValueDemo">JavaScriptÈ¡Öµ´óÈ«</a><br/>
+		    <h2>AJAXå’ŒjavaScript</h2>
+		    <a href="./common/common.action?target=ajaxJsDemo">Ajaxç®€å•ç‰¹æ•ˆ(struts2)</a><br/>
+		    <a href="./common/common.action?target=ajaxJsJqueryDemo">Ajaxç®€å•æ ¡éªŒ(struts2+jQuery)</a><br/>
+		    <a href="./common/common.action?target=ajaxJsAutoCompleterDemo">AjaxæŸ¥è¯¢(è‡ªåŠ¨è¡¥å…¨ä¾‹å­)</a><br/>
+		    <a href="./common/common.action?target=ajaxJsSelectValueDemo">JavaScriptå–å€¼å¤§å…¨</a><br/>
 	    </div>
 	    <div id="webService" class="mulu">
-		    <h2>webServiceÊµÀı</h2>
-		    <a href="./common/common.action?target=webServiceConf">»·¾³ÅäÖÃ(XFire)</a><br/>
-		    <a href="./common/common.action?target=webServiceTake">µ÷È¡ÍøÕ¾·şÎñ(XFire)</a><br/>
-		    <a href="./common/common.action?target=webServiceXstream">Xstream+XML½âÎö</a><br/>
-		    <a href="./common/common.action?target=webServiceCxf">µ÷ÓÃ±¾µØ·şÎñ¶Ë(CXF)</a><br/>
-		    <a href="./common/common.action?target=webServiceHttpClient">µ÷ÓÃÍâÍø·şÎñ¶Ë(HttpClient)</a><br/>
-		    <a href="./common/common.action?target=webServiceSoap">µ÷ÓÃÍâÍø·şÎñ¶Ë(Soap)</a><br/>
+		    <h2>webServiceå®ä¾‹</h2>
+		    <!-- <a href="./common/common.action?target=webServiceConf">ç¯å¢ƒé…ç½®(XFire)</a><br/>
+		    <a href="./common/common.action?target=webServiceTake">è°ƒå–ç½‘ç«™æœåŠ¡(XFire)</a><br/> -->
+		    <a href="./common/common.action?target=webServiceCxf">ç¯å¢ƒé…ç½®å’Œå‘å¸ƒæœåŠ¡ï¼ˆCXFï¼‰</a><br/>
+		    <a href="./common/common.action?target=webServiceCxf">è°ƒç”¨CXFæœåŠ¡ç¤ºä¾‹ï¼ˆè°ƒç”¨å®¢æˆ·ç«¯ï¼‰</a><br/>
+		    <a href="./common/common.action?target=deployServlet">å‘å¸ƒServlet</a><br/>
+		    <a href="./common/common.action?target=webServiceXstream">XStreamè§£æXML</a><br/>
+		    <a href="./common/common.action?target=webServiceHttpClient">httpClientè°ƒç”¨Servlet</a><br/>
+		    <!-- <a href="./common/common.action?target=webServiceSoap">è°ƒç”¨å¤–ç½‘æœåŠ¡ç«¯(Soap)</a><br/> -->
 	    </div>
-	    <div id="jbpm" class="mulu">
-		    <h2>JBPM¹¤×÷Á÷ÊµÀı</h2>
-		    <a href="./strut/json/json.jsp">×ÊÔ´×¼±¸Óë»·¾³´î½¨</a><br/>
-		    <a href="./strut/json/json.jsp">·¢²¼</a><br/>
-		    <a href="./strut/json/json.jsp">ÈÎÎñ·¢Æğ</a><br/>
-		    <a href="./strut/json/json.jsp">Á÷³ÌÌø×ªºÍÍË»Ø</a><br/>
-	    </div>
+	  <!--   <div id="jbpm" class="mulu">
+		    <h2>JBPMå·¥ä½œæµå®ä¾‹</h2>
+		    <a href="./strut/json/json.jsp">èµ„æºå‡†å¤‡ä¸ç¯å¢ƒæ­å»º</a><br/>
+		    <a href="./strut/json/json.jsp">å‘å¸ƒ</a><br/>
+		    <a href="./strut/json/json.jsp">ä»»åŠ¡å‘èµ·</a><br/>
+		    <a href="./strut/json/json.jsp">æµç¨‹è·³è½¬å’Œé€€å›</a><br/>
+	    </div> -->
+	   <!-- <div class="mulu">
+			<h2>è®¾è®¡æ¨¡å¼23ä¸­</h2>
+			<a href="./strut/json/json.jsp">å•åˆ©æ¨¡å¼</a>	    
+			<a href="./strut/json/json.jsp">è§‚å¯Ÿè€…æ¨¡å¼</a>	    
+	    </div> --> 
 	    <div class="mulu">
-			<h2>Éè¼ÆÄ£Ê½23ÖĞ</h2>
-			<a href="./strut/json/json.jsp">µ¥ÀûÄ£Ê½</a>	    
-			<a href="./strut/json/json.jsp">¹Û²ìÕßÄ£Ê½</a>	    
+			<h2>JBPMå·¥ä½œæµ</h2>
+			<a href="./common/common.action?target=JbpmIntroduction">ç®€ä»‹</a>	  <br/> 
+			<a href="./common/common.action?target=deployProcess">å‘å¸ƒå·¥ä½œæµ</a>	<br/>   
+			<a href="./common/common.action?target=startTask">å‘èµ·ä»»åŠ¡</a>	   <br/>
+			<a href="./common/common.action?target=handleFlow">æµç¨‹è·³è½¬å’Œé€€å›</a>	 <br/>
 	    </div>
     </div>
   </body>
