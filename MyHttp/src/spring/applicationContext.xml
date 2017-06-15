@@ -23,7 +23,24 @@
 			<value>classpath:hibernate.cfg.xml</value>
 		</property>
 	</bean>
-
+	<bean id="sessionFactoryTemp"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="configLocations">
+			<value>classpath:jbpm.hibernate.cfg.xml</value>
+		</property>
+	</bean>
+	<!-- 配置jbpm configuration --> 
+	<bean id="jbpmConfiguration" class="org.springmodules.workflow.jbpm31.LocalJbpmConfigurationFactoryBean"> 
+		<property name="sessionFactory" ref="sessionFactoryTemp" /> 
+		<property name="configuration" value="classpath:/jbpm.cfg.xml" /> 
+		<property name="createSchema" value="false" /> 
+	</bean> 
+	
+	
+	<bean id="jbpmTemplate" class="org.springmodules.workflow.jbpm31.JbpmTemplate"> 
+		<constructor-arg index="0" ref="jbpmConfiguration" /> 
+	</bean> 
+	<!-- end jbpm configuration -->
 	<!-- 配置事务管理器 -->
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
@@ -35,7 +52,7 @@
 	<!-- 那些类那些方法使用事务 -->
 	<aop:config>
 		<aop:pointcut id="allManagerMethod"
-			expression="execution(* demoinfo.hibernate.crud.CrudServiceImpl.*(..)) or execution(* demoinfo.hibernate.relationship.RelationShipServiceImpl.*(..))" />
+			expression="execution(* demoinfo.hibernate.crud.CrudServiceImpl.*(..)) or execution(* demoinfo.hibernate.relationship.RelationShipServiceImpl.*(..)) or execution(* jbpm.impl.QingJiaDaoImpl.*(..))" />
 		<aop:advisor pointcut-ref="allManagerMethod" advice-ref="txAdvice" />
 	</aop:config>
 
