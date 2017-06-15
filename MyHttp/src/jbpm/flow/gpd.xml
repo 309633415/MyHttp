@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-diagram name="leave" width="975" height="490">
+  <node name="startLeave" x="148" y="22" width="140" height="40">
+    <transition name="submitApprove">
+      <label x="5" y="-10"/>
+    </transition>
+  </node>
+  <node name="bossCheck" x="165" y="206" width="140" height="40">
+    <transition name="goBack">
+      <label x="5" y="-10"/>
+    </transition>
+    <transition name="approve">
+      <label x="5" y="-10"/>
+    </transition>
+  </node>
+  <node name="updateLeave" x="557" y="288" width="140" height="40">
+    <transition name="cancel">
+      <label x="5" y="-10"/>
+    </transition>
+    <transition name="reSubmit">
+      <label x="4" y="-8"/>
+      <bendpoint w1="-235" h1="18" w2="157" h2="100"/>
+    </transition>
+  </node>
+  <node name="endLeave" x="179" y="421" width="140" height="40"/>
+</process-diagram>
