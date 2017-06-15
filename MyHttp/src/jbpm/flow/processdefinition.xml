@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition
+  xmlns=""  name="leave">
+   <start-state name="startLeave">
+      <task name="start"></task>
+      <transition name="submitApprove" to="bossCheck"></transition>
+   </start-state>
+   <task-node name="bossCheck">
+      <task name="inHandler"></task>
+      <transition name="goBack" to="updateLeave">
+         <action name="action1" class="jbpm.actionHandler.LeaveActionHandler"></action>
+      </transition>
+      <transition name="approve" to="endLeave">
+         <action name="action1" class="jbpm.actionHandler.LeaveActionHandler"></action>
+      </transition>
+   </task-node>
+   <task-node name="updateLeave">
+      <task name="update"></task>
+      <transition name="cancel" to="endLeave"></transition>
+      <transition name="reSubmit" to="bossCheck"></transition>
+   </task-node>
+   <end-state name="endLeave"></end-state>
+</process-definition>
