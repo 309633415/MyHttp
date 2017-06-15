@@ -65,7 +65,14 @@
               <result name="webServiceCxf">/webservice/webServiceCxf.jsp</result>
               <result name="webServiceHttpClient">/webservice/webServiceHttpClient.jsp</result>
               <result name="webServiceSoap">/webservice/webServiceSoap.jsp</result>
+              <result name="deployServlet">/webservice/deployServlet.jsp</result>
    			  <!-- webService 实例  end-->
+   			  <!-- jbpm start -->
+   			  <result name="JbpmIntroduction">/jbpm/JbpmIntroduction.jsp</result>
+   			  <result name="deployProcess">/jbpm/deployProcess.jsp</result>
+   			  <result name="startTask" type="redirect">/jbpm/queryTask.action?name=startTask</result>
+   			  <result name="handleFlow" type="redirect">/jbpm/queryTask.action?name=handleFlow</result>
+   			  <!-- jbpm end -->
       </action>
   
    </package>
