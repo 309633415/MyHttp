@@ -23,6 +23,9 @@
 	<!-- webService接口 -->
 	<bean id="helloWebServiceImpl" class="demoinfo.webservice.xfire.HelloWebServiceImpl">
 	</bean>
-
+	<bean id="qingJiaDao" class="jbpm.impl.QingJiaDaoImpl">
+	</bean>
+	<bean id="jbpmService" class="jbpm.impl.JbpmServiceImpl">
+	</bean>
 
 </beans>
