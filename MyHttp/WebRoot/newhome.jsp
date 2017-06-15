@@ -127,17 +127,20 @@
                <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-               <li><a href="#"  id="webServiceConf"  onclick="webServiceConf()">环境配置(XFire)</a></li>
+               <!-- <li><a href="#"  id="webServiceConf"  onclick="webServiceConf()">环境配置(XFire)</a></li>
                 <li class="divider"></li>
-			   <li><a href="#"  id="webServiceTake"  onclick="webServiceTake()">调取网站服务(XFire)</a></li>
+			   <li><a href="#"  id="webServiceTake"  onclick="webServiceTake()">调取网站服务(XFire)</a></li> -->
+			   <li><a href="#"  id="webServiceCxf"  onclick="webServiceCxf()">环境配置和发布服务（CXF）</a></li>
+                <li class="divider"></li>
+			   <li><a href="#"  id="webServiceCxf"  onclick="webServiceCxf()">调用CXF服务示例（调用客户端）</a></li>
 			    <li class="divider"></li>
-			   <li><a href="#"  id="webServiceXstream"  onclick="webServiceXstream()">Xstream+XML解析</a></li>
+			   <li><a href="#"  id="webServiceCxf"  onclick="deployServlet()">发布Servlet</a></li>
 			    <li class="divider"></li>
-			   <li><a href="#"  id="webServiceCxf"  onclick="webServiceCxf()">调用服务端(CXF)</a></li>
+			   <li><a href="#"  id="webServiceXstream"  onclick="webServiceXstream()">XStream解析XML</a></li>
 			    <li class="divider"></li>
-			   <li><a href="#"  id="webServiceHttpClient"  onclick="webServiceHttpClient()">调用服务端(HttpClient)</a></li>
-			    <li class="divider"></li>
-			   <li><a href="#"  id="webServiceSoap"  onclick="webServiceSoap()">调用服务端(Soap)</a></li>
+			   <li><a href="#"  id="webServiceHttpClient"  onclick="webServiceHttpClient()">httpClient调用Servlet</a></li>
+			    <!-- <li class="divider"></li>
+			   <li><a href="#"  id="webServiceSoap"  onclick="webServiceSoap()">调用服务端(Soap)</a></li> -->
             </ul>
          </li>
 		 <!-- <li class="dropdown">
@@ -155,7 +158,8 @@
                <li><a href="#">流程跳转和退回</a></li>
             </ul>
          </li> -->
-		 <li class="dropdown">
+         <!-- 
+         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                设计模式23种
                <b class="caret"></b>
@@ -164,6 +168,21 @@
                <li><a href="#">单例模式</a></li>
 			   <li class="divider"></li>
                <li><a href="#">观察者模式</a></li>
+            </ul>
+         </li> -->
+		 <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+               JBPM工作流
+               <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+               <li><a href="#" id="JbpmIntroduction" onclick="JbpmIntroduction()">简介</a></li>
+			   <li class="divider"></li>
+               <li><a href="#" id="deployProcess" onclick="deployProcess()">发布工作流</a></li>
+               <li class="divider"></li>
+               <li><a href="#" id="startTask" onclick="startTask()">发起任务</a></li>
+               <li class="divider"></li>
+               <li><a href="#" id="handleFlow" onclick="handleFlow()">流程跳转和退回</a></li>
             </ul>
          </li>
 		 <li id="nav_fhzy"><a href="frame.jsp" >返回旧版</a></li>
@@ -225,19 +244,31 @@
 				<li>
 					<span class="panelbar_title">webService实例</span>
 					<ul>
-						<li><a href="#"  id="webServiceConf"  onclick="webServiceConf()">环境配置(XFire)</a></li>
-						<li><a href="#"  id="webServiceTake"  onclick="webServiceTake()">调取网站服务(XFire)</a></li>
-						<li><a href="#"  id="webServiceXstream"  onclick="webServiceXstream()">Xstream+XML解析</a></li>
-						<li><a href="#"  id="webServiceCxf"  onclick="webServiceCxf()">调用服务端(CXF)</a></li>
-						<li><a href="#"  id="webServiceHttpClient"  onclick="webServiceHttpClient()">调用服务端(HttpClient)</a></li>
-						<li><a href="#"  id="webServiceSoap"  onclick="webServiceSoap()">调用服务端(Soap)</a></li>
+						<!-- <li><a href="#"  id="webServiceConf"  onclick="webServiceConf()">环境配置(XFire)</a></li>
+						<li><a href="#"  id="webServiceTake"  onclick="webServiceTake()">调取网站服务(XFire)</a></li> -->
+						<li><a href="#"  id="webServiceCxf"  onclick="webServiceCxf()">环境配置和发布服务（CXF）</a></li>
+						<li><a href="#"  id="webServiceCxf"  onclick="webServiceCxf()">调用CXF服务示例（调用客户端）</a></li>
+						<li><a href="#"  id="webServiceCxf"  onclick="deployServlet()">发布Servlet</a></li>
+						<li><a href="#"  id="webServiceXstream"  onclick="webServiceXstream()">XStream解析XML</a></li>
+						<li><a href="#"  id="webServiceHttpClient"  onclick="webServiceHttpClient()">httpClient调用Servlet</a></li>
+						<!-- <li><a href="#"  id="webServiceSoap"  onclick="webServiceSoap()">调用服务端(Soap)</a></li> -->
 					</ul>
 				</li>
+				<!-- 
 				<li>
 					<span class="panelbar_title">设计模式23种</span>
 					<ul>
 						<li><a href="#">单例模式</a></li>
 						<li><a href="#">观察者模式</a></li>
+					</ul>
+				</li> -->
+				<li>
+					<span class="panelbar_title">JBPM工作流</span>
+					<ul>
+						<li><a href="#" id="JbpmIntroduction" onclick="JbpmIntroduction()">简介</a></li>
+						<li><a href="#" id="deployProcess" onclick="deployProcess()">发布工作流</a></li>
+						<li><a href="#" id="startTask" onclick="startTask()">发起任务</a></li>
+						<li><a href="#" id="handleFlow" onclick="handleFlow()">流程跳转和退回</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -461,6 +492,10 @@ function strutsLoginDemo(){
     	document.getElementById("mainfrm1").src="./common/common.action?target=webServiceCxf";
     	document.getElementById("mainfrm1").onload;
     }
+    function deployServlet(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=deployServlet";
+    	document.getElementById("mainfrm1").onload;
+    }
     function webServiceHttpClient(){
     	document.getElementById("mainfrm1").src="./common/common.action?target=webServiceHttpClient";
     	document.getElementById("mainfrm1").onload;
@@ -469,6 +504,23 @@ function strutsLoginDemo(){
     	document.getElementById("mainfrm1").src="./common/common.action?target=webServiceSoap";
     	document.getElementById("mainfrm1").onload;
     }
+    //JBPM工作流
+		function JbpmIntroduction(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=JbpmIntroduction";
+    	document.getElementById("mainfrm1").onload;
+	    }
+	    function deployProcess(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=deployProcess";
+    	document.getElementById("mainfrm1").onload;
+    	}
+    	function startTask(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=startTask";
+    	document.getElementById("mainfrm1").onload;
+    	}
+    	function handleFlow(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=handleFlow";
+    	document.getElementById("mainfrm1").onload;
+    	}
     //JBPM工作流实例
     //iframe框的高度随着浏览器改变而改变
 	$(function(){
