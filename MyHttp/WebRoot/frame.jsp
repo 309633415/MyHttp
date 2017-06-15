@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
-		<title>JAVA²ËÄñÑ§Ï°</title>
+		<title>JAVAèœé¸Ÿå­¦ä¹ </title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 		<script type="text/javascript" src="js/js.js"></script>
@@ -28,7 +28,7 @@ em {
 	color: red;
 }
 
-#maincontainer {/*div±ß¿ò*/
+#maincontainer {/*divè¾¹æ¡†*/
 	width: 100%; /*Width of main container*/
 	margin: 0 auto; /*Center container on page*/
 }
@@ -51,12 +51,12 @@ em {
 	line-height: 1.5em;
 	overflow: hidden;
 }
-#leftcolumn h2{/*ÓÒ²àÀ¸*/
+#leftcolumn h2{/*å³ä¾§æ */
 	height: 1.5em;
 	line-height: 1.5em;
 	overflow: hidden;
 }
-#contentwrapper {/*ÓÒ²àÀ¸*/
+#contentwrapper {/*å³ä¾§æ */
 	font-size: 130%;
 	float: left;
 	width: 100%;
@@ -125,38 +125,38 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 				<div class="innertube">
 					<center>
 						<h1>
-							JAVA²ËÄñÑ§Ï°
+							JAVAèœé¸Ÿå­¦ä¹ 
 							<br />
 						</h1>
 					</center>
 
 
 					<br />
-					<!--µ¼º½À¸-->
+					<!--å¯¼èˆªæ -->
 					<div class="top">
 						<ul class="menu">
 							
 							<li class="no_sub">
 								<a  href="#"  onclick="mpost('codehome.html' , {code : 'oldindex' })"
-									class="tablink nosub">Ê× Ò³</a>
+									class="tablink nosub">é¦– é¡µ</a>
 							</li>
 							<li>
-								<a href="#" class="tablink arwlink">Struts2ÊµÀı</a>
+								<a href="#" class="tablink arwlink">Struts2å®ä¾‹</a>
 								<ul>
 									<li>
-										<a href="#" id="strutsLoginDemo" onclick="strutsLoginDemo()">µÇÂ½ÊµÀı</a>
+										<a href="#" id="strutsLoginDemo" onclick="strutsLoginDemo()">ç™»é™†å®ä¾‹</a>
 									</li>
 									<li>
-										<a href="#" id="strutsValidDemo" onclick="strutsValidDemo()">¿ò¼ÜĞ£ÑéÊµÀı</a>
+										<a href="#" id="strutsValidDemo" onclick="strutsValidDemo()">æ¡†æ¶æ ¡éªŒå®ä¾‹</a>
 									</li>
 									<li>
-										<a href="#"  id="strutsInterceptorDemo" onclick="strutsInterceptorDemo()">À¹½ØÆ÷ÊµÀı</a>
+										<a href="#"  id="strutsInterceptorDemo" onclick="strutsInterceptorDemo()">æ‹¦æˆªå™¨å®ä¾‹</a>
 									</li>
 									<li>
-										<a href="#"  id="strutsFileUploadDemo" onclick="strutsFileUploadDemo()">ÎÄ¼şÉÏ´«ÊµÀı</a>
+										<a href="#"  id="strutsFileUploadDemo" onclick="strutsFileUploadDemo()">æ–‡ä»¶ä¸Šä¼ å®ä¾‹</a>
 									</li>
 									<li>
-										<a href="#"  id="strutsTagDemo" onclick="strutsTagDemo()">struts2±êÇ©ÊµÀı</a>
+										<a href="#"  id="strutsTagDemo" onclick="strutsTagDemo()">struts2æ ‡ç­¾å®ä¾‹</a>
 									</li>
 									<li>
 										<a href="#"  id="strutsJsonDemo" onclick="strutsJsonDemo()">json</a>
@@ -164,39 +164,39 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 								</ul>
 							</li>
 							<li>
-								<a href="#" class="tablink arwlink">HibernateÊµÀı</a>
+								<a href="#" class="tablink arwlink">Hibernateå®ä¾‹</a>
 								<ul>
 									<li>
-										<a href="#"  id="ormCrudDemo"  onclick="ormCrudDemo()">Ôö¼Ó</a>
+										<a href="#"  id="ormCrudDemo"  onclick="ormCrudDemo()">å¢åŠ </a>
 									</li>
 									<li>
-										<a href="#"  id="ormCrudDeleteDemo"  onclick="ormCrudDeleteDemo(this.value)">É¾³ı</a>
+										<a href="#"  id="ormCrudDeleteDemo"  onclick="ormCrudDeleteDemo(this.value)">åˆ é™¤</a>
 									</li>
 									<li>
-										<a href="#"  id="ormCrudUpdateDemo" onclick="ormCrudUpdateDemo(this.value)">ĞŞ¸Ä</a>
+										<a href="#"  id="ormCrudUpdateDemo" onclick="ormCrudUpdateDemo(this.value)">ä¿®æ”¹</a>
 									</li>
 									<li>
-										<a href="#"  id="ormCrudQueryDemo" onclick="ormCrudQueryDemo(this.value)">¼òµ¥²éÑ¯</a>
+										<a href="#"  id="ormCrudQueryDemo" onclick="ormCrudQueryDemo(this.value)">ç®€å•æŸ¥è¯¢</a>
 									</li>
 									<li>
-										<a href="#"  id="ormCrudQueryLinkDemo" onclick="ormCrudQueryLinkDemo(this.value)">Á¬½Ó²éÑ¯</a>
+										<a href="#"  id="ormCrudQueryLinkDemo" onclick="ormCrudQueryLinkDemo(this.value)">è¿æ¥æŸ¥è¯¢</a>
 									</li>
 									<li>
-										<a href="#"  id="ormCrudQueryHqlDemo" onclick="ormCrudQueryHqlDemo(this.value)">×Ô¶¨Òå²éÑ¯</a>
+										<a href="#"  id="ormCrudQueryHqlDemo" onclick="ormCrudQueryHqlDemo(this.value)">è‡ªå®šä¹‰æŸ¥è¯¢</a>
 									</li>
 									<li>
-										<a href="#"  id="relationshipDemo" onclick="relationshipDemo(this.value)">¹ØÏµ(Ò»¶ÔÒ»)</a>
+										<a href="#"  id="relationshipDemo" onclick="relationshipDemo(this.value)">å…³ç³»(ä¸€å¯¹ä¸€)</a>
 									</li>
 									<li>
-										<a href="#"  id="relationshipOneToMany" onclick="relationshipOneToMany(this.value)">¹ØÏµ(Ò»¶Ô¶à)</a>
+										<a href="#"  id="relationshipOneToMany" onclick="relationshipOneToMany(this.value)">å…³ç³»(ä¸€å¯¹å¤š)</a>
 									</li>
 									<!-- <li>
-										<a href="#"  id="strutsCrudDemo" onclick="strutsCrudDemo()">crudÊµÀı</a>
+										<a href="#"  id="strutsCrudDemo" onclick="strutsCrudDemo()">crudå®ä¾‹</a>
 									</li> -->
 								</ul>
 							</li>
 							<li>
-								<a href="#" class="tablink arwlink">SpringÊµÀı</a>
+								<a href="#" class="tablink arwlink">Springå®ä¾‹</a>
 								<ul>
 									<li>
 										<a href="#"  id="springIocDemo"  onclick="springIocDemo()">IOC</a>
@@ -205,16 +205,16 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 										<a href="#"  id="springAopDemo" onclick="springAopDemo()">AOP</a>
 									</li>
 									<li>
-										<a href="#"  id="springJdbcDemo" onclick="springJdbcDemo()">JDBCÊı¾İ¿â·ÃÎÊ</a>
+										<a href="#"  id="springJdbcDemo" onclick="springJdbcDemo()">JDBCæ•°æ®åº“è®¿é—®</a>
 									</li>
 									<li>
-										<a href="#"  id="springTransactionDemo"  onclick="springTransactionDemo()">ÊÂÎñ¹ÜÀí</a>
+										<a href="#"  id="springTransactionDemo"  onclick="springTransactionDemo()">äº‹åŠ¡ç®¡ç†</a>
 									</li>
 									<li>
-										<a href="#"  id="springOrmDemo"  onclick="springOrmDemo()">ORMÕûºÏ</a>
+										<a href="#"  id="springOrmDemo"  onclick="springOrmDemo()">ORMæ•´åˆ</a>
 									</li>
 									<li>
-										<a href="#"  id="springQuartzDemo" onclick="springQuartzDemo()">¶¨Ê±·şÎñQuartZ</a>
+										<a href="#"  id="springQuartzDemo" onclick="springQuartzDemo()">å®šæ—¶æœåŠ¡QuartZ</a>
 									</li>
 									<li>
 										<a href="#"  id="springMvcDemo"  onclick="springMvcDemo()">SpringMVC</a>
@@ -223,88 +223,112 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 								<div class="hot"></div>
 							</li>
 							<li>
-								<a href="#" class="tablink arwlink">AJAXºÍjavaScript</a>
+								<a href="#" class="tablink arwlink">AJAXå’ŒjavaScript</a>
 								<ul>
 									<li>
-										<a href="#"  id="ajaxJsDemo" onclick="ajaxJsDemo()">Ajax¼òµ¥ÌØĞ§</a>
+										<a href="#"  id="ajaxJsDemo" onclick="ajaxJsDemo()">Ajaxç®€å•ç‰¹æ•ˆ</a>
 									</li>
 									<li>
-										<a href="#"  id="ajaxJsJqueryDemo"  onclick="ajaxJsJqueryDemo()">Ajax¼òµ¥Ğ£Ñé</a>
+										<a href="#"  id="ajaxJsJqueryDemo"  onclick="ajaxJsJqueryDemo()">Ajaxç®€å•æ ¡éªŒ</a>
 									</li>
 									<li>
-										<a href="#"  id="ajaxJsAutoCompleterDemo"  onclick="ajaxJsAutoCompleterDemo()">Ajax²éÑ¯</a>
+										<a href="#"  id="ajaxJsAutoCompleterDemo"  onclick="ajaxJsAutoCompleterDemo()">AjaxæŸ¥è¯¢</a>
 									</li>
 									<li>
-										<a href="#"  id="ajaxJsSelectValueDemo"  onclick="ajaxJsSelectValueDemo()">JSÈ¡Öµ´óÈ«</a>
+										<a href="#"  id="ajaxJsSelectValueDemo"  onclick="ajaxJsSelectValueDemo()">JSå–å€¼å¤§å…¨</a>
 									</li>
 								</ul>
 							</li>
 							<li>
-								<a href="#" class="tablink arwlink">webServiceÊµÀı</a>
+								<a href="#" class="tablink arwlink">webServiceå®ä¾‹</a>
 								<ul>
-									<li>
-										<a href="#"  id="webServiceConf"  onclick="webServiceConf()">»·¾³ÅäÖÃ(XFire)</a>
+									<!-- <li>
+										<a href="#"  id="webServiceConf"  onclick="webServiceConf()">ç¯å¢ƒé…ç½®(XFire)</a>
 									</li>
 									<li>
-										<a href="#"  id="webServiceTake"  onclick="webServiceTake()">µ÷È¡ÍøÕ¾·şÎñ</a>
+										<a href="#"  id="webServiceTake"  onclick="webServiceTake()">è°ƒå–ç½‘ç«™æœåŠ¡</a>
+									</li> -->
+									<li>
+										<a href="#"  id="webServiceCxf"  onclick="webServiceCxf()">ç¯å¢ƒé…ç½®å’Œå‘å¸ƒæœåŠ¡ï¼ˆCXFï¼‰</a>
 									</li>
 									<li>
-										<a href="#"  id="webServiceXstream"  onclick="webServiceXstream()">Xstream+XML½âÎö</a>
+										<a href="#"  id="webServiceCxf"  onclick="webServiceCxf()">è°ƒç”¨CXFæœåŠ¡ç¤ºä¾‹ï¼ˆè°ƒç”¨å®¢æˆ·ç«¯ï¼‰</a>
 									</li>
 									<li>
-										<a href="#"  id="webServiceCxf"  onclick="webServiceCxf()">µ÷ÓÃ·şÎñ¶Ë(CXF)</a>
+										<a href="#"  id="deployServlet"  onclick="deployServlet()">å‘å¸ƒServlet</a>
 									</li>
 									<li>
-										<a href="#"  id="webServiceHttpClient"  onclick="webServiceHttpClient()">µ÷ÓÃ·şÎñ¶Ë(HttpClient)</a>
+										<a href="#"  id="webServiceXstream"  onclick="webServiceXstream()">XStreamè§£æXML</a>
 									</li>
 									<li>
-										<a href="#"  id="webServiceSoap"  onclick="webServiceSoap()">µ÷ÓÃ·şÎñ¶Ë(Soap)</a>
+										<a href="#"  id="webServiceHttpClient"  onclick="webServiceHttpClient()">httpClientè°ƒç”¨Servlet</a>
 									</li>
+									<!--  <li>
+										<a href="#"  id="webServiceSoap"  onclick="webServiceSoap()">è°ƒç”¨æœåŠ¡ç«¯(Soap)</a>
+									</li>-->
 								</ul>
 							</li>
-							<li>
-								<a href="#" class="tablink arwlink">JBPM¹¤×÷Á÷ÊµÀı</a>
+					<!-- 		<li>
+								<a href="#" class="tablink arwlink">JBPMå·¥ä½œæµå®ä¾‹</a>
 								<ul>
 									<li>
-										<a href="#"  id=""  onclick="">×¼±¸Óë»·¾³´î½¨</a>
+										<a href="#"  id=""  onclick="">å‡†å¤‡ä¸ç¯å¢ƒæ­å»º</a>
 									</li>
 									<li>
-										<a href="#"  id=""  onclick="">·¢²¼</a>
+										<a href="#"  id=""  onclick="">å‘å¸ƒ</a>
 									</li>
 									<li>
-										<a href="#"  id=""  onclick="">ÈÎÎñ·¢Æğ</a>
+										<a href="#"  id=""  onclick="">ä»»åŠ¡å‘èµ·</a>
 									</li>
 									<li>
-										<a href="#"  id=""  onclick="">Á÷³ÌÌø×ªºÍÍË»Ø</a>
+										<a href="#"  id=""  onclick="">æµç¨‹è·³è½¬å’Œé€€å›</a>
 									</li>
 								</ul>
 								<div class="new"></div>
-							</li>
+							</li> -->
+							<!-- 
 							<li>
-								<a href="#" class="tablink arwlink">Éè¼ÆÄ£Ê½23ÖÖ</a>
+								<a href="#" class="tablink arwlink">è®¾è®¡æ¨¡å¼23ç§</a>
 								<ul>
 									<li>
-										<a href="#"  id="" onclick="">µ¥ÀıÄ£Ê½</a>
+										<a href="#"  id="" onclick="">å•ä¾‹æ¨¡å¼</a>
 									</li>
 									<li>
-										<a href="#"  id="" onclick="">¹Û²ìÕßÄ£Ê½</a>
+										<a href="#"  id="" onclick="">è§‚å¯Ÿè€…æ¨¡å¼</a>
+									</li>
+								</ul>
+							</li> -->
+							<li>
+								<a href="#" class="tablink arwlink">JBPMå·¥ä½œæµ</a>
+								<ul>
+									<li>
+										<a href="#"  id="JbpmIntroduction" onclick="JbpmIntroduction()">ç®€ä»‹</a>
+									</li>
+									<li>
+										<a href="#"  id="deployProcess" onclick="deployProcess()">å‘å¸ƒå·¥ä½œæµ</a>
+									</li>
+									<li>
+										<a href="#"  id="startTask" onclick="startTask()">å‘èµ·ä»»åŠ¡</a>
+									</li>
+									<li>
+										<a href="#"  id="handleFlow" onclick="handleFlow()">æµç¨‹è·³è½¬å’Œé€€å›</a>
 									</li>
 								</ul>
 							</li>
 							<li class="no_sub">
 								<a  href="#"  onclick="mpost('codehome.html' , {code : 'newindex' })"
-									class="tablink nosub">·µ»ØĞÂ°æ</a>
+									class="tablink nosub">è¿”å›æ–°ç‰ˆ</a>
 							</li>
 						</ul>
 					</div>
-					<!--´úÂë½áÊø-->
+					<!--ä»£ç ç»“æŸ-->
 
 
 				</div>
 				<!-- /b -->
 				<div id="contentwrapper">
 					<div id="contentcolumn">
-						<h2>Ô´Âë</h2>
+						<h2>æºç </h2>
 						<iframe id="mainfrm" src="./demoSrcCode.jsp" name="mainfrm"
 							width=100% height=690 scrolling="yes" style="border: solid 1px;"
 							frameborder="0">
@@ -318,7 +342,7 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 				</div>
 
 				<div id="leftcolumn">
-					<h2>Ê¾ÀıÕ¹Ê¾</h2>
+					<h2>ç¤ºä¾‹å±•ç¤º</h2>
 					<iframe id="mainfrm1" src="./demoList.jsp" name="mainfrm1"
 						onload="mainfrm.window.location.reload();" width=100% height=690
 						scrolling="yes" style="border: solid 1px;" frameborder="0">
@@ -331,14 +355,14 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 				</div>
 
 				<div id="footer">
-					Ï£ÍûÄúÇ××Ô´òÒ»±é´úÂë£¬ÕâÑù¿ÉÒÔ¸ü¼ÓÊìÏ¤<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257110248'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1257110248%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+					å¸Œæœ›æ‚¨äº²è‡ªæ‰“ä¸€éä»£ç ï¼Œè¿™æ ·å¯ä»¥æ›´åŠ ç†Ÿæ‚‰<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257110248'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1257110248%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
 				</div>
 
 			</div>
 	</body>
 </html>
 <script>
-//Ë¢ĞÂÔ´Âë´°¿Ú
+//åˆ·æ–°æºç çª—å£
 function refreshMainfrm(){
 	document.getElementById("mainfrm").reload(); 
 	document.frames('mainfrm').location.reload(); 
@@ -442,7 +466,7 @@ function strutsLoginDemo(){
     	document.getElementById("mainfrm1").src="./common/common.action?target=springMvcDemo";
     	document.getElementById("mainfrm1").onload;
     }
-    //AJAXºÍjavaScript
+    //AJAXå’ŒjavaScript
      function ajaxJsDemo(){
     	document.getElementById("mainfrm1").src="./common/common.action?target=ajaxJsDemo";
     	document.getElementById("mainfrm1").onload;
@@ -476,6 +500,10 @@ function strutsLoginDemo(){
     	document.getElementById("mainfrm1").src="./common/common.action?target=webServiceCxf";
     	document.getElementById("mainfrm1").onload;
     }
+    function deployServlet(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=deployServlet";
+    	document.getElementById("mainfrm1").onload;
+    }
     function webServiceHttpClient(){
     	document.getElementById("mainfrm1").src="./common/common.action?target=webServiceHttpClient";
     	document.getElementById("mainfrm1").onload;
@@ -484,8 +512,8 @@ function strutsLoginDemo(){
     	document.getElementById("mainfrm1").src="./common/common.action?target=webServiceSoap";
     	document.getElementById("mainfrm1").onload;
     }
-    //JBPM¹¤×÷Á÷ÊµÀı
-    //iframe¿òµÄ¸ß¶ÈËæ×Åä¯ÀÀÆ÷¸Ä±ä¶ø¸Ä±ä
+    //JBPMå·¥ä½œæµå®ä¾‹
+    //iframeæ¡†çš„é«˜åº¦éšç€æµè§ˆå™¨æ”¹å˜è€Œæ”¹å˜
 	$(function(){
 	    var height = $(window).height();
 	    var contentHeight = height - (156);
@@ -513,4 +541,21 @@ function strutsLoginDemo(){
 	   temp.submit();      
 	  		return temp;      
 		}
+	//JBPMå·¥ä½œæµ
+		function JbpmIntroduction(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=JbpmIntroduction";
+    	document.getElementById("mainfrm1").onload;
+    	}
+    	function deployProcess(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=deployProcess";
+    	document.getElementById("mainfrm1").onload;
+    	}
+    	function startTask(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=startTask";
+    	document.getElementById("mainfrm1").onload;
+    	}
+    	function handleFlow(){
+    	document.getElementById("mainfrm1").src="./common/common.action?target=handleFlow";
+    	document.getElementById("mainfrm1").onload;
+    	}
 </script>
