@@ -53,5 +53,7 @@
 	</bean>
 	<bean id="xstreamAction" class="demoinfo.webservice.xstream.WebServiceAction" scope="prototype">
 	</bean>
+	<bean id="jbpmAction" class="jbpm.action.JbpmAction" scope="prototype">
+	</bean>
 
 </beans>
