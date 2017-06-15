@@ -35,11 +35,21 @@
 		<servlet-class>org.codehaus.xfire.spring.XFireSpringServlet</servlet-class>
 		<load-on-startup>0</load-on-startup>
 	</servlet>
+  
+
 	<servlet-mapping>
 		<servlet-name>XFireServlet</servlet-name>
 		<url-pattern>/services/*</url-pattern>
 	</servlet-mapping>
+	<servlet>
 	<!-- Xfire Servlet end -->
+    <servlet-name>SayHelloServlet</servlet-name>
+    <servlet-class>demoinfo.webservice.servlet.SayHelloServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SayHelloServlet</servlet-name>
+    <url-pattern>/servlet/SayHelloServlet</url-pattern>
+  </servlet-mapping>
 	
 	<welcome-file-list>
 		<welcome-file>newindex.jsp</welcome-file>
