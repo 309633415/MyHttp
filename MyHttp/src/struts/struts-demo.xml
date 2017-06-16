@@ -52,4 +52,6 @@
 <include file="/struts/relationship.xml"></include>
 <!--webService的xml文件-->
 <include file="/struts/webservice.xml"></include>
+<!-- jbpm的xml文件 -->
+<include file="/struts/jbpm.xml"></include>
 </struts>
