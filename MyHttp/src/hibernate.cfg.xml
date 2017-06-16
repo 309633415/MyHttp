@@ -30,6 +30,7 @@
     	<mapping class="demoinfo.hibernate.relationship.pojo.ClassRoom" />  
     	<mapping class="demoinfo.hibernate.relationship.pojo.Student" />  
     	<mapping class="maintain.hbm.DemoInfo" /> 
+    	<mapping class="jbpm.pojo.QingJia" /> 
     </session-factory>
 
 </hibernate-configuration>
