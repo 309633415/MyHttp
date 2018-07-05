@@ -2,7 +2,7 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>PVII CSS Express Drop-Down Menu</title>
 <link href="p7exp/p7exp.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="p7exp/p7exp.js"></script>

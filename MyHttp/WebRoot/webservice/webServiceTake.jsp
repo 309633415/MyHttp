@@ -1,33 +1,33 @@
 <%@ include file="/common/taglibs.jsp" %>
-<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <html>
 <head>
-    <title>webServiceÊµÀý</title>
+    <title>webServiceå®žä¾‹</title>
 </head>
 <body>
-<h2>Í¨¹ý·¢²¼µÄHelloWebService·þÎñ½Ó¿Úµ÷ÓÃÍøÕ¾·þÎñ</h2><br/>
+<h2>é€šè¿‡å‘å¸ƒçš„HelloWebServiceæœåŠ¡æŽ¥å£è°ƒç”¨ç½‘ç«™æœåŠ¡</h2><br/>
 <div style="color:blue;">
-µ÷ÓÃ·½·¨Ãû : sayHello»òÕßsayLove£¬ÕâÀïÊ¹ÓÃsayHello¡£<br/>
-·¢ËÍÎÄ±¾ÄÚÈÝ : ÈÎÒâÊäÈë 
+è°ƒç”¨æ–¹æ³•å : sayHelloæˆ–è€…sayLoveï¼Œè¿™é‡Œä½¿ç”¨sayHelloã€‚<br/>
+å‘é€æ–‡æœ¬å†…å®¹ : ä»»æ„è¾“å…¥ 
 </div><br/><br/>
     <form id="fm1" action="<%=basePath %>/webservice/take.action" method="post">
-       <input type="text" id="name" name="name" label="µ÷ÓÃ·½·¨Ãû" value="sayHello" style="display:none"/>
-       <s:textfield name="message"  label="·¢ËÍÎÄ±¾ÄÚÈÝ"/><br/>
-       <input type="submit" value="Ìá½»" />
+       <input type="text" id="name" name="name" label="è°ƒç”¨æ–¹æ³•å" value="sayHello" style="display:none"/>
+       <s:textfield name="message"  label="å‘é€æ–‡æœ¬å†…å®¹"/><br/>
+       <input type="submit" value="æäº¤" />
     </form>
 <div>
-	·µ»ØÊý¾ÝÎª£º
+	è¿”å›žæ•°æ®ä¸ºï¼š
     <c:forEach items="${requestScope.results}" var="it">
     	${it}
     </c:forEach>
 </div>
 <br/><br/>
-    <p style="text-indent:2em;">ÉÏÒ»²½ÎÒÃÇ·¢²¼ÁË·þÎñ£¬ÏÖÔÚÎÒÃÇÑ§Ï°½¨Á¢¿Í»§¶ËÈ¥µ÷ÓÃ£¬ÔÚÖ®Ç°ÏîÄ¿µÄ»ù´¡ÉÏÊµÏÖÒÔÉÏÐ§¹û¡£</p>
+    <p style="text-indent:2em;">ä¸Šä¸€æ­¥æˆ‘ä»¬å‘å¸ƒäº†æœåŠ¡ï¼ŒçŽ°åœ¨æˆ‘ä»¬å­¦ä¹ å»ºç«‹å®¢æˆ·ç«¯åŽ»è°ƒç”¨ï¼Œåœ¨ä¹‹å‰é¡¹ç›®çš„åŸºç¡€ä¸Šå®žçŽ°ä»¥ä¸Šæ•ˆæžœã€‚</p>
 <!--     <script type="text/javascript">
     function check(){
 	   	 var temp=document.getElementById("name");
 	   	 if(temp.value !="sayHello" && temp.value !="sayLove"){
-	   	 	alert("ÄúÊäÈëµÄ "+temp.value + " ²»ÊÇ·þÎñµÄ½Ó¿ÚÅ¶£¡");
+	   	 	alert("æ‚¨è¾“å…¥çš„ "+temp.value + " ä¸æ˜¯æœåŠ¡çš„æŽ¥å£å“¦ï¼");
 			temp.focus();
 			return;
 		}

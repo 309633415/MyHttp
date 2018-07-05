@@ -1,6 +1,7 @@
-#Mon Jan 11 09:38:19 CST 2016
 eclipse.preferences.version=1
-encoding//WebRoot/frame.jsp=GBK
+encoding//WebRoot/frame.jsp=UTF-8
+encoding//WebRoot/newhome.jsp=UTF-8
+encoding//WebRoot/webservice/webServiceCxf.jsp=UTF-8
 encoding//src/demoinfo/hibernate/relationship/pojo/Goods.hbm.xml=UTF-8
 encoding//src/demoinfo/struts2/interceptor/InterceptorTest.java=UTF-8
 encoding//src/demoinfo/struts2/interceptor/LoginAction.java=UTF-8
@@ -8,4 +9,6 @@ encoding//src/demoinfo/struts2/login/LoginAction.java=UTF-8
 encoding//src/demoinfo/struts2/validation/ValidationAction.java=UTF-8
 encoding//src/factory/HibernateSessionFactory.java=UTF-8
 encoding//src/maintain/hbm/DemoInfo.java=UTF-8
+encoding/<project>=UTF-8
+encoding/mynet.sql=ISO-8859-1
 encoding/src=UTF-8

@@ -1,22 +1,22 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ include file="/common/taglibs.jsp" %>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-  <title>webServiceʵ��</title>
+  <title>webService实例</title>
   </head>
   <body>
-    <h2>ʹ��HttpClient���ù�������ӿ�</h2>
-  <p style="text-indent:2em;">ע��ʵ�����ǲ�ѯ�绰��������صĽӿڣ�ʹ�õ�webservice��վΪ<br/><a href="http://webservice.webxml.com.cn/WebServices/MobileCodeWS.asmx" target="_blank">http://webservice.webxml.com.cn/WebServices/MobileCodeWS.asmx</a>
-  ���ڷ�������ԭ��������̱Ƚ�������Ҫ�ȴ��ϳ�ʱ�䣬��ʱҲ����֡���������æ��������</p>
+    <h2>使用HttpClient调用公共服务接口</h2>
+  <p style="text-indent:2em;">注：实例中是查询电话号码归属地的接口，使用的webservice网站为<br/><a href="http://webservice.webxml.com.cn/WebServices/MobileCodeWS.asmx" target="_blank">http://webservice.webxml.com.cn/WebServices/MobileCodeWS.asmx</a>
+  由于服务器的原因，请求过程比较慢，需要等待较长时间，有时也会出现“服务器繁忙”的现象。</p>
     <form id="fm1" method="post" action="<%=basePath %>/webservice/httpclient.action">
-    	�绰���룺<input type="text"  id="number" name="number"  value="${number} "
-    	onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/>���绰�������6λ��
-    	<input type="button" value="�ύ" onclick="check()"/>
+    	电话号码：<input type="text"  id="number" name="number"  value="${number} "
+    	onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/>（电话号码大于6位）
+    	<input type="button" value="提交" onclick="check()"/>
     </form>
-    �������ǣ�<font color="red">${result} </font>
+    归属地是：<font color="red">${result} </font>
     <br/><br/><br/>
       <script type="text/javascript">
     function check(){
@@ -25,7 +25,7 @@
 	   	 	document.getElementById("fm1").submit();
 	   	 }
 	   	 else{
-	   	 	alert("�绰������Ҫ����6λ");
+	   	 	alert("电话号码需要大于6位");
 			document.getElementById("number").focus();
 			return;
 	   	 }

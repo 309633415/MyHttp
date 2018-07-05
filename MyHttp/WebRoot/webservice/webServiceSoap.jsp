@@ -1,27 +1,27 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ include file="/common/taglibs.jsp" %>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-  <title>webServiceÊµÀı</title>
+  <title>webServiceå®ä¾‹</title>
   </head>
   <body>
-  <h2>Ê¹ÓÃSoapÇëÇóµ÷ÓÃ¹«¹²·şÎñ½Ó¿Ú</h2>
-  <p style="text-indent:2em;">×¢£ºÊµÀıÖĞÊÇ²éÑ¯ÌìÆøµÄ½Ó¿Ú£¬Ê¹ÓÃµÄwebserviceÍøÕ¾Îª<br/><a href="http://www.webxml.com.cn/WebServices/WeatherWS.asmx" target="_blank">http://www.webxml.com.cn/WebServices/WeatherWS.asmx</a>ÕâÀïµÄÔËĞĞËÙ¶È±ÈhttpclientÇëÇóµÄ·şÎñÆ÷Òª¿ì¶àÁË¡£</p>
+  <h2>ä½¿ç”¨Soapè¯·æ±‚è°ƒç”¨å…¬å…±æœåŠ¡æ¥å£</h2>
+  <p style="text-indent:2em;">æ³¨ï¼šå®ä¾‹ä¸­æ˜¯æŸ¥è¯¢å¤©æ°”çš„æ¥å£ï¼Œä½¿ç”¨çš„webserviceç½‘ç«™ä¸º<br/><a href="http://www.webxml.com.cn/WebServices/WeatherWS.asmx" target="_blank">http://www.webxml.com.cn/WebServices/WeatherWS.asmx</a>è¿™é‡Œçš„è¿è¡Œé€Ÿåº¦æ¯”httpclientè¯·æ±‚çš„æœåŠ¡å™¨è¦å¿«å¤šäº†ã€‚</p>
     <form id="fm1" method="post" action="<%=basePath %>/webservice/soap.action">
- ÇëÊäÈë³ÇÊĞ£º<input type="text"  id="city" name="city"  value="${city}"/>
-    	<input type="button"  value="Ìá½»" onclick="check()"/>
+ è¯·è¾“å…¥åŸå¸‚ï¼š<input type="text"  id="city" name="city"  value="${city}"/>
+    	<input type="button"  value="æäº¤" onclick="check()"/>
     </form>
-    ¸ÃµØµÄÌìÆøÇé¿öÊÇ£º<font color="red">
+    è¯¥åœ°çš„å¤©æ°”æƒ…å†µæ˜¯ï¼š<font color="red">
     ${ result } 
     </font>
     <br/><br/><br/>
       <script type="text/javascript">
     function check(){
 	   	 if(fm1.city.value.replace(/(^\s*)|(\s*$)/g, "")==""){
-	   	 	alert("³ÇÊĞ²»ÄÜÎª¿Õ£¡");
+	   	 	alert("åŸå¸‚ä¸èƒ½ä¸ºç©ºï¼");
 	   	 	document.getElementById("city").focus();
 	   	 	return;
 	   	 }

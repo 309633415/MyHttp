@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
@@ -28,17 +28,14 @@
 	/* Background stripes animation */
 	animation: bganim 3s linear 2s infinite;
 }
-
 @keyframes bganim {
 	from {
 		background-position: 0px;
 	}
-
 	to {
 		background-position: 80px;
 	}
 }
-
 .cube {
 	margin: auto;
 	position: relative;
@@ -46,7 +43,6 @@
 	width: 200px;
 	transform-style: preserve-3d;
 }
-
 .cube div {
 	position: absolute;
 	padding-top: 40px;
@@ -59,35 +55,29 @@
 	font: 10px arial;
 	transition: transform 0.2s ease-in;
 }
-
 .front {
 	background-color:#961e37;
 	transform: translateZ(100px);
 }
-
 .back {
 	background-color:#cd2b38;
 	transform: translateZ(-100px) rotateY(180deg);
 }
-
 .right {
 	background-color:#fdd621;
 	transform: rotateY(-270deg) translateX(100px);
 	transform-origin: top right;
 }
-
 .left {
 	background-color:#37a245;
 	transform: rotateY(270deg) translateX(-100px);
 	transform-origin: center left;
 }
-
 .top {
 	background-color:#1776cb;
 	transform: rotateX(-270deg) translateY(-100px);
 	transform-origin: top center;
 }
-
 .bottom {
 	background-color:#18d2cb;
 	transform: rotateX(270deg) translateY(100px);
@@ -126,45 +116,35 @@ i.i_top{
   transform:rotateX(-270deg) translateY(-50px);
   transform-origin: left top;
 }
-
 @keyframes rotate {
 	from {
 		transform: rotateX(0deg) rotateY(0deg);
 	}
-
 	to {
 		transform: rotateX(360deg) rotateY(360deg);
 	}
 }
-
 .cube {
 	animation: rotate 20s infinite linear;
 }
-
 .wrap:hover .front {
 	transform: translateZ(200px);
 }
-
 .wrap:hover .back {
 	transform: translateZ(-200px) rotateY(180deg);
 }
-
 .wrap:hover .right {
 	transform: rotateY(-270deg) translateZ(100px) translateX(100px);
 }
-
 .wrap:hover .left {
 	transform: rotateY(270deg) translateZ(100px) translateX(-100px);
 }
-
 .wrap:hover .top {
 	transform: rotateX(-270deg) translateZ(100px) translateY(-100px);
 }
-
 .wrap:hover .bottom {
 	transform: rotateX(270deg) translateZ(100px) translateY(100px);
 }
-
 </style>
 <body>
 <!--导航部分-->
@@ -494,7 +474,6 @@ $("#section_fhsl_btn").click(function(){
 	var t=$(window).scrollTop();
 	$('body,html').animate({scrollTop:$("#section").offset().top},1000);
 });
-
 /*********
 	注意下面这里是关于点击链接跳转的方法，
 	是根据元素下标获取的，
@@ -508,7 +487,6 @@ $(".show_box_win a").click(function(){
 	$('#panelbar').children('li:eq('+i+')').addClass('k-state-active');
 	$('#panelbar').children('li:eq('+i+')').children().children('li:eq('+n+')').children().addClass('k-state-selected k-state-focused');
 	$('#panelbar').data("kendoPanelBar").expand($("#panelbar .k-state-active"));//展开元素
-
 });
 </script>
 <script>
