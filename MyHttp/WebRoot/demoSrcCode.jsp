@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -15,7 +15,7 @@
 	response.setHeader("Pragma","no-cache");     
 	response.setHeader("Cache-Control","no-cache");    
 	response.setDateHeader("Expires",0);
-	request.setCharacterEncoding("GBK");
+	request.setCharacterEncoding("UTF-8");
 %>
 <link rel="stylesheet" type="text/css" href="<%=basePath%>css/circle.css">
 <link rel="stylesheet" type="text/css" href="<%=basePath%>css/SyntaxHighlighter.css">
@@ -33,16 +33,16 @@ background: cadetblue;
   <c:set var="salary" scope="session" value="${2000*2}"/>
   <c:choose>
        <c:when test="${flag==0}">
-              <p><h2>��ӭ���� Java���� ѧϰ��վ</h1></p> 
-              <p><h3>����վ��Ҫ����SSH��ܡ�Ajax��webService�Ȼ���֪ʶ��ϣ����������������</h3></p>
-              <img alt="Java����" src="<%=basePath %>/image/java.jpg" style="width:50%; margin-left:25%; margin-right:25%;">
-              <p style="text-indent:2em"><strong>ʹ�÷�����</strong></p>
-              <p style="text-indent:2em">���ÿһ��֪ʶ�㣬�����ҳ�桰ʾ��չʾ���л�ʹ�ø�֪ʶ���һ�����ӣ�ʵ������Ч�������ҲࡰԴ�롱�н�����صĴ��붼���˳�����Ϊ�˾����򵥽��⣬��Щ������������Web Server�У���Щ����ֱ������Java Application��</p>
-              <p style="text-indent:2em">��Ϊ�����Ǵ���Ŀ�е����ó����ģ����ܻ���׸����߲��㣬��������֮���������½⡣</p>
+              <p><h2>欢迎来到 Java菜鸟 学习网站</h2></p> 
+              <p><h3>本网站主要介绍SSH框架、Ajax、webService等基础知识，希望对您有所帮助！</h3></p>
+              <img alt="Java菜鸟" src="<%=basePath %>/image/java.jpg" style="width:50%; margin-left:25%; margin-right:25%;">
+              <p style="text-indent:2em"><strong>使用方法：</strong></p>
+              <p style="text-indent:2em">针对每一个知识点，在左侧页面“示例展示”中会使用该知识点举一个例子，实现它的效果；在右侧“源码”中将它相关的代码都列了出来。为了尽量简单讲解，有些程序是运行在Web Server中，有些则是直接运行Java Application。</p>
+              <p style="text-indent:2em">因为代码是从项目中单独拿出来的，可能会有赘余或者不足，如遇错误之处，还望谅解。</p>
               </p>
        </c:when>
        <c:otherwise>
-		   <h3>֪ʶ׼��</h3>
+		   <h3>知识准备</h3>
 		   <div id="circle"> 
 			<span class="include"> 
 				<strong class="s1">&nbsp;</strong> 
@@ -62,7 +62,7 @@ background: cadetblue;
 				<strong class="s1">&nbsp;</strong> 
 			</span> 
 			</div> 
-		   <h3>��Դ׼��</h3>
+		   <h3>资源准备</h3>
 		   <span class="include"> 
 				<strong class="s1">&nbsp;</strong> 
 				<strong class="s2">&nbsp;</strong> 
@@ -80,7 +80,7 @@ background: cadetblue;
 				<strong class="s2">&nbsp;</strong> 
 				<strong class="s1">&nbsp;</strong> 
 			</span> 
-		   <h3>ʾ��</h3>
+		   <h3>示例</h3>
 		   <span class="include"> 
 				<strong class="s1">&nbsp;</strong> 
 				<strong class="s2">&nbsp;</strong> 
@@ -98,7 +98,7 @@ background: cadetblue;
 				<strong class="s2">&nbsp;</strong> 
 				<strong class="s1">&nbsp;</strong> 
 			</span> 
-		   <h3>�ĵ�</h3>
+		   <h3>文档</h3>
 			<div id="df">
 			</div>
 	  </c:otherwise>

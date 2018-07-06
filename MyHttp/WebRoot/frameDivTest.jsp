@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
-<title>ÊµÀıÕ¹Ê¾¼°´úÂë·ÖÎö</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>å®ä¾‹å±•ç¤ºåŠä»£ç åˆ†æ</title>
 <style type="text/css">
 
 body{
@@ -86,14 +86,14 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 <div id="topsection">
 <div class="innertube">
 <center>
-<h1>Ê¾ÀıºÍ´úÂë·ÖÎö<br/></h1>
+<h1>ç¤ºä¾‹å’Œä»£ç åˆ†æ<br/></h1>
 </center>
 <br/>
-<a href="demoList.jsp" target="mainfrm1">·µ»ØÊ¾ÀıÄ¿Â¼</a>|<a href="head.jsp">·µ»ØÊ×Ò³</a></div></div>
+<a href="demoList.jsp" target="mainfrm1">è¿”å›ç¤ºä¾‹ç›®å½•</a>|<a href="head.jsp">è¿”å›é¦–é¡µ</a></div></div>
 
 <div id="contentwrapper">
 <div id="contentcolumn">
-Ô´Âë
+æºç 
 <iframe id="mainfrm" src="./demoSrcCode.jsp" name="mainfrm" width=100% height=600 scrolling="yes" style="border: solid  1px;" frameborder="0">
 <div class="innertube"><b>Content Column: <em>Fixed</em></b> <script type="text/javascript">filltext(45)</script></div>
 </iframe>
@@ -101,14 +101,14 @@ document.write(gibberish[Math.floor(Math.random()*3)]+" ")
 </div>
 
 <div id="leftcolumn">
-Ê¾ÀıÕ¹Ê¾
+ç¤ºä¾‹å±•ç¤º
 <%@ include file="./demoList.jsp" %>
 <!--<iframe id="mainfrm1"  src="./demoList.jsp" name="mainfrm1"  onload="ldd();" width=100% height=600 scrolling="yes" style="border: solid  1px;" frameborder="0">-->
 <div class="innertube"><b>Left Column: <em>200px</em></b> <script type="text/javascript">filltext(15)</script></div>
 <!--</iframe>-->
 </div>
 
-<div id="footer">Ï£ÍûÄúÇ××Ô´òÒ»±é´úÂë£¬ÕâÑù¿ÉÒÔ¸ü¼ÓÊìÏ¤</div>
+<div id="footer">å¸Œæœ›æ‚¨äº²è‡ªæ‰“ä¸€éä»£ç ï¼Œè¿™æ ·å¯ä»¥æ›´åŠ ç†Ÿæ‚‰</div>
 
 </div>
 <s:textfield name="demoSrcCode.title"></s:textfield>

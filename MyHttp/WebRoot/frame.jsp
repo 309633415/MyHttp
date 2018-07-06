@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>JAVA菜鸟学习</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
@@ -19,33 +19,27 @@ body {
 	
 	background-color: lightslategray;
 }
-
 b {
 	font-size: 110%;
 }
-
 em {
 	color: red;
 }
-
 #maincontainer {/*div边框*/
 	width: 100%; /*Width of main container*/
 	margin: 0 auto; /*Center container on page*/
 }
-
 #topsection {
 	width: 100%;
 	height: 133px;
 	background: url(image/aaa.jpg) #434343 no-repeat; 
 }
-
 #topsection h1 {
 	color: #fff;
 	height: 2em;
 	line-height: 3em;
 	overflow: hidden;
 }
-
 #contentcolumn h2{
 	height: 1.5em;
 	line-height: 1.5em;
@@ -63,11 +57,9 @@ em {
 	background-color: green;
 	text-align: center;	
 }
-
 #contentcolumn {
 	margin-left: 45%; /*Set left margin to LeftColumnWidth*/
 }
-
 #leftcolumn {
 	font-size: 130%;
 	text-align: center;
@@ -76,7 +68,6 @@ em {
 	margin-left: -100%; /*Set left margin to -(MainContainerWidth)*/
 	background: #C8FC98;
 }
-
 #footer {
 	clear: left;
 	width: 100%;
@@ -88,13 +79,9 @@ em {
 	position:fixed;
             bottom:0;
 }
-
-
-
 #footer a {
 	color: #FFFF80;
 }
-
 .innertube {
 	margin: 0px;
 	/*Margins for inner DIV inside each column (to provide padding)*/
@@ -367,12 +354,10 @@ function refreshMainfrm(){
 	document.getElementById("mainfrm").reload(); 
 	document.frames('mainfrm').location.reload(); 
 }
-
 function demoIndex(){
     document.getElementById("mainfrm1").src="./common/common.action?target=backDemoList";
     document.getElementById("mainfrm1").onload;
   }
-
 function strutsLoginDemo(){
     document.getElementById("mainfrm1").src="./common/common.action?target=strutsLoginDemo";
     document.getElementById("mainfrm1").onload;

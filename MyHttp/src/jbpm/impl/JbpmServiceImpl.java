@@ -37,7 +37,7 @@ public class JbpmServiceImpl implements JbpmService{
 		this.jbpmConfiguration = jbpmConfiguration;
 	}
 	public List<QingJiaVO> getProcess(){
-		List<QingJiaVO> qingjiaVos = new ArrayList<>();
+		List<QingJiaVO> qingjiaVos = new ArrayList<QingJiaVO>();
 		String sql = " select qingjia.id qingjiaid,qingjia.userid userId,qingjia.content content,taskinstance.id_ taskId,taskinstance.name_ taskName, node.name_ nodeName,taskinstance.ISOPEN_ isopen,taskinstance.ISSUSPENDED_ issuspended "
 				+ "from qingjia qingjia,jbpm_taskinstance taskinstance,jbpm_token token,jbpm_node node "
 				+ "where qingjia.processid = token.processinstance_ "
